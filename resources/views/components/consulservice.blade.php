@@ -1,4 +1,4 @@
-<div class="consulervice flex">
+<div class="flex">
     <img src="{{asset($doctorImage)}}" alt="{{ $alt }}" class="card-image">
 
     <div class="text-left pl-[20px] text-[12px]">
@@ -16,3 +16,4 @@
         <button class="bg-[#A4907C] text-bold text-[12px] text-white rounded-[4px] py-[8px] px-[21px]">Chat</button>
     </div>
 </div>
+
