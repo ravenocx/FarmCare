@@ -679,10 +679,6 @@ video {
   width: 100%;
 }
 
-.w-1\/2 {
-  width: 50%;
-}
-
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -745,10 +741,6 @@ video {
 
 .justify-center {
   justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
 }
 
 .gap-2 {
@@ -837,6 +829,24 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-red-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#\] {
+  background-color: #;
+}
+
+.bg-\[\#FFF8F0\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 248 240 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -893,6 +903,11 @@ video {
   padding-right: 21px;
 }
 
+.px-\[24px\] {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -913,6 +928,11 @@ video {
   padding-bottom: 16px;
 }
 
+.py-\[20\.5px\] {
+  padding-top: 20.5px;
+  padding-bottom: 20.5px;
+}
+
 .py-\[43px\] {
   padding-top: 43px;
   padding-bottom: 43px;
@@ -923,22 +943,20 @@ video {
   padding-bottom: 8px;
 }
 
-.py-\[20\.5px\] {
-  padding-top: 20.5px;
-  padding-bottom: 20.5px;
-}
-
-.px-\[24px\] {
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
 .pb-\[100px\] {
   padding-bottom: 100px;
 }
 
 .pb-\[16px\] {
   padding-bottom: 16px;
+}
+
+.pb-\[40px\] {
+  padding-bottom: 40px;
+}
+
+.pb-\[50px\] {
+  padding-bottom: 50px;
 }
 
 .pb-\[56px\] {
@@ -961,6 +979,10 @@ video {
   padding-left: 96px;
 }
 
+.pr-\[24px\] {
+  padding-right: 24px;
+}
+
 .pr-\[40px\] {
   padding-right: 40px;
 }
@@ -977,52 +999,32 @@ video {
   padding-top: 10px;
 }
 
-.pt-\[20\.5px\] {
-  padding-top: 20.5px;
-}
-
 .pt-\[26px\] {
   padding-top: 26px;
+}
+
+.pt-\[28px\] {
+  padding-top: 28px;
 }
 
 .pt-\[32px\] {
   padding-top: 32px;
 }
 
-.pt-\[40px\] {
-  padding-top: 40px;
+.pt-\[4px\] {
+  padding-top: 4px;
 }
 
 .pt-\[8px\] {
   padding-top: 8px;
 }
 
-.pb-\[50px\] {
-  padding-bottom: 50px;
+.pt-20 {
+  padding-top: 5rem;
 }
 
-.pt-\[px\] {
-  padding-top: px;
-}
-
-.pt-\[4px\] {
-  padding-top: 4px;
-}
-
-.pr-\[24px\] {
-  padding-right: 24px;
-}
-
-.pl-\[24\] {
-  padding-left: 24;
-}
-
-.pl-\[24px\] {
-  padding-left: 24px;
-}
-
-.pb-\[28px\] {
-  padding-bottom: 28px;
+.pt-\[50px\] {
+  padding-top: 50px;
 }
 
 .text-left {
