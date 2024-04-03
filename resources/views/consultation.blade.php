@@ -13,17 +13,19 @@
 
     <p class="pb-[100px]">Header</p>
 
-    <div class="flex justify-center bg-primary_color h-[539px]">
-        <div class="text-center text-[24px]">
-            <p class="pt-[32px] font-bold">Consult with a doctor at FarmCare+</p>
-            <p class="py-[16px]">Telemedicine services are ready to help care for your <br>livestock animals</p>
-            <img src="{{asset('images/consultation-desc-image.png')}}" alt="online consultation" class="pt-[10px] mx-auto">
+    <div class="pb-[40px]">
+        <div class="flex justify-center bg-primary_color h-[539px]">
+            <div class="text-center text-[24px]">
+                <p class="pt-[32px] font-bold">Consult with a doctor at FarmCare+</p>
+                <p class="py-[16px]">Telemedicine services are ready to help care for your <br>livestock animals</p>
+                <img src="{{asset('images/consultation-desc-image.png')}}" alt="online consultation" class="pt-[10px] mx-auto">
+            </div>
         </div>
-        
     </div>
+    
 
-    <div class="flex pt-[40px] pb-[28px]">
-        <div class="pl-[96px] border-y-2 pr-[40px] py-[43px] ">
+    <div class="flex  border-y-2">
+        <div class="pl-[96px]  pr-[40px] py-[43px] ">
             <p class="text-[20px] font-medium">Why consult a doctor at FarmCare+?</p>
             <ol class="list-decimal">
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
@@ -32,7 +34,7 @@
             </ol>
         </div>
 
-        <div class="flex-grow border-y-2 border-l-2 pl-[48px] pr-[91px] pt-[26px] pb-[56px]">
+        <div class="flex-grow border-l-2 pl-[48px] pr-[91px] pt-[26px] pb-[56px]">
             <p class="font-bold text-[24px]">Doctor’s Recommendation</p>
             <p class="font-medium text-[16px] pt-[8px] pb-[16px]">Consult with our best doctor’s</p>
             
@@ -72,6 +74,10 @@
                 
             </div>
         </div>
+    </div>
+
+    <div class="pt-[28px] flex justify-center bg-red-100 pt-[50px]">
+        <p>haries</p>
     </div>
 
 
