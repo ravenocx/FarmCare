@@ -44,7 +44,8 @@
 
     <div class="flex flex-col justify-center text-left text-[24px]">
         <p class="pt-[64px] font-bold text-3xl text-center">Recommendation Doctor For Animal</p>
-        
+        <button class="text-[20px] text-bold text-[#A4907C] text-end mr-20 pt-4">View All ></button>
+
         <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
             <div class="w-full relative flex items-center justify-center">
                 <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
@@ -54,58 +55,58 @@
                 </button>
                 <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
                     <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-center transition ease-out duration-700">
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 1</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
+                        <div class="max-w-[20rem] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] shadow-lg dark:bg-surface-dark dark:text-white">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3 flex justify-center items-center">
+                                <img class="w-32 h-32 rounded-t-lg" src="{{asset('img\a-4.png')}}" alt="">
+                            </div>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-semibold text-black text-left text-balance pt-2">Drh. Farhan</h2>
+                                <p class="text-base text-justify text-black pt-2">Poultry Specialist</p>
                             </div>
                         </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
+                        <div class="max-w-[20rem] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] shadow-lg dark:bg-surface-dark dark:text-white">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3 flex justify-center items-center">
+                                <img class="w-32 h-32 rounded-t-lg" src="{{asset('img\a-5.png')}}" alt="">
+                            </div>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-semibold text-black text-left text-balance pt-2">Dr. Putri Nadia</h2>
+                                <p class="text-base text-justify text-black pt-2">Cattle Specialist</p>
                             </div>
                         </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
+                        <div class="max-w-[20rem] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] shadow-lg dark:bg-surface-dark dark:text-white">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3 flex justify-center items-center">
+                                <img class="w-32 h-32 rounded-t-lg" src="{{asset('img\a-6.png')}}" alt="">
+                            </div>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-semibold text-black text-left text-balance pt-2">Dr. Haris Sitompul</h2>
+                                <p class="text-base text-justify text-black pt-2">Fish Specialist</p>
                             </div>
                         </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
+                        <div class="max-w-[20rem] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] shadow-lg dark:bg-surface-dark dark:text-white">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3 flex justify-center items-center">
+                                <img class="w-32 h-32 rounded-t-lg" src="{{asset('img\a-7.png')}}" alt="">
+                            </div>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-semibold text-black text-left text-balance pt-2">Dr. Reihaini</h2>
+                                <p class="text-base text-justify text-black pt-2">Fish Specialist</p>
                             </div>
                         </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
+                        <div class="max-w-[20rem] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] shadow-lg dark:bg-surface-dark dark:text-white">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3 flex justify-center items-center">
+                                <img class="w-32 h-32 rounded-t-lg" src="{{asset('img\a-8.png')}}" alt="">
+                            </div>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-semibold text-black text-left text-balance pt-2">Dr. Fajar</h2>
+                                <p class="text-base font-medium text-justify text-black pt-2">Cattle Specialist</p>
                             </div>
                         </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
+                        <div class="max-w-[20rem] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] shadow-lg dark:bg-surface-dark dark:text-white">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3 flex justify-center items-center">
+                                <img class="w-32 h-32 rounded-t-lg" src="{{asset('img\a-9.png')}}" alt="">
+                            </div>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-semibold text-black text-left text-balance pt-2">Dr. Azka</h2>
+                                <p class="text-base text-justify text-black pt-2">Poultry Specialist</p>
                             </div>
                         </div>
                     </div>
@@ -121,46 +122,50 @@
 
     <div class="flex flex-col justify-center text-left text-[24px]">
         <p class="pt-[64px] font-bold text-3xl text-center">Article About Livestock</p>
-        <button class="text-[16px] text-semibold text-[#A4907C] text-end mr-10">View All ></button>
+        <button class="text-[20px] text-bold text-[#A4907C] text-end mr-20 pt-4">View All ></button>
         
         <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-auto">
             <div class="w-full relative flex items-center justify-center">
                 <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
                     <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-center transition ease-out duration-700">
                         <div class="max-w-[20rem] rounded-lg overflow-hidden bg-[#8D7B68] shadow-lg dark:bg-surface-dark dark:text-white">
-                            <div class="relative overflow-hidden bg-cover bg-no-repeat">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3">
                                 <img class="w-full h-auto rounded-t-lg" src="{{asset('img\a-3.png')}}" alt="">
                             </div>
-                            <div class="p-6">
-                                <h3 class="text-lg font-medium text-white text-left text-balance">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</h3>
-                                <p class="text-base text-justify text-white">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-medium text-white text-left text-balance pb-2">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</h2>
+                                <button class="bg-[#F1DEC9] text-extrabold text-sm text-white rounded-3xl py-1 px-3 p-2">Rabies</button>
+                                <p class="text-base text-justify text-white pt-2 pb-2">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
                             </div>
                         </div>
                         <div class="max-w-[20rem] rounded-lg overflow-hidden bg-[#8D7B68] shadow-lg dark:bg-surface-dark dark:text-white">
-                            <div class="relative overflow-hidden bg-cover bg-no-repeat">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3">
                                 <img class="w-full h-auto rounded-t-lg" src="{{asset('img\a-3.png')}}" alt="">
                             </div>
-                            <div class="p-6">
-                                <p class="text-lg font-medium text-white">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</p>
-                                <p class="text-base text-justify text-white">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-medium text-white text-left text-balance pb-2">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</h2>
+                                <button class="bg-[#F1DEC9] text-extrabold text-sm text-white rounded-3xl py-1 px-3 p-2">Rabies</button>
+                                <p class="text-base text-justify text-white pt-2 pb-2">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
                             </div>
                         </div>
                         <div class="max-w-[20rem] rounded-lg overflow-hidden bg-[#8D7B68] shadow-lg dark:bg-surface-dark dark:text-white">
-                            <div class="relative overflow-hidden bg-cover bg-no-repeat">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3">
                                 <img class="w-full h-auto rounded-t-lg" src="{{asset('img\a-3.png')}}" alt="">
                             </div>
-                            <div class="p-6">
-                                <p class="text-lg font-medium text-white">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</p>
-                                <p class="text-base text-justify text-white">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-medium text-white text-left text-balance pb-2">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</h2>
+                                <button class="bg-[#F1DEC9] text-extrabold text-sm text-white rounded-3xl py-1 px-3 p-2">Rabies</button>
+                                <p class="text-base text-justify text-white pt-2 pb-2">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
                             </div>
                         </div>
-                        <div class="max-w-[20rem] rounded-lg bg-[#8D7B68] shadow-lg dark:bg-surface-dark dark:text-white">
-                            <div class="relative overflow-hidden bg-cover bg-no-repeat">
+                        <div class="max-w-[20rem] rounded-lg overflow-hidden bg-[#8D7B68] shadow-lg dark:bg-surface-dark dark:text-white">
+                            <div class="relative overflow-hidden bg-cover bg-no-repeat pt-4 pl-3 pr-3">
                                 <img class="w-full h-auto rounded-t-lg" src="{{asset('img\a-3.png')}}" alt="">
                             </div>
-                            <div class="p-6">
-                                <p class="text-lg font-medium text-white">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</p>
-                                <p class="text-base text-justify text-white font-light">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
+                            <div class="pt-2 pb-3 pl-3 pr-3">
+                                <h2 class="text-lg font-medium text-white text-left text-balance pb-2">Mengenal Penyakit Antraknosa Pada Hewan Ternak Kita</h2>
+                                <button class="bg-[#F1DEC9] text-extrabold text-sm text-white rounded-3xl py-1 px-3 p-2">Rabies</button>
+                                <p class="text-base text-justify text-white pt-2 pb-2">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
                             </div>
                         </div>
                     </div>
