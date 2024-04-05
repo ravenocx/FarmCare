@@ -19,18 +19,17 @@
             <div class="flex bg-primary_color h-[500px]">
                 <!-- Container untuk teks dan card -->
                 <div class="flex flex-col justify-center text-left text-[20px] ml-20">
-                    <p class="pt-[48px] pb-[16px] font-bold text-4xl">The Most Comprehensive Animal Health Solution</p>
-                    <p class="py-[16px]" style=" mb-[40px]">Chat with doctors with online consultations, visit hospitals with offline reservations and update 
-                        <br>information Regarding your livestock health, you can do it all at FarmCare+</p>
+                    <p class="pt-[40px] pb-[16px] font-bold text-4xl">The Most Comprehensive Animal Health Solution</p>
+                    <p class="pt-[24px] pb-[16px]">Chat with doctors with online consultations, visit hospitals with offline reservations and update<br>information Regarding your livestock health, you can do it all at FarmCare+</p>
                     <!-- Grid untuk card -->
-                    <div class="grid grid-flow-col auto-cols-max grid-row-1 gap-8">
-                        <div class="rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface" style="width: 250px;">
+                    <div class="grid grid-flow-col auto-cols-max grid-row-1 gap-8 pt-4">
+                        <div class="rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface w-[245px] h-[225px]">
                             <div class="p-4">
                                 <img src="{{asset('images\a-1.png')}}" alt="offline reservation" class="mx-auto mb-3">
                                 <p class="mb-4 text-base text-center">Online Consultation</p>
                             </div>
                         </div>
-                        <div class="rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface" style="width: 250px;">
+                        <div class="rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface w-[245px] h-[225px]">
                             <div class="p-4">
                                 <img src="{{asset('images\a-2.png')}}" alt="offline reservation" class="mx-auto mb-3">
                                 <p class="mb-4 text-base text-center">Offline Reservation</p>
@@ -39,7 +38,7 @@
                     </div>
                 </div>
                 <!-- Container untuk foto -->
-                <div class="bg-fixed absolute bottom-0 right-0" style="margin-bottom: 268px;">
+                <div class="bg-fixed absolute bottom-0 right-0" style="margin-bottom: 268px; overflow: hidden;">
                     <img src="{{asset('images\Pet-Animal-Care-Logo.png')}}" alt="Farmcare Logo">
                 </div>
             </div>
