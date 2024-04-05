@@ -10,7 +10,7 @@ class ConsultationController extends Controller
     {
         // Example data for header
         $breadcrumbs = [
-            ['label' => 'Home', 'url' => 'home'],
+            ['label' => 'Home', 'url' => '/'],
             ['label' => 'Consultation', 'url' => null],
         ];
 

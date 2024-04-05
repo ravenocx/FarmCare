@@ -35,10 +35,11 @@
     <div class="flex  border-y-2">
         <div class="pl-[96px]  pr-[40px] py-[43px] ">
             <p class="text-[20px] font-medium">Why consult a doctor at FarmCare+?</p>
-            <ol class="list-decimal">
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+            <ol class="list-decimal text-[16px] max-w-[393px] max-h-[269px]">
+                <li>Online consultations can be done anytime and anywhere</li>
+                <li>Online consultations are generally cheaper than in-person consultations at a veterinarian</li>
+                <li>Online consultations allow farmers to get information and advice on animal health from experienced and qualified veterinarians</li>
+                <li>Online consultations help farmers feel more comfortable and relaxed when discussing their livestock health problems</li>
             </ol>
         </div>
 
