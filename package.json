@@ -4,11 +4,13 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "watch":"npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css --watch"
+        "watch": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css --watch",
+        "start": "concurrently \"npm:watch\" \"npm:dev\" \"php -S 127.0.0.1:1000 -t public/\""
     },
     "devDependencies": {
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
+        "concurrently": "^8.2.2",
         "daisyui": "^4.10.1",
         "laravel-mix": "^6.0.49",
         "laravel-vite-plugin": "^1.0",
