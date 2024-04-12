@@ -9,17 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     @vite('resources/js/app.js')
 </head>
-<body>
-
-    <!--Put the header in here-->
-    @include('components.header-component', [
-            'userName' => $userName
-    ])
-
-    @include('components.breadcrumbs', [
-            'breadcrumbs' => $breadcrumbs
-    ])
-
+<body>    
+    <x-header-component :userName="$userName"/>
+    <x-breadcrumbs :breadcrumbs="$breadcrumbs"/>
 
     <div class="pb-[40px] pt-[18px]">
         <div class="flex justify-center bg-primary_color h-[539px]">
@@ -49,7 +41,7 @@
             
             <div class="flex">
                 <div class="border-r-2 border-[#F1DEC9] pr-[24px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -60,7 +52,7 @@
                 </div>
 
                 <div class="px-[24px] py-[20.5px]">
-                <x-consulservice
+                <x-consultcard
                     doctorImage="images/temp-doctor.png" 
                     alt="dokter_image" 
                     name="Drh. Putri Nadia Lumbantoruan" 
@@ -70,16 +62,7 @@
                 />
                 </div>
 
-                <!-- <div class="px-[24px] py-[20.5px]">
-                    <x-consulservice
-                        doctorImage="images/temp-doctor.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div> -->
+    
                 
             </div>
         </div>
@@ -101,7 +84,7 @@
 
             <div class="flex justify-center w-[1200px] pb-[10px]">
                 <div class="border-r-2 border-[#F1DEC9] pr-[20px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -112,7 +95,7 @@
                 </div>
 
                 <div class="border-r-2 border-[#F1DEC9] px-[20px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -123,7 +106,7 @@
                 </div>
 
                 <div class="pl-[24px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -145,7 +128,7 @@
 
             <div class="flex justify-center w-[1200px] pb-[10px]">
                 <div class="border-r-2 border-[#F1DEC9] pr-[20px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -156,7 +139,7 @@
                 </div>
 
                 <div class="border-r-2 border-[#F1DEC9] px-[20px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -167,7 +150,7 @@
                 </div>
 
                 <div class="pl-[24px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -189,7 +172,7 @@
 
             <div class="flex justify-center w-[1200px] pb-[10px]">
                 <div class="border-r-2 border-[#F1DEC9] pr-[20px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -200,7 +183,7 @@
                 </div>
 
                 <div class="border-r-2 border-[#F1DEC9] px-[20px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -211,7 +194,7 @@
                 </div>
 
                 <div class="pl-[24px] py-[20.5px]">
-                    <x-consulservice
+                    <x-consultcard
                         doctorImage="images/temp-doctor.png" 
                         alt="dokter_image" 
                         name="Drh. Putri Nadia Lumbantoruan" 
@@ -223,6 +206,8 @@
             </div>
         </div>
     </div>
+
+    <x-footer/>
     
 
     

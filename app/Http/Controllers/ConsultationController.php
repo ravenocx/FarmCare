@@ -16,6 +16,9 @@ class ConsultationController extends Controller
 
         $userName = 'Alexander Grahambell';
 
-        return view('consultation', compact('breadcrumbs','userName'));
+        return view('consultation')->with([
+            'breadcrumbs' => $breadcrumbs,
+            'userName' => $userName
+        ]);
     }
 }
