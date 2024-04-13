@@ -3,5 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('login_veterinarian');
+    return view('vet_regis');
 });
+
