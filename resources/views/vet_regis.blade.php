@@ -36,7 +36,7 @@
             margin-bottom: 1rem;
         }
         .sign-up-button {
-            background-color: #795548; 
+            background-color: #8D7B68; 
             border: none;
         }
         .sign-up-button:hover {
