@@ -4,12 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Footer</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<style>
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  @vite('resources/js/app.js')
+  <style>
   .divider {
     border-right: 2px solid #000000;
   }
+  
+  footer.bg-yellow-100 {
+    background-color: #F1DEC9;
+  }
 </style>
+
 </head>
 <body>
 
@@ -20,7 +28,6 @@
       <ul class="list-none">
         <li><a href="#" class="text-blue-600 hover:underline">Home</a></li>
         <li><a href="#" class="text-blue-600 hover:underline">FAQ</a></li>
-        <li><a href="#" class="text-blue-600 hover:underline">Contact Us</a></li>
       </ul>
     </div>
     <div class="md:col-span-1 md:border-l md:border-r divider">

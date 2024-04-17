@@ -9,7 +9,7 @@
 <body>
 
 <!-- Konten halaman utama di sini -->
-
+@include('header')
 @include('footer')
 
 <script src="{{ mix('js/app.js') }}"></script>
