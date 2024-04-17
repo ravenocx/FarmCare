@@ -33,24 +33,19 @@
             padding: 1rem;
             margin-bottom: 1rem;
         }
-        .signup-button {
-            position: absolute;
-            bottom: 40px; 
-            left: 53%;
-            transform: translateX(-50%);
-            background-color: #8D7B68; 
-            border: none;
-        }
 
         .btn-outline {
+            border: 2px solid #8C8F93;
             background-color: #ffffff;
-            border-radius: 8px;
-            height: 48px;
+            color: #888888;
+            border-radius: 4px;
+            height: 44px;
         }
 
         .fill-or{
+            color: #8C8F93;
             padding: 16px;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 600;
             text-align: center;
         }
@@ -114,7 +109,7 @@
             <div class="row">
             <div class="col-6" style="background-color: #FFF8F0 ; position: relative; height: 100vh;">
             <div class="header-area">
-            <img src="images/logo.png" style="height: 500px; width: 450px; margin-top: -200px;" alt="Cows">
+            <img src="Images/Image Sapi.png" style="height: 500px; width: 500px; margin-top: -200px;" alt="Cows">
     </div>
             <div class="welcome-text-container">
             <h2 class="welcome-text">Welcome to FarmCare+</h2>
@@ -139,7 +134,7 @@
 
                         <form>
                         <div class="login-register-fill">
-                            <div class="contaner">
+                            <div class="container">
                                 <div class="row" style="padding-top: 0px !important">
                                     <div class="col-12">
                                         <div class="container">
