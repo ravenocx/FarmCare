@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sign Up Form</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -97,7 +97,7 @@
             <div class="row">
             <div class="col-6" style="background-color: #FFF8F0 ; position: relative; height: 100vh;">
             <div class="header-area">
-            <img src="images/logo.png" style="height: 500px; width: 450px; margin-top: -200px;" alt="Cows">
+            <img src="Images/Image Sapi.png" style="height: 500px; width: 500px; margin-top: -200px;" alt="Cows">
     </div>
             <div class="welcome-text-container">
             <h2 class="welcome-text">Welcome to FarmCare+</h2>
@@ -109,12 +109,12 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="nav-item text-center">
-                                        <a class="nav-link active" href="login.html">Log in</a>
+                                        <a class="nav-link " href="login.html">Log in</a>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="nav-item text-center">
-                                        <a class="nav-link " href="register.html">Sign Up</a>
+                                        <a class="nav-link active" href="register.html">Sign Up</a>
                                     </div>
                                 </div>
                             </div>
@@ -130,8 +130,21 @@
                                     <input type="phonenumber" class="form-control" placeholder="Phone Number">
                                 </div>
                                 <div class="form-group ">
-                                    <label class="form-label">Phone Email</label>
+                                    <label class="form-label">Email</label>
                                     <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="form-label">Password</label>
+                                        <!-- Tambahkan kotak teks untuk Password -->
+                                        <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Confirm</label>
+                                        <!-- Tambahkan kotak teks untuk Confirm -->
+                                        <input type="password" class="form-control" placeholder="Password Confirmation">
+                                    </div>
+                                </div>
                             <button type="submit" class="btn signup-button btn-block text-light">Sign Up</button>
                         </form>
                     </div>
