@@ -1,257 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="{{ asset('assets/logofarm.png') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Dashboard</title>
-
+    @vite('resources/css/app.css')
+    <link href="./output.css" rel="stylesheet" />
     <style>
-        /* Menambahkan aturan CSS untuk kelas custom-text */
-        .custom-text {
-            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
-            font-size: 20px; /* Ukuran font 20px */
-        }
-        .customt1{
-            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
-            font-size: 16px; /* Ukuran font 16px */
-        }
+      #section1 {
+        background: rgb(255, 243, 240);
+        background: linear-gradient(
+          150deg,
+          rgba(255, 243, 240, 1) 0%,
+          rgba(239, 225, 209, 1) 100%
+        );
+      }
     </style>
-        
-    <style>
-        /* Menambahkan aturan CSS untuk kelas custom-heading */
-        .custom-h1 {
-            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
-            font-size: 48px; /* Ukuran font 48px */
-            font-weight: bold;
-        }
-        .custom-h2 {
-            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
-            font-size: 48px; /* Ukuran font 48px */
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
-    <style>
-        /* Aturan CSS untuk tombol brown */
-        .btn-brown {
-            background-color: #A4907C; /* Ganti warna latar belakang sesuai kebutuhan */
-            color: #fff; /* Warna teks putih */
-        }
-        .btn-primary {
-        font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
-        font-size: 12px; /* Ukuran font 12px */
-        background-color: #A4907C; /* Ganti warna latar belakang sesuai kebutuhan */
-        color: #fff; /* Warna teks putih */
-        border: 2px solid #C8B6A6; /* Garis tepi berwarna C8B6A6 */
-        }
-        .btn-sign-up {
-            /* Gaya untuk tombol Sign Up */
-            background-color: #fff; /* Latar belakang putih */
-            color: #C8B6A6; /* Warna teks */
-            border: 2px solid #C8B6A6; /* Garis tepi berwarna C8B6A6 */
-            padding: 10px 20px; /* Padding */
-            border-radius: 4px; /* Sudut border */
-            text-decoration: none; /* Menghapus dekorasi teks default (underline) */
-            font-family: 'Poppins', sans-serif; /* Font Poppins */
-            font-size: 16px; /* Ukuran font 16px */
-            font-weight: thin; /* Ketebalan teks */
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transisi perubahan warna */
-            cursor: pointer; /* Kursor menjadi pointer saat dihover */
-        }
-        .btn-sign-up:hover {
-            /* Gaya saat tombol dihover */
-            background-color: #C8B6A6; /* Latar belakang berubah menjadi C8B6A6 */
-            color: #fff; /* Warna teks berubah menjadi putih */
-        }
-    </style>
-    <style>
-        body {
-        font-family: Poppins, sans-serif;
-        margin: 0;
-        padding: 0;
-        }
-        .container {
-        width: 950px;
-        max-width: 1000px;
-        margin: 0 auto;
-        }
-        .service-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        }
-
-        @media (max-width: 950px) {
-        .service-section {
-        flex-direction: row;
-        flex-wrap: wrap;
-            }
-        }
-        .service-item {
-          width: 50%;
-          padding: 20px;
-          border: 1px solid #ddd;
-          margin-bottom: 20px;
-        }
-        .service-item h2 {
-          font-size: 24px;
-          margin-bottom: 10px;
-        }
-        .service-item p {
-          margin-bottom: 20px;
-        }
-        .service-item a {
-          text-decoration: none;
-          color: #000;
-          font-weight: bold;
-        }
-        .service-item a:hover {
-          text-decoration: underline;
-        }
-        .service-item img {
-        width: 100px;
-        height: 100px;
-        }
-    </style>
-</head>
-
-<body class="bg-black-50">
-
-    <!-- navbar -->
-    <div class="navbar bg-base-100">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Home</a></li>
-        <li>
-          <a>Service</a>
-          <ul class="p-2">
-            <li><a>Consultation</a></li>
-            <li><a>Booking</a></li>
-          </ul>
-        </li>
-        <li><a>Contact Us</a></li>
+  </head>
+  <body>
+    <nav class="px-16 py-8 flex items-center justify-between">
+      <ul class="flex items-center gap-x-14 font-semibold">
+        <img src="./Images/logo.png" alt="Logo" />
+        <li>Home</li>
+        <li>Service</li>
+        <li>Contact Us</li>
       </ul>
-    </div>
-    <img src="{{ asset('Images/logofarm.png') }}" alt="FarmCare+" class="btn btn-ghost text-xl">
-  </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li><a>Home</a></li>
-      <li>
-        <details>
-          <summary>Service</summary>
-          <ul class="p-2">
-            <li><a>Consultation</a></li>
-            <li><a>Booking</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Contact Us</a></li>
-    </ul>
-  </div>
-  <div class="navbar-end">
-  <a class="btn btn-primary text-white" href="#">Login</a>
-  <a class="btn btn-primary text-white" href="#" style="margin-left: 10px;">Sign Up</a>
-  </div>
-</div>
-    <!-- navbar end -->
-    
-    <!-- HERO -->
-    <div class="hero min-h-screen bg-F1DEC9">
-        <div class="hero-content flex">
-            <div>
-                <h1 class="text-5xl font-bold text-gray-700 custom-h1">Worry less, love more.<br> Make it easy for your animal to get care from a busy life.</h1>
-                <p class="py-6 text-black-600 custom-text">Choose the service you need</p>
-                <a class="btn btn-primary text-white" style="margin-top: 10px;">Consultation</a>
-                <a class="btn btn-primary text-white" style="margin-top: 10px;">Booking</a>
+      <div class="flex items-center gap-x-8">
+        <button
+          class="bg-[#A4907C] text-white border-[#A4907C] px-4 py-1 border-2 rounded-md font-medium"
+        >
+          Login
+        </button>
+        <button
+          class="text-[#A4907C] border-[#A4907C] border-2 px-4 py-1 rounded-md font-medium"
+        >
+          Sign Up
+        </button>
+      </div>
+    </nav>
+    <section id="section1" style="height: 70vh" class="p-24 flex">
+      <div class="w-3/5">
+        <h1 class="font-bold text-5xl leading-normal">
+          Worry less, love more.<br />Make it easy for your animal to<br />
+          get care from a busy life.
+        </h1>
+        <p class="my-4 text-lg">Choose the service you need</p>
+        <div class="flex items-center gap-4">
+          <button
+            class="bg-[#A4907C] text-white border-[#A4907C] px-6 py-2 border-2 rounded-sm font-medium"
+          >
+            Consultation
+          </button>
+          <button
+            class="bg-[#A4907C] text-white border-[#A4907C] px-6 py-2 border-2 rounded-sm font-medium"
+          >
+            Booking
+          </button>
+        </div>
+      </div>
+      <div class="w-2/5 relative">
+        <img src="./Images/cow.png" alt="" class="absolute -bottom-24" />
+      </div>
+    </section>
+    <section class="px-60 py-16">
+      <h1 class="text-center text-3xl font-semibold">Our Service</h1>
+      <div class="flex gap-10">
+        <div>
+          <h1 class="text-xl font-semibold">Online Consultation</h1>
+          <p class="my-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <div class="flex items-center text-[#A4907C] gap-3">
+            View
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="#A4907C"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </div>
+        </div>
+        <img src="./Images/ad3ac1c75907ca7572c5473847f9f712 1.png" alt="" />
+      </div>
+      <hr class="border-[#F1DEC9] my-10" />
+      <div class="flex gap-10">
+        <img src="./Images/702c3df03370bbb5a8e36f0d56c1e15c 1.png" alt="" />
+        <div>
+          <h1 class="text-xl font-semibold">Offline Reservation</h1>
+          <p class="my-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <div class="flex items-center text-[#A4907C] gap-3">
+            View
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="#A4907C"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <hr class="border-[#F1DEC9] my-10" />
+    </section>
+    <section class="py-16 bg-[#FFF8F0]">
+      <h1 class="text-center text-3xl font-semibold">FarmCare+ Articles</h1>
+      <div class="flex items-center gap-24 mt-16 pl-52">
+        <img src="./Images/9cf7ceead6f19c10bc188a15cf8e542f 1.png" alt="" />
+        <div class="w-1/2">
+          <h1 class="font-bold text-4xl">
+            KEEP YOUR ANIMALS HEALTHY AND STRONG
+          </h1>
+          <p class="my-5">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <div class="flex items-center text-[#A4907C] gap-3">
+            View All
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="#A4907C"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-24 mt-16">
+        <div
+          class="flex items-center justify-evenly bg-[#F1DEC9] w-3/5 p-10 rounded-b-3xl rounded-tr-3xl rounded-tl-lg"
+        >
+          <div class="w-1/2">
+            <h1 class="font-bold text-4xl">
+              KEEP YOUR ANIMALS HEALTHY AND STRONG
+            </h1>
+            <p class="my-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <div class="flex items-center text-[#A4907C] gap-3">
+              View All
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="#A4907C"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                />
+              </svg>
             </div>
-            <img src="{{ asset('Images/sapi.jpg') }}" width="300" height="200"/>
+          </div>
+          <img src="./Images/9cf7ceead6f19c10bc188a15cf8e542f 1-1.png" alt="" />
         </div>
-    </div>
-    <!-- HERO END -->
-    
-    <div class="title text-center mt-4 mb-4">
-        <h1 class="text-3xl font-bold text-gray-700 custom-h2">Our Services</h1>
-    </div>
-    
-    <!-- Card Service-->
-<div class="container">
-    <div class="service-section">
-        <div class="service-item">
-            <h2>Offline Reservation</h2>
-            <img src="{{asset('Images/sapi.jpg')}}" alt="Offline Reservation"  style="float: left; margin-right: 20px;" >
-            <p>The offline reservation on FarmCare+ simplifies the process for farmers to book visits from 
-                veterinary doctors to their locations. Through the search form at the top of the page, users can 
-                search for veterinary doctors based on location and specialization. Below the page, a reservation 
-                form allows users to input details such as name, telephone number, type of livestock, and preferred 
-                visit schedule. Additionally, there is brief information about the selected veterinary doctor, including 
-                a photo, pricing, and specialization, aiding users in making informed decisions. All of this aims to provide 
-                efficient and convenient reservation services for farmers, eliminating the need to visit a veterinary clinic 
-                in person.</p>
-            <a href="#">View >></a>
+      </div>
+    </section>
+    <footer class="bg-[#F1DEC9] py-14 flex justify-center">
+      <div class="w-1/6">
+        <h1 class="text-lg font-semibold mb-3">QUICK LINKS</h1>
+        <ul class="font-medium text-sm">
+          <li>Home</li>
+          <li>Service</li>
+          <li>FAQ</li>
+        </ul>
+      </div>
+      <div class="w-1/6 border-x-2 border-black flex justify-center h-">
+        <div>
+          <h1 class="text-lg font-semibold mb-3" class="text-left">
+            OUR SERVICES
+          </h1>
+          <ul class="font-medium text-sm">
+            <li>Online Consultation</li>
+            <li>Offline Reservation</li>
+          </ul>
         </div>
-
-        <div class="service-item">
-            <h2>Online Consultation</h2>
-            <img src="{{asset('Images/sapi.jpg')}}" alt="Online Consultation" style="float: left; margin-right: 20px;">
-            <p>The Online Consultation feature on FarmCare+ provides an efficient solution for farmers in 
-                caring for their livestock. This service enables users to quickly consult with veterinary doctors 
-                online, overcoming the challenges of busy schedules or difficulty in visiting health services. With 
-                easy and affordable access, users can receive advice, diagnoses, and proper treatment to maintain the 
-                    health and well-being of their beloved animals.</p>
-            <a href="#">View >></a>
-        </div>
-    </div>
-</div>
-    <!-- Card Service -->
-    
-    <div class="title text-center mt-4 mb-4">
-        <h1 class="text-3xl font-bold text-gray-700 custom-h2">FarmCare+ Articles</h1>
-    </div>
-    
-    <!-- Card Article -->
-
-    <!-- Card Article -->
-    
-    <!-- footer -->
-<footer class="footer p-10 bg-base-200 text-base-content">
-  <aside>
-    <img src="{{asset('Images/logofarm.png')}}" alt="Online Consultation" width="200" height="200"</img>
-    <p>FarmCare+ Industries Ltd.<br/>Providing Reliable Tech Since 2024</p>
-    <p>Address:</p>
-    <p>Jl. Telekomunikasi. 1, Terusan Buahbatu - Bojongsoang, Telkom University,<br> Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</p>
-  </aside> 
-  <nav>
-    <header class="footer-title">Services</header> 
-    <a class="link link-hover">Online Consultation</a>
-    <a class="link link-hover">Offline Reservation</a>
-  </nav> 
-  <nav>
-    <header class="footer-title">Company</header> 
-    <a class="link link-hover">About us</a>
-    <a class="link link-hover">Contact</a>
-  </nav> 
-  <nav>
-    <header class="footer-title">Legal</header> 
-    <a class="link link-hover">Terms of use</a>
-    <a class="link link-hover">Privacy policy</a>
-    <a class="link link-hover">Cookie policy</a>
-  </nav>
-</footer>
+      </div>
+      <div class="w-1/6 pl-10">
+        <h1 class="text-lg font-semibold mb-3">CONTACT US</h1>
+        <ul class="font-medium text-sm">
+          <li class="mb-3">
+            Email:
+            <p class="font-normal">petcareplus@gmail.com</p>
+          </li>
+          <li>
+            Address:
+            <p class="font-normal">
+              Jl. Telekomunikasi. 1, Terusan Buahbatu - Bojongsoang, Bandung,
+              Jawa Barat
+            </p>
+          </li>
+        </ul>
+      </div>
     </footer>
-    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
-    <aside>
-        <p>Copyright © 2024 - FarmCare+, All right reserved</p>
-    </aside>
-    </footer>
-</body>
-
+    <section class="bg-[#FFF8F0] py-7 text-center font-medium text-[#888888]">
+      <h1>©2024 FarmCare+, All right reserved</h1>
+    </section>
+  </body>
 </html>
