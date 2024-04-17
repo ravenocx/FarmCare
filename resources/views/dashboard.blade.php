@@ -12,7 +12,7 @@
 </head>
     <body>
         <!--Put the header in here-->
-        <p class="pb-[100px]"></p>
+        @include('header')
 
         <!-- content -->
         <div class="pb-[40px]">
@@ -180,7 +180,7 @@
         </div>
         <!-- end of content -->
 
-        <!-- @include('footer') -->
+        @include('footer')
 
     </body>
 </html>
