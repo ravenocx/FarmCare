@@ -125,7 +125,7 @@
         </div>
 
         <!-- Article -->
-        <div class="flex flex-col justify-center text-left text-[24px]">
+        <div class="flex flex-col justify-center text-left text-[24px] mb-10">
             <p class="pt-[64px] font-bold text-3xl text-center">Article About Livestock</p>
             <button class="text-[20px] text-bold text-[#A4907C] text-end mr-20 pt-4">View All ></button>
             
@@ -180,7 +180,8 @@
         </div>
         <!-- end of content -->
 
-        @include('footer')
+        <!-- @include('footer') -->
+        <x-footer/>
 
     </body>
 </html>
