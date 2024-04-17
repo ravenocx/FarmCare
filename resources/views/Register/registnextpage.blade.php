@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Form</title>
+    <title>Sign Up</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -41,24 +41,10 @@
             background-color: #8D7B68; 
             border: none;
         }
-
-        .btn-outline {
-            background-color: #ffffff;
-            border-radius: 8px;
-            height: 48px;
-        }
-
-        .fill-or{
-            padding: 16px;
-            font-size: 20px;
-            font-weight: 600;
-            text-align: center;
-        }
         
         .nav-tabs {
             border-bottom: 2px solid #000; 
         }
-        
         .nav-link.active {
             border: none; 
             border-bottom: 2px solid #000; 
@@ -68,17 +54,14 @@
         .nav-item {
             margin-right: 5px; 
         }
-
         .nav-link {
             border: none; 
             color: #aaa; 
         }
-
         .nav-link:hover {
             border: none; 
             color: black; 
         }
-
         .welcome-text-container {
             position: absolute;
             top: 50%;
@@ -126,37 +109,30 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="nav-item text-center">
-                                        <a class="nav-link " href="login.html">Log in</a>
+                                        <a class="nav-link active" href="login.html">Log in</a>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="nav-item text-center">
-                                        <a class="nav-link active" href="register.html">Sign Up</a>
+                                        <a class="nav-link " href="register.html">Sign Up</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <form>
-                        <div class="login-register-fill">
-                            <div class="contaner">
-                                <div class="row" style="padding-top: 0px !important">
-                                    <div class="col-12">
-                                        <div class="container">
-                                            <button type="button" class="btn-outline w-100" href="">Sign Up as User</button>
-                                        </div>
-                                    </div>
-                                    <div class="container">
-                                        <h4 class="fill-or">or</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="container">
-                                            <button type="button" class="btn-outline w-100" href="">Sign Up as Veterinarian</button>
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="name" class="form-control" placeholder="Name">
                                 </div>
-                            </div>
-                        </div>
+                                <div class="form-group ">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="phonenumber" class="form-control" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group ">
+                                    <label class="form-label">Phone Email</label>
+                                    <input type="email" class="form-control" placeholder="Email">
+                            <button type="submit" class="btn signup-button btn-block text-light">Sign Up</button>
                         </form>
                     </div>
                 </div>
