@@ -67,10 +67,10 @@
         <div>
           <h1 class="text-xl font-semibold">Online Consultation</h1>
           <p class="my-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+          The online consultation feature with a veterinarian helps farmers to get 
+          an initial diagnosis and treatment suggestions based on complaints/information 
+          provided by the farmer. Then, the veterinarian can also provide recommendations 
+          for further action, such as medication or direct visits to the clinic if necessary
           </p>
           <div class="flex items-center text-[#A4907C] gap-3">
             View
@@ -98,10 +98,10 @@
         <div>
           <h1 class="text-xl font-semibold">Offline Reservation</h1>
           <p class="my-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+          A service for making reservations or appointments with veterinarians offline, 
+          where farmers do not need to travel far to a veterinary clinic to get health care 
+          and care for livestock. A veterinarian will visit the farm location to carry out medical 
+          treatment. Farmers can also choose a specialist or doctor that suits their needs and farm location.
           </p>
           <div class="flex items-center text-[#A4907C] gap-3">
             View
@@ -130,13 +130,12 @@
         <img src="./Images/9cf7ceead6f19c10bc188a15cf8e542f 1.png" alt="" />
         <div class="w-1/2">
           <h1 class="font-bold text-4xl">
-            KEEP YOUR ANIMALS HEALTHY AND STRONG
+            For Farmers, This is How to Keep Cows Healthy During the Dry Season
           </h1>
           <p class="my-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+          Lampung Province, as a livestock center, will have a cattle population of 906,568 in 2022, 
+          a goat population of 1.67 million in 2022, a population of 103,657,519 broiler chickens, and 14,501,073 
+          laying hens in 2022.          
           </p>
           <div class="flex items-center text-[#A4907C] gap-3">
             View All
@@ -163,13 +162,12 @@
         >
           <div class="w-1/2">
             <h1 class="font-bold text-4xl">
-              KEEP YOUR ANIMALS HEALTHY AND STRONG
+              Tips for Maintaining Biofloc Tilapia So They Are Healthy and Don't Die Easily
             </h1>
             <p class="my-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua.
+            According to the efishery page, Biofloc comes from the words "bios" which means life, 
+            and "floc" which means lump. Biofloc itself is a fish cultivation system using environmental 
+            engineering techniques. This technique relies on oxygen supply and the use of microorganisms.
             </p>
             <div class="flex items-center text-[#A4907C] gap-3">
               View All
