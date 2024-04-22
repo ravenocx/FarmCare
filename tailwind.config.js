@@ -4,11 +4,12 @@ export default {
   theme: {
     extend: {
       colors : {
-        'primary_color' : '#FFF8F0'
+        primaryColor :'#8D7B68',
+        secondaryColor : '#FFF8F0',
       }
     },
     fontFamily:{
-      sans: ['Poppins', 'sans-serif'],
+      poppins: ['Poppins'],
     }
   },
   plugins: [require("daisyui")],
