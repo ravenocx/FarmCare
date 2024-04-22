@@ -1,14 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-  ],
-  content: [],
+  content: ["./resources/**/*.blade.php"],
   theme: {
-    extend: {},
+    extend: {
+      colors : {
+        'primary_color' : '#FFF8F0'
+      }
+    },
+    fontFamily:{
+      sans: ['Poppins', 'sans-serif'],
+    }
   },
   plugins: [],
 }
-
