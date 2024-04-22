@@ -1,7 +1,8 @@
 <?php
-
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/consultation', [ConsultationController::class, 'showPage'])->name('consultation');
 Route::get('/', function () {
     return view('Login User.loginuser');
 });
