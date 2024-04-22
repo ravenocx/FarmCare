@@ -2073,11 +2073,6 @@ video {
   z-index: 30;
 }
 
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -2267,16 +2262,16 @@ video {
   width: 250px;
 }
 
+.w-\[677px\] {
+  width: 677px;
+}
+
 .w-\[9\.75px\] {
   width: 9.75px;
 }
 
 .w-full {
   width: 100%;
-}
-
-.w-\[677px\] {
-  width: 677px;
 }
 
 .max-w-7xl {
@@ -2289,10 +2284,6 @@ video {
 
 .max-w-\[393px\] {
   max-width: 393px;
-}
-
-.max-w-\[677px\] {
-  max-width: 677px;
 }
 
 .shrink-0 {

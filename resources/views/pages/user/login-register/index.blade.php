@@ -27,10 +27,10 @@
                     <form id="login" action="login.php" method="post" class="flex flex-col">
                         @csrf
                         <label for="email" class="font-medium text-2xl">Email</label>
-                        <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 placeholder:pl-4 placeholder:text-lg" autofocus required>
+                        <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
 
                         <label for="password" class="font-medium text-2xl mt-6">Password</label>
-                        <input id="password" type="password" name="password" placeholder="Enter your password" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 placeholder:pl-4 placeholder:text-lg" autofocus required>
+                        <input id="password" type="password" name="password" placeholder="Enter your password" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
 
                         <button type="submit">Sign In</button>
                     </form>
