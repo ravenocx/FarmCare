@@ -6,6 +6,8 @@ export default {
       colors : {
         primaryColor :'#8D7B68',
         secondaryColor : '#FFF8F0',
+        mediumGray : '#888888',
+        shadeGray : '#8C8F93',
       }
     },
     fontFamily:{
