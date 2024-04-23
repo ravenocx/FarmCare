@@ -4,9 +4,9 @@
 
 @section('main-content')
     <div class="flex flex-col h-screen">
-        <div class="flex text-2xl h-24 font-bold">
-            <button id="loginButton" onclick="toggleForm('login')" class="w-1/2 text-primaryColor border-b-2 border-primaryColor">Sign in</button>
-            <button id="registerButton" onclick="toggleForm('register')" class="w-1/2">Sign up</button>
+        <div class="flex text-2xl font-bold">
+            <button id="loginButton" onclick="toggleForm('login')" class="w-1/2 text-primaryColor border-b-2 border-primaryColor h-24">Sign in</button>
+            <button id="registerButton" onclick="toggleForm('register')" class="w-1/2 h-24">Sign up</button>
         </div>
 
         <div id="loginForm" class="login">
@@ -25,7 +25,7 @@
                         <label for="rememberme" class="ml-5 font-regular text-xl">Remember me</label>
                     </div>
 
-                    <button type="submit" class="w-[677px] rounded-md mt-[436px] bg-primaryColor text-white font-bold text-2xl py-3.5">Sign In</button>
+                    <button type="submit" class="w-[677px] rounded-md mt-60 bg-primaryColor text-white font-bold text-2xl py-3.5">Sign In</button>
                 </form>
             </div>
         </div>
