@@ -2098,6 +2098,10 @@ video {
   margin-left: 5rem;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .mr-10 {
   margin-right: 2.5rem;
 }
@@ -2118,12 +2122,20 @@ video {
   margin-top: 0.75rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .mt-56 {
   margin-top: 14rem;
 }
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-\[436px\] {
+  margin-top: 436px;
 }
 
 .block {
@@ -2142,6 +2154,11 @@ video {
   display: none;
 }
 
+.size-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -2154,8 +2171,8 @@ video {
   height: 5rem;
 }
 
-.h-28 {
-  height: 7rem;
+.h-24 {
+  height: 6rem;
 }
 
 .h-8 {
@@ -2392,6 +2409,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .rounded-t-lg {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -2456,6 +2477,11 @@ video {
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
 
+.border-primaryColor {
+  --tw-border-opacity: 1;
+  border-color: rgb(141 123 104 / var(--tw-border-opacity));
+}
+
 .border-opacity-50 {
   --tw-border-opacity: 0.5;
 }
@@ -2480,14 +2506,9 @@ video {
   background-color: rgb(255 248 240 / var(--tw-bg-opacity));
 }
 
-.bg-gray-200 {
+.bg-primaryColor {
   --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-
-.bg-red-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+  background-color: rgb(141 123 104 / var(--tw-bg-opacity));
 }
 
 .bg-secondaryColor {
@@ -2573,6 +2594,16 @@ video {
 .py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.py-3\.5 {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
 }
 
 .py-\[16px\] {
@@ -2885,6 +2916,11 @@ video {
   line-height: 1.25rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -2936,6 +2972,11 @@ video {
   color: rgb(141 123 104 / var(--tw-text-opacity));
 }
 
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -2971,24 +3012,6 @@ video {
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
-.placeholder\:pl-4::-moz-placeholder {
-  padding-left: 1rem;
-}
-
-.placeholder\:pl-4::placeholder {
-  padding-left: 1rem;
-}
-
-.placeholder\:text-lg::-moz-placeholder {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.placeholder\:text-lg::placeholder {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .hover\:underline:hover {

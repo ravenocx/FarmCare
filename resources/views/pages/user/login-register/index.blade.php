@@ -17,34 +17,51 @@
             <img src="{{asset('images/animal/cow-loginpage.svg')}}" alt="cow-image" class="mx-auto mt-56">
         </div>
         <div class="w-1/2">
-            <div class="flex text-2xl h-28 font-bold">
-                <button onclick="toggleForm('login')" class="w-1/2 bg-red-200 ">Sign in</button>
-                <button onclick="toggleForm('register')" class="w-1/2 bg-gray-200">Sign up</button>
+            <div class="flex text-2xl h-24 font-bold">
+                <button id="loginButton" onclick="toggleForm('login')" class="w-1/2 text-primaryColor border-b-2 border-primaryColor">Sign in</button>
+                <button id="registerButton" onclick="toggleForm('register')" class="w-1/2">Sign up</button>
             </div>
 
-            <div id="loginForm" class="login ">
+            <div id="loginForm" class="login">
                 <div class="mt-10 flex justify-center">
                     <form id="login" action="login.php" method="post" class="flex flex-col">
                         @csrf
-                        <label for="email" class="font-medium text-2xl">Email</label>
+                        <label for="email" class="font-medium text-2xl">Email <span class="text-red-600">*</span></label>
                         <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
 
-                        <label for="password" class="font-medium text-2xl mt-6">Password</label>
+                        <label for="password" class="font-medium text-2xl mt-6">Password <span class="text-red-600">*</span></label>
                         <input id="password" type="password" name="password" placeholder="Enter your password" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
 
-                        <button type="submit">Sign In</button>
+                        <!-- TODO : Remember me -->
+                        <div class="flex items-center mt-5">
+                            <input id="rememberme" type="checkbox" name="rememberme" class="size-4">
+                            <label for="rememberme" class="ml-5 font-regular text-xl">Remember me</label>
+                        </div>
+
+                        <button type="submit" class="w-[677px] rounded-md mt-[436px] bg-primaryColor text-white font-bold text-2xl py-3.5">Sign In</button>
                     </form>
                 </div>
-                
             </div>
 
             <div id="registerForm" class="register hidden">
-                <form id="login" action="login.php" method="post">
-                    @csrf
-                    <input type="text" name="email" placeholder="register@gmail.com">
-                    <input type="password" name="password" placeholder="Password">
-                    <button type="submit">Sign In</button>
-                </form>
+                <div class="mt-10 flex justify-center">
+                    <form id="register" action="register.php" method="post" class="flex flex-col">
+                        @csrf
+                        <label for="email" class="font-medium text-2xl">Email <span class="text-red-600">*</span></label>
+                        <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
+
+                        <label for="password" class="font-medium text-2xl mt-6">Password <span class="text-red-600">*</span></label>
+                        <input id="password" type="password" name="password" placeholder="Enter your password" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
+
+                        <!-- TODO : Remember me -->
+                        <div class="flex items-center mt-5">
+                            <input id="rememberme" type="checkbox" name="rememberme" class="size-4">
+                            <label for="rememberme" class="ml-5 font-regular text-xl">Remember me</label>
+                        </div>
+
+                        <button type="submit" class="w-[677px] rounded-md mt-[436px] bg-primaryColor text-white font-bold text-2xl py-3.5">Sign Up</button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
@@ -56,9 +73,13 @@
         if (formType === 'register') {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('registerForm').style.display = 'block';
+            document.getElementById('loginButton').classList.remove('border-b-2', 'border-primaryColor' ,'text-primaryColor');
+            document.getElementById('registerButton').classList.add('border-b-2', 'border-primaryColor','text-primaryColor' );
         } else {
             document.getElementById('registerForm').style.display = 'none';
             document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerButton').classList.remove('border-b-2', 'border-primaryColor','text-primaryColor');
+            document.getElementById('loginButton').classList.add('border-b-2', 'border-primaryColor','text-primaryColor');
         }
     }
 </script>
