@@ -1,9 +1,6 @@
 <footer class="relative bottom-0 bg-[#FFF8F0]">
-
     <div class="h-[37px]"></div>
-
-    <div class="flex justify-center py-[45px] bg-[#F1DEC9] h-[392px]">
-            
+        <div class="flex justify-center py-[45px] bg-[#F1DEC9] h-[392px]">
             <div class="pt-[41.5px] pr-[138px] border-r-2 border-black">
                 <h6 class="font-semibold text-[24px] pb-[20px]">QUICK LINKS</h6>
                 <ul class="font-medium text-[16px] pb-[8px]">
@@ -29,8 +26,8 @@
                 <p class="font-bold text-[16px] pb-[4px]">Address:</p>
                 <p class="font-medium text-[16px]">Jl. Telekomunikasi. 1, Terusan<br> Buahbatu - Bojongsoang,<br> Bandung, Jawa Barat</p>
             </div>
+        </div>
     </div>
-
 
     <div class="flex justify-center py-[32px]">
         <p class="text-[16px] font-semibold text-[#888888] ">©2024 FarmCare+, All right reserved</p>

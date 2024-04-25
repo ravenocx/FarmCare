@@ -768,6 +768,18 @@ video {
     --tw-text-opacity: 1;
     color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
   }
+
+  .table tr.hover:hover,
+  .table tr.hover:nth-child(even):hover {
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+  }
+
+  .table-zebra tr.hover:hover,
+  .table-zebra tr.hover:nth-child(even):hover {
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+  }
 }
 
 .btn {
@@ -2278,6 +2290,10 @@ video {
   height: 100vh;
 }
 
+.h-14 {
+  height: 3.5rem;
+}
+
 .max-h-\[269px\] {
   max-height: 269px;
 }
@@ -3093,6 +3109,26 @@ video {
 
 .file\:rounded-lg::file-selector-button {
   border-radius: 0.5rem;
+}
+
+.hover\:bg-primaryColor:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(141 123 104 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-primaryColor:hover {
+  --tw-text-opacity: 1;
+  color: rgb(141 123 104 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {

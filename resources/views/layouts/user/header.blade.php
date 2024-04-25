@@ -1,7 +1,7 @@
 <header class="bg-white py-[16px] px-[52px] fixed top-0 w-full z-10 border-b-2">
     <div class="flex justify-between items-center">
         <div class="flex">
-            <a href="">
+            <a href="{{route('home')}}">
                 <img src="{{ asset('images/farmcare-logo.png') }}" alt="Farmcare Logo" class="w-[144px] h-[72px]">
             </a>
 
@@ -27,9 +27,7 @@
 
         <div class="flex pr-[12px] items-center">
             <img src="{{asset('images/profile-icon.png')}}" alt="">
-            <p class="pl-[15.92px] font-medium text-[20px]">Hi, {{ $userName }}</p>
+            <p class="pl-[15.92px] font-medium text-[20px]">Hi, {{$userName}}</p>
         </div>
     </div>
-    
-   
 </header>
