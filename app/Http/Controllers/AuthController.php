@@ -12,6 +12,10 @@ use App\Models\User;
 class AuthController extends Controller
 {
     public function login(){
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
+
         return view("pages.login.index");
     }
 
@@ -37,6 +41,10 @@ class AuthController extends Controller
     }
 
     public function userRegister(){
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
+        
         return view('pages.user.register.index');
     }
 
