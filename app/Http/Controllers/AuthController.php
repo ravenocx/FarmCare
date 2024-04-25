@@ -57,7 +57,7 @@ class AuthController extends Controller
             Session::forget('user');
         }
 
-        if(Auth::guard('veterinarian')->forget()){
+        if(Auth::guard('veterinarian')->check()){
             Session::forget('veterinarian');
         }
         Auth::logout();
