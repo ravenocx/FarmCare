@@ -33,12 +33,12 @@
             <div id="registerForm" class="register hidden">
                 <div class="flex flex-col items-center">
                     <a href="{{route('user.register.form')}}">
-                        <button type="submit" class="w-[677px] rounded-md border border-shadeGray text-mediumGray font-medium text-xl py-3.5">Sign Up as User</button>
+                        <button type="submit" class="btn w-[677px] rounded-md border bg-white border-shadeGray text-mediumGray font-medium text-xl">Sign Up as User</button>
                     </a>
                     <p class="font-medium my-6 mx-auto text-xl text-mediumGray">or</p>
 
                     <a href="{{route('veterinarian.register.form')}}">
-                        <button type="submit" class="w-[677px] rounded-md border border-shadeGray text-mediumGray font-medium text-xl py-3.5">Sign Up as Veterinarian</button>
+                        <button type="submit" class="btn w-[677px] rounded-md border bg-white border-shadeGray text-mediumGray font-medium text-xl">Sign Up as Veterinarian</button>
                     </a>
                 </div>
             </div>
