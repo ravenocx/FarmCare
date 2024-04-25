@@ -37,6 +37,7 @@ class AuthController extends Controller
         if(Auth::guard('veterinarian')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
             $veterinarian = Auth::guard('veterinarian')->user();
 
+            //Check if the veterinarian accepted or nor
             if($veterinarian->is_accepted){
                 Session::put('veterinarian',$data['email']);
                 request()->session()->flash('success','Successfully login');
