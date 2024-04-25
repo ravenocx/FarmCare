@@ -11,7 +11,7 @@
 
         <div id="loginForm" class="login">
             <div class="mt-10 flex justify-center">
-                <form id="login" action="login.php" method="post" class="flex flex-col">
+                <form id="login" action="{{route('login.submit')}}" method="post" class="flex flex-col">
                     @csrf
                     <label for="email" class="font-medium text-2xl">Email <span class="text-red-600">*</span></label>
                     <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
@@ -19,7 +19,6 @@
                     <label for="password" class="font-medium text-2xl mt-6">Password <span class="text-red-600">*</span></label>
                     <input id="password" type="password" name="password" placeholder="Enter your password" class="w-[677px] mt-3 h-20 rounded-lg border border-[#8C8F93] border-opacity-50 text-lg px-4" autofocus required>
 
-                    <!-- TODO : Remember me -->
                     <div class="flex items-center mt-5">
                         <input id="rememberme" type="checkbox" name="rememberme" class="size-4">
                         <label for="rememberme" class="ml-5 font-regular text-xl">Remember me</label>
@@ -33,7 +32,7 @@
         <div class="flex flex-grow justify-center items-center">
             <div id="registerForm" class="register hidden">
                 <div class="flex flex-col items-center">
-                    <a href="{{route('register.user')}}">
+                    <a href="{{route('user.register.form')}}">
                         <button type="submit" class="w-[677px] rounded-md border border-shadeGray text-mediumGray font-medium text-xl py-3.5">Sign Up as User</button>
                     </a>
                     <p class="font-medium my-6 mx-auto text-xl text-mediumGray">or</p>

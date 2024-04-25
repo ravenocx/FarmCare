@@ -5,7 +5,7 @@
 @section('main-content')
     <div class="flex flex-col h-screen">
         <div class="flex text-2xl font-bold">
-            <a href="{{route('login')}}" class="w-1/2 flex justify-center items-center h-24">Sign In</a>
+            <a href="{{route('login.form')}}" class="w-1/2 flex justify-center items-center h-24">Sign In</a>
             <a href="" class="w-1/2 text-primaryColor border-b-2 border-primaryColor flex justify-center items-center h-24">Sign Up</a>
         </div>
 
