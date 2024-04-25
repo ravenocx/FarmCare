@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('graduate_year');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('certification')->nullable();
-            $table->enum('is_accepted', ['true','false'])->default('false');
+            $table->string('certification');
+            $table->boolean('is_accepted')->default(false);
             $table->string('photo')->nullable();
             $table->decimal('consultation_price')->nullable();
             $table->decimal('reservation_price')->nullable();

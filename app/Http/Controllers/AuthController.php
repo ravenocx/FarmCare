@@ -35,9 +35,17 @@ class AuthController extends Controller
         }
 
         if(Auth::guard('veterinarian')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
-            Session::put('veterinarian',$data['email']);
-            request()->session()->flash('success','Successfully login');
-            return redirect()->route('dashboard');
+            $veterinarian = Auth::guard('veterinarian')->user();
+
+            if($veterinarian->is_accepted){
+                Session::put('veterinarian',$data['email']);
+                request()->session()->flash('success','Successfully login');
+                return redirect()->route('dashboard');
+            }else{
+                Auth::guard('veterinarian')->logout();
+                request()->session()->flash('error','Your account has not been accepted yet.');
+                return redirect()->back();
+            }
         }
 
         request()->session()->flash('error','Invalid email and password please try again!');
@@ -45,7 +53,13 @@ class AuthController extends Controller
     }
 
     public function logout(){
-        Session::forget('user');
+        if(Auth::guard('user')->check()){
+            Session::forget('user');
+        }
+
+        if(Auth::guard('veterinarian')->forget()){
+            Session::forget('veterinarian');
+        }
         Auth::logout();
         request()->session()->flash('success','Logout successfully');
         return redirect()->back();
