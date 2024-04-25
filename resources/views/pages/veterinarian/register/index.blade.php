@@ -11,7 +11,7 @@
 
         <div id="registerForm" class="register">
             <div class="mt-10 flex justify-center">
-                <form id="register" action="register.php" method="post" class="flex flex-col">
+                <form id="register"  method="POST" action="{{route('veterinarian.register.submit')}}" class="flex flex-col">
                     @csrf
 
                     <label for="fullName" class="font-medium text-2xl">Full Name <span class="text-red-600">*</span></label>
@@ -21,12 +21,12 @@
                     <label for="specialist" class="font-medium text-2xl mt-6">Specialist <span class="text-red-600">*</span></label>
                     <select id="specialist" name="specialist" class="select select-bordered mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4">
                         <option disabled selected>Select your specialist</option>
-                        <option value="mastercard">Livestock Specialist</option>
-                        <option value="aquaculture">Aquaculture Specialist</option>
-                        <option value="poultry">Poultry Specialist</option>
-                        <option value="nutrition">Nutrition and Vitamin Specialist</option>
-                        <option value="breeding">Breeding Specialist</option>
-                        <option value="dermatology">Dermatology Specialist</option>
+                        <option value="Livestock">Livestock Specialist</option>
+                        <option value="Aquaculture">Aquaculture Specialist</option>
+                        <option value="Poultry">Poultry Specialist</option>
+                        <option value="Nutrition">Nutrition and Vitamin Specialist</option>
+                        <option value="Breeding">Breeding Specialist</option>
+                        <option value="Dermatology">Dermatology Specialist</option>
                     </select>
 
                     <label for="university" class="font-medium text-2xl mt-6">University <span class="text-red-600">*</span></label>
@@ -34,7 +34,6 @@
 
                     <label for="graduateYear" class="font-medium text-2xl mt-6">Graduate Year <span class="text-red-600">*</span></label>
                     <input id="graduateYear" type="number" name="graduateYear" placeholder="Enter your Graduate Year" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required >
-
 
                     <label for="email" class="font-medium text-2xl mt-6">Email <span class="text-red-600">*</span></label>
                     <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required>
@@ -52,7 +51,7 @@
                     </div>
 
 
-                    <div class="certification-button">
+                    <!-- <div class="certification-button">
                         <p class="mt-6 font-medium text-2xl">Certification of Doctor</p>
                         <div class="w-[677px] rounded-md border border-shadeGray border-opacity-50 mt-3">
                             <button onclick="toggleForm()">
@@ -70,7 +69,7 @@
                             <input id="certification" type="file" name="certification" class="file:rounded-lg file:mr-4 ml-4 font-medium text-2xl" required>
                             <label for="certification" class="font-medium text-xl text-center block mt-5 mb-2">Drag and drop here or browse</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <button type="submit" class="w-[677px] rounded-md mt-20 bg-primaryColor text-white font-bold text-2xl py-3.5">Sign Up</button>
                 </form>

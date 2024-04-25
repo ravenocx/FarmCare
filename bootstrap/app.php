@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'AuthSession' => \App\Http\Middleware\AuthenticateSession::class,
+            'VeterinarianAuthSession' => \App\Http\Middleware\VeterinarianAuthenticateSession::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

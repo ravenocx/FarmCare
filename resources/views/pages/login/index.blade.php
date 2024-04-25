@@ -37,7 +37,7 @@
                     </a>
                     <p class="font-medium my-6 mx-auto text-xl text-mediumGray">or</p>
 
-                    <a href="{{route('register.veterinarian')}}">
+                    <a href="{{route('veterinarian.register.form')}}">
                         <button type="submit" class="w-[677px] rounded-md border border-shadeGray text-mediumGray font-medium text-xl py-3.5">Sign Up as Veterinarian</button>
                     </a>
                 </div>

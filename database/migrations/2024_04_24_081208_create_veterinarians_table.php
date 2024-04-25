@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->enum('specialist', ['Livestock', 'Aquaculture', 'Poultry', 'Nutrition', 'Breeding', 'Dermatology']);
             $table->string('university');
-            $table->int('graduate_year');
+            $table->integer('graduate_year');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('certification');
+            $table->string('certification')->nullable();
             $table->enum('is_accepted', ['true','false'])->default('false');
             $table->string('photo')->nullable();
             $table->decimal('consultation_price')->nullable();

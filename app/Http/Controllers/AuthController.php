@@ -8,12 +8,17 @@ use Auth;
 use Session;
 use Hash;
 use App\Models\User;
+use App\Models\Veterinarian;
 
 class AuthController extends Controller
 {
     public function login(){
-        if(Auth::check()){
+        if(Auth::guard('user')->check()){
             return redirect()->route('home');
+        }
+
+        if(Auth::guard('veterinarian')->check()){
+            return redirect()->route('dashboard');
         }
 
         return view("pages.login.index");
@@ -23,10 +28,16 @@ class AuthController extends Controller
         $data= $request->all();
         $isRemember = $request -> filled('rememberme');
         
-        if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
+        if(Auth::guard('user')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
             Session::put('user',$data['email']);
             request()->session()->flash('success','Successfully login');
             return redirect()->route('home');
+        }
+
+        if(Auth::guard('veterinarian')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
+            Session::put('veterinarian',$data['email']);
+            request()->session()->flash('success','Successfully login');
+            return redirect()->route('dashboard');
         }
 
         request()->session()->flash('error','Invalid email and password please try again!');
@@ -41,16 +52,20 @@ class AuthController extends Controller
     }
 
     public function userRegister(){
-        if(Auth::check()){
+        if(Auth::guard('user')->check()){
             return redirect()->route('home');
         }
-        
+
+        if(Auth::guard('veterinarian')->check()){
+            return redirect()->route('dashboard');
+        }
+
         return view('pages.user.register.index');
     }
 
     public function userRegisterSubmit(Request $request){
         $this->validate($request,[
-            'fullName'=>'string|required|min:3',
+            'fullName'=>'string|required|min:5',
             'phoneNumber'=> 'string|required|min:12',
             'email'=>'string|required|unique:users,email',
             'password'=>'required|min:6|confirmed',
@@ -77,9 +92,51 @@ class AuthController extends Controller
         return view('pages.veterinarian.register.index');
     }
 
-    public function veterarianRegisterSubmit(Request $request){
+    public function veterinarianRegisterSubmit(Request $request){
+        // dd($request->all());
         $this->validate($request,[
-            
+            'fullName'=>'string|required|min:5',
+            'specialist'=>'string|required|in:Livestock,Aquaculture,Poultry,Nutrition,Breeding,Dermatology',
+            'university'=>'string|required|min:5',
+            'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
+            'email'=>'string|required|unique:veterinarians,email',
+            'password'=>'required|min:6|confirmed',
+            // 'certification' => 'required|file|mimes:pdf|max:10240'
         ]);
+
+        // if($request->hasFile('certification')){
+        //     $certificationFile = $request->file('certification');
+        //     // Set the file name
+        //     $certificationFileName = time() . $request->fullName . '.' . $certificationFile->extension();
+        //     // $certificationPath = $certificationFile->storeAs('public/certifications',$certificationFileName);
+        //     $certificationFile->move(public_path('/certifications/'), $certificationFileName);
+        //     $certificationPath = '/certifications/'. $certificationFileName;
+        // }else{
+        //     \Log::error("error certificate");
+        //     request()->session()->flash('error','The certification file is required.');
+        //     return redirect()->back();
+        // }
+
+        // dd($request->all());
+        $data= $request->all();
+
+        $result = Veterinarian::create([
+            'name'=> $data['fullName'],
+            'specialist'=>$data['specialist'],
+            'university' => $data['university'],
+            'graduate_year' => $data['graduateYear'],
+            'email'=> $data['email'],
+            'password'=> Hash::make($data['password']),
+            // 'certification' => $certificationPath,
+            'certification' => 'test'
+        ]);
+
+        if($result){
+            request()->session()->flash('success','Successfully registered');
+            return redirect()->route('login.form');
+        }else{
+            request()->session()->flash('error','Please try again!');
+            return redirect()->back();
+        }
     }
 }
