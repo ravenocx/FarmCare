@@ -11,7 +11,7 @@
 
         <div id="registerForm" class="register">
             <div class="mt-10 flex justify-center">
-                <form id="register"  method="POST" action="{{route('veterinarian.register.submit')}}" class="flex flex-col">
+                <form id="register"  method="POST" action="{{route('veterinarian.register.submit')}}" class="flex flex-col" enctype="multipart/form-data">
                     @csrf
 
                     <label for="fullName" class="font-medium text-2xl">Full Name <span class="text-red-600">*</span></label>
@@ -51,7 +51,7 @@
                     </div>
 
 
-                    <!-- <div class="certification-button">
+                    <div class="certification-button">
                         <p class="mt-6 font-medium text-2xl">Certification of Doctor</p>
                         <div class="w-[677px] rounded-md border border-shadeGray border-opacity-50 mt-3">
                             <button onclick="toggleForm()">
@@ -69,7 +69,7 @@
                             <input id="certification" type="file" name="certification" class="file:rounded-lg file:mr-4 ml-4 font-medium text-2xl" required>
                             <label for="certification" class="font-medium text-xl text-center block mt-5 mb-2">Drag and drop here or browse</label>
                         </div>
-                    </div> -->
+                    </div>
 
                     <button type="submit" class="w-[677px] rounded-md mt-20 bg-primaryColor text-white font-bold text-2xl py-3.5">Sign Up</button>
                 </form>

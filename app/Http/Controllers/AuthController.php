@@ -115,23 +115,19 @@ class AuthController extends Controller
             'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
             'email'=>'string|required|unique:veterinarians,email',
             'password'=>'required|min:6|confirmed',
-            // 'certification' => 'required|file|mimes:pdf|max:10240'
+            'certification' => 'required|file|mimes:pdf|max:10240'
         ]);
 
-        // if($request->hasFile('certification')){
-        //     $certificationFile = $request->file('certification');
-        //     // Set the file name
-        //     $certificationFileName = time() . $request->fullName . '.' . $certificationFile->extension();
-        //     // $certificationPath = $certificationFile->storeAs('public/certifications',$certificationFileName);
-        //     $certificationFile->move(public_path('/certifications/'), $certificationFileName);
-        //     $certificationPath = '/certifications/'. $certificationFileName;
-        // }else{
-        //     \Log::error("error certificate");
-        //     request()->session()->flash('error','The certification file is required.');
-        //     return redirect()->back();
-        // }
+        if($request->hasFile('certification')){
+            $certificationFile = $request->file('certification');
+            // Set the file name
+            $certificationFileName = time() . ' - ' . $request->fullName . '_Certification'. '.' . $certificationFile->extension();
+            $certificationPath = $certificationFile->storeAs('public/certifications',$certificationFileName);
+        }else{
+            request()->session()->flash('error','The certification file is required.');
+            return redirect()->back();
+        }
 
-        // dd($request->all());
         $data= $request->all();
 
         $result = Veterinarian::create([
@@ -141,8 +137,7 @@ class AuthController extends Controller
             'graduate_year' => $data['graduateYear'],
             'email'=> $data['email'],
             'password'=> Hash::make($data['password']),
-            // 'certification' => $certificationPath,
-            'certification' => 'test'
+            'certification' => $certificationPath,
         ]);
 
         if($result){
