@@ -27,7 +27,7 @@
 
         <div class="flex pr-[12px] items-center">
             <img src="{{asset('images/profile-icon.png')}}" alt="">
-            <p class="pl-[15.92px] font-medium text-[20px]">Hi, {{$userName}}</p>
+            <p class="pl-[15.92px] font-medium text-[20px]">Hi, {{Auth::guard('user')->user()->name}}</p>
         </div>
     </div>
 </header>

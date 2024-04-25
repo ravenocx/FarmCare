@@ -3,7 +3,7 @@
 
 @include('layouts.user.head')
 
-<body>
+<body class="font-poppins">
     @include('layouts.user.header')
 
     <main>
