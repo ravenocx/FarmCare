@@ -18,8 +18,8 @@
                     </details>
                 </li>
                 <li class="mx-4"><a>Article</a></li>
-                <li class="mr-4"><a>About Us</a></li>
-                <li><a>Contact Us</a></li>
+                <li class="mr-4"><a>FAQ</a></li>
+                <li><a href="#footer">Contact Us</a></li>
             </ul>
         </div>
         <div class="flex items-center">

@@ -1,4 +1,4 @@
-<footer class="relative bottom-0 bg-secondaryColor mt-10">
+<footer id="footer" class="relative bottom-0 bg-secondaryColor mt-10">
     <div class="h-9"></div>
         <div class="flex justify-center py-11 bg-shadeCream h-96">
             <div class="pt-10 pr-36">
