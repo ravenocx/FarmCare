@@ -8,6 +8,8 @@ export default {
         secondaryColor : '#FFF8F0',
         mediumGray : '#888888',
         shadeGray : '#8C8F93',
+        slateGray : '#61676D',
+        shadeCream: '#F1DEC9',
       }
     },
     fontFamily:{

@@ -1,4 +1,4 @@
-<div class="text-[16px] breadcrumbs text-[#61676D] pt-[128px] pl-[42px]">
+<div class="text-base breadcrumbs text-slateGray pt-32 pl-11">
     <ul>
         @foreach ($breadcrumbs as $breadcrumb)
             <li class="breadcrumb-item">

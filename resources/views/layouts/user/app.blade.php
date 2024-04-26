@@ -6,6 +6,8 @@
 <body class="font-poppins">
     @include('layouts.user.header')
 
+    @include('layouts.user.breadcrumbs')
+
     <main>
         @yield('main-content')
     </main>
