@@ -59,7 +59,7 @@
             <h2 class="text-3xl font-semibold text-center mt-14 py-6">FarmCare+ Articles</h2> 
 
             <!-- TODO -->
-            <div class="hero justify-start ml-48">
+            <div class="hero justify-start pl-48">
                 <div class="hero-content flex-col lg:flex-row p-0 my-14">
                 <img src="{{asset('images/animal/article-img.svg')}}" class="mr-16" />
                     <div class="pb-8">

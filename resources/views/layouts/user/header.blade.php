@@ -12,7 +12,7 @@
                         Service
                     </summary>
                     <ul class="p-2 bg-base-150 rounded-t-none drop-shadow-xl">
-                        <li><a>Online Consultation</a></li>
+                        <li><a href="{{route('user.consultation')}}">Online Consultation</a></li>
                         <li><a>Offline Reservation</a></li>
                     </ul>
                     </details>
