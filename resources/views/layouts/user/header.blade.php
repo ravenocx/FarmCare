@@ -1,10 +1,15 @@
-<header class="bg-white px-16 py-3 fixed top-0 w-screen z-10 border-b-2">
+<header class="bg-white px-16 py-3 fixed top-0 w-screen z-40 border-b-2">
     <div class="flex justify-between items-center">
         <div class="flex items-center">
-            <a href="{{route('home')}}">
-                <img src="{{ asset('images/assets/farmcare-logo.svg') }}" alt="Farmcare Logo">
-            </a>
-
+            @if(Auth::guard('user')->check())
+                <a href="{{route('user.home')}}">
+                    <img src="{{ asset('images/assets/farmcare-logo.svg') }}" alt="Farmcare Logo">
+                </a>
+            @else
+                <a href="{{route('landing-page')}}">
+                    <img src="{{ asset('images/assets/farmcare-logo.svg') }}" alt="Farmcare Logo">
+                </a>
+            @endif
             <ul class="menu menu-horizontal px-1 font-medium text-xl ml-10">
                 <li>
                     <details>

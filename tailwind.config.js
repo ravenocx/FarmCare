@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./resources/**/*.blade.php"],
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+    "./node_modules/flowbite/**/*.js"
+  ],
   theme: {
     extend: {
       colors : {
@@ -17,7 +22,10 @@ export default {
       poppins: ['Poppins'],
     }
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    require('flowbite/plugin')
+  ],
   daisyui:{
     base: false,
     darkTheme: "light"

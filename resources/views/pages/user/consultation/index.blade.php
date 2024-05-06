@@ -1,0 +1,197 @@
+@extends('layouts.user.app')
+
+@section('title','FarmCare - Online Consultation')
+
+@section('main-content')
+    <div class="pb-[40px] pt-[18px]">
+        <div class="flex justify-center bg-primary_color h-[539px]">
+            <div class="text-center text-[24px]">
+                <p class="pt-[32px] font-bold">Consult with a doctor at FarmCare+</p>
+                <p class="py-[16px]">Telemedicine services are ready to help care for your <br>livestock animals</p>
+                <img src="{{asset('images/consultation-desc-image.png')}}" alt="online consultation" class="pt-[10px] mx-auto">
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="flex  border-y-2">
+        <div class="pl-[96px]  pr-[40px] py-[43px] ">
+            <p class="text-[20px] font-medium">Why consult a doctor at FarmCare+?</p>
+            <ol class="list-decimal text-[16px] max-w-[393px] max-h-[269px]">
+                <li>Online consultations can be done anytime and anywhere</li>
+                <li>Online consultations are generally cheaper than in-person consultations at a veterinarian</li>
+                <li>Online consultations allow farmers to get information and advice on animal health from experienced and qualified veterinarians</li>
+                <li>Online consultations help farmers feel more comfortable and relaxed when discussing their livestock health problems</li>
+            </ol>
+        </div>
+
+        <div class="flex-grow border-l-2 pl-[48px] pr-[91px] pt-[26px] pb-[56px]">
+            <p class="font-bold text-[24px]">Doctor’s Recommendation</p>
+            <p class="font-medium text-[16px] pt-[8px] pb-[16px]">Consult with our best doctor’s</p>
+            
+            <div class="flex">
+                <div class="border-r-2 border-[#F1DEC9] pr-[24px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+
+                <div class="px-[24px] py-[20.5px]">
+                <x-consultcard
+                    doctorImage="images/temp-doctor.png" 
+                    alt="dokter_image" 
+                    name="Drh. Putri Nadia Lumbantoruan" 
+                    specialist="Cattle Specialist" 
+                    experience="4 Tahun"
+                    price="Rp 90.000"
+                />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center pt-[38px] ">
+        <div class="border-b-2 border-[#F1DEC9]">
+            <div class="relative">
+                <input class="w-[1200px] h-[74px] pl-[44px] py-[22px] border border-[#B8B8B8] rounded-[8px]"type="text" name="doctor_search" id="doctor_search" placeholder="Search for a doctor or specialty">
+                    <div class="absolute inset-y-0 right-0 pr-[42.68px] flex items-center pointer-events-none">
+                        <img class="w-[22.7px] h-[22.7px]" src="{{asset('images/search-icon.png')}}" alt="Search Icon">
+                    </div>
+            </div>
+
+            <div class="flex justify-between pt-[52px] pb-[18.5px]">
+                <p class="text-[20px] font-semibold">Cattle Speciality</p>
+                <button class="text-[16px] text-semibold text-[#A4907C]">View All ></button>
+            </div>
+
+            <div class="flex justify-center w-[1200px] pb-[10px]">
+                <div class="border-r-2 border-[#F1DEC9] pr-[20px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+
+                <div class="border-r-2 border-[#F1DEC9] px-[20px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+
+                <div class="pl-[24px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center pt-[32px]">
+        <div class="border-b-2 border-[#F1DEC9]">
+            <div class="flex justify-between pb-[18.5px]">
+                <p class="text-[20px] font-semibold">Poultry Speciality</p>
+                <button class="text-[16px] text-semibold text-[#A4907C]">View All ></button>
+            </div>
+
+            <div class="flex justify-center w-[1200px] pb-[10px]">
+                <div class="border-r-2 border-[#F1DEC9] pr-[20px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+
+                <div class="border-r-2 border-[#F1DEC9] px-[20px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+
+                <div class="pl-[24px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center pt-[32px]">
+        <div class="border-b-2 border-[#F1DEC9]">
+            <div class="flex justify-between pb-[18.5px]">
+                <p class="text-[20px] font-semibold">Fish Speciality</p>
+                <button class="text-[16px] text-semibold text-[#A4907C]">View All ></button>
+            </div>
+
+            <div class="flex justify-center w-[1200px] pb-[10px]">
+                <div class="border-r-2 border-[#F1DEC9] pr-[20px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+
+                <div class="border-r-2 border-[#F1DEC9] px-[20px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+
+                <div class="pl-[24px] py-[20.5px]">
+                    <x-consultcard
+                        doctorImage="images/temp-doctor.png" 
+                        alt="dokter_image" 
+                        name="Drh. Putri Nadia Lumbantoruan" 
+                        specialist="Cattle Specialist" 
+                        experience="4 Tahun"
+                        price="Rp 90.000"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+@endsection

@@ -12,9 +12,21 @@ use App\Models\Veterinarian;
 
 class AuthController extends Controller
 {
+
+    public function landing_page(){
+        if(Auth::guard('user')->check()){
+            return redirect()->route('user.home');
+        }
+
+        if(Auth::guard('veterinarian')->check()){
+            return redirect()->route('dashboard');
+        }
+
+        return view("welcome");
+    }
     public function login(){
         if(Auth::guard('user')->check()){
-            return redirect()->route('home');
+            return redirect()->route('user.home');
         }
 
         if(Auth::guard('veterinarian')->check()){
@@ -31,7 +43,7 @@ class AuthController extends Controller
         if(Auth::guard('user')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
             Session::put('user',$data['email']);
             request()->session()->flash('success','Successfully login');
-            return redirect()->route('home');
+            return redirect()->route('user.home');
         }
 
         if(Auth::guard('veterinarian')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
@@ -63,12 +75,12 @@ class AuthController extends Controller
         }
         Auth::logout();
         request()->session()->flash('success','Logout successfully');
-        return redirect()->back();
+        return redirect()->route("landing-page");
     }
 
     public function userRegister(){
         if(Auth::guard('user')->check()){
-            return redirect()->route('home');
+            return redirect()->route('user.home');
         }
 
         if(Auth::guard('veterinarian')->check()){

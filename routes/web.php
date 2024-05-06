@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 
+Route::get('/', [AuthController::class, 'landing_page'])->name("landing-page");
+
+Route::get('/home', function () {
+    return view('pages.user.index');
+})->name("user.home");
+
 Route::get('/consultation', [ConsultationController::class, 'showPage'])->name('user.consultation')->middleware('AuthSession');
 
 Route::get('/login',[AuthController::class, 'login'] )->name('login.form');
@@ -20,9 +26,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name("dashboard")->middleware('VeterinarianAuthSession');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("home");
+
 Route::get('/header', function () {
     return view('header');
 });

@@ -16,7 +16,7 @@ class ConsultationController extends Controller
 
         $userName = 'Alexander Grahambell';
 
-        return view('consultation')->with([
+        return view('pages.user.consultation.index')->with([
             'breadcrumbs' => $breadcrumbs,
             'userName' => $userName
         ]);

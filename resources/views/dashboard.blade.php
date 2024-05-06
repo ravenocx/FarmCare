@@ -180,8 +180,7 @@
         </div>
         <!-- end of content -->
 
-        <!-- @include('footer') -->
-        <x-footer/>
+        @include('layouts.user.footer')
 
     </body>
 </html>

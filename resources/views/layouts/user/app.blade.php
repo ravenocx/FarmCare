@@ -6,10 +6,10 @@
 <body class="font-poppins">
     @include('layouts.user.header')
 
-    @if(Auth::guard('user')->check())
-        @include('layouts.user.breadcrumbs')
-    @else
+    @if(Route::currentRouteName() == 'landing-page' || Route::currentRouteName()=='user.home')
         <div class="mb-24"></div>
+    @else
+        @include('layouts.user.breadcrumbs')
     @endif
 
     <main>
