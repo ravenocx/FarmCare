@@ -1,5 +1,5 @@
-<footer id="footer" class="relative bottom-0 bg-secondaryColor mt-10">
-    <div class="h-9"></div>
+<footer id="footer" class="relative bottom-0 bg-secondaryColor">
+    <div class="h-10"></div>
         <div class="flex justify-center py-11 bg-shadeCream h-96">
             <div class="pt-10 pr-36">
                 <h6 class="font-semibold text-2xl mb-5">QUICK LINKS</h6>

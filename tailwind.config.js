@@ -10,6 +10,7 @@ export default {
         shadeGray : '#8C8F93',
         slateGray : '#61676D',
         shadeCream: '#F1DEC9',
+        shadeBrown : '#A4907C',
       }
     },
     fontFamily:{

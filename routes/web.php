@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 
-Route::get('/consultation', [ConsultationController::class, 'showPage'])->name('home')->middleware('AuthSession');
+Route::get('/consultation', [ConsultationController::class, 'showPage'])->name('user.consultation')->middleware('AuthSession');
 
 Route::get('/login',[AuthController::class, 'login'] )->name('login.form');
 Route::post('/login',[AuthController::class, 'loginSubmit'] )->name('login.submit');
@@ -19,6 +19,10 @@ Route::post('/register/veterinarian',[AuthController::class, 'veterinarianRegist
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name("dashboard")->middleware('VeterinarianAuthSession');
+
+Route::get('/', function () {
+    return view('welcome');
+})->name("home");
 Route::get('/header', function () {
     return view('header');
 });
