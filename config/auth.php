@@ -39,10 +39,17 @@ return [
         'user' => [
             'driver' => 'session',
             'provider' => 'users',
+            'cookie' => 'user',
         ],
         'veterinarian' => [
             'driver' => 'session',
             'provider' => 'veterinarians',
+            'cookie' => 'veterinarian',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+            'cookie' => 'admin',
         ],
     ],
 
@@ -72,6 +79,11 @@ return [
         'veterinarians' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Veterinarian::class),
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ]
 
         // 'users' => [

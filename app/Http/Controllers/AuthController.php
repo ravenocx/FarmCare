@@ -9,15 +9,15 @@ use Session;
 use Hash;
 use App\Models\User;
 use App\Models\Veterinarian;
+use App\Models\Admin;
 
 class AuthController extends Controller
 {
 
-    public function landing_page(){
+    public function landingPage(){
         if(Auth::guard('user')->check()){
             return redirect()->route('user.home');
         }
-
         if(Auth::guard('veterinarian')->check()){
             return redirect()->route('dashboard');
         }
@@ -68,14 +68,20 @@ class AuthController extends Controller
     public function logout(){
         if(Auth::guard('user')->check()){
             Session::forget('user');
+            Auth::guard('user')->logout();
         }
-
+        
         if(Auth::guard('veterinarian')->check()){
             Session::forget('veterinarian');
+            Auth::guard('veterinarian')->logout();
         }
-        Auth::logout();
+        
+        if(Auth::guard('admin')->check()){
+            Session::forget('admin');
+            Auth::guard('admin')->logout();
+        }
         request()->session()->flash('success','Logout successfully');
-        return redirect()->route("landing-page");
+        return redirect()->back();
     }
 
     public function userRegister(){
@@ -83,9 +89,6 @@ class AuthController extends Controller
             return redirect()->route('user.home');
         }
 
-        if(Auth::guard('veterinarian')->check()){
-            return redirect()->route('dashboard');
-        }
 
         return view('pages.user.register.index');
     }
@@ -116,6 +119,9 @@ class AuthController extends Controller
     }
 
     public function veterinarianRegister(){
+        if(Auth::guard('veterinarian')->check()){
+            return redirect()->route('dashboard');
+        }
         return view('pages.veterinarian.register.index');
     }
 
@@ -160,5 +166,46 @@ class AuthController extends Controller
             request()->session()->flash('error','Please try again!');
             return redirect()->back();
         }
+    }
+
+    public function adminLogin(){
+        if(Auth::guard('admin')->check()){
+            return redirect()->route('admin.index');
+        }
+        return view('pages.admin.login');
+    }
+
+    public function adminLoginSubmit(Request $request){
+        $data= $request->all();
+        $isRemember = $request -> filled('rememberme');
+        
+        if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
+            Session::put('admin',$data['email']);
+            request()->session()->flash('success','Successfully login');
+            return redirect()->route('admin.index');
+        }
+
+        request()->session()->flash('error','Invalid email and password please try again!');
+        return redirect()->back();
+        // $this->validate($request,[
+        //     'name'=>'string|required|min:5',
+        //     'email'=>'string|required|unique:admins,email',
+        //     'password'=>'required|min:6|',
+        // ]);
+        // $data= $request->all();
+        
+        // $result = Admin::create([
+        //     'name'=> $data['name'],
+        //     'email'=> $data['email'],
+        //     'password'=> Hash::make($data['password']),
+        // ]);
+
+        // if($result){
+        //     request()->session()->flash('success','Successfully registered');
+        //     return redirect()->back();
+        // }else{
+        //     request()->session()->flash('error','Please try again!');
+        //     return redirect()->back();
+        // }
     }
 }
