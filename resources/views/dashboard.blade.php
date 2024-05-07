@@ -12,7 +12,6 @@
 </head>
     <body>
         <!--Put the header in here-->
-        @include('header')
 
         <!-- content -->
         <div class="pb-[40px]">
