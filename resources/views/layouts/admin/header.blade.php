@@ -5,8 +5,8 @@
                 <img src="{{ asset('images/assets/farmcare-logo.svg') }}" alt="Farmcare Logo">
             </a>
             <ul class="menu menu-horizontal px-1 font-medium text-xl ml-10">
-                <li class="mx-4"><a>Applicant</a></li>
-                <li class="mr-4"><a>Veterinarian</a></li>
+                <li class="mx-4"><a href="{{route('admin.management.applicant')}}">Applicant</a></li>
+                <li class="mr-4"><a href="{{route('admin.management.veterinarian')}}">Veterinarian</a></li>
             </ul>
         </div>
         

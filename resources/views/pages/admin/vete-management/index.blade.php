@@ -5,11 +5,11 @@
 @section('main-content')
     <div class="flex justify-between pt-32 px-14 mb-12">
         <h1 class="font-semibold text-2xl">List of Veterinarians</h1>
-        <a href="" class="font-semibold text-shadeBrown text-base"> View All ></a>
+        <a href="{{route('admin.management.veterinarian')}}" class="font-semibold text-shadeBrown text-base"> View All ></a>
     </div>
 
     
-    <<div class="flex justify-center mb-20">
+    <div class="flex justify-center mb-20">
         @for ($i = 0; $i < 3; $i++)
         <div class="bg-secondaryColor rounded-lg shadow-2xl mr-14 w-[400px]">
             <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{asset('images/assets/doctor-list.svg')}}"/>
@@ -71,14 +71,14 @@
 
     <div class="flex justify-between px-14 mb-12">
         <h1 class="font-semibold text-2xl">List of Applicant</h1>
-        <a href="" class="font-semibold text-shadeBrown text-base"> View All ></a>
+        <a href="{{route('admin.management.applicant')}}" class="font-semibold text-shadeBrown text-base"> View All ></a>
     </div>
 
     
 
     <div class="container mx-auto relative overflow-x-auto overflow-y-auto max-h-[640px] shadow-md sm:rounded-lg mb-20">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-            <thead class="text-xs text-white uppercase bg-shadeBrown sticky top-0">
+            <thead class="text-md text-white bg-shadeBrown sticky top-0">
                 <tr class="text-center">
                     <th scope="col" class="p-4">
                         No.
@@ -107,7 +107,7 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                @for ($i = 0; $i < 30; $i++)
+                @for ($i = 0; $i < 10; $i++)
                 <tr class="odd:bg-white even:bg-gray-100 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="w-4 p-4">
                         {{$i+1}}

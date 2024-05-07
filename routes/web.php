@@ -30,8 +30,20 @@ Route::post('/admin_login',[AuthController::class, 'adminLoginSubmit'] )->name('
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
     Route::get('/', function () {
-        return view('pages.admin.index');
+        return view('pages.admin.vete-management.index');
     })->name("admin.index");
+
+    Route::get('/applicant', function () {
+        return view('pages.admin.vete-management.applicant');
+    })->name("admin.management.applicant");
+
+    Route::get('/veterinarian', function () {
+        return view('pages.admin.vete-management.veterinarian');
+    })->name("admin.management.veterinarian");
+
+    Route::get('/edit', function () {
+        return view('pages.admin.vete-management.vete-edit');
+    })->name("admin.management.veterinarian.edit");
 });
 
 
