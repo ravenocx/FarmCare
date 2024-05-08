@@ -26,6 +26,7 @@ Route::middleware(['AuthSession'])->group(function(){
     })->name("user.home");
     
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
+    Route::get('/consultation/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
 });
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){

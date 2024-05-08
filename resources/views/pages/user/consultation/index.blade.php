@@ -58,7 +58,7 @@
         <div class="border-b-2 border-shadeCream">
             <div class="flex justify-between {{$specialist === 'Livestock' ?'mt-14' : ''}} mb-5">
                 <p class="text-xl font-semibold">{{$specialist}} Speciality</p>
-                <button class="text-lg font-semibold text-shadeBrown">View All ></button>
+                <a class="text-lg font-semibold text-shadeBrown" href="{{route('user.consultation.specialist' , ['specialist' => $specialist])}}">View All ></a>
             </div>
 
             <div class="flex justify-center pb-3">

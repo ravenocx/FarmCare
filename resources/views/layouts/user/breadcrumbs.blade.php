@@ -1,11 +1,12 @@
 <div class="text-base breadcrumbs text-slateGray pt-32 pl-11">
     <ul>
-        @foreach ($breadcrumbs as $breadcrumb)
+        @foreach ($breadcrumbs as $index => $breadcrumb)
             <li class="breadcrumb-item">
-                @if ($breadcrumb['url'])
-                    <a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['label'] }}</a>
+                @if ($loop->last)
+                    <a href="{{ route($breadcrumb['url']) }}" class="text-shadeBrown">{{ $breadcrumb['label'] }}</a>
                 @else
-                    <p class="text-[#A4907C]">{{ $breadcrumb['label'] }}</p>
+                    <a href="{{ route($breadcrumb['url']) }}">{{ $breadcrumb['label'] }}</a>
+
                 @endif
             </li>
         @endforeach

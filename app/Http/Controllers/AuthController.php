@@ -187,25 +187,5 @@ class AuthController extends Controller
 
         request()->session()->flash('error','Invalid email and password please try again!');
         return redirect()->back();
-        // $this->validate($request,[
-        //     'name'=>'string|required|min:5',
-        //     'email'=>'string|required|unique:admins,email',
-        //     'password'=>'required|min:6|',
-        // ]);
-        // $data= $request->all();
-        
-        // $result = Admin::create([
-        //     'name'=> $data['name'],
-        //     'email'=> $data['email'],
-        //     'password'=> Hash::make($data['password']),
-        // ]);
-
-        // if($result){
-        //     request()->session()->flash('success','Successfully registered');
-        //     return redirect()->back();
-        // }else{
-        //     request()->session()->flash('error','Please try again!');
-        //     return redirect()->back();
-        // }
     }
 }

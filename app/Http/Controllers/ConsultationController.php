@@ -11,8 +11,8 @@ class ConsultationController extends Controller
     {
         // Breadcrumbs
         $breadcrumbs = [
-            ['label' => 'Home', 'url' => '/'],
-            ['label' => 'Consultation', 'url' => null],
+            ['label' => 'Home', 'url' => 'user.home'],
+            ['label' => 'Consultation', 'url' => 'user.consultation'],
         ];
 
         $veterinariansRecommendation = Veterinarian::orderBy('id', 'DESC')->limit(2)->get() ;
@@ -25,5 +25,18 @@ class ConsultationController extends Controller
 
 
         return view('pages.user.consultation.index', compact('breadcrumbs', 'veterinariansRecommendation', 'veterinariansBySpecialist'));
+    }
+
+    public function getDoctorBySpecialist($specialist)
+    {
+        $breadcrumbs = [
+            ['label' => 'Home', 'url' => 'user.home'],
+            ['label' => 'Consultation', 'url' => 'user.consultation'],
+        ];
+
+        $veterinarians = Veterinarian::orderBy('id','DESC')->where('specialist', $specialist)->paginate(15);
+
+
+        return view('pages.user.consultation.specialist', compact('breadcrumbs', 'veterinarians'));
     }
 }

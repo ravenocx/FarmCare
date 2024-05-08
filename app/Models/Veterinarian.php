@@ -38,7 +38,4 @@ class Veterinarian extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public static function getVeterinarianBySpecialist($specialist){
-        return Veterinarian::orderBy('id','DESC')->where('specialist', $specialist)->paginate(15);
-    }
 }
