@@ -6,12 +6,6 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
 
-Route::get('/home', function () {
-    return view('pages.user.index');
-})->name("user.home")->middleware('AuthSession');
-
-Route::get('/consultation', [ConsultationController::class, 'showPage'])->name('user.consultation')->middleware('AuthSession');
-
 Route::get('/login',[AuthController::class, 'login'] )->name('login.form');
 Route::post('/login',[AuthController::class, 'loginSubmit'] )->name('login.submit');
 
@@ -23,10 +17,16 @@ Route::post('/register',[AuthController::class, 'userRegisterSubmit'] )->name('u
 Route::get('/register/veterinarian',[AuthController::class, 'veterinarianRegister'] )->name('veterinarian.register.form');
 Route::post('/register/veterinarian',[AuthController::class, 'veterinarianRegisterSubmit'] )->name('veterinarian.register.submit');
 
-
 Route::get('/admin_login', [AuthController::class, 'adminLogin'] )->name("admin.login");
 Route::post('/admin_login',[AuthController::class, 'adminLoginSubmit'] )->name('admin.login.submit');
 
+Route::middleware(['AuthSession'])->group(function(){
+    Route::get('/home', function () {
+        return view('pages.user.index');
+    })->name("user.home");
+    
+    Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
+});
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
     Route::get('/', function () {

@@ -19,8 +19,9 @@ class VeterinarianSeeder extends Seeder
         $faker = Faker::create("id_ID");
         for ($i = 0; $i < 200; $i++) {
             DB::table('veterinarians')->insert([
-                'name' => 'Dr. ' . $faker->name,
+                'name' => $faker->name,
                 'specialist' => $faker->randomElement(['Livestock', 'Aquaculture', 'Poultry', 'Nutrition', 'Breeding', 'Dermatology']),
+                'gender'=>$faker->randomElement(['male','female']),
                 'university' => $faker->randomElement([
                     'Universitas Indonesia',
                     'Institut Teknologi Bandung',
@@ -35,12 +36,12 @@ class VeterinarianSeeder extends Seeder
                 ]),
                 'graduate_year' => $faker->numberBetween(2000, 2020),
                 'email' => $faker->unique()->safeEmail,
-                'password' => Hash::make('password'), // You might want to change this
-                'is_accepted' => true, // Randomly accepting or rejecting
+                'password' => Hash::make('password'),
+                'is_accepted' => true, 
                 'certification' => null,
-                'photo' => null,
-                'consultation_price' => null,
-                'reservation_price' => null,
+                'photo' => $faker->imageUrl(640, 480, 'people', true, null, false),
+                'consultation_price' => $faker->numberBetween(30000, 150000),
+                'reservation_price' => $faker->numberBetween(50000, 250000),
             ]);
         }
     }

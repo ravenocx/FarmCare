@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('specialist', ['Livestock', 'Aquaculture', 'Poultry', 'Nutrition', 'Breeding', 'Dermatology']);
+            $table->enum('gender', ['male','female']);
             $table->string('university');
             $table->integer('graduate_year');
             $table->string('email')->unique();

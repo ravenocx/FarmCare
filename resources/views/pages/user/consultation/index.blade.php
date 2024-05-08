@@ -28,168 +28,56 @@
             <p class="font-medium text-base mt-2 mb-4">Consult with our best doctors</p>
             
             <div class="flex justify-center">
-                <div class="border-r-2 border-shadeCream pr-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-
-                <div class="px-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex justify-center mt-10 ">
-        <div class="border-b-2 border-shadeCream">
-            <div class="relative">
-                <input class="w-[1200px] h-[74px] pl-11 py-5 border border-gray-300 rounded-lg" type="text" name="doctor_search" id="doctor_search" placeholder="Search for a doctor or specialty">
-                    <div class="absolute inset-y-0 right-0 mr-24 flex items-center pointer-events-none">
-                        <img src="{{asset('images/vector/search-vector.svg')}}" alt="Search Icon">
+                @foreach($veterinariansRecommendation as $index => $veterinarian)
+                    <div class="{{ $index === 0 ? 'border-r-2 border-shadeCream pr-6' : 'px-6' }}  py-5">
+                        <x-consultcard
+                            doctorImage="{{$veterinarian->photo ? $veterinarian->photo :'images/icon/doctor-icon.png'}}" 
+                            alt="{{$veterinarian->gender === 'male' ? 'Dr.' . $veterinarian->name : 'Dra.' . $veterinarian->name }}" 
+                            name="{{$veterinarian->gender === 'male' ? 'Dr.' . $veterinarian->name : 'Dra.' . $veterinarian->name}}" 
+                            specialist="{{$veterinarian->specialist}}" 
+                            experience="{{2024 - ($veterinarian -> graduate_year)}} Tahun"
+                            price="Rp {{number_format($veterinarian->consultation_price, 0, ',', '.')}}"
+                        />
                     </div>
-            </div>
+                @endforeach
 
-            <div class="flex justify-between mt-14 mb-5">
-                <p class="text-xl font-semibold">Cattle Speciality</p>
-                <button class="text-lg font-semibold text-shadeBrown">View All ></button>
-            </div>
-
-            <div class="flex justify-center pb-3">
-                <div class="border-r-2 border-shadeCream pr-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-
-                <div class="border-r-2 border-shadeCream px-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-
-                <div class="pl-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="flex justify-center mt-8">
+    @foreach($veterinariansBySpecialist as $specialist => $veterinarians)
+    <div class="container mx-auto w-[1255.28px] {{$specialist === 'Livestock' ?'mt-10' : 'mt-8'}} {{$specialist === 'Dermatology' ?'mb-20' : ' '}} ">
+        @if($specialist === 'Livestock')
+        <div class="relative">
+            <input class="w-[1255.28px] h-[74px] pl-11 py-5 border border-gray-300 rounded-lg" type="text" name="doctor_search" id="doctor_search" placeholder="Search for a doctor or specialty">
+                <div class="absolute inset-y-0 right-0 mr-11 flex items-center pointer-events-none">
+                    <img src="{{asset('images/vector/search-vector.svg')}}" alt="Search Icon">
+                </div>
+        </div>
+        @endif
         <div class="border-b-2 border-shadeCream">
-            <div class="flex justify-between mb-5">
-                <p class="text-xl font-semibold">Poultry Speciality</p>
+            <div class="flex justify-between {{$specialist === 'Livestock' ?'mt-14' : ''}} mb-5">
+                <p class="text-xl font-semibold">{{$specialist}} Speciality</p>
                 <button class="text-lg font-semibold text-shadeBrown">View All ></button>
             </div>
 
             <div class="flex justify-center pb-3">
-                <div class="border-r-2 border-shadeCream pr-6 py-5">
+                @foreach($veterinarians as $index => $veterinarian)
+                <div class="{{$index === 2 ? '' : 'border-r-2'}} {{$index === 0 ? 'pr-6' : ($index === 1 ? 'px-6' : 'pl-6')}} border-shadeCream py-5">
                     <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
+                        doctorImage="{{$veterinarian->photo ? $veterinarian->photo :'images/icon/doctor-icon.png'}}" 
+                        alt="{{$veterinarian->gender === 'male' ? 'Dr.' . $veterinarian->name : 'Dra.' . $veterinarian->name }}" 
+                        name="{{$veterinarian->gender === 'male' ? 'Dr.' . $veterinarian->name : 'Dra.' . $veterinarian->name}}" 
+                        specialist="{{$veterinarian->specialist}}" 
+                        experience="{{2024 - ($veterinarian -> graduate_year)}} Tahun"
+                        price="Rp {{number_format($veterinarian->consultation_price, 0, ',', '.')}}"
                     />
                 </div>
-
-                <div class="border-r-2 border-shadeCream px-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-
-                <div class="pl-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
+    @endforeach
 
-    <div class="flex justify-center mt-8 mb-20">
-        <div class="border-b-2 border-shadeCream">
-            <div class="flex justify-between mb-5">
-                <p class="text-xl font-semibold">Fish Speciality</p>
-                <button class="text-lg font-semibold text-shadeBrown">View All ></button>
-            </div>
-
-            <div class="flex justify-center pb-3">
-                <div class="border-r-2 border-shadeCream pr-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-
-                <div class="border-r-2 border-shadeCream px-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-
-                <div class="pl-6 py-5">
-                    <x-consultcard
-                        doctorImage="images/icon/doctor-icon.png" 
-                        alt="dokter_image" 
-                        name="Drh. Putri Nadia Lumbantoruan" 
-                        specialist="Cattle Specialist" 
-                        experience="4 Tahun"
-                        price="Rp 90.000"
-                    />
-                </div>
-            </div>
-        </div>
-    </div>
     
 @endsection
