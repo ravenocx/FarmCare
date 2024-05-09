@@ -12,7 +12,7 @@
 </head>
     <body>
         <!--Put the header in here-->
-        @include('header')
+        <x-header-component/>
 
         <!-- content -->
         <div class="pb-[40px]">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <!-- Container untuk foto -->
-                <div class="bg-fixed absolute bottom-0 right-0" style="margin-bottom: 268px; overflow: hidden;">
+                <div class="bg-fixed absolute bottom-0 right-0" style="margin-bottom: 257px; overflow: hidden;">
                     <img src="{{asset('images\Pet-Animal-Care-Logo.png')}}" alt="Farmcare Logo">
                 </div>
             </div>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="pt-2 pb-3 pl-3 pr-3">
                                     <h2 class="text-lg font-semibold text-black text-left text-balance">Dr. Fajar</h2>
-                                    <p class="text-base font-medium text-justify text-black">Cattle Specialist</p>
+                                    <p class="text-base text-justify text-black">Cattle Specialist</p>
                                 </div>
                             </div>
                             <div class="w-[250px] h-[320px] rounded-lg overflow-hidden bg-[#FFF8F0] shadow-lg dark:bg-surface-dark dark:text-white">
@@ -180,8 +180,7 @@
         </div>
         <!-- end of content -->
 
-        <!-- @include('footer') -->
-        <x-footer/>
+        @include('components.footer')
 
     </body>
 </html>

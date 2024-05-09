@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Footer</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <!-- Styles -->
-
-        <style>
+<style>
         .navbar {
             background-color: #fff;
             padding: 14px 20px;
@@ -56,10 +46,10 @@
         <header class="bg-white flex items-center justify-between p-4">
             <div class="flex items-center">
                 <a href="">
-                    <img src="{{ asset('images/farmcare-logo.png') }}" alt="Farmcare Logo" class="w-[144px] h-[72px] mr-4">
+                    <img src="{{ asset('images/farmcare-logo.png') }}" alt="Farmcare Logo" class="w-[144px] h-[72px]">
                 </a>
                 <div class="flex items-center">
-                    <ul class="menu menu-horizontal px-1 font-medium text-[20px] pl-[64px]">
+                    <ul class="menu menu-horizontal px-1 font-medium text-[20px] pl-[48px]">
                         <nav class="flex items-center space-x-4">
                             <a href="#" class="text-black hover:text-gray-700">Home</a>
                             <div class="dropdown">
@@ -84,6 +74,3 @@
                 <p class="pl-[15.92px] font-medium text-[20px]">Hi, Alexander Grahambell</p>
             </div>
         </header>
-
-    </head>
-</html>
