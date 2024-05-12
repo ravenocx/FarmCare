@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('certification');
-            $table->boolean('is_accepted')->default(false);
+            $table->boolean('is_accepted')->nullable()->default(null);
             $table->string('photo')->nullable();
             $table->decimal('consultation_price')->nullable();
             $table->decimal('reservation_price')->nullable();

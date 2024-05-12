@@ -20,6 +20,7 @@ class Veterinarian extends Authenticatable
         'password',
         'certification',
         'photo',
+        'is_accepted',
         'consultation_price',
         'reservation_price',
     ];
