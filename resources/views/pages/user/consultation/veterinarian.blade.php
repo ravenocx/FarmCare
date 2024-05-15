@@ -8,7 +8,9 @@
             <h1 class="font-semibold text-2xl text-center mb-10 divider">Veterinarian Details</h1>
             <div class="border-shadeCream border-2 rounded-lg mb-6">
                 <div class="mx-20 mt-4">
-                    <img src="{{asset('images/assets/doctor-picture.svg')}}" alt="doctor-img" class="w-56 h-64 border border-shadeCream mx-auto">
+                    <div class="px-4">
+                        <img src="{{asset($veterinarian->photo ? $veterinarian->photo :'images/icon/doctor-icon.png')}}" alt="doctor-img" class="w-56 h-64 rounded-lg border border-shadeCream mx-auto">
+                    </div>
                     <div class="py-3 border-y border-[#C8B6A6] mt-3 mb-5">
                         <p class="font-semibold text-base ">{{$veterinarian->gender === 'male' ? 'Dr.' . $veterinarian->name : 'Dra.' . $veterinarian->name}}</p>
                         <p class="text-mediumGray my-1 text-xs">{{$veterinarian->specialist}} Specialist</p>
