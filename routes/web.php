@@ -29,6 +29,8 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
     Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
+    Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
+
 });
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){

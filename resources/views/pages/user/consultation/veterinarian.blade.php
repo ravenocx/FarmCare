@@ -16,7 +16,7 @@
                         <p class="text-mediumGray my-1 text-xs">{{$veterinarian->specialist}} Specialist</p>
             
                         <div class="flex mt-2 items-center">
-                            <img src="{{asset('images/vector/doctor-bag.svg')}}" alt="years of experience" class="h-4">
+                            <img src="{{asset('images/vector/doctor-bag.svg')}}" alt="years of experience" class="w-[10px]">
                             <p class="font-semibold text-xs text-[#A4907C] ml-1 ">{{2024 - ($veterinarian -> graduate_year)}} Tahun</p>
                         </div>
             
@@ -41,8 +41,8 @@
                 </div>
             </div>
 
-            <a href="">
-                <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
+            <a href="{{route('user.consultation.veterinarian.order', ['id' => ($veterinarian -> id)])}}">
+                <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Chat</button>
             </a>
         </div>
         
