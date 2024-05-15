@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('graduate_year');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('str_number');
             $table->string('certification');
             $table->boolean('is_accepted')->default(false);
             $table->string('photo')->nullable();
