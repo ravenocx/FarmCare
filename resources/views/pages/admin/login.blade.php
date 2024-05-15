@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Login</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/x-icon" href="{{asset('images/icon/farmcare-logo.png')}}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css','resources/js/app.js'])
@@ -13,10 +14,8 @@
     <section class="bg-shadeBrown">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div class="w-full bg-white rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 dark:border-gray-700">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-xl dark:text-white">
-                    FarmCare Admin Page
-                </h1>
+            <div class="p-6 sm:p-8">
+                <img src="{{ asset('images/assets/farmcare-logo.svg') }}" alt="Farmcare Logo" class="mx-auto">
                 <form class="space-y-4 md:space-y-6" action="{{route('admin.login.submit')}}" method="POST">
                 @csrf
                     <div>
