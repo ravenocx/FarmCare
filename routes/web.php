@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controller\OrderHistoryController;
 
-// Route::get('/dashboard', function () {return view('dashboard');});
+Route::get('/', function () {return view('dashboard');});
 
+Route::get('/', function () {return view('detail');});
 
-Route::get('/', function () {return view('orderhistory');});
+Route::resource('orderhistories', OrderHistoryController::class);
