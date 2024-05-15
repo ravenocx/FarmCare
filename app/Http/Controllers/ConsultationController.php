@@ -39,4 +39,14 @@ class ConsultationController extends Controller
 
         return view('pages.user.consultation.specialist', compact('breadcrumbs', 'veterinarians'));
     }
+    public function getVeterinarianDetails($id){
+        $breadcrumbs = [
+            ['label' => 'Home', 'url' => 'user.home'],
+            ['label' => 'Consultation', 'url' => 'user.consultation'],
+        ];
+
+        $veterinarian = Veterinarian::findOrFail($id);
+
+        return view('pages.user.consultation.veterinarian', compact('breadcrumbs', 'veterinarian'));
+    }
 }
