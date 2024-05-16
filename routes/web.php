@@ -56,7 +56,10 @@ Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name("dashboard")->middleware('VeterinarianAuthSession');
+Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(function(){
+    Route::get('/', function () {
+        return view('pages.veterinarian.dashboard.index');
+    })->name("veterinarian.index");
+
+});
 

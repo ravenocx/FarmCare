@@ -36,7 +36,7 @@ class VeterinarianSeeder extends Seeder
                 ]),
                 'graduate_year' => $faker->numberBetween(2000, 2020),
                 'email' => $faker->unique()->safeEmail,
-                'password' => Hash::make('password'),
+                'password' => Hash::make('123456'),
                 'is_accepted' => true, 
                 'str_number'=> $faker->numerify('################'),
                 'certification' => "certification",

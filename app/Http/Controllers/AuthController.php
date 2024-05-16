@@ -31,7 +31,7 @@ class AuthController extends Controller
         }
 
         if(Auth::guard('veterinarian')->check()){
-            return redirect()->route('dashboard');
+            return redirect()->route('veterinarian.index');
         }
 
         return view("pages.login.index");
@@ -54,7 +54,7 @@ class AuthController extends Controller
             if($veterinarian->is_accepted){
                 Session::put('veterinarian',$data['email']);
                 request()->session()->flash('success','Successfully login');
-                return redirect()->route('dashboard');
+                return redirect()->route('veterinarian.index');
             }else{
                 Auth::guard('veterinarian')->logout();
                 request()->session()->flash('error','Your account has not been accepted yet.');
