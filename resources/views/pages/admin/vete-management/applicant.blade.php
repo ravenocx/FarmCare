@@ -3,8 +3,7 @@
 @section('title', 'Admin - Veterinarian Applicant')
 
 @section('main-content')
-    <div
-        class="container mt-32 mx-auto relative overflow-x-auto overflow-y-auto max-h-[640px] shadow-md sm:rounded-lg mb-20">
+    <div class="container mt-32 mx-auto relative overflow-x-auto overflow-y-auto max-h-[640px] shadow-md sm:rounded-lg mb-20">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-md text-white bg-shadeBrown sticky top-0">
                 <tr class="text-center">
@@ -135,8 +134,7 @@
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="status" value="reject">
-                                        <button type="submit"
-                                            class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Reject</button>
+                                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Reject</button>
                                     </form>
                                 @endif
                             </td>
