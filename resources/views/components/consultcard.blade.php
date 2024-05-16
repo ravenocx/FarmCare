@@ -1,19 +1,23 @@
 <div class="flex">
-    <img src="{{asset($doctorImage)}}" alt="{{ $alt }}" class="card-image">
+    <img src="{{asset($doctorImage)}}" alt="{{ $alt }}" class="card-image size-44 border-shadeBrown border-2 rounded-md">
 
-    <div class="text-left pl-[20px] text-[12px]">
-        <p class="font-semibold ">{{ $name }}</p>
-        <p class="text-[#888888]">{{ $specialist }}</p>
-        <button class="text-[#FF0000] outline-none">+more</button>
-
-        <div class="flex pt-[8px]">
-            <img src="{{asset('images/doctor-bag.png')}}" alt="years of experience" class="w-[9.75px] h-[10.5px]">
-            <p class="text-semibold text-[8px] text-[#A4907C] pl-[4px] ">{{ $experience }}</p>
+    <div class="w-[189.09px] h-[176px] text-left ml-5 text-xs flex flex-col">
+        <div class="flex-grow">
+            <p class="font-semibold text-sm ">{{ $name }}</p>
+            <p class="text-mediumGray my-1">{{ $specialist }}</p>
+            <button class="text-[#FF0000]">+more</button>
+    
+            <div class="flex mt-2 items-center">
+                <img src="{{asset('images/vector/doctor-bag.svg')}}" alt="years of experience" class="h-4">
+                <p class="font-semibold text-xs text-[#A4907C] ml-1 ">{{ $experience }}</p>
+            </div>
+    
+            <p class="font-medium mt-2">{{ $price }}</p>
         </div>
-
-        <p class="pb-[50px] text-medium pt-[4px]">{{ $price }}</p>
-
-        <button class="bg-[#A4907C] text-bold text-[12px] text-white rounded-[4px] py-[8px] px-[21px]">Chat</button>
+        
+        <a href="">
+            <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
+        </a>
     </div>
 </div>
 
