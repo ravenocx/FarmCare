@@ -13,6 +13,7 @@
                 @endif
                 <div class="flex justify-center w-full mb-6"> <!-- Start a new row -->
             @endif
+            
             <div class="bg-secondaryColor rounded-lg shadow-2xl mr-14 w-[400px] mb-6">
                 <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{ $veterinarian->photo }}"/>
                 <p class="font-semibold text-base text-center mb-3"> {{ $veterinarian->name }}</p>
