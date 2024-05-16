@@ -23,7 +23,7 @@
                     </details>
                 </li>
                 <li class="mx-4"><a>Article</a></li>
-                <li class="mr-4"><a>FAQ</a></li>
+                <li class="mr-4"><a href="{{route('faq')}}">FAQ</a></li>
                 <li><a href="#footer">Contact Us</a></li>
             </ul>
         </div>

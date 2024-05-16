@@ -61,7 +61,7 @@
                         <div id="upload-container" class="flex flex-col items-center justify-center pt-5 pb-6">
                             <img src="{{asset('images/vector/cloud-upload.svg')}}" >
                             <p class="mb-2 text-sm text-mediumGray"><span class="font-semibold">Upload</span> proof of your payment</p>
-                            <p class="text-xs text-mediumGray">or drag and drop</p>
+                            <p class="text-xs text-mediumGray">in png or jpg file</p>
                         </div>
                         
                         <input id="dropzone-file-input" type="file" name="payment_proof" type="file" class="file:rounded-lg font-medium mx-4 file-input w-64 h-10 file:normal-case file:bg-shadeBrown hover:bg-gray-100" required />

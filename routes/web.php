@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
+Route::get('/faq', function () {
+    return view('pages.faq.index');
+})->name("faq");
+
 
 Route::get('/login',[AuthController::class, 'login'] )->name('login.form');
 Route::post('/login',[AuthController::class, 'loginSubmit'] )->name('login.submit');
