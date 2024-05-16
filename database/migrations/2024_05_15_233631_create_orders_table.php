@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('cust_name');
             $table->string('cust_phone_number');
             $table->string('payment_proof');
-            $table->timestamps('appoinment_date');
+            $table->timestamp('appoinment_date');
             $table->enum('category', ['Livestock', 'Aquaculture', 'Poultry', 'Nutrition', 'Breeding', 'Dermatology']);
             $table->enum('service_category', ['consultation' , 'reservation']);
             $table->enum('order_status', ['On going', 'Complete', 'Cancel']);
-            $table->timestamps('order_date');
+            $table->timestamp('order_date');
             $table->decimal('price');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');

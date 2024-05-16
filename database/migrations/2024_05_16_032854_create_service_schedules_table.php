@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('service_schedules', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("veterinarian_id");
-            $table->timestamps('schedule');
+            $table->timestamp('schedule');
             $table->enum('service_category', ['consultation' , 'reservation']);
             $table->boolean('is_reserved');
             $table->timestamps();
