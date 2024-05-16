@@ -50,8 +50,6 @@
     
     </div>
 
-  
-
     <div class="container mx-auto relative overflow-x-auto overflow-y-auto max-h-[640px] shadow-md sm:rounded-lg mb-20">
     <div class="flex justify-between px-14 mb-12">
         <h1 class="font-semibold text-2xl">List of Applicant</h1>
