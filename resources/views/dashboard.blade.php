@@ -12,7 +12,6 @@
 </head>
     <body>
         <!--Put the header in here-->
-        @include('header')
 
         <!-- content -->
         <div class="pb-[40px]">
@@ -180,8 +179,7 @@
         </div>
         <!-- end of content -->
 
-        <!-- @include('footer') -->
-        <x-footer/>
+        @include('layouts.user.footer')
 
     </body>
 </html>

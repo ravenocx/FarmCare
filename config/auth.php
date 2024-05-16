@@ -36,9 +36,20 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
+            'cookie' => 'user',
+        ],
+        'veterinarian' => [
+            'driver' => 'session',
+            'provider' => 'veterinarians',
+            'cookie' => 'veterinarian',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+            'cookie' => 'admin',
         ],
     ],
 
@@ -64,6 +75,16 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
+
+        'veterinarians' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Veterinarian::class),
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Admin::class),
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
