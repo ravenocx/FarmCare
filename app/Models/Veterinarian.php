@@ -22,6 +22,7 @@ class Veterinarian extends Authenticatable
         'photo',
         'consultation_price',
         'reservation_price',
+        'is_accepted',
     ];
 
     protected $hidden = [
