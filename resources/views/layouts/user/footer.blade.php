@@ -6,7 +6,7 @@
                 <ul class="font-medium text-base">
                     <li class="mb-2"><a href="">Home</a></li>
                     <li class="mb-2"><a href="">Health Tips Article</a></li>
-                    <li class="mb-2"><a href="">FAQ</a></li>
+                    <li class="mb-2"><a href="{{route('faq')}}">FAQ</a></li>
                     <li><a href="">Contact Us</a></li>
                 </ul>
             </div>

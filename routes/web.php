@@ -6,6 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
+Route::get('/faq', function () {
+    return view('pages.faq.index');
+})->name("faq");
+
 
 Route::get('/login', [AuthController::class, 'login'])->name('login.form');
 Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
@@ -25,9 +29,11 @@ Route::middleware(['AuthSession'])->group(function () {
     Route::get('/home', function () {
         return view('pages.user.index');
     })->name("user.home");
-
+    
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
-    Route::get('/consultation/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
+    Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
+    Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
+    Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
 
     Route::get('/profile', [UserController::class, 'showProfile'])->name('user.profile');
 

@@ -10,6 +10,7 @@ use Hash;
 use App\Models\User;
 use App\Models\Veterinarian;
 use App\Models\Admin;
+use Faker\Factory as Faker;
 
 class AuthController extends Controller
 {
@@ -130,6 +131,7 @@ class AuthController extends Controller
         $this->validate($request,[
             'fullName'=>'string|required|min:5',
             'specialist'=>'string|required|in:Livestock,Aquaculture,Poultry,Nutrition,Breeding,Dermatology',
+            'gender' => 'string|required|in:male,female',
             'university'=>'string|required|min:5',
             'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
             'email'=>'string|required|unique:veterinarians,email',
@@ -149,13 +151,16 @@ class AuthController extends Controller
 
         $data= $request->all();
 
+        $faker = Faker::create("id_ID");
         $result = Veterinarian::create([
             'name'=> $data['fullName'],
             'specialist'=>$data['specialist'],
+            'gender' => $data['gender'],
             'university' => $data['university'],
             'graduate_year' => $data['graduateYear'],
             'email'=> $data['email'],
             'password'=> Hash::make($data['password']),
+            'str_number'=> $faker->numerify('################'),
             'certification' => $certificationPath,
         ]);
 
