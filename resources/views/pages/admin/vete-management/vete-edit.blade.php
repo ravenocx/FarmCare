@@ -7,7 +7,6 @@
 
     <div class="w-[1200px] container mx-auto border-2 pb-20 mb-40">
       
-
         <form method="POST" action="{{ route('admin.management.veterinarian.update', $veterinarian->id) }}">
             @csrf
             @method('PUT')
