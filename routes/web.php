@@ -1,10 +1,21 @@
 <?php
-
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
+Route::get('/consultation', [ConsultationController::class, 'showPage'])->name('consultation');
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.user.login-register.index');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+Route::get('/header', function () {
+    return view('header');
+});
+Route::get('/footer', function () {
+    return view('footer');
 });
 
 Route::get('/profile', [ProfileController::class, "index"])->middleware('auth')->name('profile');

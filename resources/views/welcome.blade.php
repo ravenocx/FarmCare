@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @vite('resources/css/app.css')
     <link href="./output.css" rel="stylesheet" />
     <style>
       #section1 {
@@ -17,25 +18,23 @@
   </head>
   <body>
     <nav class="px-16 py-8 flex items-center justify-between">
-      <div class="flex items-center gap-x-14 font-semibold">
-        <img src="{{ asset('assets/logo.png') }}" alt="Logo" />
-        <a href="">Home</a>
-        <a href="">Service</a>
-        <a href="">Contact Us</a>
-      </div>
+      <ul class="flex items-center gap-x-14 font-semibold">
+        <img src="./Images/logo.png" alt="Logo" />
+        <li>Home</li>
+        <li>Service</li>
+        <li>Contact Us</li>
+      </ul>
       <div class="flex items-center gap-x-8">
-        <a
-          href=""
+        <button
           class="bg-[#A4907C] text-white border-[#A4907C] px-4 py-1 border-2 rounded-md font-medium"
         >
           Login
-        </a>
-        <a
-          href=""
+        </button>
+        <button
           class="text-[#A4907C] border-[#A4907C] border-2 px-4 py-1 rounded-md font-medium"
         >
           Sign Up
-        </a>
+        </button>
       </div>
     </nav>
     <section id="section1" style="height: 70vh" class="p-24 flex">
@@ -59,11 +58,7 @@
         </div>
       </div>
       <div class="w-2/5 relative">
-        <img
-          src="{{ asset('assets/cow.png')}}"
-          alt=""
-          class="absolute -bottom-24"
-        />
+        <img src="./Images/cow.png" alt="" class="absolute -bottom-24" />
       </div>
     </section>
     <section class="px-60 py-16">
@@ -77,7 +72,7 @@
           provided by the farmer. Then, the veterinarian can also provide recommendations 
           for further action, such as medication or direct visits to the clinic if necessary
           </p>
-          <a href="" class="flex items-center text-[#A4907C] gap-3">
+          <div class="flex items-center text-[#A4907C] gap-3">
             View
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,19 +88,13 @@
                 d="m8.25 4.5 7.5 7.5-7.5 7.5"
               />
             </svg>
-          </a>
+          </div>
         </div>
-        <img
-          src="{{ asset('assets/ad3ac1c75907ca7572c5473847f9f712 1.png') }}"
-          alt=""
-        />
+        <img src="./Images/ad3ac1c75907ca7572c5473847f9f712 1.png" alt="" />
       </div>
       <hr class="border-[#F1DEC9] my-10" />
       <div class="flex gap-10">
-        <img
-          src="{{ asset('assets/702c3df03370bbb5a8e36f0d56c1e15c 1.png') }}"
-          alt=""
-        />
+        <img src="./Images/702c3df03370bbb5a8e36f0d56c1e15c 1.png" alt="" />
         <div>
           <h1 class="text-xl font-semibold">Offline Reservation</h1>
           <p class="my-4">
@@ -114,7 +103,7 @@
           and care for livestock. A veterinarian will visit the farm location to carry out medical 
           treatment. Farmers can also choose a specialist or doctor that suits their needs and farm location.
           </p>
-          <a href="" class="flex items-center text-[#A4907C] gap-3">
+          <div class="flex items-center text-[#A4907C] gap-3">
             View
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +119,7 @@
                 d="m8.25 4.5 7.5 7.5-7.5 7.5"
               />
             </svg>
-          </a>
+          </div>
         </div>
       </div>
       <hr class="border-[#F1DEC9] my-10" />
@@ -138,10 +127,7 @@
     <section class="py-16 bg-[#FFF8F0]">
       <h1 class="text-center text-3xl font-semibold">FarmCare+ Articles</h1>
       <div class="flex items-center gap-24 mt-16 pl-52">
-        <img
-          src="{{ asset('assets/9cf7ceead6f19c10bc188a15cf8e542f 1.png') }}"
-          alt=""
-        />
+        <img src="./Images/9cf7ceead6f19c10bc188a15cf8e542f 1.png" alt="" />
         <div class="w-1/2">
           <h1 class="font-bold text-4xl">
             For Farmers, This is How to Keep Cows Healthy During the Dry Season
@@ -149,9 +135,9 @@
           <p class="my-5">
           Lampung Province, as a livestock center, will have a cattle population of 906,568 in 2022, 
           a goat population of 1.67 million in 2022, a population of 103,657,519 broiler chickens, and 14,501,073 
-          laying hens in 2022. 
+          laying hens in 2022.          
           </p>
-          <a href="" class="flex items-center text-[#A4907C] gap-3">
+          <div class="flex items-center text-[#A4907C] gap-3">
             View All
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +153,7 @@
                 d="m8.25 4.5 7.5 7.5-7.5 7.5"
               />
             </svg>
-          </a>
+          </div>
         </div>
       </div>
       <div class="flex justify-end gap-24 mt-16">
@@ -183,7 +169,7 @@
             and "floc" which means lump. Biofloc itself is a fish cultivation system using environmental 
             engineering techniques. This technique relies on oxygen supply and the use of microorganisms.
             </p>
-            <a href="" class="flex items-center text-[#A4907C] gap-3">
+            <div class="flex items-center text-[#A4907C] gap-3">
               View All
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -199,33 +185,30 @@
                   d="m8.25 4.5 7.5 7.5-7.5 7.5"
                 />
               </svg>
-            </a>
+            </div>
           </div>
-          <img
-            src="{{ asset('assets/9cf7ceead6f19c10bc188a15cf8e542f 1-1.png') }}"
-            alt=""
-          />
+          <img src="./Images/9cf7ceead6f19c10bc188a15cf8e542f 1-1.png" alt="" />
         </div>
       </div>
     </section>
     <footer class="bg-[#F1DEC9] py-14 flex justify-center">
       <div class="w-1/6">
         <h1 class="text-lg font-semibold mb-3">QUICK LINKS</h1>
-        <div class="font-medium text-sm">
-          <a href="">Home</a>
-          <a href="">Service</a>
-          <a href="">FAQ</a>
-        </div>
+        <ul class="font-medium text-sm">
+          <li>Home</li>
+          <li>Service</li>
+          <li>FAQ</li>
+        </ul>
       </div>
       <div class="w-1/6 border-x-2 border-black flex justify-center h-">
         <div>
           <h1 class="text-lg font-semibold mb-3" class="text-left">
             OUR SERVICES
           </h1>
-          <div class="font-medium text-sm">
-            <a href="">Online Consultation</a>
-            <a href="">Offline Reservation</a>
-          </div>
+          <ul class="font-medium text-sm">
+            <li>Online Consultation</li>
+            <li>Offline Reservation</li>
+          </ul>
         </div>
       </div>
       <div class="w-1/6 pl-10">
