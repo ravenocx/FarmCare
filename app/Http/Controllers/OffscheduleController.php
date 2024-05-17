@@ -51,29 +51,36 @@ class OffscheduleController extends Controller
         
     }
 
-    public function edit(Offschedule $offschedules)
+    public function edit(Offschedule $offschedule)
     {
-        $veterinarians = Veterinarian::all();
-        $offschedules = Offschedule::all();
-        return view('pages.veterinarian.offlinereservation.offschedule.edit', compact('offschedules', 'veterinarians'));
+    $veterinarians = Veterinarian::all();
+    return view('pages.veterinarian.offlinereservation.offschedule.edit', compact('offschedule', 'veterinarians'));
     }
 
-    public function update(Request $request, Offschedule $offschedules)
+    public function update(Request $request, Offschedule $offschedule)
     {
-        $data = $request->validate([
-            'veterinarian_id' => 'required|exists:veterinarians,id',
-            'date' => 'required|date',
-            'session' => 'required|in:07:00-11:00,13:00-17:00',
-            'price_id' => 'required|exists:prices,id',
-            'status' => 'required|in:available,scheduled,complete',
-        ]);
-        $offschedules->update($data);
-        return redirect()->route('offschedules.index');
+    $data = $request->validate([
+        'date' => ['required', 'date', 'after_or_equal:today'],
+        'session' => 'required|in:07:00-11:00,13:00-17:00',
+        'status' => 'required|in:available,scheduled,complete'
+    ]);
+
+    $veterinarian = Auth::guard('veterinarian')->user();
+
+    // Cek apakah veterinarian ditemukan
+    if (!$veterinarian) {
+        return redirect()->back()->withErrors('No authenticated veterinarian found.');
     }
 
-    public function destroy(Offchedule $offschedules)
+    // Update data Offschedule dengan nilai yang diambil dari request dan objek Veterinarian
+    $offschedule->update($data);
+
+    return redirect()->route('offschedule.index')->with('success', 'Jadwal berhasil diperbarui.');
+}
+
+    public function destroy(Offschedule $offschedule)
     {
-        $offschedules->delete();
-        return redirect()->route('schedules.index');
+        $offschedule->delete();
+        return redirect()->route('offschedule.index');
     }
 }

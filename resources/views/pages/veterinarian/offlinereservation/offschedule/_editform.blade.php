@@ -1,6 +1,6 @@
 <form action="{{ $action }}" method="POST">
     @csrf
-    @method($method)
+    @method("PATCH")
 
 
     <div class="form-group">
@@ -8,14 +8,12 @@
         <input type="date" name="date" id="date" class="form-control" >
     </div>
 
-    <div class="form-group">
-    <label for="session">Session</label>
     <select id="session" name="session">
             <option value="07:00-11:00">07:00-11:00</option>
             <option value="13:00-17:00">13:00-17:00</option>
      </select>
 </div>
-    @if ($method == 'PUT')
+    
         <div class="form-group">
             <label for="status">Status</label>
             <select id="status" name="status" class="form-control" required>
@@ -24,7 +22,7 @@
                 <option value="complete" {{ (old('status', $offschedule->status ?? '') == 'complete') ? 'selected' : '' }}>Complete</option>
             </select>
         </div>
-    @endif
+   
 
     <button type="submit" class="btn btn-success">Save</button>
 </form>
