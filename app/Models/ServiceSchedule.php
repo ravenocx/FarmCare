@@ -19,4 +19,8 @@ class ServiceSchedule extends Model
     protected $guard = [
         'is_reserved',
     ];
+
+    public function Veterinarians(){
+        return $this->hasOne('App\Models\Veterinarian', 'id', 'veterinarian_id');
+    }
 }

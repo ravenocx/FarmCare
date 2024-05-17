@@ -19,7 +19,7 @@
                     <img src="{{asset('images/vector/search-vector.svg')}}" alt="Search Icon">
                 </div>
         </div>
-        <p class="text-xl font-semibold mt-14 mb-2">Livestock Speciality</p>
+        <p class="text-xl font-semibold mt-14 mb-2">{{$specialist}} Speciality</p>
 
         <div class="grid grid-cols-3">
             @foreach($veterinarians as $index => $veterinarian)
@@ -42,9 +42,13 @@
                                 <p class="font-medium mt-2">Rp {{number_format($veterinarian->consultation_price, 0, ',', '.')}}</p>
                             </div>
                             
-                            <a href="{{route('user.consultation.veterinarian', ['id' => ($veterinarian -> id)]) }}">
-                                <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
-                            </a>
+                            @if ($veterinarian->serviceSchedules->isEmpty())
+                                <button class="btn-sm w-20 mt-auto bg-gray-300 text-xs text-white rounded py-2 px-5 cursor-not-allowed">Offline</button>
+                            @else
+                                <a href="{{ route('user.consultation.veterinarian', ['id' => $veterinarian->id]) }}">
+                                    <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
