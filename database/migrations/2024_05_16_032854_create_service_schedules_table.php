@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('service_schedules', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("veterinarian_id");
-            $table->timestamp('schedule');
+            $table->timestamp('schedule_start');
+            $table->timestamp('schedule_end');
             $table->enum('service_category', ['consultation' , 'reservation']);
-            $table->boolean('is_reserved');
+            $table->boolean('is_reserved')->default(false);
             $table->timestamps();
             $table->foreign('veterinarian_id')->references('id')->on('veterinarians')->onDelete('CASCADE');
         });

@@ -1,8 +1,10 @@
 <?php
-use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\VeterConsultationController;
+
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
 Route::get('/faq', function () {
@@ -62,13 +64,11 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
     })->name("veterinarian.index");
 
     Route::prefix('/consultation')->group(function(){
-        Route::get('/', function () {
-            return view('pages.veterinarian.consultation.index');
-        })->name("veterinarian.consultation");
+        Route::get('/',[VeterConsultationController::class, 'index'])->name("veterinarian.consultation");
 
-        Route::get('/schedule/add', function () {
-            return view('pages.veterinarian.consultation.schedule.index');
-        })->name("veterinarian.consultation.schedule.create");
+        Route::get('/schedule/create',[VeterConsultationController::class, 'createSchedule'])->name("veterinarian.consultation.schedule.create");
+        Route::post('/schedule/create',[VeterConsultationController::class, 'createScheduleSubmit'])->name("veterinarian.consultation.schedule.create.submit");
+
     });
 
 

@@ -3954,6 +3954,10 @@ details.collapse summary::-webkit-details-marker {
   margin-bottom: 2.5rem;
 }
 
+.mb-11 {
+  margin-bottom: 2.75rem;
+}
+
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -4380,10 +4384,6 @@ details.collapse summary::-webkit-details-marker {
   width: 10rem;
 }
 
-.w-48 {
-  width: 12rem;
-}
-
 .w-5 {
   width: 1.25rem;
 }
@@ -4426,6 +4426,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-\[1255\.28px\] {
   width: 1255.28px;
+}
+
+.w-\[150px\] {
+  width: 150px;
 }
 
 .w-\[189\.09px\] {
@@ -4676,6 +4680,12 @@ details.collapse summary::-webkit-details-marker {
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-x-7 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(2rem * var(--tw-space-x-reverse));
@@ -4692,12 +4702,6 @@ details.collapse summary::-webkit-details-marker {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
-.space-y-1 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -4941,6 +4945,11 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(200 182 166 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#DF0000\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(223 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#F1DEC9\] {
   --tw-bg-opacity: 1;
   background-color: rgb(241 222 201 / var(--tw-bg-opacity));
@@ -5012,11 +5021,6 @@ details.collapse summary::-webkit-details-marker {
 
 .bg-white\/50 {
   background-color: rgb(255 255 255 / 0.5);
-}
-
-.bg-\[\#DF0000\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(223 0 0 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-br {
@@ -5593,11 +5597,6 @@ details.collapse summary::-webkit-details-marker {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-\[\#DF0000\] {
-  --tw-text-opacity: 1;
-  color: rgb(223 0 0 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
