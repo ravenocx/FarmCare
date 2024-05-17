@@ -62,9 +62,7 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
         return view('pages.veterinarian.dashboard.index');
     })->name("veterinarian.index");
 
-    route::get('/offlinereservation', function() {
-        return view('pages.veterinarian.offlinereservation.index');
-    })->name("offlinereservation.index");
+    
 
     Route::resource('offschedule', OffscheduleController::class);
 

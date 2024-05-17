@@ -1,6 +1,6 @@
 @extends('layouts.veterinarian.app')
 
-@section('title' ,'Veterinarian - Online Consultation')
+@section('title' ,'Veterinarian - Offline Consultation')
 
 @section('main-content')
 <div class="container">
@@ -28,8 +28,8 @@
                 <td>{{ $offschedule->veterinarian->reservation_price }}</td>
                 <td>{{ $offschedule->status }}</td>
                 <td>
-                    <a href="{{ route('offschedule.edit', $offschedule->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('offschedule.destroy', $offschedule->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ url('veterinarian/offschedule/'.$offschedule->id.'/edit') }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ url('veterinarian/offschedule/'.$offschedule->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
