@@ -84,7 +84,6 @@
                         </p>
                     </div>
                     <div class="flex items-center gap-x-5">
-                        <!-- <a href="{{ route('article.edit', $article->id) }}" class="w-1/2 py-2 bg-yellow-500 text-white text-center text-sm font-medium rounded-lg">Edit</a> -->
                         <button data-modal-target="popup-modal{{ $article->id }}" data-modal-toggle="popup-modal{{ $article->id }}" class="w-1/2 py-2 bg-red-600 text-white text-sm font-medium rounded-lg">Delete</button>
                     </div>
                 </div>
@@ -104,15 +103,6 @@
                                 </svg>
                                 <h3 class="mb-5 text-lg font-normal text-gray-500">Are you sure you
                                     want to delete this article?</h3>
-                                <!-- <form action="{{ route('article.destroy', $article->id) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                        Yes, I'm sure
-                                    </button>
-                                    <button data-modal-hide="popup-modal{{ $article->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">No,
-                                        cancel</button>
-                                </form> -->
                             </div>
                         </div>
                     </div>

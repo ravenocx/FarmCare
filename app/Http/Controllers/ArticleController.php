@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,20 +23,22 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         try {
+            $userId = Auth::guard('user')->user()->id;
+
             $article = Article::create([
                 'title' => $request->title,
                 'category' => $request->category,
                 'content' => $request->content,
-                'creator' => Auth::guard('user')->user()->id,
+                'creator' => $userId,
             ]);
-
-            error_log($article->id);
 
             // Menyimpan setiap gambar
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
                     $imageName = time() . '.' . $image->extension();
                     $image->move(public_path('images'), $imageName);
+
+                    Media::create(['source_id' => $article->id, 'file_name' => $imageName, 'user_id' => $userId]);
                 }
             }
 
