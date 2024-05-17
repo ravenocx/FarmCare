@@ -3,6 +3,7 @@ use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OffscheduleController;
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
 Route::get('/faq', function () {
@@ -60,6 +61,12 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
     Route::get('/', function () {
         return view('pages.veterinarian.dashboard.index');
     })->name("veterinarian.index");
+
+    route::get('/offlinereservation', function() {
+        return view('pages.veterinarian.offlinereservation.index');
+    })->name("offlinereservation.index");
+
+    Route::resource('offschedule', OffscheduleController::class);
 
 });
 

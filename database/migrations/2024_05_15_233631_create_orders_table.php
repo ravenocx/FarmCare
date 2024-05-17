@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('category', ['Livestock', 'Aquaculture', 'Poultry', 'Nutrition', 'Breeding', 'Dermatology']);
             $table->enum('service_category', ['consultation' , 'reservation']);
             $table->enum('order_status', ['On going', 'Complete', 'Cancel']);
-            $table->timestamp('order_date');
+            $table->timestamp('order_date')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->decimal('price');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');

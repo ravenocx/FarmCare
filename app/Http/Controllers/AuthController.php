@@ -20,7 +20,7 @@ class AuthController extends Controller
             return redirect()->route('user.home');
         }
         if(Auth::guard('veterinarian')->check()){
-            return redirect()->route('dashboard');
+            return redirect()->route('veterinarian.index');
         }
 
         return view("welcome");
