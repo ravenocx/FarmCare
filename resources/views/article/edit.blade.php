@@ -47,9 +47,9 @@
                 <a href="{{ route('article.index') }}">
                     <li class="bg-[#8D7B68] rounded-2xl py-1 px-5 text-white">Article</li>
                 </a>
-                <a href="{{ route('orderHistory') }}">
+                <!-- <a href="{{ route('orderHistory') }}">
                     <li class="px-5">Order History</li>
-                </a>
+                </a> -->
                 <a href="#">
                     <li class="px-5">Offline Reservation</li>
                 </a>

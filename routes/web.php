@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
@@ -31,12 +33,14 @@ Route::middleware(['AuthSession'])->group(function(){
         return view('pages.user.index');
     })->name("user.home");
 
-    
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
     Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
     Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
-
+    
+    Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+    Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
+    Route::post('/article/create', [ArticleController::class, 'store'])->name('article.store');
 });
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
