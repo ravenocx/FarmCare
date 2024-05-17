@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->string('image');
             $table->enum('category', ['Antraknosa', 'Flu Burung', 'Flu Babi', 'Ensefalitis Jepang', 'Enteritis Homogarik', 'Herpses Koi', 'Ensefalomielitis Burung', 'Hepatitis Badan Inklusi', 'Imunodefisiensi Kucing', 'Infeksi Kalisivirus Kucing']);
             $table->unsignedBigInteger("creator");
             $table->foreign('creator')->references('id')->on('veterinarians')->onDelete('CASCADE');
