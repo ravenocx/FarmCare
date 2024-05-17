@@ -21,9 +21,43 @@ class ConsultationController extends Controller
     }
     public function index()
     {
+        $now = $this->currentDateTime;
         
-        $veterinariansRecommendation = Veterinarian::orderBy('id', 'DESC')->limit(2)->get() ;
-        $veterinariansBySpecialist = Veterinarian::orderBy('specialist')
+        $veterinariansRecommendation = Veterinarian::select('veterinarians.*')
+        ->selectRaw('COUNT(service_schedules.id) as service_schedules_count')
+        ->leftJoin('service_schedules', function ($join) use ($now) {
+            $join->on('veterinarians.id', '=', 'service_schedules.veterinarian_id')
+                ->where('service_schedules.is_reserved', false)
+                ->where('service_schedules.schedule_start', '<=', $now)
+                ->where('service_schedules.schedule_end', '>=', $now);
+        })
+        ->groupBy('veterinarians.id')
+        ->orderBy('service_schedules_count', 'desc')
+        ->with(['serviceSchedules' => function ($query) use ($now) {
+            $query->where('is_reserved', false)
+                ->where('schedule_start', '<=', $now)
+                ->where('schedule_end', '>=', $now);
+        }])
+        ->orderBy('veterinarians.id', 'desc') // Order by veterinarian id descending
+        ->limit(2) // Limit the result to 2 veterinarians
+        ->get();
+        
+        $veterinariansBySpecialist = Veterinarian::select('veterinarians.*')
+        ->selectRaw('COUNT(service_schedules.id) as service_schedules_count')
+        ->leftJoin('service_schedules', function ($join) use ($now) {
+            $join->on('veterinarians.id', '=', 'service_schedules.veterinarian_id')
+                ->where('service_schedules.is_reserved', false)
+                ->where('service_schedules.schedule_start', '<=', $now)
+                ->where('service_schedules.schedule_end', '>=', $now);
+        })
+        ->groupBy('veterinarians.id')
+        ->orderBy('veterinarians.specialist')
+        ->orderBy('service_schedules_count', 'desc') 
+        ->with(['serviceSchedules' => function ($query) use ($now) {
+            $query->where('is_reserved', false)
+                ->where('schedule_start', '<=', $now)
+                ->where('schedule_end', '>=', $now);
+        }])
         ->get()
         ->groupBy('specialist')
         ->map(function ($group) {
