@@ -44,10 +44,7 @@ class AuthController extends Controller
         $data = $request->all();
         $isRemember = $request->filled('rememberme');
 
-        error_log($request);
-
         if (Auth::guard('user')->attempt(['email' => $data['email'], 'password' => $data['password']], $isRemember)) {
-            error_log("berhasil loginn");
             Session::put('user', $data['email']);
             request()->session()->flash('success', 'Successfully login');
             return redirect()->route('user.home');
@@ -196,10 +193,8 @@ class AuthController extends Controller
     {
         $data = $request->all();
         $isRemember = $request->filled('rememberme');
-        error_log('Belum masuk');
 
         if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password']], $isRemember)) {
-            error_log('Berhasil login');
             Session::put('admin', $data['email']);
             request()->session()->flash('success', 'Successfully login');
             return redirect()->route('admin.index');
