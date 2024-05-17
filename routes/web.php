@@ -61,5 +61,16 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
         return view('pages.veterinarian.dashboard.index');
     })->name("veterinarian.index");
 
+    Route::prefix('/consultation')->group(function(){
+        Route::get('/', function () {
+            return view('pages.veterinarian.consultation.index');
+        })->name("veterinarian.consultation");
+
+        Route::get('/schedule/add', function () {
+            return view('pages.veterinarian.consultation.schedule.index');
+        })->name("veterinarian.consultation.schedule.create");
+    });
+
+
 });
 
