@@ -1,28 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order History</title>
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  @vite('resources/js/app.js')
+@extends('layouts.veterinarian.app')
 
-</head>
-  <body>
-    <!--Put the header in here-->
-    @extends('layouts.header')
+@section('title', 'Veterinarian - Order History')
 
-    @include('layouts.sidebar')
-
-    <!-- content -->
-    @section('main-content')
-    <div class="mb-5 mt-20 ml-[350px]">
+@section('main-content')
+<div class="mb-5">
         <h2 class="pt-8 font-medium text-3xl">Patient</h2>
     </div>
 
-    <div class ="ml-[350px] flex w-full">
+    <div class ="flex w-full">
       <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] dark:bg-surface-dark dark:text-white mr-8">
           <div class="pt-2 pb-3 pl-3 pr-3">
               <h2 class="text-lg font-normal text-gray-500 text-left text-balance">Total Patient</h2>
@@ -52,11 +37,11 @@
       </div>
     </div>
 
-    <div class="mb-5 ml-[350px]">
+    <div class="mb-5">
         <h2 class="pt-8 font-medium text-3xl">Order History</h2>
     </div>
 
-    <div class="ml-[350px] flex">
+    <div class="flex">
         <div class="flex mr-5">
             <p for="order_date" class="text-gray-500 mr-5">Delivered On </p>
             <div class="font-semibold">
@@ -72,7 +57,7 @@
         </div>
     </div>
 
-    <div class="ml-[350px] mt-5 mr-8">
+    <div class="mt-5 mr-8">
         <div class="w-500 h-auto rounded-lg overflow-hidden bg-[#FFF8F0] flex mb-10">
             <div class="pt-4 pb-3 pl-3 pr-3 flex">
                 <img src="images\icon-dokter.png" alt="" class="h-[100px] card-image rounded-md mr-5">
@@ -92,9 +77,9 @@
                 </div>
             </div>
 
-            <button href="" class="h-[60px] w-[150px] text-[#8D7B68] font-semibold bg bg-white border border-gray-800 font-medium rounded-lg text-sm text-center mt-[40px] ml-[100px]">Order Detail</button>
+            <!-- <button href="" class="h-[60px] w-[150px] text-[#8D7B68] font-semibold bg bg-white border border-gray-800 font-medium rounded-lg text-sm text-center mt-[40px] ml-[100px]">Order Detail</button> -->
+            <a href="{{ route('veterinarian.orderhistory.detail') }}" class="btn btn-white mt-[40px] ml-[100px]">Order Detail</a>
+
         </div>
     </div>
-
-  </body>
-</html>
+@endsection

@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order_History;
-use Illuminate\View\View;
-use App\Http\Requests\StoreOrder_HistoryRequest;
-use App\Http\Requests\UpdateOrder_HistoryRequest;
+use App\Models\Order;
+use App\Models\Veterinarian;
+use Illuminate\Http\Requests;
 
 class OrderHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() : View
+    public function index()
     {
-        return view('orderhistories.detail');
+        return view('pages.veterinarian.orderhistory.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreOrder_HistoryRequest $request)
+    public function detailOrder()
     {
-        //
+        return view('pages.veterinarian.orderhistory.detail');
     }
 
     /**

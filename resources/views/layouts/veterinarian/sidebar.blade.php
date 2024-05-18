@@ -12,7 +12,7 @@
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
+            <a href="{{ route('veterinarian.orderhistory') }}" class="flex items-center p-2 rounded-lg hover:bg-primaryColor hover:text-white group">
                <span class="ms-3">Order History</span>
             </a>
          </li>
@@ -22,7 +22,7 @@
             </a>
          </li>
          <li>
-            <a href="{{route('veterinarian.consultation')}}" class="flex items-center p-2 rounded-lg {{Route::currentRouteName() == 'veterinarian.consultation' ? 'bg-primaryColor text-white' : ''}}  hover:bg-primaryColor hover:text-white group">
+            <a href="#" class="flex items-center p-2 rounded-lg {{Route::currentRouteName() == 'veterinarian.consultation' ? 'bg-primaryColor text-white' : ''}}  hover:bg-primaryColor hover:text-white group">
                <span class="ms-3">Online Consultation</span>
             </a>
          </li>

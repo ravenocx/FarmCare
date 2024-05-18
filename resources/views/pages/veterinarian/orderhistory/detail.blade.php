@@ -1,21 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detail Order History</title>
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+@extends('layouts.veterinarian.app')
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  @vite('resources/js/app.js')
+@section('title', 'Veterinarian - Detail Order History')
 
-</head>
-  <body>
-    @extends('layouts.header')
-
-    @include('layouts.sidebar')
-
-    <nav class="flex mb-5 mt-20 ml-[350px]" aria-label="Breadcrumb">
+@section('main-content')
+<!-- <nav class="flex mb-5" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
           <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-[#A4907C]">
@@ -39,16 +27,16 @@
           </div>
         </li>
       </ol>
-    </nav>
+    </nav> -->
 
-    <div class="ml-[480px] flex">
+    <div class="flex">
       <div class="flex mb-10">
           <p class="text-black font-semibold text-3xl">Detail Order History</p>
       </div>
     </div>
 
     
-    <div class="flex ml-[530px] grid grid-cols-2 divide-x-2 divide-[#A4907C]">
+    <div class="flex grid grid-cols-2 divide-x-2 divide-[#A4907C]">
       <div class="container pr-2">
         <h2 class="text-base font-normal text-gray-500 text-left text-balance mb-2">Service</h2>
         <p class="text-lg font-semibold text-justify text-black mb-5">Offline Reservation</p>
@@ -60,7 +48,7 @@
         <h2 class="text-sm font-normal text-gray-500 text-left text-balance mb-2">On Duty</h2>
         <div class="flex">
           <img src="images\icon-dokter.png" alt="" class="h-[80px] card-image rounded-md">
-          <div class="pt-2 pl-3 pr-3">
+          <div class="pt-2 pr-3">
               <p class="text-base font-semibold text-justify text-black">Drh. Putri Nadia L.</p>
               <h2 class="text-base font-normal text-gray-500 text-left text-balance">Cattle Specialist</h2>
           </div>
@@ -104,6 +92,4 @@
 
       </div>
     </div>
-    
-  </body>
-</html>
+@endsection

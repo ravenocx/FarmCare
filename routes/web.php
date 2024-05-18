@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\VeterConsultationController;
+use App\Http\Controllers\OrderHistoryController;
 
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
@@ -70,10 +71,21 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
         Route::post('/schedule/create',[VeterConsultationController::class, 'createScheduleSubmit'])->name("veterinarian.consultation.schedule.create.submit");
 
     });
+    
+
+    // Route::prefix('/orderhistory')->group(function(){
+    //     Route::get('/', [OrderHistoryController::class, 'index'])->name("veterinarian.orderhistory");
+    //     Route::get('/detail', [OrderHistoryController::class, 'detailOrder'])->name("veterinarian.orderhistory.detail");
+    // });
+    
+    Route::prefix('/orderhistory')->group(function(){
+        Route::get('/', [OrderHistoryController::class, 'index'])->name("veterinarian.orderhistory");
+        Route::get('/detail', [OrderHistoryController::class, 'detailOrder'])->name("veterinarian.orderhistory.detail");
+    });
+
+    // Route::resource('orderhistory', OrderHistoryController::class);
 
 
+    // Route::resource('offschedule', OffscheduleController::class);
+    
 });
-
-Route::get('/', function () {return view('detail');});
-
-Route::resource('orderhistories', OrderHistoryController::class);
