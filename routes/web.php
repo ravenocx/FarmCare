@@ -57,6 +57,7 @@ Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function () {
     Route::get('/veterinarian/{id}', [AplicantController::class, 'veterinarianDetail'])->name("admin.management.veterinarian.detail");
     Route::get('/veterinarian/edit/{id}', [AplicantController::class, 'editVeterinarianForm'])->name("admin.management.veterinarian.edit");
     Route::put('/veterinarian/update/{id}', [AplicantController::class, 'updateVeterinarian'])->name('admin.management.veterinarian.update');
+    Route::delete('/veterinarian/delete/{id}', [AplicantController::class, 'deleteVeterinarian'])->name('admin.management.veterinarian.delete');
 });
 
 

@@ -3,8 +3,15 @@
 @section('title', 'Admin - Veterinarian List')
 
 @section('main-content')
-    <h1 class="font-semibold text-2xl pt-32 px-14 mb-12">List of Veterinarians</h1>
-
+   
+    <div class="flex justify-between pt-32 px-14 mb-12">
+    <h1 class="font-semibold text-2xl">List of Veterinarians</h1>
+        <form action="{{ route('admin.management.veterinarian') }}" method="GET" >
+        <input type="text" name="query" placeholder="Search veterinarians" class="border border-gray-300 px-4 py-2 rounded-md mr-2">
+        <button type="submit" class="btn px-4 py-2 bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Search</button>
+    </form>
+    </div>
+    
     <div class="flex flex-wrap justify-center mb-20">
         @foreach ($veterinariansByAccepted as $index => $veterinarian)
             @if ($index % 3 === 0)
@@ -15,7 +22,7 @@
             @endif
             
             <div class="bg-secondaryColor rounded-lg shadow-2xl mr-14 w-[400px] mb-6">
-                <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{ $veterinarian->photo }}"/>
+            <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}" alt="Veterinarian Photo">
                 <p class="font-semibold text-base text-center mb-3"> {{ $veterinarian->name }}</p>
                 <div class="flex items-center justify-center mb-6">
                     <img src="{{asset('images/icon/specialist-icon.svg')}}" class="size-6">
@@ -33,12 +40,18 @@
                     <a href="{{ route('admin.management.veterinarian.edit', ['id' => $veterinarian->id]) }}" class="mr-12">
                         <button class="btn px-11 py-2 rounded-xl bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Edit profile</button>
                     </a>
-                    <a href="">
-                        <button class="btn px-11 py-2 rounded-xl bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Delete</button>
-                    </a>
+                    <form action="{{ route('admin.management.veterinarian.delete', ['id' => $veterinarian->id]) }}" method="POST" class="inline">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn px-11 py-2 rounded-xl bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Delete</button>
+</form>
                 </div>
             </div>
         @endforeach
         
+    </div>
+
+    <div class="flex justify-center mt-6">
+        {{ $veterinariansByAccepted->links() }}
     </div>
 @endsection

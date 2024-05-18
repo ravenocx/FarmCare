@@ -6,7 +6,7 @@
     <h1 class="font-semibold text-2xl pt-32 px-14 mb-12">Veterinarian Profile</h1>
 
     <div class="w-[1200px] container mx-auto border-2 pb-20 mb-40">
-        <img class="mask mask-circle mx-auto mt-4 mb-20" src="{{$veterinarian->photo}}"/>
+        <img class="mask mask-circle mx-auto mt-4 mb-20" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
 
         <div class="flex flex-wrap font-medium text-xl px-40">
             <div class="w-1/2">

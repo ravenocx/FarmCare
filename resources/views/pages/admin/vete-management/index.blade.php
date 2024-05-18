@@ -17,7 +17,7 @@
                 <div class="flex justify-center w-full mb-6"> <!-- Start a new row -->
             @endif
             <div class="bg-secondaryColor rounded-lg shadow-2xl mr-14 w-[400px] mb-6">
-                <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{ $veterinarian->photo }}"/>
+                <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
                 <p class="font-semibold text-base text-center mb-3"> {{ $veterinarian->name }}</p>
                 <div class="flex items-center justify-center mb-6">
                     <img src="{{asset('images/icon/specialist-icon.svg')}}" class="size-6">
@@ -35,9 +35,11 @@
                     <a href="{{ route('admin.management.veterinarian.edit', ['id' => $veterinarian->id]) }}" class="mr-12">
                         <button class="btn px-11 py-2 rounded-xl bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Edit profile</button>
                     </a>
-                    <a href="">
-                        <button class="btn px-11 py-2 rounded-xl bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Delete</button>
-                    </a>
+                    <form action="{{ route('admin.management.veterinarian.delete', ['id' => $veterinarian->id]) }}" method="POST" class="inline">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn px-11 py-2 rounded-xl bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Delete</button>
+</form>
                 </div>
             </div>
         @endforeach
@@ -153,30 +155,9 @@
                                 <a href="{{ $veterinarian->certification_link }}"><u>Certification Link</u></a>
                             </td>
                             <td class="flex justify-center items-center px-6 py-4">
-                                @if ($veterinarian->is_accepted === 0)
-                                    <span class="text-red-600 dark:text-red-500">Rejected</span>
-                                @elseif ($veterinarian->is_accepted === 1)
+                              
                                     <span class="text-green-600 dark:text-blue-500">Accepted</span>
-                                @else
-                                    <form
-                                        action="{{ route('admin.management.applicant.update-status', ['id' => $veterinarian->id]) }}"
-                                        method="POST" class="inline">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="accept">
-                                        <button type="submit"
-                                            class="font-medium text-green-600 dark:text-blue-500 hover:underline">Approve</button>
-                                    </form>
-                                    <form
-                                        action="{{ route('admin.management.applicant.update-status', ['id' => $veterinarian->id]) }}"
-                                        method="POST" class="inline">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="reject">
-                                        <button type="submit"
-                                            class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Reject</button>
-                                    </form>
-                                @endif
+                               
                             </td>
                         </tr>
                     @endforeach

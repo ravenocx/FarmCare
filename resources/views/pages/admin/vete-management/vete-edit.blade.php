@@ -7,11 +7,19 @@
 
     <div class="w-[1200px] container mx-auto border-2 pb-20 mb-40">
       
-        <form method="POST" action="{{ route('admin.management.veterinarian.update', $veterinarian->id) }}">
+        <form method="POST" action="{{ route('admin.management.veterinarian.update',  ['id' => $veterinarian->id]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <img class="mask mask-circle mx-auto mt-4 mb-20" src="{{$veterinarian->photo}}"/>
+            <img class="mask mask-circle mx-auto mt-4 mb-20" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
             <div class="flex flex-wrap font-medium text-xl px-40">
+            <div class="w-full mb-6">
+                    <label for="photo">Photo</label>
+                    <br>
+                    <input type="file" id="photo" name="photo" class="w-full rounded-md border-gray-200 my-4" accept="image/png, image/jpg, image/jpeg">
+                    @error('photo')
+                        <div class="text-red-500 text-sm">{{ $message }}</div>
+                    @enderror
+                </div>
                 <div class="w-1/2">
                     <div>
                         <label for="name">Full Name</label>

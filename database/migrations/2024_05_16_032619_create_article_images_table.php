@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_images', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("article_id");
-            $table->string('image');
+            $table->string('title');
+            $table->text('content');
+            $table->enum('category', ['Antraknosa', 'Flu Burung', 'Flu Babi', 'Ensefalitis Jepang', 'Enteritis Homogarik', 'Herpses Koi', 'Ensefalomielitis Burung', 'Hepatitis Badan Inklusi', 'Imunodefisiensi Kucing', 'Infeksi Kalisivirus Kucing']);
+            $table->unsignedBigInteger("creator");
+            $table->foreign('creator')->references('id')->on('veterinarians')->onDelete('CASCADE');
             $table->timestamps();
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('CASCADE');
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_images');
+        Schema::dropIfExists('articles');
     }
 };
