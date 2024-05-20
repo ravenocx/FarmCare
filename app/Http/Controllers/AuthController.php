@@ -181,19 +181,16 @@ class AuthController extends Controller
     }
 
     public function adminLoginSubmit(Request $request){
-        try{
-            $data= $request->all();
-            $isRemember = $request -> filled('rememberme');
-            
-            if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
-                Session::put('admin',$data['email']);
-                request()->session()->flash('success','Welcome! Successfully login as admin');
-                return redirect()->route('admin.index');
-            }
-        }catch(\Exception $e) {
-            request()->session()->flash('error','Invalid email and password, please try again!');
-            return redirect()->back();
+        $data= $request->all();
+        $isRemember = $request -> filled('rememberme');
+        
+        if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
+            Session::put('admin',$data['email']);
+            request()->session()->flash('success','Welcome! Successfully login as admin');
+            return redirect()->route('admin.index');
         }
 
+        request()->session()->flash('error','Invalid email and password,  please try again!');
+        return redirect()->back();
     }
 }
