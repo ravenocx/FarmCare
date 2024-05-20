@@ -14,8 +14,8 @@ class ConsultationController extends Controller
     public function __construct()
     {
         $this->breadcrumbs = [
-            ['label' => 'Home', 'url' => 'user.home'],
-            ['label' => 'Consultation', 'url' => 'user.consultation'],
+            ['label' => 'Home', 'url' => route('user.home')],
+            ['label' => 'Consultation', 'url' => route('user.consultation')],
         ];
         $this->currentDateTime = Carbon::now();
     }
@@ -70,6 +70,7 @@ class ConsultationController extends Controller
 
     public function getDoctorBySpecialist($specialist)
     {
+        $this->breadcrumbs = array_merge($this->breadcrumbs, array(['label' => $specialist, 'url' => route('user.consultation.specialist' , ['specialist' => $specialist])]));
 
         $now = $this->currentDateTime;
 
@@ -95,8 +96,15 @@ class ConsultationController extends Controller
     }
     private function prepareVeterinarianView($id, $viewName)
     {
-        $veterinarian = Veterinarian::findOrFail($id);
-        return view($viewName, compact('veterinarian'))->with('breadcrumbs', $this->breadcrumbs);
+        $this->breadcrumbs = array_merge($this->breadcrumbs, array(['label' => 'Veterinarian Details', 'url' => route('user.consultation.veterinarian', ['id' => $id])]));
+
+        $now = $this->currentDateTime;
+        $veterinarians = Veterinarian::with(['serviceSchedules' => function ($query) use ($now) {
+            $query->where('is_reserved', false)
+                ->where('schedule_start', '<=', $now)
+                ->where('schedule_end', '>=', $now);
+        }])->where('id',$id)->get();
+        return view($viewName, compact('veterinarians'))->with('breadcrumbs', $this->breadcrumbs);
     }
 
     public function getVeterinarianDetails($id)

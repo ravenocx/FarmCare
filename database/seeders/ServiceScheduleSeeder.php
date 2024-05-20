@@ -17,10 +17,10 @@ class ServiceScheduleSeeder extends Seeder
     {
         $faker = Faker::create("id_ID");
         for ($i = 0; $i < 200; $i++) {
-            $scheduleStart = $faker->dateTimeBetween('2024-05-17 15:00:00', '2024-05-17 21:00:00');
-            $scheduleEnd = $faker->dateTimeBetween($scheduleStart, '2024-05-17 24:00:00');
+            $scheduleStart = $faker->dateTimeBetween('2024-05-20 10:00:00', '2024-05-20 16:00:00'); // Change this when testing
+            $scheduleEnd = $faker->dateTimeBetween($scheduleStart, '2024-05-20 21:00:00'); // Change this when testing
             DB::table('service_schedules')->insert([                
-                'veterinarian_id' => $faker->numberBetween(1, 200),
+                'veterinarian_id' => $faker->numberBetween(908, 1100),  // Change this when testing
                 'schedule_start' => $scheduleStart,
                 'schedule_end' => $scheduleEnd, 
                 'service_category' => 'consultation',

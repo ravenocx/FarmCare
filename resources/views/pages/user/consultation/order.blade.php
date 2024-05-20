@@ -3,6 +3,7 @@
 @section('title' , 'Order Online Consultation')
 
 @section('main-content')
+    @foreach($veterinarians as $veterinarian)
     <div class="flex justify-center mt-20">
         <div class="border-shadeCream border-2 rounded-lg h-[400px]">
             <div class="mx-4 my-3">
@@ -67,19 +68,25 @@
                         <input id="dropzone-file-input" type="file" name="payment_proof" type="file" class="file:rounded-lg font-medium mx-4 file-input w-64 h-10 file:normal-case file:bg-shadeBrown hover:bg-gray-100" required />
                     </label>
                 </div> 
+
+                @if ($veterinarian->serviceSchedules->isEmpty())
+                    <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Offline</button>
+
+                @else
+                    <div class="flex justify-center">
+                        <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Submit</button>
+                    </div>
+                @endif
     
-                <div class="flex justify-center">
-                    <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Submit</button>
-                </div>
+                
             </form>
 
         </div>
     </div>
+    @endforeach
 
     @push('scripts')
         <script>
-            
-
             document.getElementById('dropzone-file').addEventListener('dragover', function(event) {
                 event.preventDefault();
             });
