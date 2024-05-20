@@ -34,6 +34,7 @@ class ConsultationController extends Controller
                 ->where('service_schedules.schedule_start', '<=', $now)
                 ->where('service_schedules.schedule_end', '>=', $now);
         })
+        ->where('veterinarians.is_accepted', true)
         ->groupBy('veterinarians.id')
         ->orderBy('service_schedules_count', 'desc')
         ->with(['serviceSchedules' => function ($query) use ($now) {
@@ -53,6 +54,7 @@ class ConsultationController extends Controller
                 ->where('service_schedules.schedule_start', '<=', $now)
                 ->where('service_schedules.schedule_end', '>=', $now);
         })
+        ->where('veterinarians.is_accepted', true)
         ->groupBy('veterinarians.id')
         ->orderBy('veterinarians.specialist')
         ->orderBy('service_schedules_count', 'desc') 
@@ -85,6 +87,7 @@ class ConsultationController extends Controller
                 ->where('service_schedules.schedule_start', '<=', $now)
                 ->where('service_schedules.schedule_end', '>=', $now);
         })
+        ->where('veterinarians.is_accepted', true)
         ->where('veterinarians.specialist', $specialist)
         ->groupBy('veterinarians.id')
         ->orderBy('service_schedules_count', 'desc') 
@@ -106,7 +109,10 @@ class ConsultationController extends Controller
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
                 ->where('schedule_end', '>=', $now);
-        }])->where('id',$id)->get();
+        }])
+        ->where('veterinarians.is_accepted', true)
+        ->where('id',$id)
+        ->get();
         return view($viewName, compact('veterinarians'))->with('breadcrumbs', $this->breadcrumbs);
     }
 
