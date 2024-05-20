@@ -152,6 +152,7 @@ class ConsultationController extends Controller
                 'veterinarian_id' => $veterinarian->id,
                 'cust_name' => $userName,
                 'cust_phone_number' => Auth::guard('user')->user()-> phone_number,
+                'veter_phone_number' => $veterinarian->phone_number,
                 'payment_proof' => $imageUrl,
                 'appointment_date' => $this->currentDateTime,
                 'category' => $veterinarian->specialist,

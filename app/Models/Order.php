@@ -13,6 +13,7 @@ class Order extends Model
         'veterinarian_id',
         'cust_name',
         'cust_phone_number',
+        'veter_phone_number',
         'payment_proof',
         'appointment_date',
         'category',

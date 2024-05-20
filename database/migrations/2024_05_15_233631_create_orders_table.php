@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger("veterinarian_id");
             $table->string('cust_name');
             $table->string('cust_phone_number');
+            $table->string('veter_phone_number');
             $table->string('payment_proof');
             $table->timestamp('appointment_date');
             $table->enum('category', ['Livestock', 'Aquaculture', 'Poultry', 'Nutrition', 'Breeding', 'Dermatology']);
