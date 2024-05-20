@@ -186,11 +186,11 @@ class AuthController extends Controller
         
         if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
             Session::put('admin',$data['email']);
-            request()->session()->flash('success','Successfully login');
+            request()->session()->flash('success','Welcome! Successfully login as admin');
             return redirect()->route('admin.index');
         }
 
-        request()->session()->flash('error','Invalid email and password please try again!');
+        request()->session()->flash('error','Invalid email and password,  please try again!');
         return redirect()->back();
     }
 }
