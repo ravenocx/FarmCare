@@ -5572,6 +5572,26 @@ details.collapse summary::-webkit-details-marker {
   padding-top: 64px;
 }
 
+.pb-32 {
+  padding-bottom: 8rem;
+}
+
+.pb-48 {
+  padding-bottom: 12rem;
+}
+
+.pb-52 {
+  padding-bottom: 13rem;
+}
+
+.pb-56 {
+  padding-bottom: 14rem;
+}
+
+.pb-60 {
+  padding-bottom: 15rem;
+}
+
 .text-left {
   text-align: left;
 }

@@ -134,6 +134,7 @@ class AuthController extends Controller
             'gender' => 'string|required|in:male,female',
             'university'=>'string|required|min:5',
             'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
+            'phone_number'=> 'string|required|min:12',
             'email'=>'string|required|unique:veterinarians,email',
             'password'=>'required|min:6|confirmed',
             'certification' => 'required|file|mimes:pdf|max:10240'
@@ -158,6 +159,7 @@ class AuthController extends Controller
             'gender' => $data['gender'],
             'university' => $data['university'],
             'graduate_year' => $data['graduateYear'],
+            'phone_number' => $data['phone_number'],
             'email'=> $data['email'],
             'password'=> Hash::make($data['password']),
             'str_number'=> $faker->numerify('################'),

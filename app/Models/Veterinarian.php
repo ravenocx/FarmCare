@@ -15,6 +15,7 @@ class Veterinarian extends Authenticatable
         'name',
         'specialist',
         'university',
+        'phone_number',
         'graduate_year',
         'email',
         'password',
@@ -36,14 +37,6 @@ class Veterinarian extends Authenticatable
         return $this->hasMany('App\Models\ServiceSchedule', 'veterinarian_id', 'id');
     }
 
-    // public function getVetWithServiceSchedules(){
-    //     return Veterinarian::withCount('serviceSchedules')
-    //     ->orderBy('service_schedules_count > 0 DESC')
-    //     ->withC(['serviceSchedules'=> function($query){
-    //         $query->where('is_reserved', false)
-    //             ->orderBy('schedule_start', 'ASC');
-    //     }])->get();
-    // }
 
     protected function casts(): array
     {
