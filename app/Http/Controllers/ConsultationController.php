@@ -123,7 +123,7 @@ class ConsultationController extends Controller
 
     public function getVeterinarianOrderDetails($id)
     {
-        return $this->prepareVeterinarianView($id, 'pages.user.consultation.order');
+        return $this->prepareVeterinarianView($id, 'pages.user.consultation.payment');
     }
 
     private $orderId;

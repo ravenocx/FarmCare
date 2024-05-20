@@ -55,7 +55,7 @@
                 </div>
             </div>
 
-            <form action="{{route('user.consultation.veterinarian.order.submit', ['id' => $veterinarian->id] )}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('user.consultation.veterinarian.payment.submit', ['id' => $veterinarian->id] )}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="veterinarian_id" value="{{ $veterinarian->id }}">
                 <div class="flex items-center justify-center w-full mt-9 mb-8">
