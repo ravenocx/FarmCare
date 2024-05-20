@@ -88,9 +88,7 @@
     <x-alert-notification type="error" message="{{session('error')}}"/>
     @endif
 
-    @if (session('success'))
-        <x-popup-notification message="{{session('success')}}" />
-    @endif
+    
     
     @push('scripts')
         <script>

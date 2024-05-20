@@ -35,9 +35,9 @@ Route::middleware(['AuthSession'])->group(function(){
         Route::get('/', [ConsultationController::class, 'index'])->name('user.consultation');
         Route::get('/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
         Route::get('/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
-        Route::get('/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.payment');
-        Route::post('/veterinarian/{id}/order', [ConsultationController::class, 'createConsultationOrder'])->name('user.consultation.veterinarian.payment.submit');
-
+        Route::get('/veterinarian/{id}/payment', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.payment');
+        Route::post('/veterinarian/{id}/payment', [ConsultationController::class, 'createConsultationOrder'])->name('user.consultation.veterinarian.payment.submit');
+        Route::get('/order/{id}', [ConsultationController::class, 'getConsultationOrder'])->name('user.consultation.order');
     });
 
 });

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Auth;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use App\Models\Order;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class ConsultationController extends Controller
@@ -153,7 +154,7 @@ class ConsultationController extends Controller
     
             $veterinarian = Veterinarian::findOrFail($request->veterinarian_id);
             
-            Order::create([
+            $order = Order::create([
                 'user_id' => Auth::guard('user')->user()-> id,
                 'veterinarian_id' => $veterinarian->id,
                 'cust_name' => $userName,
@@ -168,11 +169,35 @@ class ConsultationController extends Controller
                 'price' => $veterinarian -> consultation_price,
             ]);
             request()->session()->flash('success','Online Consultation Order created sucessfully!');
-            return redirect()->back();
+            return redirect()->route('user.consultation.order' , ['id' => $order->id]);
         }catch(\Exception $e) {
             request()->session()->flash('error','An error occurred during the payment :  ' . $e->getMessage());
             return redirect()->back();
+        }   
+    }
+    public function getConsultationOrder($id){
+        $this->breadcrumbs = array_merge($this->breadcrumbs, array(['label' => 'Order', 'url' => route('user.consultation.order', ['id' => $id])]));
+
+        try {
+            $order = Order::findOrFail($id);
+            // dd($order);
+            $phone_number = $order->veter_phone_number;
+            $order_id = $order->id;
+            $order_date = $order->order_date;
+            $customer_name = $order->cust_name;
+
+            // Create the message
+            $message = "Order ID = {$order_id}\nOrder Date = {$order_date}\nCustomer Name = {$customer_name}";
+
+            // URL encode the message
+            $encoded_message = urlencode($message);
+
+            // Create the WhatsApp link
+            $whatsapp_link = "https://wa.me/{$phone_number}?text={$encoded_message}";
+
+            return view('pages.user.consultation.order',compact('order', 'whatsapp_link'))->with('breadcrumbs', $this->breadcrumbs);
+        }catch (ModelNotFoundException $e) {
+            abort(404);
         }
-        
     }
 }

@@ -35,10 +35,10 @@ class VeterinarianSeeder extends Seeder
                     'Universitas Brawijaya'
                 ]),
                 'graduate_year' => $faker->numberBetween(2000, 2020),
-                'phone_number' => $faker->numerify('08##########'),
+                'phone_number' => $faker->numerify('628##########'),
                 'email' => $faker->unique()->safeEmail,
                 'password' => Hash::make('123456'),
-                'is_accepted' => true, 
+                'is_accepted' => false, 
                 'str_number'=> $faker->numerify('################'),
                 'certification' => "certification",
                 'photo' => $faker->imageUrl(640, 480, 'people', true, null, false),

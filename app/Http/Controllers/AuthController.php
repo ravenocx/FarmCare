@@ -97,7 +97,7 @@ class AuthController extends Controller
     public function userRegisterSubmit(Request $request){
         $this->validate($request,[
             'fullName'=>'string|required|min:5',
-            'phoneNumber'=> 'string|required|min:12',
+            'phoneNumber'=> 'string|required|min:14',
             'email'=>'string|required|unique:users,email',
             'password'=>'required|min:6|confirmed',
         ]);
@@ -134,7 +134,7 @@ class AuthController extends Controller
             'gender' => 'string|required|in:male,female',
             'university'=>'string|required|min:5',
             'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
-            'phone_number'=> 'string|required|min:12',
+            'phone_number'=> 'string|required|min:14',
             'email'=>'string|required|unique:veterinarians,email',
             'password'=>'required|min:6|confirmed',
             'certification' => 'required|file|mimes:pdf|max:10240'

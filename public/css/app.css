@@ -1368,6 +1368,15 @@ input:checked + .toggle-bg {
   scrollbar-width: none;
 }
 
+.chat {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .checkbox {
   flex-shrink: 0;
   --chkbg: var(--fallback-bc,oklch(var(--bc)/1));
@@ -4236,6 +4245,10 @@ details.collapse summary::-webkit-details-marker {
   margin-top: 3.5rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -5368,6 +5381,16 @@ details.collapse summary::-webkit-details-marker {
   padding-bottom: 2rem;
 }
 
+.px-64 {
+  padding-left: 16rem;
+  padding-right: 16rem;
+}
+
+.px-72 {
+  padding-left: 18rem;
+  padding-right: 18rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -5406,6 +5429,10 @@ details.collapse summary::-webkit-details-marker {
 
 .pb-6 {
   padding-bottom: 1.5rem;
+}
+
+.pb-60 {
+  padding-bottom: 15rem;
 }
 
 .pb-7 {
@@ -5570,26 +5597,6 @@ details.collapse summary::-webkit-details-marker {
 
 .pt-\[64px\] {
   padding-top: 64px;
-}
-
-.pb-32 {
-  padding-bottom: 8rem;
-}
-
-.pb-48 {
-  padding-bottom: 12rem;
-}
-
-.pb-52 {
-  padding-bottom: 13rem;
-}
-
-.pb-56 {
-  padding-bottom: 14rem;
-}
-
-.pb-60 {
-  padding-bottom: 15rem;
 }
 
 .text-left {
@@ -5799,6 +5806,15 @@ details.collapse summary::-webkit-details-marker {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#FBBC04\] {
+  --tw-text-opacity: 1;
+  color: rgb(251 188 4 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .opacity-0 {

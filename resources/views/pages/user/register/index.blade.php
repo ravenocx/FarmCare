@@ -17,7 +17,7 @@
                     <input id="fullName" type="text" name="fullName" placeholder="Enter your name" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required >
 
                     <label for="phoneNumber" class="font-medium text-2xl mt-6">Phone Number <span class="text-red-600">*</span></label>
-                    <input id="phoneNumber" type="tel" name="phoneNumber" placeholder="Enter your phone number" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required>
+                    <input id="phoneNumber" type="tel" name="phoneNumber" placeholder="628xxxxxxxxxxx" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required>
 
                     <label for="email" class="font-medium text-2xl mt-6">Email <span class="text-red-600">*</span></label>
                     <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required>
