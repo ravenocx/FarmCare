@@ -7,7 +7,13 @@
         <p class="flex justify-center font-bold text-lg py-4">{{$message}}</p>
         <div class="modal-action flex justify-center">
         <form method="dialog">
-            <button class="btn text-gray-700 bg-green-300 shadow-2xl">Continue</button>
+            @if(!empty($linkTo))
+                <a href="">
+                    <button class="btn text-gray-700 bg-green-300 shadow-2xl">Continue</button>
+                </a>
+            @else
+                <button class="btn text-gray-700 bg-green-300 shadow-2xl">Continue</button>
+            @endif
         </form>
         </div>
     </div>

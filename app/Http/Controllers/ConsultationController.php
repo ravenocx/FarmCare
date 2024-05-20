@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Veterinarian;
 use Carbon\Carbon;
+use Auth;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Models\Order;
 
 
 class ConsultationController extends Controller
@@ -115,5 +118,54 @@ class ConsultationController extends Controller
     public function getVeterinarianOrderDetails($id)
     {
         return $this->prepareVeterinarianView($id, 'pages.user.consultation.order');
+    }
+
+    private $orderId;
+    public function createConsultationOrder(Request $request){
+        try{
+            $this->validate($request,[
+                'payment_proof' => 'required|file|mimes:png,jpeg,jpg|max:4096'
+            ]);
+            
+            $userName = Auth::guard('user')->user()-> name;
+    
+            $latestOrder = Order::latest()->first();
+            if (!$latestOrder) {
+                $orderId = 1;
+            }else {
+                $orderId = $latestOrder->id;
+            }
+            
+            $proofFile = $request->file('payment_proof')->getRealPath();
+            // Set the file name
+            $proofFileName = 'Order-' . $orderId . '_' . $userName . '_' . $this->currentDateTime;
+    
+            $imageUrl = cloudinary()->upload($proofFile, [
+                'public_id' => $proofFileName,
+                'folder' => 'payment_proofs', 
+            ])->getSecurePath();
+    
+            $veterinarian = Veterinarian::findOrFail($request->veterinarian_id);
+            
+            Order::create([
+                'user_id' => Auth::guard('user')->user()-> id,
+                'veterinarian_id' => $veterinarian->id,
+                'cust_name' => $userName,
+                'cust_phone_number' => Auth::guard('user')->user()-> phone_number,
+                'payment_proof' => $imageUrl,
+                'appointment_date' => $this->currentDateTime,
+                'category' => $veterinarian->specialist,
+                'service_category' => 'consultation',
+                'order_status' => 'On going',
+                'order_date' => $this->currentDateTime,
+                'price' => $veterinarian -> consultation_price,
+            ]);
+            request()->session()->flash('success','Online Consultation Order created sucessfully!');
+            return redirect()->back();
+        }catch(\Exception $e) {
+            request()->session()->flash('error','An error occurred during the payment :  ' . $e->getMessage());
+            return redirect()->back();
+        }
+        
     }
 }

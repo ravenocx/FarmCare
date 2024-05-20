@@ -55,14 +55,15 @@
                 </div>
             </div>
 
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{route('user.consultation.veterinarian.order.submit', ['id' => $veterinarian->id] )}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="veterinarian_id" value="{{ $veterinarian->id }}">
                 <div class="flex items-center justify-center w-full mt-9 mb-8">
                     <label id="dropzone-file" for="dropzone-file-input" class="flex flex-col items-center justify-center h-32 border border-shadeBrown rounded-lg cursor-pointer hover:bg-gray-100">
                         <div id="upload-container" class="flex flex-col items-center justify-center pt-5 pb-6">
                             <img src="{{asset('images/vector/cloud-upload.svg')}}" >
                             <p class="mb-2 text-sm text-mediumGray"><span class="font-semibold">Upload</span> proof of your payment</p>
-                            <p class="text-xs text-mediumGray">in png or jpg file</p>
+                            <p class="text-xs text-mediumGray">in png, jpeg or jpg file</p>
                         </div>
                         
                         <input id="dropzone-file-input" type="file" name="payment_proof" type="file" class="file:rounded-lg font-medium mx-4 file-input w-64 h-10 file:normal-case file:bg-shadeBrown hover:bg-gray-100" required />
@@ -77,14 +78,20 @@
                         <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Submit</button>
                     </div>
                 @endif
-    
-                
             </form>
 
         </div>
     </div>
     @endforeach
 
+    @if (session('error'))
+    <x-alert-notification type="error" message="{{session('error')}}"/>
+    @endif
+
+    @if (session('success'))
+        <x-popup-notification message="{{session('success')}}" />
+    @endif
+    
     @push('scripts')
         <script>
             document.getElementById('dropzone-file').addEventListener('dragover', function(event) {

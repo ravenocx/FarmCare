@@ -31,11 +31,14 @@ Route::middleware(['AuthSession'])->group(function(){
         return view('pages.user.index');
     })->name("user.home");
 
-    
-    Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
-    Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
-    Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
-    Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
+    Route::prefix('/consultation')->group(function(){
+        Route::get('/', [ConsultationController::class, 'index'])->name('user.consultation');
+        Route::get('/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
+        Route::get('/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
+        Route::get('/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
+        Route::post('/veterinarian/{id}/order', [ConsultationController::class, 'createConsultationOrder'])->name('user.consultation.veterinarian.order.submit');
+
+    });
 
 });
 

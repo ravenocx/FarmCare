@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('cust_name');
             $table->string('cust_phone_number');
             $table->string('payment_proof');
-            $table->timestamp('appoinment_date');
+            $table->timestamp('appointment_date');
             $table->enum('category', ['Livestock', 'Aquaculture', 'Poultry', 'Nutrition', 'Breeding', 'Dermatology']);
             $table->enum('service_category', ['consultation' , 'reservation']);
             $table->enum('order_status', ['On going', 'Complete', 'Cancel']);
