@@ -24,8 +24,8 @@
         <div class="grid grid-cols-3">
             @foreach($veterinarians as $index => $veterinarian)
             <div class="border-b-2 border-shadeCream pb-3 pt-3">
-                <div class="{{($index + 1) % 3 == 0 ? '' : 'border-r-2'}} {{($index + 1) % 3 == 0 ? 'pl-6' : ($index % 3 == 0 ? 'pr-6' : 'px-6')}} border-shadeCream py-5">
-                <div class="flex">
+                <div class="{{($index + 1) % 3 == 0 ? '' : ($index === count($veterinarians)- 1 ? '' : 'pr-6 border-r-2')}} {{($index + 1) % 3 == 0 ? 'pl-6' : ($index % 3 == 0 ? 'pr-6' : 'px-6')}} border-shadeCream py-5">
+                    <div class="flex">
                         <img src="{{asset($veterinarian->photo ? $veterinarian->photo :'images/icon/doctor-icon.png')}}" alt="{{$veterinarian->gender === 'male' ? 'Dr.' . $veterinarian->name : 'Dra.' . $veterinarian->name }}" class="card-image size-44 border-shadeBrown border-2 rounded-md">
 
                         <div class="w-[189.09px] h-[176px] text-left ml-5 text-xs flex flex-col">

@@ -10,15 +10,35 @@ use Carbon\Carbon;
 class VeterConsultationController extends Controller
 {
 
+    private $currentDateTime;
+    public function __construct()
+    {
+        $this->currentDateTime = Carbon::now();
+    }
     public function index(){
-        $currentDateTime = Carbon::now();
-        $serviceSchedules = ServiceSchedule::where('schedule_end', '>=' , $currentDateTime)
-        ->where('schedule_start', '<=', $currentDateTime)
+        $serviceSchedules = ServiceSchedule::where('schedule_end', '>=' , $this->currentDateTime)
+        ->where('schedule_start', '<=', $this->currentDateTime)
         ->orderBy('schedule_start', 'ASC')
         ->limit(3)
         ->get();
 
         return view('pages.veterinarian.consultation.index', compact('serviceSchedules'));
+    }
+
+    public function showAllConsultationSchedules(){
+        $serviceSchedules = ServiceSchedule::select('*')
+        ->where('veterinarian_id', Auth::guard('veterinarian')->user()->id)
+        ->orderByRaw("
+            CASE
+                WHEN '$this->currentDateTime' BETWEEN schedule_start AND schedule_end THEN 1
+                WHEN schedule_start > '$this->currentDateTime' THEN 2
+                ELSE 3
+            END
+        ")
+        ->orderBy('schedule_start', 'asc')
+        ->paginate(15);
+
+        return view('pages.veterinarian.consultation.schedule.index', compact('serviceSchedules'));
     }
 
     public function createSchedule(){

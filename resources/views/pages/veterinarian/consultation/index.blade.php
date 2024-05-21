@@ -12,7 +12,7 @@
 
     <div class="flex justify-between mr-6">
         <h2 class="font-semibold text-base mb-5">Schedules</h2>
-        <a href="" class="font-semibold text-shadeBrown text-base"> View All ></a>
+        <a href="{{route('veterinarian.consultation.schedule')}}" class="font-semibold text-shadeBrown text-base"> View All ></a>
     </div>
     <div class="flex justify-center">
         @foreach($serviceSchedules as $index => $serviceSchedule)
@@ -22,8 +22,12 @@
                     <div class="ml-2 space-y-2">
                         <p class="font-bold">{{(Auth::guard('veterinarian')->user()->gender == 'male' ? 'Dr.' :'Dra.') . Auth::guard('veterinarian')->user()->name}}</p>
                         <p class="font-bold">Online Consultation</p>
-                        <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }}</p>
-                        <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} - {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                        <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} - {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                        @if($serviceSchedule->is_reserved)
+                            <p class="text-green-800">Reserved</p>
+                        @else
+                            <p class="text-yellow-400">Not Reserved</p>
+                        @endif
                     </div>
                 </div>
         

@@ -4583,6 +4583,10 @@ details.collapse summary::-webkit-details-marker {
   width: 200px;
 }
 
+.w-\[224\.22px\] {
+  width: 224.22px;
+}
+
 .w-\[245px\] {
   width: 245px;
 }
@@ -5769,6 +5773,11 @@ details.collapse summary::-webkit-details-marker {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: rgb(227 160 8 / var(--tw-text-opacity));
 }
 
 .underline {
