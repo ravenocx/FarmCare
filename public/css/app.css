@@ -3381,10 +3381,6 @@ details.collapse summary::-webkit-details-marker {
       var(--handleoffsetcalculator) 0 0 3px var(--fallback-bc,oklch(var(--bc)/1)) inset;
 }
 
-.artboard.phone {
-  width: 320px;
-}
-
 .btm-nav-xs > *:where(.active) {
   border-top-width: 1px;
 }
@@ -5321,6 +5317,11 @@ details.collapse summary::-webkit-details-marker {
   padding-right: 15rem;
 }
 
+.px-64 {
+  padding-left: 16rem;
+  padding-right: 16rem;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -5379,16 +5380,6 @@ details.collapse summary::-webkit-details-marker {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.px-64 {
-  padding-left: 16rem;
-  padding-right: 16rem;
-}
-
-.px-72 {
-  padding-left: 18rem;
-  padding-right: 18rem;
 }
 
 .pb-1 {
@@ -5718,6 +5709,11 @@ details.collapse summary::-webkit-details-marker {
   color: rgb(164 144 124 / var(--tw-text-opacity));
 }
 
+.text-\[\#FBBC04\] {
+  --tw-text-opacity: 1;
+  color: rgb(251 188 4 / var(--tw-text-opacity));
+}
+
 .text-\[\#FF0000\] {
   --tw-text-opacity: 1;
   color: rgb(255 0 0 / var(--tw-text-opacity));
@@ -5806,11 +5802,6 @@ details.collapse summary::-webkit-details-marker {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-\[\#FBBC04\] {
-  --tw-text-opacity: 1;
-  color: rgb(251 188 4 / var(--tw-text-opacity));
 }
 
 .underline {

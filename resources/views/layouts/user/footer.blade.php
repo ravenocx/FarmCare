@@ -5,8 +5,8 @@
                 <h6 class="font-semibold text-2xl mb-5">QUICK LINKS</h6>
                 <ul class="font-medium text-base">
                     <li class="mb-2"><a href="">Home</a></li>
+                    <li class="mb-2"><a href="">Order History</a></li>
                     <li class="mb-2"><a href="">Health Tips Article</a></li>
-                    <li class="mb-2"><a href="{{route('faq')}}">FAQ</a></li>
                     <li><a href="">Contact Us</a></li>
                 </ul>
             </div>
