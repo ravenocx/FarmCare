@@ -25,8 +25,8 @@
             </div>
 
             <div class="flex justify-end font-medium text-base text-white space-x-7">
-                <button class="btn-base bg-[#C8B6A6] rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Add Schedule</button>
-                <button class="btn-base bg-[#DF0000] rounded py-2 px-5">Discard</button>
+                <button type="submit" class="btn-base bg-[#C8B6A6] rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Add Schedule</button>
+                <button type="reset" class="btn-base bg-[#DF0000] rounded py-2 px-5">Discard</button>
             </div>
         </div>
     </form>

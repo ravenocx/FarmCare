@@ -16,8 +16,7 @@
     </div>
     <div class="flex justify-center">
         @foreach($serviceSchedules as $index => $serviceSchedule)
-            
-            <div class="{{$index == 0 ? 'pr-6 border-r-2' : ($index == 1 ? 'px-6 border-r-2' : 'pl-6')}}  border-shadeCream">
+            <div class="{{ $index == 0 ? (count($serviceSchedules) === 1 ? '' : 'pr-6 border-r-2') : ($index == 1 ? 'px-6 border-r-2' : 'pl-6') }}  border-shadeCream">
                 <div class="flex text-xs">
                     <img src="{{Auth::guard('veterinarian')->user()->photo ? : asset('images/assets/vet-schedule-image.svg')}}" class="rounded-lg border border-shadeBrown w-[150px] h-28">
                     <div class="ml-2 space-y-2">
