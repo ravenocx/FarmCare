@@ -38,4 +38,5 @@
     @if (session('success'))
     <x-alert-notification type="success" message="{{session('success')}}"/>
     @endif
+    
 @endsection
