@@ -12,7 +12,8 @@ class VeterConsultationController extends Controller
 
     public function index(){
         $currentDateTime = Carbon::now();
-        $serviceSchedules = ServiceSchedule::where('schedule_end', '>' , $currentDateTime)
+        $serviceSchedules = ServiceSchedule::where('schedule_end', '>=' , $currentDateTime)
+        ->where('schedule_start', '<=', $currentDateTime)
         ->orderBy('schedule_start', 'ASC')
         ->limit(3)
         ->get();
@@ -25,27 +26,35 @@ class VeterConsultationController extends Controller
     }
 
     public function createScheduleSubmit(Request $request){
-        $this->validate($request,[
-            'datetime-start'=>'required|date|before:datetime-end',
-            'datetime-end'=> 'required|date|after:datetime-start',
-        ]);
-
-        $data= $request->all();
-        
-        
-        $result = ServiceSchedule::create([
-            'veterinarian_id'=> Auth::guard('veterinarian')->user()->id,
-            'schedule_start'=> $data['datetime-start'],
-            'schedule_end'=> $data['datetime-end'],
-            'service_category' => 'consultation',
-        ]);
-
-        if($result){
-            request()->session()->flash('success','Successfully registered');
+        try{
+            $this->validate($request, [
+                'datetime-start' => [
+                    'required',
+                    'date',
+                    'before:datetime-end',
+                    function ($attribute, $value, $fail) {
+                        if (Carbon::parse($value)->isBefore(Carbon::now())) {
+                            $fail('The ' . $attribute . ' must be a date and time after the current time.');
+                        }
+                    },
+                ],
+                'datetime-end' => 'required|date|after:datetime-start',
+            ]);
+    
+            $data= $request->all();
+            
+            ServiceSchedule::create([
+                'veterinarian_id'=> Auth::guard('veterinarian')->user()->id,
+                'schedule_start'=> $data['datetime-start'],
+                'schedule_end'=> $data['datetime-end'],
+                'service_category' => 'consultation',
+            ]);
+            request()->session()->flash('success','Successfully add new online consultation schedule');
             return redirect()->back();
-        }else{
-            request()->session()->flash('error','Please try again!');
+        }catch(\Exception $e){
+            request()->session()->flash('error','An error occurred :  ' . $e->getMessage());
             return redirect()->back();
         }
+        
     }
 }

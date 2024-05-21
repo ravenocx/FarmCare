@@ -31,4 +31,11 @@
         </div>
     </form>
 
+    @if (session('error'))
+    <x-alert-notification type="error" message="{{session('error')}}"/>
+    @endif
+
+    @if (session('success'))
+    <x-alert-notification type="success" message="{{session('success')}}"/>
+    @endif
 @endsection
