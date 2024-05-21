@@ -125,4 +125,17 @@ class VeterConsultationController extends Controller
             return redirect()->back();
         }
     }
+
+    public function deleteServiceSchedule($id){
+        try {
+            $serviceSchedule = ServiceSchedule::findOrFail($id);
+            
+            $serviceSchedule -> delete();
+            request()->session()->flash('success','Successfully cancel online consultation schedule');
+            return redirect()->back();
+        }catch (\Exception $e) {
+            request()->session()->flash('error','An error occurred during deleting the schedule :  ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
 }

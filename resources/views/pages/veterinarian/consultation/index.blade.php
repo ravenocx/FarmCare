@@ -36,7 +36,7 @@
                         <a href="{{route('veterinarian.consultation.schedule.edit' , ['id' => $serviceSchedule -> id])}}">
                             <button class="btn-base bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Edit</button>
                         </a>
-                        <a href="">
+                        <a href="{{route('veterinarian.consultation.schedule.delete', ['id' =>$serviceSchedule -> id ])}}">
                             <button class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3">Cancel</button>
                         </a>
                     @else
@@ -48,5 +48,11 @@
         @endforeach
     </div>
 
+    @if (session('error'))
+    <x-alert-notification type="error" message="{{session('error')}}"/>
+    @endif
 
+    @if (session('success'))
+    <x-alert-notification type="success" message="{{session('success')}}"/>
+    @endif
 @endsection
