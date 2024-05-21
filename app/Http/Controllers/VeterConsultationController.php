@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ServiceSchedule;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class VeterConsultationController extends Controller
 {
@@ -16,9 +18,16 @@ class VeterConsultationController extends Controller
         $this->currentDateTime = Carbon::now();
     }
     public function index(){
-        $serviceSchedules = ServiceSchedule::where('schedule_end', '>=' , $this->currentDateTime)
-        ->where('schedule_start', '<=', $this->currentDateTime)
-        ->orderBy('schedule_start', 'ASC')
+        $serviceSchedules = ServiceSchedule::select('*')
+        ->where('veterinarian_id', Auth::guard('veterinarian')->user()->id)
+        ->orderByRaw("
+            CASE
+                WHEN '$this->currentDateTime' BETWEEN schedule_start AND schedule_end THEN 1
+                WHEN schedule_start > '$this->currentDateTime' THEN 2
+                ELSE 3
+            END
+        ")
+        ->orderBy('schedule_start', 'asc')
         ->limit(3)
         ->get();
 
@@ -75,6 +84,45 @@ class VeterConsultationController extends Controller
             request()->session()->flash('error','An error occurred :  ' . $e->getMessage());
             return redirect()->back();
         }
-        
+    }
+
+    public function editServiceSchedule($id){
+        try{
+            $serviceSchedule = ServiceSchedule::findOrFail($id);
+            return view('pages.veterinarian.consultation.schedule.edit', compact('serviceSchedule'));
+        }catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+    }
+
+    public function editServiceScheduleSubmit(Request $request, $id){
+        try{
+            $this->validate($request, [
+                'datetime-start' => [
+                    'required',
+                    'date',
+                    'before:datetime-end',
+                    function ($attribute, $value, $fail) {
+                        if (Carbon::parse($value)->isBefore(Carbon::now())) {
+                            $fail('The ' . $attribute . ' must be a date and time after the current time.');
+                        }
+                    },
+                ],
+                'datetime-end' => 'required|date|after:datetime-start',
+            ]);
+
+            $serviceSchedule = ServiceSchedule::findOrFail($id);
+            $data= $request->all();
+
+            $serviceSchedule->update([
+                'schedule_start' => $data['datetime-start'],
+                'schedule_end' => $data['datetime-end']
+            ]);
+            request()->session()->flash('success','Successfully edit online consultation schedule');
+            return redirect()->back();
+        }catch (\Exception $e) {
+            request()->session()->flash('error','An error occurred during editing the schedule :  ' . $e->getMessage());
+            return redirect()->back();
+        }
     }
 }
