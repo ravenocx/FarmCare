@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ServiceSchedule;
+use App\Models\Order;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -31,7 +32,12 @@ class VeterConsultationController extends Controller
         ->limit(3)
         ->get();
 
-        return view('pages.veterinarian.consultation.index', compact('serviceSchedules'));
+        $onGoingOrders = Order::where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
+        ->where('order_status', 'On going')
+        ->orderBy('order_date', 'asc')
+        ->get();
+
+        return view('pages.veterinarian.consultation.index', compact('serviceSchedules', 'onGoingOrders'));
     }
 
     public function showAllConsultationSchedules(){

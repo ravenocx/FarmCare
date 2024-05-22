@@ -52,8 +52,8 @@
     <section class="pb-10 border-b-2 border-shadeCream mb-5">
         <h2 class="font-semibold text-base mb-6">On Going Online Consultation</h2>
 
-        <div class="container mx-auto relative overflow-x-auto overflow-y-auto max-h-[321.32px] shadow-md sm:rounded-lg">
-            <table class="w-full text-base text-left rtl:text-right text-gray-500">
+        <div class="container mx-auto relative overflow-x-auto overflow-y-auto max-h-[312px] shadow-md sm:rounded-lg">
+            <table class="w-full text-base text-left rtl:text-right">
                 <thead class="text-base text-white font-medium bg-shadeBrown sticky top-0">
                     <tr class="text-center">
                         <th>
@@ -77,36 +77,36 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @for ($i = 0; $i < 100; $i++)
-                    <tr class="odd:bg-white even:bg-gray-100 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    @foreach($onGoingOrders as $index => $order)
+                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600">
                         <td class="w-4 p-4">
-                            {{$i+1}}
+                            {{$index+1}}
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            #123456
+                            #{{$order -> id}}
                         </th>
                         <td class="px-6 py-4">
-                            Reihaini Fikria Bunga
+                            {{$order -> cust_name}}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="" class="underline">
-                                628219312013
+                            <a href="https://wa.me/{{$order -> cust_phone_number}}" class="underline" target="blank">
+                                {{$order -> cust_phone_number}}
                             </a>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="" class="underline">
+                            <a href="{{$order -> payment_proof}}" target="_blank" class="underline">
                                 Invoice Image
                             </a>
                         </td>
-                        <td class="px-6 py-4 flex justify-center">
-                            <select id="status" class="text-gray-900 text-sm border-none focus:ring-gray-300 focus:rounded-lg block p-2">
-                                <option selected>On going</option>
-                                <option value="US">Completed</option>
-                                <option value="CA">Cancel</option>
+                        <td class="px-6 py-3 flex justify-center">
+                            <select id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected>{{$order -> order_status}}</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancel">Cancel</option>
                             </select>
                         </td>
                     </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
         </div>
