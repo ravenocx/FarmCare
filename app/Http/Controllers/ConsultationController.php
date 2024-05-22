@@ -136,11 +136,11 @@ class ConsultationController extends Controller
             
             $userName = Auth::guard('user')->user()-> name;
     
-            $latestOrder = Order::latest()->first();
+            $latestOrder = Order::orderBy('id' , 'desc')->first();
             if (!$latestOrder) {
                 $orderId = 1;
             }else {
-                $orderId = $latestOrder->id;
+                $orderId = $latestOrder->id + 1;
             }
             
             $proofFile = $request->file('payment_proof')->getRealPath();
