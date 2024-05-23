@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\VeterConsultationController;
 use App\Http\Controllers\OrderHistoryController;
+use App\Http\Controllers\MedicDelivController;
 
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
@@ -37,7 +38,10 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
     Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
-
+    
+    Route::prefix('/medicdeliv')->group(function(){
+    Route::get('/', [MedicDelivController::class, 'index'])->name('user.medicdeliv');
+    });
 });
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
@@ -80,12 +84,8 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
     
     Route::prefix('/orderhistory')->group(function(){
         Route::get('/', [OrderHistoryController::class, 'index'])->name("veterinarian.orderhistory");
-        Route::get('/detail', [OrderHistoryController::class, 'detailOrder'])->name("veterinarian.orderhistory.detail");
+        Route::get('/detail/{id}', [OrderHistoryController::class, 'detailOrder'])->name("veterinarian.orderhistory.detail");
+
     });
-
-    // Route::resource('orderhistory', OrderHistoryController::class);
-
-
-    // Route::resource('offschedule', OffscheduleController::class);
     
 });
