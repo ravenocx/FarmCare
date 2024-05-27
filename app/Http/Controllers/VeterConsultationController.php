@@ -144,4 +144,26 @@ class VeterConsultationController extends Controller
             return redirect()->back();
         }
     }
+
+    public function editConsultationStatus(Request $request, $id) {
+        try {
+            // dd($request['status']);
+            $this->validate($request, [
+                'status'=>'string|required|in:On going,Complete,Cancel'
+            ]);
+
+            $consultationOrder = Order::findOrFail($id);
+            $data= $request->all();
+
+            $consultationOrder->update([
+                'order_status' => $data['status']
+            ]);
+
+            request()->session()->flash('success','Successfully edit online consultation status');
+            return redirect()->back();
+        }catch (\Exception $e) {
+            request()->session()->flash('error','An error occurred during editing the status :  ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
 }

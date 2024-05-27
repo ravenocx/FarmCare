@@ -20,7 +20,7 @@ class ServiceScheduleSeeder extends Seeder
             $scheduleStart = $faker->dateTimeBetween('2024-05-21 08:00:00', '2024-05-21 14:00:00'); // Change this when testing
             $scheduleEnd = $faker->dateTimeBetween($scheduleStart, '2024-05-21 16:00:00'); // Change this when testing
             DB::table('service_schedules')->insert([                
-                'veterinarian_id' => 2,  // Change this when testing
+                'veterinarian_id' => 202,  // Change this when testing
                 'schedule_start' => $scheduleStart,
                 'schedule_end' => $scheduleEnd, 
                 'service_category' => 'consultation',

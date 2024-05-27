@@ -76,43 +76,55 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody class="text-center">
-                    @foreach($onGoingOrders as $index => $order)
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            {{$index+1}}
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            #{{$order -> id}}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{$order -> cust_name}}
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="https://wa.me/{{$order -> cust_phone_number}}" class="underline" target="blank">
-                                {{$order -> cust_phone_number}}
-                            </a>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="{{$order -> payment_proof}}" target="_blank" class="underline">
-                                Invoice Image
-                            </a>
-                        </td>
-                        <td class="px-6 py-3 flex justify-center">
-                            <select id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>{{$order -> order_status}}</option>
-                                <option value="Completed">Completed</option>
-                                <option value="Cancel">Cancel</option>
-                            </select>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
+                    <tbody class="text-center">
+                        @foreach($onGoingOrders as $index => $order)
+                        <tr class="border-b dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600">
+                            <td class="w-4 p-4">
+                                {{$index+1}}
+                            </td>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                #{{$order -> id}}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{$order -> cust_name}}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://wa.me/{{$order -> cust_phone_number}}" class="underline" target="blank">
+                                    {{$order -> cust_phone_number}}
+                                </a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="{{$order -> payment_proof}}" target="_blank" class="underline">
+                                    Invoice Image
+                                </a>
+                            </td>
+                            <form action="{{route('veterinarian.consultation.status.edit.submit', ['id' => $order -> id])}}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                                <td class="px-6 py-3 flex justify-center">
+                                    <select id="status" name="status" onchange="submitChange()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="On going" selected>On going</option>
+                                        <option value="Complete">Complete</option>
+                                        <option value="Cancel">Cancel</option>
+                                    </select>
+                                    <button type="submit" class="hidden" id="submit-button">Submit</button>
+                                </td>
+                            </form>
+                        </tr>
+                        @endforeach
+                    </tbody>
             </table>
         </div>
-        
     </section>
 
+    @push('scripts')
+    <script>
+        function submitChange(){
+            document.getElementById("submit-button").click();
+        }
+    </script>
+
+    @endpush
 
     @if (session('error'))
     <x-alert-notification type="error" message="{{session('error')}}"/>

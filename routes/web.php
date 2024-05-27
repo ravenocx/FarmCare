@@ -66,6 +66,8 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
 
     Route::prefix('/consultation')->group(function(){
         Route::get('/',[VeterConsultationController::class, 'index'])->name("veterinarian.consultation");
+        Route::patch('/status/edit/{id}',[VeterConsultationController::class, 'editConsultationStatus'])->name("veterinarian.consultation.status.edit.submit");
+
         Route::get('/schedule',[VeterConsultationController::class, 'showAllConsultationSchedules'])->name("veterinarian.consultation.schedule");
         Route::get('/schedule/create',[VeterConsultationController::class, 'createSchedule'])->name("veterinarian.consultation.schedule.create");
         Route::post('/schedule/create',[VeterConsultationController::class, 'createScheduleSubmit'])->name("veterinarian.consultation.schedule.create.submit");

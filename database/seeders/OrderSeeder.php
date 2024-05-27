@@ -19,8 +19,8 @@ class OrderSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $orderDate = $faker->dateTimeBetween('2024-05-21 20:00:00', '2024-05-23 20:00:00'); // Change this when testing
             DB::table('orders')->insert([ 
-                'user_id' => $faker->numberBetween(1,2),
-                'veterinarian_id' => 2,  // Change this when testing
+                'user_id' => 1,
+                'veterinarian_id' => 202,  // Change this when testing
                 'cust_name' =>  $faker->randomElement(['Haris','kacee']), 
                 'cust_phone_number' => $faker->numerify('628##########'),             
                 'veter_phone_number' => $faker->numerify('628##########'),             

@@ -38,7 +38,7 @@ class VeterinarianSeeder extends Seeder
                 'phone_number' => $faker->numerify('628##########'),
                 'email' => $faker->unique()->safeEmail,
                 'password' => Hash::make('123456'),
-                'is_accepted' => false, 
+                'is_accepted' => true, 
                 'str_number'=> $faker->numerify('################'),
                 'certification' => "certification",
                 'photo' => $faker->imageUrl(640, 480, 'people', true, null, false),
