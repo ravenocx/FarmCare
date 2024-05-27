@@ -154,7 +154,7 @@ class VeterConsultationController extends Controller
 
     public function editConsultationStatus(Request $request, $id) {
         try {
-            dd($request['status']);
+            // dd($request['status']);
             $this->validate($request, [
                 'status'=>'string|required|in:On going,Complete,Cancel'
             ]);
