@@ -3405,15 +3405,36 @@ details.collapse summary::-webkit-details-marker {
   font-size: 0.875rem;
 }
 
+.btn-lg {
+  height: 4rem;
+  min-height: 4rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+}
+
 .btn-square:where(.btn-sm) {
   height: 2rem;
   width: 2rem;
   padding: 0px;
 }
 
+.btn-square:where(.btn-lg) {
+  height: 4rem;
+  width: 4rem;
+  padding: 0px;
+}
+
 .btn-circle:where(.btn-sm) {
   height: 2rem;
   width: 2rem;
+  border-radius: 9999px;
+  padding: 0px;
+}
+
+.btn-circle:where(.btn-lg) {
+  height: 4rem;
+  width: 4rem;
   border-radius: 9999px;
   padding: 0px;
 }
@@ -4065,6 +4086,16 @@ details.collapse summary::-webkit-details-marker {
   margin-bottom: 1.5rem;
 }
 
+.mx-14 {
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
+}
+
+.mx-36 {
+  margin-left: 9rem;
+  margin-right: 9rem;
+}
+
 .-ml-px {
   margin-left: -1px;
 }
@@ -4149,6 +4180,10 @@ details.collapse summary::-webkit-details-marker {
   margin-left: 2.5rem;
 }
 
+.ml-14 {
+  margin-left: 3.5rem;
+}
+
 .ml-16 {
   margin-left: 4rem;
 }
@@ -4163,6 +4198,14 @@ details.collapse summary::-webkit-details-marker {
 
 .ml-3 {
   margin-left: 0.75rem;
+}
+
+.ml-32 {
+  margin-left: 8rem;
+}
+
+.ml-36 {
+  margin-left: 9rem;
 }
 
 .ml-4 {
@@ -4303,6 +4346,10 @@ details.collapse summary::-webkit-details-marker {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .block {
@@ -4633,6 +4680,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-\[677px\] {
   width: 677px;
+}
+
+.w-\[73px\] {
+  width: 73px;
 }
 
 .w-full {
@@ -5249,6 +5300,11 @@ details.collapse summary::-webkit-details-marker {
   stroke: var(--fallback-in,oklch(var(--in)/1));
 }
 
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -5407,6 +5463,11 @@ details.collapse summary::-webkit-details-marker {
   padding-bottom: 2rem;
 }
 
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -5519,6 +5580,10 @@ details.collapse summary::-webkit-details-marker {
   padding-left: 1.5rem;
 }
 
+.pl-8 {
+  padding-left: 2rem;
+}
+
 .pr-10 {
   padding-right: 2.5rem;
 }
@@ -5537,6 +5602,10 @@ details.collapse summary::-webkit-details-marker {
 
 .pr-36 {
   padding-right: 9rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
 }
 
 .pr-48 {
@@ -5729,6 +5798,11 @@ details.collapse summary::-webkit-details-marker {
   line-height: 1.375;
 }
 
+.text-\[\#8C8F93\] {
+  --tw-text-opacity: 1;
+  color: rgb(140 143 147 / var(--tw-text-opacity));
+}
+
 .text-\[\#A4907C\] {
   --tw-text-opacity: 1;
   color: rgb(164 144 124 / var(--tw-text-opacity));
@@ -5837,6 +5911,21 @@ details.collapse summary::-webkit-details-marker {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(227 160 8 / var(--tw-text-opacity));
+}
+
+.text-green-200 {
+  --tw-text-opacity: 1;
+  color: rgb(188 240 218 / var(--tw-text-opacity));
+}
+
+.text-green-100 {
+  --tw-text-opacity: 1;
+  color: rgb(222 247 236 / var(--tw-text-opacity));
+}
+
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(49 196 141 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -5973,6 +6062,10 @@ details.collapse summary::-webkit-details-marker {
 
 .hover\:border:hover {
   border-width: 1px;
+}
+
+.hover\:border-none:hover {
+  border-style: none;
 }
 
 .hover\:border-gray-300:hover {

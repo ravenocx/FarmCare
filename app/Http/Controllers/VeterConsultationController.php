@@ -37,7 +37,14 @@ class VeterConsultationController extends Controller
         ->orderBy('order_date', 'asc')
         ->get();
 
-        return view('pages.veterinarian.consultation.index', compact('serviceSchedules', 'onGoingOrders'));
+        $latestOrders = Order::where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
+        ->where('order_status', '!=', 'On going')
+        ->where('service_category' , 'consultation')
+        ->orderBy('order_date', 'desc')
+        ->limit(3)
+        ->get();
+
+        return view('pages.veterinarian.consultation.index', compact('serviceSchedules', 'onGoingOrders', 'latestOrders'));
     }
 
     public function showAllConsultationSchedules(){
