@@ -154,7 +154,7 @@ class VeterConsultationController extends Controller
 
     public function editConsultationStatus(Request $request, $id) {
         try {
-            // dd($request['status']);
+            dd($request['status']);
             $this->validate($request, [
                 'status'=>'string|required|in:On going,Complete,Cancel'
             ]);
@@ -166,7 +166,7 @@ class VeterConsultationController extends Controller
                 'order_status' => $data['status']
             ]);
 
-            $serviceSchedule = ServiceSchedule::findOrFail($id);
+            $serviceSchedule = ServiceSchedule::findOrFail($consultationOrder->schedule_id);
             $serviceSchedule->update([
                 'is_reserved' => false
             ]);

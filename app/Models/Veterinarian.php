@@ -23,14 +23,15 @@ class Veterinarian extends Authenticatable
         'photo',
         'consultation_price',
         'reservation_price',
+        'is_reserved',
     ];
 
     protected $hidden = [
         'password',
     ];
 
-    protected $guard=[
-        'is_accepted'
+    protected $casts=[
+        'is_accepted'=> 'boolean'
     ];
 
     public function serviceSchedules(){

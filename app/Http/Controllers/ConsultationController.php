@@ -181,11 +181,11 @@ class ConsultationController extends Controller
                 'order_status' => 'On going',
                 'order_date' => $this->currentDateTime,
                 'price' => $veterinarian -> consultation_price,
-                'schedule_id' => $veterinarian->id,
+                'schedule_id' => $serviceSchedule->id,
             ]);
-
+            
             $serviceSchedule->update([
-                'is_reserved' => true
+                'is_reserved' => 1
             ]);
 
             request()->session()->flash('success','Online Consultation Order created sucessfully!');
