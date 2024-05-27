@@ -56,7 +56,7 @@
             <table class="w-full text-base text-left rtl:text-right">
                 <thead class="text-base text-white font-medium bg-shadeBrown sticky top-0">
                     <tr class="text-center">
-                        <th>
+                        <th class="w-4 p-4">
                             No.
                         </th>
                         <th scope="col" class="px-6 py-3">
