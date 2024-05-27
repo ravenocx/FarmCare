@@ -20,7 +20,7 @@ class ServiceSchedule extends Model
         'is_reserved',
     ];
 
-    public function Veterinarians(){
+    public function veterinarian(){
         return $this->hasOne('App\Models\Veterinarian', 'id', 'veterinarian_id');
     }
 }

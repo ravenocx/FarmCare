@@ -12,7 +12,7 @@
         @csrf
         @method('PATCH')
         <div class="ml-16 mt-9">
-            <h1 class="font-semibold text-2xl mb-11">Add Schedule</h1>
+            <h1 class="font-semibold text-2xl mb-11">Edit Schedule</h1>
 
             <div class="rounded-xl border-2 border-shadeCream px-12 py-6 mb-7 font-medium text-xl text-mediumGray">
                 <label for="datetime-start">Start</label>

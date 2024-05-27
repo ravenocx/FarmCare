@@ -173,4 +173,13 @@ class VeterConsultationController extends Controller
             return redirect()->back();
         }
     }
+
+    public function getConsultationOrderDetails($id){
+        try {
+            $order = Order::with('user')->findOrFail($id);
+            return view('pages.veterinarian.consultation.order.detail',compact('order'));
+        }catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+    }
 }

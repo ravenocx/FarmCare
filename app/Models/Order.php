@@ -22,4 +22,8 @@ class Order extends Model
         'order_date',
         'price',
     ];
+
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

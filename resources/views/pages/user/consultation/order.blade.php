@@ -8,7 +8,7 @@
             <p class="font-semibold bg-secondaryColor rounded-3xl py-6 px-64 mb-2">Hello! Thank you for order! ♡</p>
             <div class="flex items-center justify-center mb-5">
                 <img src="{{asset('images/icon/order-status.svg')}}">
-                <p class="ml-2">Status Order: <span class="font-mediums text-[#FBBC04]">{{$order->order_status}}</span></p>
+                <p class="ml-2">Status Order: <span class="font-medium text-[#FBBC04]">{{$order->order_status}}</span></p>
             </div>
 
         </div>
