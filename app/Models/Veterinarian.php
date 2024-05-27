@@ -15,6 +15,7 @@ class Veterinarian extends Authenticatable
         'name',
         'specialist',
         'university',
+        'phone_number',
         'graduate_year',
         'email',
         'password',
@@ -32,6 +33,11 @@ class Veterinarian extends Authenticatable
     protected $guard=[
         'is_accepted'
     ];
+
+    public function serviceSchedules(){
+        return $this->hasMany('App\Models\ServiceSchedule', 'veterinarian_id', 'id');
+    }
+
 
     protected function casts(): array
     {

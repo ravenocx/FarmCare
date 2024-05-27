@@ -165,5 +165,8 @@
             </tbody>
         </table>
     </div>
-    
+    @if (session('success'))
+        <x-popup-notification message="{{session('success')}}" />
+    @endif
+
 @endsection
