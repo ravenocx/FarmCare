@@ -23,7 +23,12 @@
                     <div class="ml-2 space-y-2">
                         <p class="font-bold">{{(Auth::guard('veterinarian')->user()->gender == 'male' ? 'Dr.' :'Dra.') . Auth::guard('veterinarian')->user()->name}}</p>
                         <p class="font-bold">Online Consultation</p>
-                        <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} - {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                        @if(Carbon\Carbon::parse($serviceSchedule->schedule_start)->isSameDay(Carbon\Carbon::parse($serviceSchedule->schedule_end)))
+                            <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} - {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                        @else
+                            <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} to</p>
+                            <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                        @endif
                         @if($serviceSchedule->is_reserved)
                             <p class="text-green-800">Reserved</p>
                         @else
@@ -134,6 +139,7 @@
 
             <div class="flex items-center bg-secondaryColor py-5 pl-8 pr-4">
 
+            <!-- TODO -->
                 <img src="{{asset('images/icon/profile-icon.svg')}}" alt="profile-image" class="object-fill w-[73px] h-20 rounded-lg border border-shadeBrown">
 
                 <div class="text-lg ml-4">
@@ -151,7 +157,7 @@
                     <p class="font-medium {{$latestOrder->order_status === 'Complete' ? 'text-green-500' : 'text-red-500' }}">{{$latestOrder -> order_status}}</p>
                 </div>
 
-                <a href="" class="ml-auto mr-10">
+                <a href="{{route('veterinarian.consultation.order.detail', ['id' => $latestOrder->id])}}" class="ml-auto mr-10">
                     <button class="btn-lg bg-white border-black border font-medium text-lg rounded-lg py-5 px-7 hover:bg-shadeBrown hover:text-white hover:border-none">Order Detail</button>
                 </a>
             </div>
