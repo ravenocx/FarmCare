@@ -17,7 +17,13 @@
                     <label for="fullName" class="font-medium text-2xl">Full Name <span class="text-red-600">*</span></label>
                     <input id="fullName" type="text" name="fullName" placeholder="Enter your name" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required >
 
-                    <!-- TODO : Change to Dropdown in specialist -->
+                    <label for="gender" class="font-medium text-2xl mt-6">Gender <span class="text-red-600">*</span></label>
+                    <select id="gender" name="gender" class="select select-bordered mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4">
+                        <option disabled selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+
                     <label for="specialist" class="font-medium text-2xl mt-6">Specialist <span class="text-red-600">*</span></label>
                     <select id="specialist" name="specialist" class="select select-bordered mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4">
                         <option disabled selected>Select your specialist</option>

@@ -6,6 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
+Route::get('/faq', function () {
+    return view('pages.faq.index');
+})->name("faq");
+
 
 Route::get('/login', [AuthController::class, 'login'])->name('login.form');
 Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
@@ -27,7 +31,9 @@ Route::middleware(['AuthSession'])->group(function () {
     })->name("user.home");
 
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
-    Route::get('/consultation/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
+    Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
+    Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
+    Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
 
     Route::get('/profile', [UserController::class, 'showProfile'])->name('user.profile');
 
@@ -37,29 +43,24 @@ Route::middleware(['AuthSession'])->group(function () {
 });
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('pages.admin.vete-management.index');
-    })->name("admin.index");
+    Route::get('/', [AplicantController::class, 'index'])->name("admin.index");
 
     // Route::get('/applicant', function () {
     //     return view('pages.admin.vete-management.applicant');
     // })->name("admin.management.applicant");
-    Route::get('/applicant', [AplicantController::class, 'index'])->name("admin.management.applicant");
+    Route::get('/applicant', [AplicantController::class, 'aplicant'])->name("admin.management.applicant");
     Route::put('/veterinarians/update-status/{id}', [AplicantController::class, 'updateStatus'])->name('admin.management.applicant.update-status');
 
 
 
-    Route::get('/veterinarian', function () {
-        return view('pages.admin.vete-management.veterinarian');
-    })->name("admin.management.veterinarian");
-
-    Route::get('/edit', function () {
-        return view('pages.admin.vete-management.vete-edit');
-    })->name("admin.management.veterinarian.edit");
+    Route::get('/veterinarian', [AplicantController::class, 'veterinarian'])->name("admin.management.veterinarian");
+    Route::get('/veterinarian/{id}', [AplicantController::class, 'veterinarianDetail'])->name("admin.management.veterinarian.detail");
+    Route::get('/veterinarian/edit/{id}', [AplicantController::class, 'editVeterinarianForm'])->name("admin.management.veterinarian.edit");
+    Route::put('/veterinarian/update/{id}', [AplicantController::class, 'updateVeterinarian'])->name('admin.management.veterinarian.update');
+    Route::delete('/veterinarian/delete/{id}', [AplicantController::class, 'deleteVeterinarian'])->name('admin.management.veterinarian.delete');
 });
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name("dashboard")->middleware('VeterinarianAuthSession');
-

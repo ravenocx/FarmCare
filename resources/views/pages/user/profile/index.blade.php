@@ -10,4 +10,5 @@
         <!-- Tambahkan informasi profil lainnya sesuai kebutuhan -->
         <a href="{{ route('user.profile.edit.form') }}" class="btn btn-primary">Edit Profile</a>
     </div>
+    
 @endsection

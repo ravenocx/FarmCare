@@ -7,14 +7,17 @@ use App\Models\Veterinarian;
 
 class ConsultationController extends Controller
 {
-    public function index()
+    private $breadcrumbs;
+    public function __construct()
     {
-        // Breadcrumbs
-        $breadcrumbs = [
+        $this->breadcrumbs = [
             ['label' => 'Home', 'url' => 'user.home'],
             ['label' => 'Consultation', 'url' => 'user.consultation'],
         ];
-
+    }
+    public function index()
+    {
+        
         $veterinariansRecommendation = Veterinarian::orderBy('id', 'DESC')->limit(2)->get() ;
         $veterinariansBySpecialist = Veterinarian::orderBy('specialist')
         ->get()
@@ -24,19 +27,29 @@ class ConsultationController extends Controller
         });
 
 
-        return view('pages.user.consultation.index', compact('breadcrumbs', 'veterinariansRecommendation', 'veterinariansBySpecialist'));
+        return view('pages.user.consultation.index', compact('veterinariansRecommendation', 'veterinariansBySpecialist'))->with('breadcrumbs', $this->breadcrumbs);
     }
 
     public function getDoctorBySpecialist($specialist)
     {
-        $breadcrumbs = [
-            ['label' => 'Home', 'url' => 'user.home'],
-            ['label' => 'Consultation', 'url' => 'user.consultation'],
-        ];
 
         $veterinarians = Veterinarian::orderBy('id','DESC')->where('specialist', $specialist)->paginate(15);
 
+        return view('pages.user.consultation.specialist', compact('veterinarians'))->with('breadcrumbs', $this->breadcrumbs);
+    }
+    private function prepareVeterinarianView($id, $viewName)
+    {
+        $veterinarian = Veterinarian::findOrFail($id);
+        return view($viewName, compact('veterinarian'))->with('breadcrumbs', $this->breadcrumbs);
+    }
 
-        return view('pages.user.consultation.specialist', compact('breadcrumbs', 'veterinarians'));
+    public function getVeterinarianDetails($id)
+    {
+        return $this->prepareVeterinarianView($id, 'pages.user.consultation.veterinarian');
+    }
+
+    public function getVeterinarianOrderDetails($id)
+    {
+        return $this->prepareVeterinarianView($id, 'pages.user.consultation.order');
     }
 }

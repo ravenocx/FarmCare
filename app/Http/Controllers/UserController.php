@@ -16,7 +16,7 @@ class UserController extends Controller
         ];
 
         $user = Auth::guard('user')->user();
-        return view('pages.user.profile.index', compact('breadcrumbs','user'));
+        return view('pages.User.Profile.index', compact('breadcrumbs','user'));
     }
 
     public function editProfileForm()
@@ -27,7 +27,7 @@ class UserController extends Controller
             ['label' => 'Edit', 'url' => 'user.profile.edit.form'],
         ];
         $user = Auth::guard('user')->user(); // Ambil data pengguna yang sedang login
-        return view('pages.user.profile.edit', compact('breadcrumbs','user'));
+        return view('pages.User.Profile.edit', compact('breadcrumbs','user'));
     }
 
     public function updateProfile(Request $request)

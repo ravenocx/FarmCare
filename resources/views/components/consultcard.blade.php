@@ -14,8 +14,10 @@
     
             <p class="font-medium mt-2">{{ $price }}</p>
         </div>
-
-        <button class="w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5">Chat</button>
+        
+        <a href="">
+            <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
+        </a>
     </div>
 </div>
 

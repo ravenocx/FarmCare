@@ -3,8 +3,11 @@
 @section('title', 'Admin - Veterinarian Applicant')
 
 @section('main-content')
-    <div
-        class="container mt-32 mx-auto relative overflow-x-auto overflow-y-auto max-h-[640px] shadow-md sm:rounded-lg mb-20">
+    <div class="container mt-32 mx-auto relative overflow-x-auto overflow-y-auto max-h-[640px] shadow-md sm:rounded-lg mb-20">
+        <form action="{{ route('admin.management.applicant') }}" method="GET" >
+            <input type="text" name="query" placeholder="Search aplicant" class="border border-gray-300 px-4 py-2 rounded-md mr-2">
+            <button type="submit" class="btn px-4 py-2 bg-primaryColor text-white font-medium hover:text-primaryColor hover:bg-white">Search</button>
+        </form>
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-md text-white bg-shadeBrown sticky top-0">
                 <tr class="text-center">
@@ -115,13 +118,12 @@
                                 <a href="{{ $veterinarian->certification_link }}"><u>Certification Link</u></a>
                             </td>
                             <td class="flex justify-center items-center px-6 py-4">
-                                @if ($veterinarian->is_accepted === 0)
-                                    <span class="text-red-600 dark:text-red-500">Rejected</span>
-                                @elseif ($veterinarian->is_accepted === 1)
-                                    <span class="text-green-600 dark:text-blue-500">Accepted</span>
-                                @else
-                                    <form
-                                        action="{{ route('admin.management.applicant.update-status', ['id' => $veterinarian->id]) }}"
+                                @php
+                                    $status = $veterinarian->is_accepted;
+                                @endphp
+
+                                @if (is_null($status))
+                                    <form action="{{ route('admin.management.applicant.update-status', ['id' => $veterinarian->id]) }}"
                                         method="POST" class="inline">
                                         @csrf
                                         @method('PUT')
@@ -129,21 +131,32 @@
                                         <button type="submit"
                                             class="font-medium text-green-600 dark:text-blue-500 hover:underline">Approve</button>
                                     </form>
-                                    <form
-                                        action="{{ route('admin.management.applicant.update-status', ['id' => $veterinarian->id]) }}"
+                                    <form action="{{ route('admin.management.applicant.update-status', ['id' => $veterinarian->id]) }}"
                                         method="POST" class="inline">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="status" value="reject">
-                                        <button type="submit"
-                                            class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Reject</button>
+                                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Reject</button>
                                     </form>
+                                @else
+                                    @switch($status)
+                                        @case(1)
+                                            <span class="text-green-600 dark:text-blue-500">Accepted</span>
+                                            @break
+                                        @case(0)
+                                            <span class="text-red-600 dark:text-red-500">Rejected</span>
+                                            @break
+                                    @endswitch
                                 @endif
                             </td>
                         </tr>
                     @endforeach
                 @endif
             </tbody>
+           
         </table>
+        <div class="flex justify-center mt-6">
+            {{ $veterinariansByAccepted->links() }}
+        </div>
     </div>
 @endsection

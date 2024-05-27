@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 
 class VeterinarianSeeder extends Seeder
@@ -36,8 +36,10 @@ class VeterinarianSeeder extends Seeder
                 ]),
                 'graduate_year' => $faker->numberBetween(2000, 2020),
                 'email' => $faker->unique()->safeEmail,
-                'password' => Hash::make('password'),
-                'certification' => 'cdimasn',
+                'password' => Hash::make('123456'),
+                'is_accepted' => Null, 
+                'str_number'=> $faker->numerify('################'),
+                'certification' => "certification",
                 'photo' => $faker->imageUrl(640, 480, 'people', true, null, false),
                 'consultation_price' => $faker->numberBetween(30000, 150000),
                 'reservation_price' => $faker->numberBetween(50000, 250000),

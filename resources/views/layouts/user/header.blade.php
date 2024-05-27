@@ -23,7 +23,7 @@
                     </details>
                 </li>
                 <li class="mx-4"><a>Article</a></li>
-                <li class="mr-4"><a>FAQ</a></li>
+                <li class="mr-4"><a href="{{route('faq')}}">FAQ</a></li>
                 <li><a href="#footer">Contact Us</a></li>
             </ul>
         </div>
@@ -43,6 +43,7 @@
                         </div>
                     </summary>
                     <ul class="p-2 bg-gray-100 rounded-t-none drop-shadow-xl">
+                        <li><a href="{{route('user.profile')}}" class="px-12">Profil</a></li>
                         <li><a href="{{route('logout')}}" class="px-12">Logout</a></li>
                     </ul>
                     </details>
