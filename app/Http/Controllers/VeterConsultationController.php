@@ -166,6 +166,11 @@ class VeterConsultationController extends Controller
                 'order_status' => $data['status']
             ]);
 
+            $serviceSchedule = ServiceSchedule::findOrFail($id);
+            $serviceSchedule->update([
+                'is_reserved' => false
+            ]);
+
             request()->session()->flash('success','Successfully edit online consultation status');
             return redirect()->back();
         }catch (\Exception $e) {

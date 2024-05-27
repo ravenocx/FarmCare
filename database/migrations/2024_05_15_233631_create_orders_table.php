@@ -24,10 +24,12 @@ return new class extends Migration
             $table->enum('service_category', ['consultation' , 'reservation']);
             $table->enum('order_status', ['On going', 'Complete', 'Cancel']);
             $table->timestamp('order_date');
+            $table->unsignedBigInteger("schedule_id");
             $table->decimal('price');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->foreign('veterinarian_id')->references('id')->on('veterinarians')->onDelete('CASCADE');
+            $table->foreign('schedule_id')->references('id')->on('service_schedules')->onDelete('CASCADE');
         });
     }
 

@@ -19,18 +19,19 @@ class OrderSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $orderDate = $faker->dateTimeBetween('2024-05-21 20:00:00', '2024-05-23 20:00:00'); // Change this when testing
             DB::table('orders')->insert([ 
-                'user_id' => 1,
+                'user_id' => 1,// Change this when testing
                 'veterinarian_id' => 202,  // Change this when testing
                 'cust_name' =>  $faker->randomElement(['Haris','kacee']), 
                 'cust_phone_number' => $faker->numerify('628##########'),             
                 'veter_phone_number' => $faker->numerify('628##########'),             
                 'payment_proof' => $faker->imageUrl(480, 640, 'payment_proof', false, null, false),
                 'appointment_date' => $orderDate,
-                'category' => 'Livestock', // Change this when testing
-                'service_category' => 'consultation',
+                'category' => 'Livestock',
+                'service_category' => 'consultation', // Change this when testing
                 'order_status' => 'On Going',
                 'order_date' => $orderDate, 
-                'price' => 107428, // Change this when testing
+                'price' => 107428,
+                'schedule_id' => 401, // Change this when testing
             ]);
         }
     }
