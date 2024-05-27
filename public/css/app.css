@@ -4680,30 +4680,6 @@ details.collapse summary::-webkit-details-marker {
   width: 100vw;
 }
 
-.w-72 {
-  width: 18rem;
-}
-
-.w-\[300px\] {
-  width: 300px;
-}
-
-.w-\[350px\] {
-  width: 350px;
-}
-
-.w-\[340px\] {
-  width: 340px;
-}
-
-.w-\[330px\] {
-  width: 330px;
-}
-
-.w-\[360px\] {
-  width: 360px;
-}
-
 .max-w-60 {
   max-width: 15rem;
 }
@@ -4896,17 +4872,17 @@ details.collapse summary::-webkit-details-marker {
        column-gap: 2.5rem;
 }
 
+.gap-x-16 {
+  -moz-column-gap: 4rem;
+       column-gap: 4rem;
+}
+
 .gap-y-1 {
   row-gap: 0.25rem;
 }
 
 .gap-y-2 {
   row-gap: 0.5rem;
-}
-
-.gap-x-16 {
-  -moz-column-gap: 4rem;
-       column-gap: 4rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {

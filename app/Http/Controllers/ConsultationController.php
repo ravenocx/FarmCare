@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ServiceSchedule;
 use Illuminate\Http\Request;
 use App\Models\Veterinarian;
 use Carbon\Carbon;
@@ -41,7 +42,8 @@ class ConsultationController extends Controller
         ->with(['serviceSchedules' => function ($query) use ($now) {
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
-                ->where('schedule_end', '>=', $now);
+                ->where('schedule_end', '>=', $now)
+                ->orderBy('schedule_start', 'asc');
         }])
         ->orderBy('veterinarians.id', 'desc') // Order by veterinarian id descending
         ->limit(2) // Limit the result to 2 veterinarians
@@ -62,7 +64,8 @@ class ConsultationController extends Controller
         ->with(['serviceSchedules' => function ($query) use ($now) {
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
-                ->where('schedule_end', '>=', $now);
+                ->where('schedule_end', '>=', $now)
+                ->orderBy('schedule_start', 'asc');
         }])
         ->get()
         ->groupBy('specialist')
@@ -95,7 +98,9 @@ class ConsultationController extends Controller
         ->with(['serviceSchedules' => function ($query) use ($now) {
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
-                ->where('schedule_end', '>=', $now);
+                ->where('schedule_end', '>=', $now)
+                ->orderBy('schedule_start', 'asc');
+                
         }])
         ->paginate(15);
 
@@ -109,7 +114,8 @@ class ConsultationController extends Controller
         $veterinarians = Veterinarian::with(['serviceSchedules' => function ($query) use ($now) {
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
-                ->where('schedule_end', '>=', $now);
+                ->where('schedule_end', '>=', $now)
+                ->orderBy('schedule_start', 'asc');
         }])
         ->where('veterinarians.is_accepted', true)
         ->where('id',$id)
@@ -168,6 +174,12 @@ class ConsultationController extends Controller
                 'order_date' => $this->currentDateTime,
                 'price' => $veterinarian -> consultation_price,
             ]);
+
+            $serviceSchedule = ServiceSchedule::findOrFail($request->veterinarian_schedule_id);
+            $serviceSchedule->update([
+                'is_reserved' => true
+            ]);
+
             request()->session()->flash('success','Online Consultation Order created sucessfully!');
             return redirect()->route('user.consultation.order' , ['id' => $order->id]);
         }catch(\Exception $e) {

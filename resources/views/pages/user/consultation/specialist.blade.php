@@ -43,11 +43,19 @@
                             </div>
                             
                             @if ($veterinarian->serviceSchedules->isEmpty())
-                                <button class="btn-sm w-20 mt-auto bg-gray-300 text-xs text-white rounded py-2 px-5 cursor-not-allowed" disabled>Offline</button>
+                                <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Offline</button>
                             @else
-                                <a href="{{ route('user.consultation.veterinarian', ['id' => $veterinarian->id]) }}">
-                                    <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
-                                </a>
+                                @foreach($veterinarian->serviceSchedules as $schedule)
+                                    @if($schedule->is_reserved)
+                                        <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Reserved</button>
+                                    @else
+                                        <input type="hidden" name="veterinarian_schedule_id" value="{{ $schedule->id }}">
+                    
+                                        <div class="flex justify-center">
+                                            <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1" type="submit">Submit</button>
+                                        </div>
+                                    @endif
+                                @endforeach
                             @endif
                         </div>
                     </div>
