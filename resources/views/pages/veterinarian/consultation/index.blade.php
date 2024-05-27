@@ -46,7 +46,7 @@
                             <button class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3">Cancel</button>
                         </a>
                     @else
-                        <button class="btn-base bg-gray-300 text-xs font-bold text-white rounded py-2 px-5 cursor-not-allowed" disabled>Schedule Ended</button>
+                        <button class="btn-base bg-gray-300 text-xs font-bold text-white rounded py-2 px-5 cursor-not-allowed" disabled>{{$serviceSchedule->is_reserved ? 'Reserved' : 'Schedule Ended'}}</button>
                     @endif
                 </div>
             </div>
