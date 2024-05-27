@@ -21,6 +21,7 @@ class Order extends Model
         'order_status',
         'order_date',
         'price',
+        'schedule_id'
     ];
 
     public function user(){

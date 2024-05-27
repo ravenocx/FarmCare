@@ -71,18 +71,14 @@
                 </div> 
 
                 @if ($veterinarian->serviceSchedules->isEmpty())
-                    <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Offline</button>
+                    <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Not Available</button>
                 @else
                     @foreach($veterinarian->serviceSchedules as $schedule)
-                        @if($schedule->is_reserved)
-                            <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Reserved</button>
-                        @else
-                            <input type="hidden" name="veterinarian_schedule_id" value="{{ $schedule->id }}">
-        
-                            <div class="flex justify-center">
-                                <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1" type="submit">Submit</button>
-                            </div>
-                        @endif
+                        <input type="hidden" name="veterinarian_schedule_id" value="{{ $schedule->id }}">
+    
+                        <div class="flex justify-center">
+                            <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1" type="submit">Submit</button>
+                        </div>
                     @endforeach
                 @endif
             </form>

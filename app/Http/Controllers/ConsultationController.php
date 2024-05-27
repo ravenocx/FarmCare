@@ -43,7 +43,9 @@ class ConsultationController extends Controller
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
                 ->where('schedule_end', '>=', $now)
-                ->orderBy('schedule_start', 'asc');
+                ->orderBy('schedule_start', 'asc')
+                ->limit(1)
+                ->get();
         }])
         ->orderBy('veterinarians.id', 'desc') // Order by veterinarian id descending
         ->limit(2) // Limit the result to 2 veterinarians
@@ -65,7 +67,9 @@ class ConsultationController extends Controller
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
                 ->where('schedule_end', '>=', $now)
-                ->orderBy('schedule_start', 'asc');
+                ->orderBy('schedule_start', 'asc')
+                ->limit(1)
+                ->get();
         }])
         ->get()
         ->groupBy('specialist')
@@ -99,7 +103,9 @@ class ConsultationController extends Controller
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
                 ->where('schedule_end', '>=', $now)
-                ->orderBy('schedule_start', 'asc');
+                ->orderBy('schedule_start', 'asc')
+                ->limit(1)
+                ->get();
                 
         }])
         ->paginate(15);
@@ -115,7 +121,9 @@ class ConsultationController extends Controller
             $query->where('is_reserved', false)
                 ->where('schedule_start', '<=', $now)
                 ->where('schedule_end', '>=', $now)
-                ->orderBy('schedule_start', 'asc');
+                ->orderBy('schedule_start', 'asc')
+                ->limit(1)
+                ->get();
         }])
         ->where('veterinarians.is_accepted', true)
         ->where('id',$id)
@@ -159,7 +167,7 @@ class ConsultationController extends Controller
             ])->getSecurePath();
     
             $veterinarian = Veterinarian::findOrFail($request->veterinarian_id);
-            
+            $serviceSchedule = ServiceSchedule::findOrFail($request->veterinarian_schedule_id);
             $order = Order::create([
                 'user_id' => Auth::guard('user')->user()-> id,
                 'veterinarian_id' => $veterinarian->id,
@@ -173,9 +181,9 @@ class ConsultationController extends Controller
                 'order_status' => 'On going',
                 'order_date' => $this->currentDateTime,
                 'price' => $veterinarian -> consultation_price,
+                'schedule_id' => $veterinarian->id,
             ]);
 
-            $serviceSchedule = ServiceSchedule::findOrFail($request->veterinarian_schedule_id);
             $serviceSchedule->update([
                 'is_reserved' => true
             ]);
