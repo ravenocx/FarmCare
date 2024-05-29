@@ -21,7 +21,12 @@
                             <div class="w-[224.22px] ml-2 space-y-2">
                                 <p class="font-bold">{{(Auth::guard('veterinarian')->user()->gender == 'male' ? 'Dr.' :'Dra.') . Auth::guard('veterinarian')->user()->name}}</p>
                                 <p class="font-bold">Online Consultation</p>
-                                <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} - {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                                @if(Carbon\Carbon::parse($serviceSchedule->schedule_start)->isSameDay(Carbon\Carbon::parse($serviceSchedule->schedule_end)))
+                                    <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} - {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                                @else
+                                    <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_start)->format('H:i') }} to</p>
+                                    <p class="text-[#FF0000]">{{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('d/m/Y') }} {{ Carbon\Carbon::parse($serviceSchedule->schedule_end)->format('H:i') }}</p>
+                                @endif
                                 @if($serviceSchedule->is_reserved)
                                     <p class="text-green-800">Reserved</p>
                                 @else
@@ -31,18 +36,16 @@
                         </div>
 
                         <div class="flex justify-center mt-5 space-x-3">
-                            @if(Carbon\Carbon::parse($serviceSchedule->schedule_end)->isAfter(Carbon\Carbon::now()))
-                                <a href="{{route('veterinarian.consultation.schedule.edit' , ['id' => $serviceSchedule -> id])}}">
-                                    <button class="btn-base bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Edit</button>
-                                </a>
-
-                                <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3 hover:text-[#DF0000] hover:bg-white hover:outline hover:outline-1" type="button">
-                                    Cancel
-                                </button>
-                            @else
-                                <button class="btn-base bg-gray-300 text-xs font-bold text-white rounded py-2 px-5 cursor-not-allowed" disabled>Schedule Ended</button>
-                            
-                            @endif
+                        @if(Carbon\Carbon::parse($serviceSchedule->schedule_end)->isAfter(Carbon\Carbon::now()) && !($serviceSchedule->is_reserved))
+                            <a href="{{route('veterinarian.consultation.schedule.edit' , ['id' => $serviceSchedule -> id])}}">
+                                <button class="btn-base bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Edit</button>
+                            </a>
+                            <a href="{{route('veterinarian.consultation.schedule.delete', ['id' =>$serviceSchedule -> id ])}}">
+                                <button class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3">Cancel</button>
+                            </a>
+                        @else
+                            <button class="btn-base bg-gray-300 text-xs font-bold text-white rounded py-2 px-5 cursor-not-allowed" disabled>{{$serviceSchedule->is_reserved ? 'Reserved' : 'Schedule Ended'}}</button>
+                        @endif
                         </div>
                     </div>
                 </div>
