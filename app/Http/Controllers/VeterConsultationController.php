@@ -34,15 +34,19 @@ class VeterConsultationController extends Controller
 
         $onGoingOrders = Order::where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
         ->where('order_status', 'On going')
+        ->where('service_category' , 'consultation')
         ->orderBy('order_date', 'asc')
         ->get();
 
-        $latestOrders = Order::where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
+        $latestOrders = Order::with('user')
+        ->where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
         ->where('order_status', '!=', 'On going')
         ->where('service_category' , 'consultation')
         ->orderBy('order_date', 'desc')
         ->limit(3)
         ->get();
+
+        // dd($latestOrders);
 
         return view('pages.veterinarian.consultation.index', compact('serviceSchedules', 'onGoingOrders', 'latestOrders'));
     }

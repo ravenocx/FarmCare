@@ -138,8 +138,7 @@
 
             <div class="flex items-center bg-secondaryColor py-5 pl-8 pr-4">
 
-            <!-- TODO -->
-                <img src="{{asset('images/icon/profile-icon.svg')}}" alt="profile-image" class="object-fill w-[73px] h-20 rounded-lg border border-shadeBrown">
+                <img src="{{asset($latestOrder->user->photo ? :'images/icon/profile-icon.svg')}}" alt="profile-image" class="object-fill w-[73px] h-20 rounded-lg border border-shadeBrown">
 
                 <div class="text-lg ml-4">
                     <p class="font-medium mb-1">{{$latestOrder -> cust_name}}</p>
@@ -148,7 +147,7 @@
 
                 <div class="text-lg ml-36 mr-20">
                     <p class="text-mediumGray mb-3">Service</p>
-                    <p class="font-medium">Online Consultation</p>
+                    <p class="font-medium">{{$latestOrder -> service_category}}Online Consultation</p>
                 </div>
 
                 <div class="text-lg">
