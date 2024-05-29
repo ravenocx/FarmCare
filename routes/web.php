@@ -2,12 +2,14 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\VeterConsultationController;
 
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
 
+Route::get('/faq', [FaqController::class, 'getFAQPage'])->name("faq");
 
 
 Route::get('/login',[AuthController::class, 'login'] )->name('login.form');

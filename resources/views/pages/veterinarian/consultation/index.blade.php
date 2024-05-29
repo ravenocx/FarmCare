@@ -147,7 +147,7 @@
 
                 <div class="text-lg ml-36 mr-20">
                     <p class="text-mediumGray mb-3">Service</p>
-                    <p class="font-medium">{{$latestOrder -> service_category}}Online Consultation</p>
+                    <p class="font-medium">Online Consultation</p>
                 </div>
 
                 <div class="text-lg">
