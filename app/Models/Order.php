@@ -27,4 +27,8 @@ class Order extends Model
     protected $casts = [
         'order_date' => 'datetime',
     ];
+
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

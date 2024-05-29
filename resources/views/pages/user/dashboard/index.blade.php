@@ -34,42 +34,22 @@
 
             <div id="default-carousel" class="relative w-full h-64" data-carousel="slide">
                 <div class="relative h-64 overflow-hidden rounded-lg">
-                    <div class="flex hidden duration-1000 ease-in-out h-60 pt-4 pl-4" data-carousel-item>
-                        @for ($i = 0; $i < 6; $i++)
-                        <div class="bg-secondaryColor px-2 pt-2 rounded-lg shadow-lg mr-5">
-                            <img src="{{asset('images/assets/doctor-picture.svg')}}" alt="doctor" class="size-[155px]">
-                            <p class="font-semibold text-xs my-2">Dr. Haris Sitompul</p>
-                            <p class="font-semibold text-xs pb-3">Poultry Specialist</p>
+                    @php
+                        $chunks = $veterinarians->chunk(6);
+                    @endphp
+                    @foreach ($chunks as $chunk)
+                        <div class="flex hidden duration-1000 ease-in-out h-60 pt-4 pl-4" data-carousel-item>
+                            @foreach ($chunk as $veterinarian)
+                                <div class="bg-secondaryColor px-2 pt-2 rounded-lg shadow-lg mr-5">
+                                    <img src="{{ asset($veterinarian->photo ? :'images/assets/doctor-picture.svg') }}" class="size-[155px]">
+                                    <p class="font-semibold text-xs my-2">{{ $veterinarian->name }}</p>
+                                    <p class="font-semibold text-xs pb-3">{{ $veterinarian->specialist }}</p>
+                                </div>
+                            @endforeach
                         </div>
-                        @endfor
-                    </div>
-
-                    <div class="flex hidden duration-1000 ease-in-out h-60 pt-4 pl-4" data-carousel-item>
-                        @for ($i = 0; $i < 6; $i++)
-                        <div class="bg-secondaryColor px-2 pt-2 rounded-lg shadow-lg mr-5">
-                            <img src="{{asset('images/assets/doctor-picture.svg')}}" alt="doctor" class="size-[155px]">
-                            <p class="font-semibold text-xs my-2">Dr. Haris Sitompul</p>
-                            <p class="font-semibold text-xs pb-3">Poultry Specialist</p>
-                        </div>
-                        @endfor
-                    </div>
-
-                    <div class="flex hidden duration-1000 ease-in-out h-60 pt-4 pl-4" data-carousel-item>
-                        @for ($i = 0; $i < 6; $i++)
-                        <div class="bg-secondaryColor px-2 pt-2 rounded-lg shadow-lg mr-5">
-                            <img src="{{asset('images/assets/doctor-picture.svg')}}" alt="doctor" class="size-[155px]">
-                            <p class="font-semibold text-xs my-2">Dr. Haris Sitompul</p>
-                            <p class="font-semibold text-xs pb-3">Poultry Specialist</p>
-                        </div>
-                        @endfor
-                    </div> 
+                    @endforeach
                     
                 </div>
-                <!-- <div class="absolute z-30 flex -translate-x-1/2 -bottom-1 left-1/2 space-x-3 rtl:space-x-reverse">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                </div> -->
 
                 <button type="button" class="absolute top-0 -start-16 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full ">
