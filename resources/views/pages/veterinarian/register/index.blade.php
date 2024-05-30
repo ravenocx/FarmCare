@@ -40,9 +40,13 @@
 
                     <label for="graduateYear" class="font-medium text-2xl mt-6">Graduate Year <span class="text-red-600">*</span></label>
                     <input id="graduateYear" type="number" name="graduateYear" placeholder="Enter your Graduate Year" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required >
+                    
+                    <label for="phone_number" class="font-medium text-2xl mt-6">Phone Number <span class="text-red-600">*</span></label>
+                    <input id="phone_number" type="text" name="phone_number" placeholder="628xxxxxxxxxxx" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required >
 
                     <label for="email" class="font-medium text-2xl mt-6">Email <span class="text-red-600">*</span></label>
                     <input id="email" type="email" name="email" placeholder="Enter your email" class="w-[677px] mt-3 h-20 rounded-lg border border-shadeGray border-opacity-50 text-lg px-4" autofocus required>
+
 
                     <div class="flex w-[677px] mt-6">
                         <div class="max-w-80">

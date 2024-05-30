@@ -97,7 +97,7 @@ class AuthController extends Controller
     public function userRegisterSubmit(Request $request){
         $this->validate($request,[
             'fullName'=>'string|required|min:5',
-            'phoneNumber'=> 'string|required|min:12',
+            'phoneNumber'=> 'string|required|min:14',
             'email'=>'string|required|unique:users,email',
             'password'=>'required|min:6|confirmed',
         ]);
@@ -134,6 +134,7 @@ class AuthController extends Controller
             'gender' => 'string|required|in:male,female',
             'university'=>'string|required|min:5',
             'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
+            'phone_number'=> 'string|required|min:14',
             'email'=>'string|required|unique:veterinarians,email',
             'password'=>'required|min:6|confirmed',
             'certification' => 'required|file|mimes:pdf|max:10240'
@@ -158,6 +159,7 @@ class AuthController extends Controller
             'gender' => $data['gender'],
             'university' => $data['university'],
             'graduate_year' => $data['graduateYear'],
+            'phone_number' => $data['phone_number'],
             'email'=> $data['email'],
             'password'=> Hash::make($data['password']),
             'str_number'=> $faker->numerify('################'),
@@ -186,11 +188,11 @@ class AuthController extends Controller
         
         if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
             Session::put('admin',$data['email']);
-            request()->session()->flash('success','Successfully login');
+            request()->session()->flash('success','Welcome! Successfully login as admin');
             return redirect()->route('admin.index');
         }
 
-        request()->session()->flash('error','Invalid email and password please try again!');
+        request()->session()->flash('error','Invalid email and password,  please try again!');
         return redirect()->back();
     }
 }

@@ -13,14 +13,15 @@ class ServiceSchedule extends Model
         'veterinarian_id',
         'schedule_start',
         'schedule_end',
-        'service_category'
-    ];
-
-    protected $guard = [
+        'service_category',
         'is_reserved',
     ];
 
-    public function Veterinarians(){
+    protected $casts = [
+        'is_reserved'=> 'boolean'
+    ];
+
+    public function veterinarian(){
         return $this->hasOne('App\Models\Veterinarian', 'id', 'veterinarian_id');
     }
 }
