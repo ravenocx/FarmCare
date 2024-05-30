@@ -17,14 +17,18 @@
             </h2>
             <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
                 <div class="p-5 border-2 border-t-0 border-shadeCream rounded-b-xl">
-                    <p class="mb-2">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                    <p class="">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                    <p class="mb-2">Follow these steps to view your consultation appointment:</p>
+                    <ol class="list-decimal text-base mt-4 pl-5">
+                        <li>Select 'Order History' on the main page of the FarmCare+</li>
+                        <li>You can see your consultation appointment in the 'Detailed Order History' button.</li>
+                        <li>There you will see details of the consultation appointment that you have made.</li>
+                    </ol>
                 </div>
             </div>
 
             <h2 id="accordion-collapse-heading-2" class="mt-10">
                 <button id ="accordionButton-2" type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right border-2 rounded-xl border-shadeCream gap-3 bg-white" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
-                <span class="text-black">I have made a consultation appointment. Where can I see it?</span>
+                <span class="text-black">Is online consultation service safe?</span>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                 </svg>
@@ -32,8 +36,7 @@
             </h2>
             <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
                 <div class="p-5 border-2 border-t-0 border-shadeCream rounded-b-xl">
-                    <p class="mb-2">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                    <p class="">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                    <p class="mb-2">We take the privacy of your data very seriously, and in accordance with our Privacy Policy, only your selected doctor(s) and you can view your personal health information, for the avoidance of doubt, the personal health information we collect is information related to your health and is not considered medical records, as regulated in our Privacy Policy.</p>
                 </div>
             </div>
 
