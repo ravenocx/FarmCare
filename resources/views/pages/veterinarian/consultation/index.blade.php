@@ -107,9 +107,9 @@
                             @method('PATCH')
                                 <td class="px-6 py-3 flex justify-center">
                                     <select id="status" name="status" onchange="submitChange()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option value="On going">On going</option>
-                                        <option value="Complete">Complete</option>
-                                        <option value="Cancel">Cancel</option>
+                                        <option value="On going" {{ $order->order_status == "On going" ? 'selected' : '' }}>On going</option>
+                                        <option value="Complete" {{ $order->order_status == "Complete" ? 'selected' : '' }}>Complete</option>
+                                        <option value="Cancel" {{ $order->order_status == "Cancel" ? 'selected' : '' }}>Cancel</option>
                                     </select>
                                     <button type="submit" class="hidden" id="submit-button">Submit</button>
                                 </td>
