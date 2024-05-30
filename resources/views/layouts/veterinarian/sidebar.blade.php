@@ -27,7 +27,7 @@
             </a>
          </li>
          <li>
-            <a href="{{route('veterinarian.profile')}}" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
+            <a href="{{route('veterinarian.profile')}}" class="flex items-center p-2 rounded-lg  {{Str::contains(Route::getCurrentRoute()->getPrefix(), 'veterinarian/profile') ? 'bg-primaryColor text-white' : ''}} hover:bg-primaryColor hover:text-white group">
                <span class="ms-3">Profile</span>
             </a>
          </li>

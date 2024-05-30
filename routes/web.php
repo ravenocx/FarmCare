@@ -71,6 +71,8 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
     Route::prefix('/profile')->group(function(){
         Route::get('/',[VeterProfileController::class, 'showProfile'])->name("veterinarian.profile");
         Route::get('/edit',[VeterProfileController::class, 'editProfileForm'])->name("veterinarian.profile.edit");
+        Route::post('/edit/{id}',[VeterProfileController::class, 'submitProfileForm'])->name("veterinarian.profile.edit.submit");
+        Route::post('/photo/update/{id}', [VeterProfileController::class, 'updatePhoto'])->name('veterinarian.profile.updatePhoto');
         });
     Route::prefix('/consultation')->group(function(){
         Route::get('/',[VeterConsultationController::class, 'index'])->name("veterinarian.consultation");

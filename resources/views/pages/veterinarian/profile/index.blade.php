@@ -7,22 +7,9 @@
 
     <div class="w-[1200px] container mx-auto  pb-20 mb-40 flex">
         <div class="w-1/3 text-center">
-            <img class="large-size mask mask-circle border-4 border-shadeGray mx-auto mt-4 mb-4 p-20" 
+            <img class="w-[300px]  mask mask-circle border-4 border-shadeGray mx-auto mb-4" 
             src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}" />
-                 <a href="#" class="text-shadeBrown font-semibold underline" onclick="toggleForm()">Change Photo</a>
-            
-            <div class="photo-button m-4">
-                
-            </div>
-            
-            <div class="photo-form hidden" id="file-dropzone">
-                <div class="w-4/5 rounded-md border border-shadeGray border-opacity-50 mt-8 px-4 py-6">
-                    <label for="photo" class="font-medium text-xl text-center block mb-4">Change Photo</label>
-                    <input id="photo" type="file" name="photo" class="file:rounded-lg file:mr-4 font-medium text-lg block mx-auto" required>
-                    <label for="photo" class="font-medium text-lg text-center block mt-4">Drag and drop here or browse</label>
-                </div>
-            </div>
-        </div>
+       </div>
         <div class="w-2/3">
             <div class="flex flex-wrap font-medium text-xl ">
                 <div class="w-full">
@@ -50,10 +37,9 @@
                     <p class="w-full my-3 rounded-lg border border-shadeGray border-opacity-50 text-lg p-4 ">
                         {{ $veterinarian->email }}</p>
                 </div>
-                <div class="w-full">
-                    <label class="font-medium text-2xl">Certification</label>
-                    <p class="w-full my-3 rounded-lg border border-shadeGray border-opacity-50 text-lg p-4 ">
-                        {{ $veterinarian->certification }}</p>
+                <div class="w-full mb-5">
+                    <label class="font-medium text-2xl  ">Certification</label><p class="my-4"></p>
+                    <a href="{{ asset('storage/certifications/' . $veterinarian->certification) }} "  target="_blank" ><u>Certification Link</u></a>
                 </div>
 
                 <div class="w-full">
@@ -83,6 +69,7 @@
             /* margin-top:384px ; */
             padding-bottom:480px;
         }
+        
     </style>
     @endpush
 

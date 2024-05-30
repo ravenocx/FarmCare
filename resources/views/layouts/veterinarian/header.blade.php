@@ -10,7 +10,7 @@
                 <summary>
                     <div class="flex items-center">
                         @if(Auth::guard('veterinarian')->user()->photo)
-                            <img src="{{asset(Auth::guard('veterinarian')->user()->photo)}}" alt="profile-image" class="size-10 rounded-full">
+                            <img src="{{asset('storage/photo/veterinarian/' . Auth::guard('veterinarian')->user()->photo)}}" alt="profile-image" class="size-10 rounded-full">
                         @else
                             <img src="{{asset('images/icon/doctor-profile-icon.svg')}}" alt="profile-image">
                         @endif

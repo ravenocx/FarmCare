@@ -17,7 +17,7 @@
                 <div class="flex justify-center w-full mb-6"> <!-- Start a new row -->
             @endif
             <div class="bg-secondaryColor rounded-lg shadow-2xl mr-14 w-[400px] mb-6">
-                <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
+                <img class="w-1/2 h-48 mask mask-circle mx-auto mt-6 mb-6" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
                 <p class="font-semibold text-base text-center mb-3"> {{ $veterinarian->name }}</p>
                 <div class="flex items-center justify-center mb-6">
                     <img src="{{asset('images/icon/specialist-icon.svg')}}" class="size-6">
@@ -152,7 +152,7 @@
                                 {{ $veterinarian->email }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ $veterinarian->certification_link }}"><u>Certification Link</u></a>
+                                <a href="{{ asset('storage/certifications/' . $veterinarian->certification) }}" target="_blank" ><u>Certification Link</u></a>
                             </td>
                             <td class="flex justify-center items-center px-6 py-4">
                               

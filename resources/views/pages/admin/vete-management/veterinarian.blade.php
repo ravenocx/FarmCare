@@ -22,7 +22,12 @@
             @endif
             
             <div class="bg-secondaryColor rounded-lg shadow-2xl mr-14 w-[400px] mb-6">
-            <img class="mask mask-circle mx-auto pt-4 mb-6" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}" alt="Veterinarian Photo">
+                @if( $veterinarian->photo)
+                <img class="w-1/2 h-48 mask mask-circle mx-auto mt-6 mb-6" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
+            @else
+                <img class="w-1/2 h-48 mask mask-circle mx-auto mt-6 mb-6" src="{{asset('images/icon/doctor-profile-icon.svg')}}" alt="profile-image">
+            @endif
+                
                 <p class="font-semibold text-base text-center mb-3"> {{ $veterinarian->name }}</p>
                 <div class="flex items-center justify-center mb-6">
                     <img src="{{asset('images/icon/specialist-icon.svg')}}" class="size-6">

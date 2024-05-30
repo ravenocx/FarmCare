@@ -6,7 +6,7 @@
     <h1 class="font-semibold text-2xl pt-32 px-14 mb-12">Veterinarian Profile</h1>
 
     <div class="w-[1200px] container mx-auto border-2 pb-20 mb-40">
-        <img class="mask mask-circle mx-auto mt-4 mb-20" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
+        <img class="w-[300px] mask mask-circle mx-auto mt-4 mb-10" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
 
         <div class="flex flex-wrap font-medium text-xl px-40">
             <div class="w-1/2">
@@ -35,8 +35,8 @@
                     <p class="w-96 rounded-md border-gray-200 my-4">{{ $veterinarian->email }}</p>
                 </div>
                 <div>
-                    <label>Certification</label>
-                    <p class="w-96 rounded-md border-gray-200 my-4">{{ $veterinarian->certification }}</p>
+                    <label>Certification</label><br>
+                    <a href="{{ asset('storage/certifications/' . $veterinarian->certification) }}"><u>Certification Link</u></a>
                 </div>
             </div>
             <div class="w-1/2">

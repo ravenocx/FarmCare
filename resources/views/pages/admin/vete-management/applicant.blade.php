@@ -115,7 +115,7 @@
                                 {{ $veterinarian->email }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ $veterinarian->certification_link }}"><u>Certification Link</u></a>
+                                <a href="{{ asset('storage/certifications/' . $veterinarian->certification) }}"><u>Certification Link</u></a>
                             </td>
                             <td class="flex justify-center items-center px-6 py-4">
                                 @php

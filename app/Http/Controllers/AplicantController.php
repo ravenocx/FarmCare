@@ -16,14 +16,14 @@ class AplicantController extends Controller
           'university' => 'required|string|max:255',
           'graduate_year' => 'required|integer',
           'email' => 'required|email|max:255',
-          'certification' => 'nullable|string|max:255',
+          'certification' => 'nullable|mimes:pdf|max:2048',
           'consultation_price' => 'required|numeric',
           'reservation_price' => 'required|numeric',
           'photo'         => 'nullable|file|mimes:jpeg,png,jpg,webp'
         ]);
         // Array untuk menyimpan data yang akan diperbarui
-       
-        $dataToUpdate = $request->except(['photo']);
+        $dataToUpdate = $request->except(['certification', 'photo']);       
+
         
         // Mengunggah gambar jika ada
         if ($request->hasFile('photo')) {
@@ -33,7 +33,15 @@ class AplicantController extends Controller
       $image->move($destination, $fileName);
       $dataToUpdate['photo'] = $fileName;
   }
-  
+
+  // Mengunggah gambar jika ada
+  if ($request->hasFile('certification')) {
+      $certification = $request->file('certification');
+      $fileName = $request->name . '-' . $request->specialist . '-' . date('YmdHis') . '.' . $certification->getClientOriginalExtension();
+      $destination = 'storage/certifications';
+      $certification->move($destination, $fileName);
+      $dataToUpdate['certification'] = $fileName;
+    }
       // Temukan dokter hewan berdasarkan ID
       $veterinarian = Veterinarian::findOrFail($id);
 

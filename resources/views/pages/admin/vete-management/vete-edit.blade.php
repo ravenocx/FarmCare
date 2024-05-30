@@ -10,15 +10,17 @@
         <form method="POST" action="{{ route('admin.management.veterinarian.update',  ['id' => $veterinarian->id]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <img class="mask mask-circle mx-auto mt-4 mb-20" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
+            <img class="w-[300px] mask mask-circle mx-auto mt-4 mb-5" src="{{ asset('storage/photo/veterinarian/' . $veterinarian->photo) }}"/>
             <div class="flex flex-wrap font-medium text-xl px-40">
             <div class="w-full mb-6">
                     <label for="photo">Photo</label>
                     <br>
-                    <input type="file" id="photo" name="photo" class="w-full rounded-md border-gray-200 my-4" accept="image/png, image/jpg, image/jpeg">
+                    <div class="w-96 rounded-md border border-shadeGray border-opacity-50 mt-3">
+                    <input type="file" id="photo" name="photo" class="w-full file:rounded-lg file:mr-4 ml-4  mt-5 rounded-md border-gray-200 my-4" accept="image/png, image/jpg, image/jpeg">
                     @error('photo')
                         <div class="text-red-500 text-sm">{{ $message }}</div>
                     @enderror
+                    </div>
                 </div>
                 <div class="w-1/2">
                     <div>
@@ -53,8 +55,11 @@
                     <div>
                         <label for="certification">Certification</label>
                         <br>
-                        <input type="text" id="certification" name="certification" class="w-96 rounded-md border-gray-200 my-4" value="{{ $veterinarian->certification }}">
-                    </div>
+                        <div class="w-96 rounded-md border border-shadeGray border-opacity-50 mt-3">
+                            <input id="certification" type="file" name="certification" class="file:rounded-lg file:mr-4 ml-4  mt-5" >
+                            <label for="certification" class=" text-center block mt-5 mb-2">Drag and drop here or browse</label>
+                        </div>
+ </div>
                 </div>
                 <div class="w-1/2">
                     <div class="ml-20">
