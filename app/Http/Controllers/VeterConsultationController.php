@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ServiceSchedule;
 use App\Models\Order;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -91,10 +92,10 @@ class VeterConsultationController extends Controller
                 'schedule_end'=> $data['datetime-end'],
                 'service_category' => 'consultation',
             ]);
-            request()->session()->flash('success','Successfully add new online consultation schedule');
+            Session::flash('success','Successfully add new online consultation schedule');
             return redirect()->back();
         }catch(\Exception $e){
-            request()->session()->flash('error','An error occurred :  ' . $e->getMessage());
+            Session::flash('error','An error occurred :  ' . $e->getMessage());
             return redirect()->back();
         }
     }
@@ -131,10 +132,10 @@ class VeterConsultationController extends Controller
                 'schedule_start' => $data['datetime-start'],
                 'schedule_end' => $data['datetime-end']
             ]);
-            request()->session()->flash('success','Successfully edit online consultation schedule');
+            Session::flash('success','Successfully edit online consultation schedule');
             return redirect()->back();
         }catch (\Exception $e) {
-            request()->session()->flash('error','An error occurred during editing the schedule :  ' . $e->getMessage());
+            Session::flash('error','An error occurred during editing the schedule :  ' . $e->getMessage());
             return redirect()->back();
         }
     }
@@ -144,10 +145,10 @@ class VeterConsultationController extends Controller
             $serviceSchedule = ServiceSchedule::findOrFail($id);
             
             $serviceSchedule -> delete();
-            request()->session()->flash('success','Successfully cancel online consultation schedule');
+            Session::flash('success','Successfully cancel online consultation schedule');
             return redirect()->back();
         }catch (\Exception $e) {
-            request()->session()->flash('error','An error occurred during deleting the schedule :  ' . $e->getMessage());
+            Session::flash('error','An error occurred during deleting the schedule :  ' . $e->getMessage());
             return redirect()->back();
         }
     }
@@ -166,10 +167,10 @@ class VeterConsultationController extends Controller
                 'order_status' => $data['status']
             ]);
 
-            request()->session()->flash('success','Successfully edit online consultation status');
+            Session::flash('success','Successfully edit online consultation status');
             return redirect()->back();
         }catch (\Exception $e) {
-            request()->session()->flash('error','An error occurred during editing the status :  ' . $e->getMessage());
+            Session::flash('error','An error occurred during editing the status :  ' . $e->getMessage());
             return redirect()->back();
         }
     }

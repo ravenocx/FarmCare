@@ -3,13 +3,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AplicantController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\VeterConsultationController;
+use App\Http\Controllers\VeterProfileController;
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
 
 
 
-Route::get('/login', [AuthController::class, 'login'])->name('login.form');
 Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
+Route::get('/login', [AuthController::class, 'login'])->name('login.form');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -61,3 +64,26 @@ Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name("dashboard")->middleware('VeterinarianAuthSession');
+Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(function(){
+    Route::get('/', function () {
+        return view('pages.veterinarian.dashboard.index');
+    })->name("veterinarian.index");
+    Route::prefix('/profile')->group(function(){
+        Route::get('/',[VeterProfileController::class, 'showProfile'])->name("veterinarian.profile");
+        Route::get('/edit',[VeterProfileController::class, 'editProfileForm'])->name("veterinarian.profile.edit");
+        });
+    Route::prefix('/consultation')->group(function(){
+        Route::get('/',[VeterConsultationController::class, 'index'])->name("veterinarian.consultation");
+        Route::patch('/status/edit/{id}',[VeterConsultationController::class, 'editConsultationStatus'])->name("veterinarian.consultation.status.edit.submit");
+        Route::get('/order/detail/{id}',[VeterConsultationController::class, 'getConsultationOrderDetails'])->name("veterinarian.consultation.order.detail");
+
+        Route::get('/schedule',[VeterConsultationController::class, 'showAllConsultationSchedules'])->name("veterinarian.consultation.schedule");
+        Route::get('/schedule/create',[VeterConsultationController::class, 'createSchedule'])->name("veterinarian.consultation.schedule.create");
+        Route::post('/schedule/create',[VeterConsultationController::class, 'createScheduleSubmit'])->name("veterinarian.consultation.schedule.create.submit");
+        Route::get('/schedule/edit/{id}',[VeterConsultationController::class, 'editServiceSchedule'])->name("veterinarian.consultation.schedule.edit");
+        Route::patch('/schedule/edit/{id}',[VeterConsultationController::class, 'editServiceScheduleSubmit'])->name("veterinarian.consultation.schedule.edit.submit");
+        Route::delete('/schedule/delete/{id}',[VeterConsultationController::class, 'deleteServiceSchedule'])->name("veterinarian.consultation.schedule.delete");
+    });
+
+
+});

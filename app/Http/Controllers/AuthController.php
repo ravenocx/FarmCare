@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Auth;
-use Session;
-use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Veterinarian;
 use App\Models\Admin;
@@ -43,7 +43,7 @@ class AuthController extends Controller
         
         if(Auth::guard('user')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
             Session::put('user',$data['email']);
-            request()->session()->flash('success','Successfully login');
+            Session::flash('success','Successfully login');
             return redirect()->route('user.home');
         }
 
@@ -53,16 +53,16 @@ class AuthController extends Controller
             //Check if the veterinarian accepted or not
             if($veterinarian->is_accepted){
                 Session::put('veterinarian',$data['email']);
-                request()->session()->flash('success','Successfully login');
+                Session::flash('success','Successfully login');
                 return redirect()->route('veterinarian.index');
             }else{
                 Auth::guard('veterinarian')->logout();
-                request()->session()->flash('error','Your account has not been accepted yet.');
+                Session::flash('error','Your account has not been accepted yet.');
                 return redirect()->back();
             }
         }
 
-        request()->session()->flash('error','Invalid email and password please try again!');
+        Session::flash('error','Invalid email and password please try again!');
         return redirect()->back();
     }
 
@@ -81,7 +81,7 @@ class AuthController extends Controller
             Session::forget('admin');
             Auth::guard('admin')->logout();
         }
-        request()->session()->flash('success','Logout successfully');
+        Session::flash('success','Logout successfully');
         return redirect()->back();
     }
 
@@ -111,10 +111,10 @@ class AuthController extends Controller
         ]);
 
         if($result){
-            request()->session()->flash('success','Successfully registered');
+            Session::flash('success','Successfully registered');
             return redirect()->route('login.form');
         }else{
-            request()->session()->flash('error','Please try again!');
+            Session::flash('error','Please try again!');
             return redirect()->back();
         }
     }
@@ -146,7 +146,7 @@ class AuthController extends Controller
             $certificationFileName = time() . ' - ' . $request->fullName . '_Certification'. '.' . $certificationFile->extension();
             $certificationPath = $certificationFile->storeAs('public/certifications',$certificationFileName);
         }else{
-            request()->session()->flash('error','The certification file is required.');
+            Session::flash('error','The certification file is required.');
             return redirect()->back();
         }
 
@@ -167,10 +167,10 @@ class AuthController extends Controller
         ]);
 
         if($result){
-            request()->session()->flash('success','Successfully registered');
+            Session::flash('success','Successfully registered');
             return redirect()->route('login.form');
         }else{
-            request()->session()->flash('error','Please try again!');
+            Session::flash('error','Please try again!');
             return redirect()->back();
         }
     }
@@ -188,11 +188,11 @@ class AuthController extends Controller
         
         if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']],$isRemember)){
             Session::put('admin',$data['email']);
-            request()->session()->flash('success','Welcome! Successfully login as admin');
+            Session::flash('success','Welcome! Successfully login as admin');
             return redirect()->route('admin.index');
         }
 
-        request()->session()->flash('error','Invalid email and password,  please try again!');
+        Session::flash('error','Invalid email and password,  please try again!');
         return redirect()->back();
     }
 }
