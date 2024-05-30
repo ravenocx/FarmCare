@@ -10,17 +10,27 @@
 <div class="mx-auto ml-[90px] mr-[90px] flex grid grid-cols-2 divide-x-2 divide-gray-300 border-t-2 border-gray-300">
     <div class="container pr-2">
         <div class="mb-2 ml-3">
-            <h2 class="text-2xl font-medium text-black text-left text-balance mb-2 mt-5">Drug Recommendations</h2>
-            <h2 class="text-base font-medium text-black text-left text-balance mb-2">id: {{ $medication->id }}</h2>
+            <!-- <h2 class="text-2xl font-medium text-black text-left text-balance mb-2 mt-5">Drug Recommendations</h2>
+            <h2 class="text-base font-medium text-black text-left text-balance mb-2">id: {{ $medication->id }}</h2> -->
 
             <h2 class="text-2xl font-medium text-black text-left text-balance mb-2 mt-5">Daftar Pesanan</h2>
             
-            <div class="flex">
-              <h2 class="text-base font-medium text-black text-left text-balance mb-2 mr-auto">{{ $medication->medicine }}</h2>
-              <h2 class="text-base font-medium text-black text-left text-balance mb-2">Rp {{ number_format($medication->price, 0, ',', '.') }}</h2>
+            <div class="flex mt-5">
+                <h2 class="text-lg font-medium text-black text-left text-balance mb-2 mr-auto">{{ $medication->medicine }}</h2>
+                <div>
+                    <h2 class="text-base font-medium text-black text-left text-balance mb-2">Rp {{ number_format($medication->price, 0, ',', '.') }}</h2>
+
+                    <h2 class="text-sm font-medium text-black text-end text-balance mb-2">x{{ $medication->quantity }}</h2>
+                </div>
             </div>
 
-            <h2 class="text-sm font-medium text-black text-left text-balance mb-2">x{{ $medication->quantity }}</h2>
+
+            <div class="flex items-center mb-2 mt-5">
+                <h2 class="text-xl font-medium text-black text-left text-balance">Alamat Pengiriman</h2>
+                <a class="text-base font-semibold text-gray-400 text-balance ml-auto" href="{{ route('user.medicdeliv.edit', ['id' => $medication->id]) }}">Edit</a>
+            </div>
+
+            <p class="text-lg font-medium text-balance text-gray-500 mb-2">{{ $medication->address }}</p>
         </div>
     </div>
 
@@ -30,7 +40,7 @@
         <div class="container mt-5">
             <div class="flex">
                 <h2 class="text-base font-medium text-black text-left text-balance mb-2 mr-5">Subtotal</h2>
-                <p class="text-base font-semibold text-justify text-black mb-5 ml-auto">Rp {{ number_format($medication->price, 0, ',', '.') }}</p>
+                <p class="text-base font-semibold text-justify text-black mb-5 ml-auto">Rp {{ number_format($totalPrice, 0, ',', '.') }}</p>
             </div>
 
             <div class="flex">
@@ -45,16 +55,11 @@
 
             <div class="flex">
                 <h2 class="text-xl font-semibold text-black text-left text-balance mb-2 mr-5">Total</h2>
-                <p class="text-xl font-semibold text-justify text-black mb-5 ml-auto">Rp {{ number_format($medication->price + 15000 + 5000, 0, ',', '.') }}</p>
+                <p class="text-xl font-semibold text-justify text-black mb-5 ml-auto">Rp {{ number_format($totalPrice + 15000 + 5000, 0, ',', '.') }}</p>
             </div>
         </div>
 
-        <div class="flex items-center mb-2">
-            <h2 class="text-xl font-medium text-black text-left text-balance">Alamat Pengiriman</h2>
-            <a class="text-base font-semibold text-gray-400 text-balance ml-auto" href="{{ route('user.medicdeliv.edit', ['id' => $medication->id]) }}">Edit</a>
-        </div>
-
-        <p class="text-lg font-medium text-balance text-gray-500 mb-2">{{ $medication->address }}</p>
+        
     </div>
 </div>
 

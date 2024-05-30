@@ -31,6 +31,7 @@ Route::post('/admin_login',[AuthController::class, 'adminLoginSubmit'] )->name('
 
 Route::middleware(['AuthSession'])->group(function(){
     Route::get('/home', [DashboardController::class, 'index'] )->name('user.home');
+    Route::get('/home/veterinarians', [DashboardController::class, 'listVeterinarians'])->name('user.dashboard.list');
 
     
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
