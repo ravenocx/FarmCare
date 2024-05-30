@@ -47,4 +47,28 @@ class ArticleController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
+    public function edit(string $id)
+    {
+        $article = Article::find($id);
+
+        return view('article.edit', compact('article'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $article = Article::find($id);
+
+
+        $article->update([
+            'title' => $request->title,
+            'category' => $request->category,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('article.index')->with('message', 'Article updated successfully');
+    }
 }
