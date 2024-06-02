@@ -42,6 +42,7 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::prefix('/medicdeliv')->group(function(){
         Route::get('/', [MedicDelivController::class, 'index'])->name('user.medicdeliv');
         Route::get('/edit/{id}', [MedicDelivController::class, 'edit'])->name('user.medicdeliv.edit');
+        Route::post('/edit/{id}', [MedicDelivController::class, 'edit'])->name('user.medicdeliv.edit.save');
         Route::get('/upload', [MedicDelivController::class, 'upload'])->name('user.medicdeliv.upload');
         Route::get('/success', [MedicDelivController::class, 'success'])->name('user.medicdeliv.success');
         Route::get('/status', [MedicDelivController::class, 'status'])->name('user.medicdeliv.status');

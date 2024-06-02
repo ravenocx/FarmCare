@@ -24,7 +24,6 @@
                 </div>
             </div>
 
-
             <div class="flex items-center mb-2 mt-5">
                 <h2 class="text-xl font-medium text-black text-left text-balance">Alamat Pengiriman</h2>
                 <a class="text-base font-semibold text-gray-400 text-balance ml-auto" href="{{ route('user.medicdeliv.edit', ['id' => $medication->id]) }}">Edit</a>
@@ -58,8 +57,6 @@
                 <p class="text-xl font-semibold text-justify text-black mb-5 ml-auto">Rp {{ number_format($totalPrice + 15000 + 5000, 0, ',', '.') }}</p>
             </div>
         </div>
-
-        
     </div>
 </div>
 
