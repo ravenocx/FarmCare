@@ -60,6 +60,7 @@ class MedicDelivController extends Controller
 
         return view('pages.user.medicdeliv.edit', compact('medication', 'breadcrumbs', 'totalPrice', 'successMessage', 'errorMessage'));
     }
+    
     public function upload()
     {
         $breadcrumbs = array_merge($this->breadcrumbs, [
@@ -79,12 +80,12 @@ class MedicDelivController extends Controller
 
     public function status()
     {
-        $medications = Medication::findOrFail(30);
+        $medications = Medication::all();
 
         $breadcrumbs = array_merge($this->breadcrumbs, [
             ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
             ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
-            ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
+            ['label' => 'Status Order', 'url' => 'user.medicdeliv.status'],
         ]);
         return view('pages.user.medicdeliv.status', compact('medications', 'breadcrumbs'));
     }
