@@ -23,7 +23,6 @@ class OrderController extends Controller
         ->orderBy('order_date', 'desc')
         ->get();
 
-
         return view('pages.user.order-history.index', compact('orders'))->with('breadcrumbs', $this->breadcrumbs);
 
     }
