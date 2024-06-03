@@ -34,6 +34,12 @@ Route::middleware(['AuthSession'])->group(function(){
         return view('pages.user.index');
     })->name("user.home");
 
+    Route::prefix('/article')->group(function(){
+        Route::get('/', [ArticleController::class, 'index'])->name('user.article');
+        Route::post('/', [ArticleController::class, 'index'])->name('user.article.search');
+        Route::get('/{id}', [ArticleController::class, 'detail'])->name('user.article.detail');
+    });
+
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
     Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
