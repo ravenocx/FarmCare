@@ -85,6 +85,7 @@
             @endif
         </div>
     </div>
+    
     <!-- Alert -->
     @if(Session::get('message'))
     <div id="alert-3"
