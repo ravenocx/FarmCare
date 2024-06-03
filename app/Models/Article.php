@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'content', 'category', 'creator'];
+
+    public function articleImages(){
+        return $this->hasMany('App\Models\ArticleImage', 'article_id', 'id');
+    }
+
 }

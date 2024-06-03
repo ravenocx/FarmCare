@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\VeterConsultationController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\OrderController;
 
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
@@ -30,6 +32,10 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::get('/home', function () {
         return view('pages.user.index');
     })->name("user.home");
+
+    Route::prefix('/order')->group(function(){
+        Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
+    });
 
     Route::prefix('/consultation')->group(function(){
         Route::get('/', [ConsultationController::class, 'index'])->name('user.consultation');
@@ -79,6 +85,14 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
         Route::delete('/schedule/delete/{id}',[VeterConsultationController::class, 'deleteServiceSchedule'])->name("veterinarian.consultation.schedule.delete");
     });
 
+    Route::prefix('/article')->group(function(){
+        Route::get('/',[ArticleController::class, 'index'])->name("veterinarian.article.index");
+        Route::get('/add',[ArticleController::class, 'create'])->name("veterinarian.article.create");
+        Route::post('/add',[ArticleController::class, 'store'])->name("veterinarian.article.create.submit");
+        Route::get('/edit/{id}',[ArticleController::class, 'edit'])->name("veterinarian.article.edit");
+        Route::patch('/edit/{id}',[ArticleController::class, 'update'])->name("veterinarian.article.edit.submit");
+        Route::delete('/delete/{id}',[ArticleController::class, 'destroy'])->name("veterinarian.article.delete");
+    });
 
 });
 

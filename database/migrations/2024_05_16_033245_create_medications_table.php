@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('quantity');
             $table->decimal('price');
             $table->string('address');
-            $table->enum('order_status', ['On going', 'Complete', 'Cancel']);
+            $table->enum('order_status', ['Pending', 'Paid','On process', 'Complete', 'Cancel']);
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('CASCADE');
         });

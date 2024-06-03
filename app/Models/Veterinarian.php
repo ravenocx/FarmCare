@@ -38,6 +38,10 @@ class Veterinarian extends Authenticatable
         return $this->hasMany('App\Models\ServiceSchedule', 'veterinarian_id', 'id');
     }
 
+    public function orders(){
+        return $this->hasMany('App\Models\Veterinarian', 'veterinarian_id', 'id');
+    }
+
 
     protected function casts(): array
     {
