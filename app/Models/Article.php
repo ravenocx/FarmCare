@@ -15,4 +15,7 @@ class Article extends Model
         return $this->hasMany('App\Models\ArticleImage', 'article_id', 'id');
     }
 
+    public function veterinarian(){
+        return $this->belongsTo(Veterinarian::class, 'id');
+    }
 }
