@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\VeterConsultationController;
+use App\Http\Controllers\OrderController;
 
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
@@ -37,10 +38,11 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
     Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
+
+    Route::prefix('/order')->group(function(){
+        Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
+    });
     
-    Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
-    Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
-    Route::post('/article/create', [ArticleController::class, 'store'])->name('article.store');
 });
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
@@ -75,6 +77,13 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
 
     });
 
-
+    Route::prefix('/article')->group(function(){
+        Route::get('/',[ArticleController::class, 'index'])->name("veterinarian.article.index");
+        Route::get('/add',[ArticleController::class, 'create'])->name("veterinarian.article.create");
+        Route::post('/add',[ArticleController::class, 'store'])->name("veterinarian.article.create.submit");
+        Route::get('/edit/{id}',[ArticleController::class, 'edit'])->name("veterinarian.article.edit");
+        Route::patch('/edit/{id}',[ArticleController::class, 'update'])->name("veterinarian.article.edit.submit");
+        Route::delete('/delete/{id}',[ArticleController::class, 'destroy'])->name("veterinarian.article.delete");
+    });
 });
 
