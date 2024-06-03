@@ -235,6 +235,5 @@
                 reader4.readAsDataURL(choosedFile4);
             }
         });
-
     </script>
 @endsection
