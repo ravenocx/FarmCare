@@ -14,6 +14,11 @@ class Medication extends Model
         'quantity',
         'price',
         'address',
-        'order_status'
+        'order_status',
+        'payment_proof'
     ];
+
+    public function order(){
+        return $this->hasOne('App\Models\Order', 'id', 'order_id');
+    }
 }

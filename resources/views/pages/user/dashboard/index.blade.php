@@ -29,7 +29,7 @@
         <div class="container mx-auto w-[1149px]">
             <h2 class="font-semibold text-3xl text-center mb-2">Recommendation Doctor For Animal</h2>
             <div class="flex justify-end">
-                <a href="" class="mb-4 font-semibold text-shadeBrown text-base"> View All ></a>
+                <a href="{{route('user.consultation')}}" class="mb-4 font-semibold text-shadeBrown text-base"> View All ></a>
             </div>
 
             <div id="default-carousel" class="relative w-full h-64" data-carousel="slide">
@@ -40,11 +40,13 @@
                     @foreach ($chunks as $chunk)
                         <div class="flex hidden duration-1000 ease-in-out h-60 pt-4 pl-4" data-carousel-item>
                             @foreach ($chunk as $veterinarian)
+                            <a href="{{route('user.consultation.veterinarian', ['id' => ($veterinarian -> id)]) }}">
                                 <div class="bg-secondaryColor px-2 pt-2 rounded-lg shadow-lg mr-5">
                                     <img src="{{ asset($veterinarian->photo ? :'images/assets/doctor-picture.svg') }}" class="size-[155px]">
-                                    <p class="font-semibold text-xs my-2">{{ $veterinarian->name }}</p>
+                                    <p class="font-semibold text-xs my-2">{{ Str::limit($veterinarian->name,15) }}</p>
                                     <p class="font-semibold text-xs pb-3">{{ $veterinarian->specialist }}</p>
                                 </div>
+                            </a>
                             @endforeach
                         </div>
                     @endforeach
@@ -74,14 +76,16 @@
         </div>
 
         <div class="flex">
-            @for ($i = 0; $i < 4; $i++)
+            @foreach ($articles as $article)
             <div class="bg-primaryColor px-2 pt-2 rounded-lg shadow-lg mr-5 max-w-[278px]">
-                <img src="{{asset('images/animal/cow-article.svg')}}" alt="doctor" class="w-[270px] h-[151px]">
-                <p class="font-medium text-base text-white my-2">Mengenal Penyakit Antraknosa <br> Pada Hewan Ternak Kita</p>
-                <p class="bg-shadeCream w-20 text-xs py-1 text-white text-center rounded-xl mb-3">Rabies</p>
+                @foreach ($article->articleImages as $image)
+                    <img src="{{asset($image->image)}}" alt="doctor" class="w-[270px] h-[151px]">
+                @endforeach
+                <p class="font-medium text-base text-white my-2">{{Str::limit($article->title,60)}}</p>
+                <p class="bg-shadeCream w-2/3 text-xs py-1 text-white text-center rounded-xl mb-3">{{$article->category}}</p>
                 <p class="text-xs pb-6 text-justify text-white">Penyakit ini disebabkan oleh bakteri Clostridium anthracis dan dapat menyerang hewan ternak seperti sapi, .....</p>
             </div>
-            @endfor
+            @endforeach
         </div>
     </section>
 
