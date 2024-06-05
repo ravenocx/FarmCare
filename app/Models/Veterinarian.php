@@ -42,6 +42,9 @@ class Veterinarian extends Authenticatable
         return $this->hasMany('App\Models\Veterinarian', 'veterinarian_id', 'id');
     }
 
+    public function veterinarian(){
+        return $this->hasMany(Article::class, 'id');
+    }
 
     protected function casts(): array
     {

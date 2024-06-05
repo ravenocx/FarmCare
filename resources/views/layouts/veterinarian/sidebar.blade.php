@@ -7,7 +7,7 @@
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
+            <a href="{{route('veterinarian.article.index')}}" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
                <span class="ms-3">Article</span>
             </a>
          </li>

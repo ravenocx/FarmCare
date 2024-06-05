@@ -37,6 +37,12 @@ Route::middleware(['AuthSession'])->group(function(){
         Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
     });
 
+    Route::prefix('/article')->group(function(){
+        Route::get('/', [ArticleController::class, 'index'])->name('user.article');
+        Route::post('/', [ArticleController::class, 'index'])->name('user.article.search');
+        Route::get('/{id}', [ArticleController::class, 'detail'])->name('user.article.detail');
+    });
+
     Route::prefix('/consultation')->group(function(){
         Route::get('/', [ConsultationController::class, 'index'])->name('user.consultation');
         Route::get('/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
