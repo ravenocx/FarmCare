@@ -80,7 +80,7 @@ class MedicDelivController extends Controller
 
     public function status()
     {
-        $medications = Medication::all();
+        $medications = Medication::find(30);
 
         $breadcrumbs = array_merge($this->breadcrumbs, [
             ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],

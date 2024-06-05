@@ -4649,26 +4649,6 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
-.h-\[auto\] {
-  height: auto;
-}
-
-.h-\[\#\] {
-  height: #;
-}
-
-.h-\[\] {
-  height: ;
-}
-
-.h-\[40px\] {
-  height: 40px;
-}
-
-.h-\[100px\] {
-  height: 100px;
-}
-
 .max-h-\[640px\] {
   max-height: 640px;
 }
@@ -4815,46 +4795,6 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-auto {
-  width: auto;
-}
-
-.w-\[auto\] {
-  width: auto;
-}
-
-.w-\[\] {
-  width: ;
-}
-
-.w-\[100px\] {
-  width: 100px;
-}
-
-.w-\[700px\] {
-  width: 700px;
-}
-
-.w-\[800px\] {
-  width: 800px;
-}
-
-.w-\[850px\] {
-  width: 850px;
-}
-
-.w-\[825px\] {
-  width: 825px;
-}
-
-.w-\[830px\] {
-  width: 830px;
-}
-
-.w-\[835px\] {
-  width: 835px;
 }
 
 .max-w-60 {
