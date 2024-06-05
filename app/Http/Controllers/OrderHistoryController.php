@@ -11,7 +11,7 @@ class OrderHistoryController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('user')->where('veterinarian_id', Auth::guard('veterinarian')->user()->id)->get();
+        $orders = Order::with('user')->where('veterinarian_id', Auth::guard('veterinarian')->user()->id)->orderByDesc('order_date')->get();
         $totalPatients = $orders->count();
         $offlineReservations = $orders->where('service_category', 'reservation')->count();
         $onlineConsultations = $orders->where('service_category', 'consultation')->count();
@@ -35,8 +35,4 @@ class OrderHistoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrder_HistoryRequest $request, Order_History $order_History)
-    {
-        //
-    }
 }

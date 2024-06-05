@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
 use App\Models\Medication;
+use Auth;
+use Carbon\Carbon;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class MedicDelivController extends Controller
 {
@@ -20,73 +24,101 @@ class MedicDelivController extends Controller
 
     public function index()
     {
-        $medication = Medication::findOrFail(30);
+        $order = Order::with('medications')->findOrFail(28);
         $breadcrumbs = $this->breadcrumbs;
 
-        if ($medication) {
-            $totalPrice = $medication->price * $medication->quantity;
-        } else {
-            $totalPrice = 0;
-        }
+        $totalPrice = $order->medications->sum(function ($medication) {
+            return $medication->quantity * $medication->price;
+        });
+        
 
-        return view('pages.user.medicdeliv.index', compact('medication', 'breadcrumbs', 'totalPrice'));
+        return view('pages.user.medicdeliv.index', compact('order', 'breadcrumbs', 'totalPrice'));
     }
 
-    public function edit($medication_id, Request $request)
+    public function editAddress($id, Request $request)
     {
-        $medication = Medication::find($medication_id);
-        if ($medication) {
-            $totalPrice = $medication->price * $medication->quantity;
-        } else {
-            $totalPrice = 0;
+        try {
+            $medication = Medication::findOrFail($id);
+        
+            $request->validate([
+                'address' => 'required|string',
+            ]);
+            $data= $request->all();
+    
+            $medication->update([
+                'address' => $data['address']
+            ]);
+    
+            request()->session()->flash('success','Successfully edit medication delivery address');
+            return redirect()->back();
+        }catch (\Exception $e) {
+            dd($e->getMessage());
+            request()->session()->flash('error','An error occurred during editing medication delivery address :  ' . $e->getMessage());
+            return redirect()->back();
         }
-
-        $successMessage = null;
-        $errorMessage = null;
-
-        if ($request->isMethod('post') && $request->has('newAddress')) {
-            $newAddress = $request->input('newAddress');
-
-            if ($medication) {
-                $medication->address = $newAddress;
-                $medication->save();
-                $successMessage = 'Address updated successfully';
-            } else {
-                $errorMessage = 'Medication not found';
-            }
-        }
-
-        $breadcrumbs = $this->breadcrumbs;
-
-        return view('pages.user.medicdeliv.edit', compact('medication', 'breadcrumbs', 'totalPrice', 'successMessage', 'errorMessage'));
+        
     }
     
-    public function upload()
+    public function upload($id)
     {
-        $breadcrumbs = array_merge($this->breadcrumbs, [
-            ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
-        ]);
-        return view('pages.user.medicdeliv.upload', compact('breadcrumbs'));
+        $medication = Medication::findOrFail($id);
+        // $breadcrumbs = array_merge($this->breadcrumbs, [
+        //     ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
+        // ]);
+        return view('pages.user.medicdeliv.upload', compact('medication'))->with('breadcrumbs', $this->breadcrumbs);
     }
 
-    public function success()
-    {
-        $breadcrumbs = array_merge($this->breadcrumbs, [
-            ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
-            ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
-        ]);
-        return view('pages.user.medicdeliv.success', compact('breadcrumbs'));
+    public function uploadPaymentProof($id, Request $request) {
+        try {
+            $this->validate($request,[
+                'payment_proof' => 'required|file|mimes:png,jpeg,jpg|max:4096'
+            ]);
+
+            $userName = Auth::guard('user')->user()-> name;
+
+            $proofFile = $request->file('payment_proof')->getRealPath();
+            // Set the file name
+            $proofFileName = 'MedicDeliv-' . $id . '_' . $userName . '_' . Carbon::now();
+    
+            $imageUrl = cloudinary()->upload($proofFile, [
+                'public_id' => $proofFileName,
+                'folder' => 'payment_proofs', 
+            ])->getSecurePath();
+            
+            $medication = Medication::findOrFail($id);
+    
+            $medication->update([
+                'payment_proof' => $imageUrl,
+                'order_status' => 'Paid'
+            ]);
+            request()->session()->flash('success','Successfully upload the payment proof');
+            return redirect()->route('user.medicdeliv.success', ['id' => $id]);
+        }catch (\Exception $e) {
+            dd($e->getMessage());
+            request()->session()->flash('error','An error occurred during uploading the payment proof :  ' . $e->getMessage());
+            return redirect()->back();
+        }
     }
 
-    public function status()
+    public function success($id)
     {
-        $medications = Medication::find(30);
+        $medication = Medication::findOrFail($id);
 
-        $breadcrumbs = array_merge($this->breadcrumbs, [
-            ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
-            ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
-            ['label' => 'Status Order', 'url' => 'user.medicdeliv.status'],
-        ]);
-        return view('pages.user.medicdeliv.status', compact('medications', 'breadcrumbs'));
+        // $breadcrumbs = array_merge($this->breadcrumbs, [
+        //     ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
+        //     ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
+        // ]);
+        return view('pages.user.medicdeliv.success', compact('medication'))->with('breadcrumbs', $this->breadcrumbs);
+    }
+
+    public function status($id)
+    {
+        $medication = Medication::findOrFail($id);
+        // $breadcrumbs = array_merge($this->breadcrumbs, [
+        //     ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
+        //     ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
+        //     ['label' => 'Status Order', 'url' => 'user.medicdeliv.status'],
+        // ]);
+        return view('pages.user.medicdeliv.status', compact('medication'))->with('breadcrumbs', $this->breadcrumbs);
     }
 }
