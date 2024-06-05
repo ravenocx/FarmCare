@@ -4,82 +4,75 @@
 
 @section('main-content')
     <div class="mb-5">
-        <h2 class="pt-8 font-medium text-3xl">Patient</h2>
+        <h2 class="font-medium text-3xl">Patient</h2>
     </div>
 
     <div class ="flex">
-      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] dark:bg-surface-dark dark:text-white mr-8">
-          <div class="pt-2 pb-3 pl-3 pr-3">
-              <h2 class="text-lg font-normal text-gray-500 text-left text-balance">Total Patient</h2>
+      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-secondaryColor dark:bg-surface-dark dark:text-white mr-8">
+          <div class="p-5">
+              <h2 class="text-lg font-normal text-gray-500 text-left text-balance mb-2">Total Patient</h2>
               <p class="text-base font-semibold text-justify text-black">{{ $totalPatients }}</p>
           </div>
       </div>
       
-      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] dark:bg-surface-dark dark:text-white mr-8">
-          <div class="pt-2 pb-3 pl-3 pr-3">
-              <h2 class="text-lg font-normal text-gray-500 text-left text-balance">Offline Reservation</h2>
+      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-secondaryColor dark:bg-surface-dark dark:text-white mr-8">
+          <div class="p-5">
+              <h2 class="text-lg font-normal text-gray-500 text-left text-balance mb-2">Offline Reservation</h2>
               <p class="text-base font-semibold text-justify text-black">{{ $offlineReservations }}</p>
           </div>
       </div>
 
-      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] dark:bg-surface-dark dark:text-white mr-8">
-          <div class="pt-2 pb-3 pl-3 pr-3">
-              <h2 class="text-lg font-normal text-gray-500 text-left text-balance">Online Consultation</h2>
+      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-secondaryColor dark:bg-surface-dark dark:text-white mr-8">
+          <div class="p-5">
+              <h2 class="text-lg font-normal text-gray-500 text-left text-balance mb-2">Online Consultation</h2>
               <p class="text-base font-semibold text-justify text-black">{{ $onlineConsultations }}</p>
           </div>
       </div>
 
-      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-[#FFF8F0] dark:bg-surface-dark dark:text-white mr-8">
-          <div class="pt-2 pb-3 pl-3 pr-3">
-              <h2 class="text-lg font-normal text-gray-500 text-left text-balance">Ongoing Appointments</h2>
+      <div class="w-[350px] h-auto rounded-lg overflow-hidden bg-secondaryColor dark:bg-surface-dark dark:text-white mr-8">
+          <div class="p-5">
+              <h2 class="text-lg font-normal text-gray-500 text-left text-balance mb-2">Ongoing Appointments</h2>
               <p class="text-base font-semibold text-justify text-black">{{ $ongoingAppointments }}</p>
           </div>
       </div>
     </div>
 
     <div class="mb-5">
-        <h2 class="pt-8 font-medium text-3xl">Order History</h2>
+        <h2 class="mt-14 font-medium text-3xl">Order History</h2>
     </div>
 
-    @foreach($orders as $order)
-
-    <div class="flex">
-        <div class="flex mr-5">
-            <p for="order_date" class="text-gray-500 mr-5">Delivered On </p>
-            <div class="font-semibold">
-                {{$order->order_date->format('d F Y')}}
+    @foreach($orders as $index => $order)
+        <div class="pb-7 border-shadeCream {{count($orders) == 1 ? '' : 'border-b-2 mb-5' }} ">
+            <div class="flex text-xl font-medium mb-6">
+                <p class="text-[#8C8F93]">Order Date</p>
+                <p class="ml-5">{{ Carbon\Carbon::parse($order -> order_date)->format('d/m/Y') }}</p>
+                <p class="text-[#8C8F93] ml-32">Order ID</p>
+                <p class="ml-5">Order-{{$order -> id}}</p>
             </div>
-        </div>
 
-        <div class="flex">
-            <p class="text-gray-500 mr-5">Order ID</p>
-            <div class="font-semibold">
-                {{$order->id}}
-            </div>
-        </div>
-    </div>
-    
-    <div class="mt-5 mr-8">
-        <div class="w-500 h-auto rounded-lg overflow-hidden bg-[#FFF8F0] flex mb-10">
-            <div class="pt-4 pb-3 pl-3 pr-3 flex">
+            <div class="flex items-center bg-secondaryColor py-5 pl-8 pr-4">
 
                 <img src="{{asset($order->user->photo ? :'images/icon/profile-icon.svg')}}" alt="profile-image" class="object-fill w-[73px] h-20 rounded-lg border border-shadeBrown">
-                <div class="pt-4 pb-3 pl-3 pr-3 mr-20">
-                    <p class="font-bold text-lg">{{$order->cust_name}}</p>
+
+                <div class="text-lg ml-4">
+                    <p class="font-medium mb-1">{{$order -> cust_name}}</p>
                     <p class="text-mediumGray">{{$order -> cust_phone_number}}</p>
                 </div>
 
-                <div class="pt-4 pb-3 pl-3 pr-3 mr-20">
-                    <h2 class="text-lg font-normal text-gray-500 text-left text-balance">Service</h2>
-                    <p class="text-base font-semibold text-justify text-black">{{$order->service_category}}</p>
+                <div class="text-lg ml-36 mr-20">
+                    <p class="text-mediumGray mb-3">Service</p>
+                    <p class="font-medium">Online Consultation</p>
                 </div>
 
-                <div class="pt-4 pb-3 pl-3 pr-3 mr-20">
-                    <p class="{{$order->order_status == 'Complete' ? 'text-green-500' : ($order->order_status == 'Cancel' ? 'text-red-500' : 'text-yellow-500')}}">{{$order->order_status}}</p>
+                <div class="text-lg">
+                    <p class="text-mediumGray mb-3">Status</p>
+                    <p class="font-medium {{$order->order_status === 'Complete' ? 'text-green-500' : 'text-red-500' }}">{{$order -> order_status}}</p>
                 </div>
+
+                <a href="{{route('veterinarian.order.detail', ['id' => $order->id])}}" class="ml-auto mr-10">
+                    <button class="btn-lg bg-white border-black border font-medium text-lg rounded-lg py-5 px-7 hover:bg-shadeBrown hover:text-white hover:border-none">Order Detail</button>
+                </a>
             </div>
-            <a href="{{ route('veterinarian.orderhistory.detail', ['id' => $order->id]) }}" class="btn border-gray-800 bg-white text-[#8D7B68] text-sm text-center mt-[40px] ml-[100px]">Order Detail</a>
         </div>
-    </div>
-    @endforeach
+        @endforeach
 @endsection

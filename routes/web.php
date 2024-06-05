@@ -39,13 +39,13 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
     Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
     
-    Route::prefix('/medicdeliv')->group(function(){
+    Route::prefix('/medicine')->group(function(){
         Route::get('/', [MedicDelivController::class, 'index'])->name('user.medicdeliv');
-        Route::get('/edit/{id}', [MedicDelivController::class, 'edit'])->name('user.medicdeliv.edit');
-        Route::post('/edit/{id}', [MedicDelivController::class, 'edit'])->name('user.medicdeliv.edit.save');
-        Route::get('/upload', [MedicDelivController::class, 'upload'])->name('user.medicdeliv.upload');
-        Route::get('/success', [MedicDelivController::class, 'success'])->name('user.medicdeliv.success');
-        Route::get('/status', [MedicDelivController::class, 'status'])->name('user.medicdeliv.status');
+        Route::patch('/edit/address/{id}', [MedicDelivController::class, 'editAddress'])->name('user.medicdeliv.address.edit');
+        Route::get('/upload/{id}', [MedicDelivController::class, 'upload'])->name('user.medicdeliv.upload');
+        Route::patch('/upload/{id}', [MedicDelivController::class, 'uploadPaymentProof'])->name('user.medicdeliv.upload.submit');
+        Route::get('/success/{id}', [MedicDelivController::class, 'success'])->name('user.medicdeliv.success');
+        Route::get('/status/{id}', [MedicDelivController::class, 'status'])->name('user.medicdeliv.status');
     });
     
 });
@@ -82,9 +82,9 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
 
     });
     
-    Route::prefix('/orderhistory')->group(function(){
-        Route::get('/', [OrderHistoryController::class, 'index'])->name("veterinarian.orderhistory");
-        Route::get('/detail/{id}', [OrderHistoryController::class, 'detailOrder'])->name("veterinarian.orderhistory.detail");
+    Route::prefix('/order')->group(function(){
+        Route::get('/history', [OrderHistoryController::class, 'index'])->name("veterinarian.order.history");
+        Route::get('/detail/{id}', [OrderHistoryController::class, 'detailOrder'])->name("veterinarian.order.detail");
     });
     
 });

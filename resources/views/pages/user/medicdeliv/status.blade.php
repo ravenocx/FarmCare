@@ -10,7 +10,6 @@
 <div class="container flex flex-col items-center mx-auto my-4">
   <div class="block max-w-sm p-6 bg-[#FFF8F0] border border-[#C8B6A6] rounded-lg w-[500px]">
   <ul class="timeline timeline-vertical">
-      @foreach ($medications as $medication)
         <li>
             @if ($medication->created_at)
                 <div class="timeline-start">{{ $medication->created_at->format('d M') }}</div>
@@ -23,7 +22,6 @@
             <div class="timeline-end timeline-box bg-[#8D7B68] rounded-lg text-white text-balance w-40 h-auto">{{ $medication->order_status }}</div>
             <hr/>
         </li>
-    @endforeach
     </ul>
   </div>
   
