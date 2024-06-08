@@ -40,9 +40,9 @@
                             <a href="{{route('veterinarian.consultation.schedule.edit' , ['id' => $serviceSchedule -> id])}}">
                                 <button class="btn-base bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Edit</button>
                             </a>
-                            <a href="{{route('veterinarian.consultation.schedule.delete', ['id' =>$serviceSchedule -> id ])}}">
-                                <button class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3">Cancel</button>
-                            </a>
+                            <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3 hover:text-[#DF0000] hover:bg-white hover:outline hover:outline-1" type="button">
+                                    Cancel
+                            </button>
                         @else
                             <button class="btn-base bg-gray-300 text-xs font-bold text-white rounded py-2 px-5 cursor-not-allowed" disabled>{{$serviceSchedule->is_reserved ? 'Reserved' : 'Schedule Ended'}}</button>
                         @endif
@@ -65,7 +65,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg>
                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this schedule?</h3>
-                            
+
                             <form action="{{route('veterinarian.consultation.schedule.delete', ['id' =>$serviceSchedule -> id ])}}" method="POST">
                                 @csrf
                                 @method('delete')
@@ -76,7 +76,7 @@
                                     Cancel
                                 </button>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
