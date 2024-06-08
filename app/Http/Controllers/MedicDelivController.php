@@ -62,9 +62,7 @@ class MedicDelivController extends Controller
     public function upload($id)
     {
         $medication = Medication::findOrFail($id);
-        // $breadcrumbs = array_merge($this->breadcrumbs, [
-        //     ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
-        // ]);
+
         return view('pages.user.medicdeliv.upload', compact('medication'))->with('breadcrumbs', $this->breadcrumbs);
     }
 
@@ -104,22 +102,12 @@ class MedicDelivController extends Controller
     {
         $medication = Medication::findOrFail($id);
 
-        // $breadcrumbs = array_merge($this->breadcrumbs, [
-        //     ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
-        //     ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
-        // ]);
         return view('pages.user.medicdeliv.success', compact('medication'))->with('breadcrumbs', $this->breadcrumbs);
     }
 
     public function status($id)
     {
         $medication = Medication::findOrFail($id);
-        // $breadcrumbs = array_merge($this->breadcrumbs, [
-        //     ['label' => 'Upload Payment', 'url' => 'user.medicdeliv.upload'],
-        //     ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
-        //     ['label' => 'Status Order', 'url' => 'user.medicdeliv.status'],
-        // ]);
-
         $statusTimeline = [
             [
                 'status' => 'Pending',
