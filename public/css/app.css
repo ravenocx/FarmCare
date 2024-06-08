@@ -4484,10 +4484,6 @@ details.collapse summary::-webkit-details-marker {
   margin-top: auto;
 }
 
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
 .block {
   display: block;
 }
@@ -5305,11 +5301,6 @@ details.collapse summary::-webkit-details-marker {
   border-color: rgb(140 143 147 / var(--tw-border-opacity));
 }
 
-.border-red-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(224 36 36 / var(--tw-border-opacity));
-}
-
 .border-opacity-50 {
   --tw-border-opacity: 0.5;
 }
@@ -6039,11 +6030,6 @@ details.collapse summary::-webkit-details-marker {
   color: rgb(194 120 3 / var(--tw-text-opacity));
 }
 
-.text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
 .underline {
   text-decoration-line: underline;
 }
@@ -6164,10 +6150,6 @@ details.collapse summary::-webkit-details-marker {
 
 .file\:normal-case::file-selector-button {
   text-transform: none;
-}
-
-.last\:mb-0:last-child {
-  margin-bottom: 0px;
 }
 
 .odd\:bg-white:nth-child(odd) {
