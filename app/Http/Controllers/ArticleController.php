@@ -6,7 +6,7 @@ use App\Models\Article;
 use App\Models\ArticleImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
@@ -46,10 +46,7 @@ class ArticleController extends Controller
                 'title' => 'required|string',
                 'category' => 'required|string',
                 'content' => 'required|string',
-                'photo1' => 'mimes:png,jpeg,jpg',
-                'photo2' => 'mimes:png,jpeg,jpg',
-                'photo3' => 'mimes:png,jpeg,jpg',
-                'photo4' => 'mimes:png,jpeg,jpg',
+                'photo' => 'mimes:png,jpeg,jpg',
             ]);
 
             $latestArticle = Article::orderBy('id' , 'desc')->first();
@@ -60,25 +57,19 @@ class ArticleController extends Controller
             }
 
             $uploadedImages = [];
-
-            for ($i = 1; $i <= 4 ; $i++) { 
-                $currentDateTime = Carbon::now();
-
-                $photoKey = 'photo' . $i;
-
-                if ($request->hasFile($photoKey)){
-                    $photo1 = $request->file($photoKey)->getRealPath();
-                    $articleImage = $i;
-                    // Set the file name
-                    $photoFileName = 'Article-' . $articleId . '_Image-' . $articleImage . '_' . $currentDateTime;
+            $currentDateTime = Carbon::now();
             
-                    $imageUrl = cloudinary()->upload($photo1, [
-                        'public_id' => $photoFileName,
-                        'folder' => 'article_images', 
-                    ])->getSecurePath();
-                    $uploadedImages[] = $imageUrl;
-                }
 
+            if ($request->hasFile('photo')){
+                $photo = $request->file('photo')->getRealPath();
+                // Set the file name
+                $photoFileName = 'Article-' . $articleId . ' Image' . '_' . Auth::guard('veterinarian')->user()->name . $currentDateTime;
+        
+                $imageUrl = cloudinary()->upload($photo, [
+                    'public_id' => $photoFileName,
+                    'folder' => 'article_images', 
+                ])->getSecurePath();
+                $uploadedImages[] = $imageUrl;
             }
 
             $article = Article::create([
@@ -147,7 +138,7 @@ class ArticleController extends Controller
                     $photo1 = $request->file($photoKey)->getRealPath();
                     $articleImage = $i;
                     // Set the file name
-                    $photoFileName = 'Article-' . $id . '_Image-' . $articleImage . '_' . $currentDateTime;
+                    $photoFileName = 'Article-' . $id . 'Image-' . $articleImage . '' . $currentDateTime;
                     
                     $imageUrl = cloudinary()->upload($photo1, [
                         'public_id' => $photoFileName,

@@ -55,7 +55,7 @@
                 <div class="w-full p-6 border border-[#F1DEC9] grid grid-cols-4 gap-x-4">
                     <div class="relative profile-pic-div w-fit">
                         <img class="w-48 h-48" src="{{asset('images/icon/plus-icon.png')}}" id="photo" alt="Photo of Profile">
-                        <input class="hidden" type="file" id="file" name="photo1">
+                        <input class="hidden" type="file" id="file" name="photo">
                         <label
                             class="hidden w-48 h-48 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all"
                             for="file" id="uploadBtn" style="background-color: rgba(217,217,217,0.8)">
@@ -66,48 +66,10 @@
                             </div>
                         </label>
                     </div>
-                    <div class="relative profile-pic-div-2 w-fit">
-                        <img class="w-48 h-48" src="{{asset('images/icon/plus-icon.png')}}" id="photo-2" alt="Photo of Profile">
-                        <input class="hidden" type="file" id="file-2" name="photo2">
-                        <label
-                            class="hidden w-48 h-48 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all"
-                            for="file-2" id="uploadBtn-2" style="background-color: rgba(217,217,217,0.8)">
-                            <div
-                                class="absolute w-10/12 flex flex-col items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <img class="w-1/5" src="/assets/svg/profile.png" alt="">
-                                <p class="text-white font-bold">Choose Photo</p>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="relative profile-pic-div-3 w-fit">
-                        <img class="w-48 h-48" src="{{asset('images/icon/plus-icon.png')}}" id="photo-3" alt="Photo of Profile">
-                        <input class="hidden" type="file" id="file-3" name="photo3">
-                        <label
-                            class="hidden w-48 h-48 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all"
-                            for="file-3" id="uploadBtn-3" style="background-color: rgba(217,217,217,0.8)">
-                            <div
-                                class="absolute w-10/12 flex flex-col items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <img class="w-1/5" src="/assets/svg/profile.png" alt="">
-                                <p class="text-white font-bold">Choose Photo</p>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="relative profile-pic-div-4 w-fit">
-                        <img class="w-48 h-48" src="{{asset('images/icon/plus-icon.png')}}" id="photo-4" alt="Photo of Profile">
-                        <input class="hidden" type="file" id="file-4" name="photo4">
-                        <label
-                            class="hidden w-48 h-48 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all"
-                            for="file-4" id="uploadBtn-4" style="background-color: rgba(217,217,217,0.8)">
-                            <div
-                                class="absolute w-10/12 flex flex-col items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <img class="w-1/5" src="/assets/svg/profile.png" alt="">
-                                <p class="text-white font-bold">Choose Photo</p>
-                            </div>
-                        </label>
-                    </div>
+                    
                 </div>
                 <div class="mt-5 flex justify-end items-center gap-x-5 text-sm">
-                    <button type="submit" class="px-5 py-2 rounded-md text-white bg-[#A4907C]">Add Product</button>
+                    <button type="submit" class="px-5 py-2 rounded-md text-white bg-[#A4907C]">Add Article</button>
                     <a href="{{ route('veterinarian.article.index') }}" class="px-5 py-2 rounded-md text-black">Discard</a>
                 </div>
             </form>
@@ -145,20 +107,6 @@
         const file = document.querySelector('#file');
         const uploadBtn = document.querySelector('#uploadBtn');
 
-        const imgDiv2 = document.querySelector('.profile-pic-div-2');
-        const img2 = document.querySelector('#photo-2');
-        const files2 = document.querySelector('#file-2');
-        const uploadBtn2 = document.querySelector('#uploadBtn-2');
-
-        const imgDiv3 = document.querySelector('.profile-pic-div-3');
-        const img3 = document.querySelector('#photo-3');
-        const files3 = document.querySelector('#file-3');
-        const uploadBtn3 = document.querySelector('#uploadBtn-3');
-
-        const imgDiv4 = document.querySelector('.profile-pic-div-4');
-        const img4 = document.querySelector('#photo-4');
-        const files4 = document.querySelector('#file-4');
-        const uploadBtn4 = document.querySelector('#uploadBtn-4');
 
         imgDiv.addEventListener('mouseenter', function () {
             uploadBtn.style.display = "block";
@@ -168,29 +116,6 @@
             uploadBtn.style.display = "none";
         });
 
-        imgDiv2.addEventListener('mouseenter', function () {
-            uploadBtn2.style.display = "block";
-        });
-
-        imgDiv2.addEventListener('mouseleave', function () {
-            uploadBtn2.style.display = "none";
-        });
-
-        imgDiv3.addEventListener('mouseenter', function () {
-            uploadBtn3.style.display = "block";
-        });
-
-        imgDiv3.addEventListener('mouseleave', function () {
-            uploadBtn3.style.display = "none";
-        });
-
-        imgDiv4.addEventListener('mouseenter', function () {
-            uploadBtn4.style.display = "block";
-        });
-
-        imgDiv4.addEventListener('mouseleave', function () {
-            uploadBtn4.style.display = "none";
-        });
 
         file.addEventListener('change', function () {
             const choosedFile = this.files[0];
@@ -201,38 +126,6 @@
                     img.setAttribute('src', reader.result);
                 });
                 reader.readAsDataURL(choosedFile);
-            }
-        });
-        files2.addEventListener('change', function () {
-            const choosedFile2 = this.files[0];
-            console.log('2');
-
-            if (choosedFile2) {
-                const reader2 = new FileReader();
-                reader2.addEventListener('load', function () {
-                    img2.setAttribute('src', reader2.result);
-                });
-                reader2.readAsDataURL(choosedFile2);
-            }
-        });
-        files3.addEventListener('change', function () {
-            const choosedFile3 = this.files[0];
-            if (choosedFile3) {
-                const reader3 = new FileReader();
-                reader3.addEventListener('load', function () {
-                    img3.setAttribute('src', reader3.result);
-                });
-                reader3.readAsDataURL(choosedFile3);
-            }
-        });
-        files4.addEventListener('change', function () {
-            const choosedFile4 = this.files[0];
-            if (choosedFile4) {
-                const reader4 = new FileReader();
-                reader4.addEventListener('load', function () {
-                    img4.setAttribute('src', reader4.result);
-                });
-                reader4.readAsDataURL(choosedFile4);
             }
         });
 
