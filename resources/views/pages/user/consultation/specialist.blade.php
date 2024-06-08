@@ -43,7 +43,7 @@
                             </div>
                             
                             @if ($veterinarian->serviceSchedules->isEmpty())
-                                <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Not Available</button>
+                                <button class="btn-sm w-32 mt-auto bg-gray-300 text-xs text-white rounded py-2 px-5 cursor-not-allowed">Not Available</button>
                             @else
                                 <a href="{{ route('user.consultation.veterinarian', ['id' => $veterinarian->id]) }}">
                                     <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>

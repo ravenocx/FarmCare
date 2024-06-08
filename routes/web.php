@@ -16,7 +16,6 @@ Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
 
 Route::get('/faq', [FaqController::class, 'getFAQPage'])->name("faq");
 
-
 Route::get('/login',[AuthController::class, 'login'] )->name('login.form');
 Route::post('/login',[AuthController::class, 'loginSubmit'] )->name('login.submit');
 
@@ -116,33 +115,6 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
     });
     
 });
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ConsultationController;
-use App\Http\Controllers\VeterConsultationController;
-
-
-Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
-
-
-
-Route::get('/login',[AuthController::class, 'login'] )->name('login.form');
-Route::post('/login',[AuthController::class, 'loginSubmit'] )->name('login.submit');
-
-Route::get('/logout',[AuthController::class, 'logout'] )->name('logout');
-
-Route::get('/register',[AuthController::class, 'userRegister'] )->name('user.register.form');
-Route::post('/register',[AuthController::class, 'userRegisterSubmit'] )->name('user.register.submit');
-
-Route::get('/register/veterinarian',[AuthController::class, 'veterinarianRegister'] )->name('veterinarian.register.form');
-Route::post('/register/veterinarian',[AuthController::class, 'veterinarianRegisterSubmit'] )->name('veterinarian.register.submit');
-
-Route::get('/admin_login', [AuthController::class, 'adminLogin'] )->name("admin.login");
-Route::post('/admin_login',[AuthController::class, 'adminLoginSubmit'] )->name('admin.login.submit');
-
-Route::middleware(['AuthSession'])->group(function(){
-    Route::get('/home', function () {
-        return view('pages.user.index');
-    })->name("user.home");
 
     Route::prefix('/consultation')->group(function(){
         Route::get('/', [ConsultationController::class, 'index'])->name('user.consultation');
@@ -152,8 +124,6 @@ Route::middleware(['AuthSession'])->group(function(){
         Route::post('/veterinarian/{id}/payment', [ConsultationController::class, 'createConsultationOrder'])->name('user.consultation.veterinarian.payment.submit');
         Route::get('/order/{id}', [ConsultationController::class, 'getConsultationOrder'])->name('user.consultation.order');
     });
-
-});
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
     Route::get('/', function () {
@@ -175,9 +145,7 @@ Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
 
 
 Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(function(){
-    Route::get('/', function () {
-        return view('pages.veterinarian.dashboard.index');
-    })->name("veterinarian.index");
+    Route::get('/', function () {return view('pages.veterinarian.dashboard.index');})->name("veterinarian.index");
 
     Route::prefix('/consultation')->group(function(){
         Route::get('/',[VeterConsultationController::class, 'index'])->name("veterinarian.consultation");
@@ -201,4 +169,3 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
         
     });
 });
-
