@@ -34,8 +34,8 @@
                     <details>
                     <summary>
                         <div class="flex items-center">
-                            @if(Auth::guard('user')->user()->photo)
-                                <img src="{{asset('storage/app' . Auth::user()->photo)}}" alt="profile-image">
+                            @if(Auth::guard('user')->user() && Auth::guard('user')->user()->photo)
+                                <img src="{{ asset('storage/app/' . Auth::guard('user')->user()->photo) }}" alt="profile-image">
                             @else
                                 <img src="{{asset('images/icon/profile-icon.svg')}}" alt="profile-image">
                             @endif
@@ -43,6 +43,7 @@
                         </div>
                     </summary>
                     <ul class="p-2 bg-gray-100 rounded-t-none drop-shadow-xl">
+                        <li><a href="{{route('profile')}}" class="px-12">Edit Profile</a></li>
                         <li><a href="{{route('logout')}}" class="px-12">Logout</a></li>
                     </ul>
                     </details>

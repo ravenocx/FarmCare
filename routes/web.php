@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\VeterConsultationController;
+use App\Http\Controllers\ProfileController;
+
 
 
 Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
@@ -38,6 +40,9 @@ Route::middleware(['AuthSession'])->group(function(){
         Route::get('/order/{id}', [ConsultationController::class, 'getConsultationOrder'])->name('user.consultation.order');
     });
 
+    Route::get('/profile', [ProfileController::class, "index"])->name('profile');
+    Route::patch('/profile/update', [ProfileController::class, "update"])->name('profile.update');
+    Route::delete('/profile/delete', [ProfileController::class, "destroy"])->name('destroy');
 });
 
 Route::middleware(['AdminAuthSession'])->prefix('admin')->group(function(){
@@ -83,7 +88,7 @@ Route::middleware(['VeterinarianAuthSession'])->prefix('veterinarian')->group(fu
         Route::get('/schedule/edit/{id}',[VeterConsultationController::class, 'editServiceSchedule'])->name("veterinarian.consultation.schedule.edit");
         Route::patch('/schedule/edit/{id}',[VeterConsultationController::class, 'editServiceScheduleSubmit'])->name("veterinarian.consultation.schedule.edit.submit");
         Route::delete('/schedule/delete/{id}',[VeterConsultationController::class, 'deleteServiceSchedule'])->name("veterinarian.consultation.schedule.delete");
-        
+
     });
 });
 
