@@ -48,7 +48,7 @@
                                 </div>
                                 
                                 @if ($veterinarian->serviceSchedules->isEmpty())
-                                    <button class="btn-sm w-20 mt-auto bg-gray-300 text-xs text-white rounded py-2 px-5 cursor-not-allowed">Not Available</button>
+                                    <button class="btn-sm w-32 mt-auto bg-gray-300 text-xs text-white rounded py-2 px-5 cursor-not-allowed">Not Available</button>
                                 @else
                                     <a href="{{ route('user.consultation.veterinarian', ['id' => $veterinarian->id]) }}">
                                         <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
@@ -76,7 +76,7 @@
         <div class="border-b-2 border-shadeCream">
             <div class="flex justify-between {{$specialist === 'Livestock' ?'mt-14' : ''}} mb-5">
                 <p class="text-xl font-semibold">{{$specialist}} Speciality</p>
-                <a class="text-lg font-semibold text-shadeBrown" href="{{route('user.consultation.specialist' , ['specialist' => $specialist])}}">View All ></a>
+                <a class="text-lg font-semibold text-shadeBrown" href="{{route('user.consultation.specialist' , ['specialist' => $specialist])}}" dusk="{{$specialist}}-viewall">View All ></a>
             </div>
 
             <div class="flex justify-center pb-3">
@@ -100,7 +100,7 @@
                             </div>
                             
                             @if ($veterinarian->serviceSchedules->isEmpty())
-                                <button class="btn-sm w-20 mt-auto bg-gray-300 text-xs text-white rounded py-2 px-5 cursor-not-allowed">Offline</button>
+                                <button class="btn-sm w-32 mt-auto bg-gray-300 text-xs text-white rounded py-2 px-5 cursor-not-allowed">Not Available</button>
                             @else
                                 <a href="{{ route('user.consultation.veterinarian', ['id' => $veterinarian->id]) }}">
                                     <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
