@@ -14,7 +14,7 @@
                 </div>
             </a>
 
-            <a href="">
+            <a href="{{ url('/customer-offline-reservation') }}">
                 <div class="bg-white rounded-xl px-16 pt-2 pb-4 shadow-lg ml-7">
                     <img src="{{asset('images/icon/reservation-icon.svg')}}" class="mx-auto mb-3 size-[200px]"/>
                     <p class="text-base font-medium text-center">Offline Consultation</p>

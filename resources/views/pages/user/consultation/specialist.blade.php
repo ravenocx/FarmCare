@@ -19,13 +19,13 @@
                     <img src="{{asset('images/vector/search-vector.svg')}}" alt="Search Icon">
                 </div>
         </div>
-        <p class="text-xl font-semibold mt-14 mb-2">Livestock Speciality</p>
+        <p class="text-xl font-semibold mt-14 mb-2">{{$specialist}} Speciality</p>
 
         <div class="grid grid-cols-3">
             @foreach($veterinarians as $index => $veterinarian)
             <div class="border-b-2 border-shadeCream pb-3 pt-3">
-                <div class="{{($index + 1) % 3 == 0 ? '' : 'border-r-2'}} {{($index + 1) % 3 == 0 ? 'pl-6' : ($index % 3 == 0 ? 'pr-6' : 'px-6')}} border-shadeCream py-5">
-                <div class="flex">
+                <div class="{{($index + 1) % 3 == 0 ? '' : ($index === count($veterinarians)- 1 ? '' : 'pr-6 border-r-2')}} {{($index + 1) % 3 == 0 ? 'pl-6' : ($index % 3 == 0 ? 'pr-6' : 'px-6')}} border-shadeCream py-5">
+                    <div class="flex">
                         <img src="{{asset($veterinarian->photo ? $veterinarian->photo :'images/icon/doctor-icon.png')}}" alt="{{$veterinarian->gender === 'male' ? 'Dr.' . $veterinarian->name : 'Dra.' . $veterinarian->name }}" class="card-image size-44 border-shadeBrown border-2 rounded-md">
 
                         <div class="w-[189.09px] h-[176px] text-left ml-5 text-xs flex flex-col">
@@ -42,9 +42,13 @@
                                 <p class="font-medium mt-2">Rp {{number_format($veterinarian->consultation_price, 0, ',', '.')}}</p>
                             </div>
                             
-                            <a href="{{route('user.consultation.veterinarian', ['id' => ($veterinarian -> id)]) }}">
-                                <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
-                            </a>
+                            @if ($veterinarian->serviceSchedules->isEmpty())
+                                <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Not Available</button>
+                            @else
+                                <a href="{{ route('user.consultation.veterinarian', ['id' => $veterinarian->id]) }}">
+                                    <button class="btn-sm w-20 mt-auto bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:border">Chat</button>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
