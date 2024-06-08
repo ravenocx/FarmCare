@@ -128,51 +128,58 @@ class AuthController extends Controller
 
     public function veterinarianRegisterSubmit(Request $request){
         // dd($request->all());
-        $this->validate($request,[
-            'fullName'=>'string|required|min:5',
-            'specialist'=>'string|required|in:Livestock,Aquaculture,Poultry,Nutrition,Breeding,Dermatology',
-            'gender' => 'string|required|in:male,female',
-            'university'=>'string|required|min:5',
-            'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
-            'phone_number'=> 'string|required|min:14',
-            'email'=>'string|required|unique:veterinarians,email',
-            'password'=>'required|min:6|confirmed',
-            'certification' => 'required|file|mimes:pdf|max:10240'
-        ]);
-
-        if($request->hasFile('certification')){
-            $certificationFile = $request->file('certification');
-            // Set the file name
-            $certificationFileName = time() . ' - ' . $request->fullName . '_Certification'. '.' . $certificationFile->extension();
-            $certificationPath = $certificationFile->storeAs('public/certifications',$certificationFileName);
-        }else{
-            Session::flash('error','The certification file is required.');
+        try{
+            $this->validate($request,[
+                'fullName'=>'string|required|min:5',
+                'specialist'=>'string|required|in:Livestock,Aquaculture,Poultry,Nutrition,Breeding,Dermatology',
+                'gender' => 'string|required|in:male,female',
+                'university'=>'string|required|min:5',
+                'graduateYear' => 'required|integer|min:1900|max:' . date('Y'),
+                'phone_number'=> 'string|required|min:14',
+                'email'=>'string|required|unique:veterinarians,email',
+                'password'=>'required|min:6|confirmed',
+                'certification' => 'required|file|mimes:pdf|max:10240'
+            ]);
+    
+            if($request->hasFile('certification')){
+                $certificationFile = $request->file('certification');
+                // Set the file name
+                $certificationFileName = time() . ' - ' . $request->fullName . '_Certification'. '.' . $certificationFile->extension();
+                $certificationPath = $certificationFile->storeAs('public/certifications',$certificationFileName);
+            }else{
+                Session::flash('error','The certification file is required.');
+                return redirect()->back();
+            }
+    
+            $data= $request->all();
+    
+            $faker = Faker::create("id_ID");
+            $str_number = $faker->numerify('################');
+            $result = Veterinarian::create([
+                'name'=> $data['fullName'],
+                'specialist'=>$data['specialist'],
+                'gender' => $data['gender'],
+                'university' => $data['university'],
+                'graduate_year' => $data['graduateYear'],
+                'phone_number' => $data['phone_number'],
+                'email'=> $data['email'],
+                'password'=> Hash::make($data['password']),
+                'str_number'=> $str_number ,
+                'certification' => $certificationPath,
+            ]);
+    
+            if($result){
+                Session::flash('success','Successfully registered');
+                return redirect()->route('login.form');
+            }else{
+                Session::flash('error','Please try again!');
+                return redirect()->back();
+            }
+        }catch(\Exception $e) {
+            dd(''. $e->getMessage());
             return redirect()->back();
-        }
-
-        $data= $request->all();
-
-        $faker = Faker::create("id_ID");
-        $result = Veterinarian::create([
-            'name'=> $data['fullName'],
-            'specialist'=>$data['specialist'],
-            'gender' => $data['gender'],
-            'university' => $data['university'],
-            'graduate_year' => $data['graduateYear'],
-            'phone_number' => $data['phone_number'],
-            'email'=> $data['email'],
-            'password'=> Hash::make($data['password']),
-            'str_number'=> $faker->numerify('################'),
-            'certification' => $certificationPath,
-        ]);
-
-        if($result){
-            Session::flash('success','Successfully registered');
-            return redirect()->route('login.form');
-        }else{
-            Session::flash('error','Please try again!');
-            return redirect()->back();
-        }
+        }  
+        
     }
 
     public function adminLogin(){

@@ -128,7 +128,7 @@ class AplicantController extends Controller
         $query = $request->input('query');
     
         // Mulai query builder untuk model Veterinarian
-        $veterinariansQuery = Veterinarian::query();
+        $veterinariansQuery = Veterinarian::orderByDesc('created_at');
     
         if ($query) {
             $veterinariansQuery->where(function ($q) use ($query) {
