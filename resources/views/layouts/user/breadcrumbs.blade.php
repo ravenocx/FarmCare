@@ -3,9 +3,9 @@
         @foreach ($breadcrumbs as $index => $breadcrumb)
             <li class="breadcrumb-item">
                 @if ($loop->last)
-                    <a href="{{ route($breadcrumb['url']) }}" class="text-shadeBrown">{{ $breadcrumb['label'] }}</a>
+                    <a href="{{ $breadcrumb['url'] }}" class="text-shadeBrown">{{ $breadcrumb['label'] }}</a>
                 @else
-                    <a href="{{ route($breadcrumb['url']) }}">{{ $breadcrumb['label'] }}</a>
+                    <a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['label'] }}</a>
 
                 @endif
             </li>

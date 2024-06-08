@@ -18,4 +18,5 @@ class Article extends Model
     public function veterinarian(){
         return $this->belongsTo(Veterinarian::class, 'id');
     }
+
 }

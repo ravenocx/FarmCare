@@ -1,4 +1,4 @@
-<header class="bg-shadeBrown px-16 py-3 fixed top-0 w-full z-50 border-b-2">
+<header class="bg-shadeBrown px-16 py-3 fixed top-0 w-full z-40 border-b-2">
     <div class="flex justify-between items-center">
         <a href="{{route('veterinarian.index')}}">
             <img src="{{ asset('images/assets/farmcare-logo.svg') }}" alt="Farmcare Logo">

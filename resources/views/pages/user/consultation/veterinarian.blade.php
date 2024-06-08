@@ -6,6 +6,7 @@
     <div class="flex justify-center mt-6 mb-10 ">
         <div>
             <h1 class="font-semibold text-2xl text-center mb-10 divider">Veterinarian Details</h1>
+            @foreach($veterinarians as $veterinarian)
             <div class="border-shadeCream border-2 rounded-lg mb-6">
                 <div class="mx-20 mt-4">
                     <div class="px-4">
@@ -41,9 +42,14 @@
                 </div>
             </div>
 
-            <a href="{{route('user.consultation.veterinarian.order', ['id' => ($veterinarian -> id)])}}">
-                <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Chat</button>
-            </a>
+                @if ($veterinarian->serviceSchedules->isEmpty())
+                    <button class="btn-base w-full mt-auto bg-gray-300 font-bold text-base text-white mb-8 rounded w-52 py-2 px-5 cursor-not-allowed" disabled>Not Available</button>
+                @else
+                    <a href="{{ route('user.consultation.veterinarian.payment', ['id' => ($veterinarian -> id)]) }}">
+                        <button class="btn-base w-full mt-auto bg-shadeBrown font-bold text-base text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Chat</button>
+                    </a>
+                @endif
+            @endforeach
         </div>
         
     </div>

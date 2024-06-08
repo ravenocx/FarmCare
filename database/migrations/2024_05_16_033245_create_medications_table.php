@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('medications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("veterinarian_id");
+            $table->unsignedBigInteger("order_id");
             $table->string('medicine');
             $table->unsignedInteger('quantity');
             $table->decimal('price');
             $table->string('address');
-            $table->enum('order_status', ['On going', 'Complete', 'Cancel']);
+            $table->enum('order_status', ['Pending', 'Paid','On process', 'Complete', 'Cancel']);
             $table->string('payment_proof');
             $table->timestamps();
-            $table->foreign('veterinarian_id')->references('id')->on('veterinarians')->onDelete('CASCADE');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('CASCADE');
         });
     }
 

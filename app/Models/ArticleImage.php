@@ -14,4 +14,5 @@ class ArticleImage extends Model
     public function article(){
         return $this->hasOne('App\Models\Article', 'id', 'article_id');
     }
+
 }
