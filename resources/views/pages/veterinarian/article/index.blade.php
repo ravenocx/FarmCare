@@ -23,12 +23,12 @@
                     class="max-w-80 bg-[#8D7B68] border border-gray-200 rounded-lg shadow p-3 justify-between">
 
                     @foreach ($article->articleImages as $articleImage)
-                        <img class="w-[270px] bg-center bg-cover bg-no-repeat rounded-lg mx-auto" src="{{ asset($articleImage->image) }}" alt="Photo" />
+                        <img src="{{ asset($articleImage->image) }}" class="w-[270px] h-40 bg-center bg-cover bg-no-repeat rounded-lg mx-auto"  alt="Photo" />
                     @endforeach
                     
                     <div>
                         <a href="#">
-                            <h5 class="mb-2 text-xl font-medium tracking-tight text-white">
+                            <h5 class="my-2 text-xl font-medium tracking-tight text-white">
                                 {{ $article->title }}</h5>
                         </a>
                         <div class="text-white rounded-full px-4 py-1 w-fit my-2 text-sm font-medium"
