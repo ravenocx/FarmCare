@@ -12,7 +12,7 @@
 
     <div class="flex justify-between mr-6">
         <h2 class="font-semibold text-base mb-5">Schedules</h2>
-        <a href="{{route('veterinarian.consultation.schedule')}}" class="font-semibold text-shadeBrown text-base"> View All ></a>
+        <a href="{{route('veterinarian.consultation.schedule')}}" class="font-semibold text-shadeBrown text-base" dusk="schedule-viewall"> View All ></a>
     </div>
 
     <section class="flex justify-center pb-5 border-b-2 border-shadeCream mb-5">
