@@ -1,6 +1,6 @@
 @extends('layouts.veterinarian.app')
 
-@section('title' ,'Veterinarian - Online Consultation')
+@section('title' ,'Veterinarian - Home')
 
 @section('main-content')
     
