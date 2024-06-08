@@ -119,6 +119,41 @@ class MedicDelivController extends Controller
         //     ['label' => 'Payment Success', 'url' => 'user.medicdeliv.success'],
         //     ['label' => 'Status Order', 'url' => 'user.medicdeliv.status'],
         // ]);
-        return view('pages.user.medicdeliv.status', compact('medication'))->with('breadcrumbs', $this->breadcrumbs);
+
+        $statusTimeline = [
+            [
+                'status' => 'Pending',
+                'timestamp' => $medication->created_at ? $medication->created_at->format('d M') : null,
+                'completed' => true,
+            ]
+        ];
+    
+        if ($medication->order_status == 'Cancel') {
+            $statusTimeline[] = [
+                'status' => 'Cancel',
+                'timestamp' => $medication->updated_at ? $medication->updated_at->format('d M') : null,
+                'completed' => true,
+            ];
+        } else {
+            $statusTimeline = array_merge($statusTimeline, [
+                [
+                    'status' => 'Paid',
+                    'timestamp' => in_array($medication->order_status, ['Paid', 'On process', 'Complete']) ? $medication->updated_at->format('d M') : null,
+                    'completed' => in_array($medication->order_status, ['Paid', 'On process', 'Complete']),
+                ],
+                [
+                    'status' => 'On process',
+                    'timestamp' => in_array($medication->order_status, ['On process', 'Complete']) ? $medication->updated_at->format('d M') : null,
+                    'completed' => in_array($medication->order_status, ['On process', 'Complete']),
+                ],
+                [
+                    'status' => 'Complete',
+                    'timestamp' => $medication->order_status == 'Complete' ? $medication->updated_at->format('d M') : null,
+                    'completed' => $medication->order_status == 'Complete',
+                ]
+            ]);
+        }
+
+        return view('pages.user.medicdeliv.status', compact('medication', 'statusTimeline'))->with('breadcrumbs', $this->breadcrumbs);
     }
 }

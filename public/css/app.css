@@ -4336,8 +4336,8 @@ details.collapse summary::-webkit-details-marker {
   margin-left: 100px;
 }
 
-.ml-\[200px\] {
-  margin-left: 200px;
+.ml-\[220px\] {
+  margin-left: 220px;
 }
 
 .ml-\[310px\] {
@@ -4484,28 +4484,8 @@ details.collapse summary::-webkit-details-marker {
   margin-top: auto;
 }
 
-.ml-\[205px\] {
-  margin-left: 205px;
-}
-
-.ml-\[210px\] {
-  margin-left: 210px;
-}
-
-.ml-\[2px\] {
-  margin-left: 2px;
-}
-
-.ml-\[230px\] {
-  margin-left: 230px;
-}
-
-.ml-\[225px\] {
-  margin-left: 225px;
-}
-
-.ml-\[220px\] {
-  margin-left: 220px;
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .block {
@@ -4634,10 +4614,6 @@ details.collapse summary::-webkit-details-marker {
   height: 24rem;
 }
 
-.h-\[150px\] {
-  height: 150px;
-}
-
 .h-\[151px\] {
   height: 151px;
 }
@@ -4664,10 +4640,6 @@ details.collapse summary::-webkit-details-marker {
 
 .h-\[340px\] {
   height: 340px;
-}
-
-.h-\[350px\] {
-  height: 350px;
 }
 
 .h-\[400px\] {
@@ -5333,6 +5305,11 @@ details.collapse summary::-webkit-details-marker {
   border-color: rgb(140 143 147 / var(--tw-border-opacity));
 }
 
+.border-red-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(224 36 36 / var(--tw-border-opacity));
+}
+
 .border-opacity-50 {
   --tw-border-opacity: 0.5;
 }
@@ -5350,6 +5327,11 @@ details.collapse summary::-webkit-details-marker {
 .bg-\[\#DF0000\] {
   --tw-bg-opacity: 1;
   background-color: rgb(223 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#E64B32\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(230 75 50 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#F1DEC9\] {
@@ -5399,6 +5381,11 @@ details.collapse summary::-webkit-details-marker {
 .bg-primaryColor {
   --tw-bg-opacity: 1;
   background-color: rgb(141 123 104 / var(--tw-bg-opacity));
+}
+
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 36 36 / var(--tw-bg-opacity));
 }
 
 .bg-secondaryColor {
@@ -6052,6 +6039,11 @@ details.collapse summary::-webkit-details-marker {
   color: rgb(194 120 3 / var(--tw-text-opacity));
 }
 
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -6172,6 +6164,10 @@ details.collapse summary::-webkit-details-marker {
 
 .file\:normal-case::file-selector-button {
   text-transform: none;
+}
+
+.last\:mb-0:last-child {
+  margin-bottom: 0px;
 }
 
 .odd\:bg-white:nth-child(odd) {
