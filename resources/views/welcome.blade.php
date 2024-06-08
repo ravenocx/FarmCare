@@ -10,7 +10,7 @@
             <a href="{{route('user.consultation')}}">
                 <button class="btn h-14 px-5 py-4 mr-5 rounded-md bg-shadeBrown text-white font-bold text-base hover:text-shadeBrown hover:bg-white">Consultation</button>
             </a>
-            <a href="{{route('login.form')}}"> <!-- TODO -->
+            <a href="{{route('login.form')}}">
                 <button class="btn h-14 px-10 py-4 rounded-md bg-shadeBrown text-white font-bold text-base hover:text-shadeBrown hover:bg-white">Booking</button>
             </a>
         </div>
@@ -46,7 +46,6 @@
           where farmers do not need to travel far to a veterinary clinic to get health care 
           and care for livestock. A veterinarian will visit the farm location to carry out medical 
           treatment. Farmers can also choose a specialist or doctor that suits their needs and farm location.</p>
-                    <!-- TODO -->
                     <a href="{{route('user.consultation')}}" class="text-base font-medium text-shadeBrown">View ></a>    
                 </div>
             </div>
@@ -58,7 +57,6 @@
         <div class="bg-secondaryColor">
             <h2 class="text-3xl font-semibold text-center mt-14 py-6">FarmCare+ Articles</h2> 
 
-            <!-- TODO -->
             <div class="hero justify-start pl-48">
                 <div class="hero-content flex-col lg:flex-row p-0 my-14">
                 <img src="{{asset('images/animal/article-img.svg')}}" class="mr-16" />
