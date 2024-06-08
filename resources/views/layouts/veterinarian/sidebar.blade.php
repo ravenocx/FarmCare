@@ -17,12 +17,12 @@
             </a>
          </li>
          <li>
-            <a href="{{route('offschedule.index')}}" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
+            <a href="{{ url('veterinarian/offline-reservation') }}" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
                <span class="ms-3">Offline Reservation</span>
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
+            <a href="{{route('veterinarian.consultation')}}" class="flex items-center p-2 rounded-lg {{Str::contains(Route::getCurrentRoute()->getPrefix(), 'veterinarian/consultation') ? 'bg-primaryColor text-white' : ''}}  hover:bg-primaryColor hover:text-white group">
                <span class="ms-3">Online Consultation</span>
             </a>
          </li>

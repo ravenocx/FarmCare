@@ -7,10 +7,13 @@
     @include('layouts.veterinarian.header')
 
     @include('layouts.veterinarian.sidebar')
-    <main class="ml-[340px] pt-[146px] pr-10 pb-10">
+    <main class="ml-[290px] pt-[110px] pr-1 pb-10">
         @yield('main-content')
+        
     </main>
-    @stack('scripts')
 
+    @include('layouts.veterinarian.footer')
+    @stack('scripts')
+    
 </body>
 </html>
