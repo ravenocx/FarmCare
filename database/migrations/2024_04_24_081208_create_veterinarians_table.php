@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('str_number');
             $table->string('certification');
-            $table->boolean('is_accepted')->default(false);
+            $table->boolean('is_accepted')->nullable();
             $table->string('photo')->nullable();
             $table->decimal('consultation_price')->nullable();
             $table->decimal('reservation_price')->nullable();
