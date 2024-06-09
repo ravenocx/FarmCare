@@ -21,6 +21,7 @@ class UserConsultationFitureTest extends DuskTestCase
                     ->type('email', 'haris@gmail.com')
                     ->type('password', '123123')
                     ->press('Sign In')
+                    ->assertPathIs('/home')
                     ->click('@service-summary')
                     ->clickLink('Online Consultation')
                     ->assertPathIs('/consultation')
