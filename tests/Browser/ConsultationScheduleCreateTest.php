@@ -24,6 +24,7 @@ class ConsultationScheduleCreateTest extends DuskTestCase
                     ->type('email', 'paris28@example.org')
                     ->type('password', '123456')
                     ->press('Sign In')
+                    ->assertPathIs('/veterinarian')
                     ->clickLink('Online Consultation')
                     ->assertPathIs('/veterinarian/consultation')
                     ->press('Add Schedule')
@@ -32,6 +33,14 @@ class ConsultationScheduleCreateTest extends DuskTestCase
                         "document.querySelector('#datetime-start').value = '" . $currentDateTime->format('Y-m-d\TH:i') . "'",
                         "document.querySelector('#datetime-end').value = '" . $currentDateTime->addHour()->format('Y-m-d\TH:i') . "'"
                     ]);
+
+            $browser->press('Add Schedule')
+                    ->assertSee('Successfully add new online consultation schedule');
+            
+            $browser->script([
+                "document.querySelector('#datetime-start').value = '" . $currentDateTime->addMinute()->format('Y-m-d\TH:i') . "'",
+                "document.querySelector('#datetime-end').value = '" . $currentDateTime->addMinute()->addHour()->format('Y-m-d\TH:i') . "'"
+            ]);
 
             $browser->press('Add Schedule')
                     ->assertSee('Successfully add new online consultation schedule');
