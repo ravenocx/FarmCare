@@ -8,7 +8,7 @@ use App\Models\ArticleImage;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ArticleController extends Controller
+class UserArticleController extends Controller
 {
     private $breadcrumbs;
     private $currentDateTime;

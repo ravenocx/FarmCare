@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserArticleController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
@@ -35,18 +36,19 @@ Route::middleware(['AuthSession'])->group(function(){
     })->name("user.home");
 
     Route::prefix('/article')->group(function(){
-        Route::get('/', [ArticleController::class, 'index'])->name('user.article');
-        Route::post('/', [ArticleController::class, 'index'])->name('user.article.search');
-        Route::get('/{id}', [ArticleController::class, 'detail'])->name('user.article.detail');
+        Route::get('/', [UserArticleController::class, 'index'])->name('user.article');
+        Route::post('/', [UserArticleController::class, 'index'])->name('user.article.search');
+        Route::get('/{id}', [UserArticleController::class, 'detail'])->name('user.article.detail');
     });
 
     Route::get('/consultation', [ConsultationController::class, 'index'])->name('user.consultation');
     Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
     Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
-
+    
     Route::prefix('/order')->group(function(){
         Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
+        Route::get('/details/{id}', [OrderController::class, 'orderHistoryDetail'])->name('user.order.details');
     });
     
 });

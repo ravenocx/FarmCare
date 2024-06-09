@@ -13,7 +13,7 @@
             <ul class="menu menu-horizontal px-1 font-medium text-xl ml-10">
                 <li>
                     <details>
-                    <summary>
+                    <summary dusk="service-summary">
                         Service
                     </summary>
                     <ul class="p-2 bg-base-150 rounded-t-none drop-shadow-xl">
@@ -22,8 +22,8 @@
                     </ul>
                     </details>
                 </li>
-                <li class="mx-4"><a>Article</a></li>
-                <li class="mr-4"><a href="{{route('faq')}}">FAQ</a></li>
+                <li><a href="{{route('user.order.history')}}">Order History</a></li>
+                <li class="mx-4"><a href="{{route('user.article')}}">Article</a></li>
                 <li><a href="#footer">Contact Us</a></li>
             </ul>
         </div>

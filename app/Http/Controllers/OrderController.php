@@ -26,4 +26,12 @@ class OrderController extends Controller
         return view('pages.user.order-history.index', compact('orders'))->with('breadcrumbs', $this->breadcrumbs);
 
     }
+
+    public function orderHistoryDetail(string $id){
+        $this->breadcrumbs = array_merge($this->breadcrumbs, array(['label' => 'Detail Order History', 'url' => route('user.order.details' , ['id' => $id])]));
+
+        $order = Order::with('veterinarian')->findOrFail($id);
+        
+        return view('pages.user.order-history.detail', compact('order'))->with('breadcrumbs', $this->breadcrumbs);
+    }
 }
