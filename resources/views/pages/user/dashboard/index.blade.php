@@ -43,7 +43,7 @@
                             <a href="{{route('user.consultation.veterinarian', ['id' => ($veterinarian -> id)]) }}">
                                 <div class="bg-secondaryColor px-2 pt-2 rounded-lg shadow-lg mr-5">
                                     <img src="{{ asset($veterinarian->photo ? :'images/assets/doctor-picture.svg') }}" class="size-[155px]">
-                                    <p class="font-semibold text-xs my-2">{{ Str::limit($veterinarian->name,15) }}</p>
+                                    <p class="font-semibold text-xs my-2">{{ Str::limit($veterinarian->name,10) }}</p>
                                     <p class="font-semibold text-xs pb-3">{{ $veterinarian->specialist }}</p>
                                 </div>
                             </a>
