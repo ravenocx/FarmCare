@@ -33,7 +33,8 @@ class OrderHistoryTest extends DuskTestCase
                     ->pause(1000)
                     ->clickLink('Order Detail')
                     ->pause(1000)
-                    ->back();
+                    ->back()
+                    ->pause(1000);
         });
         
     }
