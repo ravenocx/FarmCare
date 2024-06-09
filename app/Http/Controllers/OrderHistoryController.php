@@ -31,8 +31,4 @@ class OrderHistoryController extends Controller
 
         return view('pages.veterinarian.orderhistory.detail', compact('order'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
 }
