@@ -3957,6 +3957,11 @@ details.collapse summary::-webkit-details-marker {
   margin-right: 5rem;
 }
 
+.mx-28 {
+  margin-left: 7rem;
+  margin-right: 7rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -3975,6 +3980,11 @@ details.collapse summary::-webkit-details-marker {
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .my-14 {
@@ -4005,16 +4015,6 @@ details.collapse summary::-webkit-details-marker {
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.mx-28 {
-  margin-left: 7rem;
-  margin-right: 7rem;
-}
-
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
 }
 
 .-ml-px {
@@ -4459,10 +4459,6 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
-.h-7 {
-  height: 1.75rem;
-}
-
 .max-h-\[640px\] {
   max-height: 640px;
 }
@@ -4611,6 +4607,10 @@ details.collapse summary::-webkit-details-marker {
   width: 400px;
 }
 
+.w-\[420px\] {
+  width: 420px;
+}
+
 .w-\[677px\] {
   width: 677px;
 }
@@ -4630,14 +4630,6 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[420px\] {
-  width: 420px;
-}
-
-.w-7 {
-  width: 1.75rem;
 }
 
 .max-w-60 {
@@ -4869,6 +4861,11 @@ details.collapse summary::-webkit-details-marker {
        column-gap: 2.5rem;
 }
 
+.gap-x-16 {
+  -moz-column-gap: 4rem;
+       column-gap: 4rem;
+}
+
 .gap-x-2 {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
@@ -4894,11 +4891,6 @@ details.collapse summary::-webkit-details-marker {
 
 .gap-y-4 {
   row-gap: 1rem;
-}
-
-.gap-x-16 {
-  -moz-column-gap: 4rem;
-       column-gap: 4rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
