@@ -16,12 +16,18 @@ class DashboardTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                     ->assertSee('Login')
+                    ->pause(1000)
                     ->press('Login')
                     ->assertPathIs('/login')
+                    ->pause(1000)
                     ->type('email', 'azka@gmail.com')
+                    ->pause(500)
                     ->type('password', '123456')
+                    ->pause(500)
                     ->press('Sign In')
+                    ->pause(1000)
                     ->assertPathIs('/home');
         });
+        
     }
 }
