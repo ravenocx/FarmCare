@@ -49,6 +49,7 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::prefix('/order')->group(function(){
         Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
         Route::get('/details/{id}', [OrderController::class, 'orderHistoryDetail'])->name('user.order.details');
+        
     });
     
 });

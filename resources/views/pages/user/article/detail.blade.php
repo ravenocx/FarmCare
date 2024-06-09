@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="bg-center bg-cover bg-no-repeat rounded-lg w-full"
-                style="background-image: url('{{ $article->articleImage->image }}')">
+            <div style="background-image: url('{{ isset($article->articleImage) ? $article->articleImage->image : "" }}')">
                 <img class="invisible w-full" src="{{ asset('assets/cow.png') }}" style="height: 50vh;" alt="Photo" />
             </div>
             <div>

@@ -34,10 +34,9 @@
             @foreach($articles as $data)
             <a href="{{ route('user.article.detail', $data->id) }}"
                 class="max-w-sm bg-[#8D7B68] border border-gray-200 rounded-lg shadow p-3 flex flex-col justify-between article-card">
-                <div class="bg-center bg-cover bg-no-repeat rounded-lg"
-                    style="background-image: url('{{ $data->articleImage->image }}')">
-                    <img class="invisible w-full h-40" src="{{ asset('assets/cow.png') }}" alt="Photo" />
-                </div>
+                <div class="bg-center bg-cover bg-no-repeat rounded-lg" style="background-image: url('{{ isset($data->articleImage) && $data->articleImage->image ? $data->articleImage->image : "" }}')">
+    <img class="invisible w-full h-40" src="{{ asset('assets/cow.png') }}" alt="Photo" />
+</div>
                 <div>
                     <h5 class="mt-4 mb-2 text-lg font-medium tracking-tight text-white article-title">
                         {{ $data->title }}</h5>
