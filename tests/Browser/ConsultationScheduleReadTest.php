@@ -21,13 +21,19 @@ class ConsultationScheduleReadTest extends DuskTestCase
                 ->assertPathIs('/login')
                 ->type('email', 'paris28@example.org')
                 ->type('password', '123456')
+                ->pause(5000)
                 ->press('Sign In')
+                ->pause(5000)
                 ->assertPathIs('/veterinarian')
                 ->clickLink('Online Consultation')
                 ->assertPathIs('/veterinarian/consultation')
+                ->pause(5000)
                 ->click('@schedule-viewall')
                 ->assertPathIs('/veterinarian/consultation/schedule')
-                ->assertSee('Online Consultation Schedule');
+                ->assertSee('Online Consultation Schedule')
+                ->pause(5000)
+                ->scrollIntoView('#pagination')
+                ->pause(7000);
         });
     }
 }

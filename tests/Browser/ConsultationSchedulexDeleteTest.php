@@ -22,15 +22,21 @@ class ConsultationSchedulexDeleteTest extends DuskTestCase
                     ->assertPathIs('/login')
                     ->type('email', 'paris28@example.org')
                     ->type('password', '123456')
+                    ->pause(5000)
                     ->press('Sign In')
+                    ->pause(5000)
                     ->assertPathIs('/veterinarian')
                     ->clickLink('Online Consultation')
+                    ->pause(5000)
                     ->assertPathIs('/veterinarian/consultation')
                     ->click('@schedule-viewall')
+                    ->pause(5000)
                     ->assertPathIs('/veterinarian/consultation/schedule')
                     ->press('Cancel')
+                    ->pause(5000)
                     ->press('Yes, Delete it')
-                    ->assertSee('Successfully cancel online consultation schedule');
+                    ->assertSee('Successfully cancel online consultation schedule')
+                    ->pause(7000);
         });
     }
 }

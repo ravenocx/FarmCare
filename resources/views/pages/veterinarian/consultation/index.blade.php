@@ -159,7 +159,7 @@
         </div>
 
         @foreach($latestOrders as $index => $latestOrder)
-        <div class="pb-7 border-shadeCream {{count($latestOrders) == 1 ? '' : 'border-b-2 mb-5' }} ">
+        <div class="pb-7 border-shadeCream {{count($latestOrders) == 1 ? '' : 'border-b-2 mb-5' }} " id="latest-order">
             <div class="flex text-xl font-medium mb-6">
                 <p class="text-[#8C8F93]">Order Date</p>
                 <p class="ml-5">{{ Carbon\Carbon::parse($latestOrder -> order_date)->format('d/m/Y') }}</p>

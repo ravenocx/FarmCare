@@ -15,9 +15,12 @@ class UserFaqPageTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                    ->scrollIntoView('#footer')
+                    ->pause(5000)
                     ->clickLink('FAQ')
                     ->assertPathIs('/faq')
-                    ->assertSee('Frequently Ask Question');
+                    ->assertSee('Frequently Ask Question')
+                    ->pause(7000);
         });
     }
 }

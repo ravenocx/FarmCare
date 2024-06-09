@@ -18,9 +18,11 @@ class AdminLoginTest extends DuskTestCase
                     ->assertSee('Sign in')
                     ->type('email', 'admin@gmail.com')
                     ->type('password', '123456')
+                    ->pause(5000)
                     ->press('Sign in')
                     ->assertSee('List of Veterinarians')
-                    ->assertPathIs('/admin');
+                    ->assertPathIs('/admin')
+                    ->pause(5000);
         });
     }
 }

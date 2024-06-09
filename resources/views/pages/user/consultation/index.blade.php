@@ -24,7 +24,7 @@
         </div>
 
         <div class="flex-grow border-l-2 pl-12 pt-6 border-y-2 pb-16">
-            <p class="font-bold text-2xl">Doctor Recommendation</p>
+            <p class="font-bold text-2xl" id="doctor-recommendation">Doctor Recommendation</p>
             <p class="font-medium text-base mt-2 mb-4">Consult with our best doctors</p>
             
             <div class="flex justify-center">

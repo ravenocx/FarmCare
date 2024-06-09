@@ -20,12 +20,18 @@ class UserConsultationFitureTest extends DuskTestCase
                     ->assertPathIs('/login')
                     ->type('email', 'haris@gmail.com')
                     ->type('password', '123123')
+                    ->pause(5000)
                     ->press('Sign In')
                     ->assertPathIs('/home')
+                    ->pause(5000)
                     ->click('@service-summary')
+                    ->pause(2000)
                     ->clickLink('Online Consultation')
+                    ->pause(5000)
+                    ->scrollIntoView('#doctor_search')
                     ->assertPathIs('/consultation')
-                    ->assertSee('Consult with a doctor at FarmCare+');
+                    ->assertSee('Consult with a doctor at FarmCare+')
+                    ->pause(7000);
         });
     }
 }
