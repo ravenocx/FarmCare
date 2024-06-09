@@ -24,7 +24,7 @@ class DeleteMedicineTesting extends DuskTestCase
                     ->press('Order Detail')
                     ->visit('/veterinarian/consultation/order/detail/52')
                     ->clicklink('View Medicine')
-                    ->click('[data-modal-toggle="deleteModal"]')
+                    ->clicklink('[data-modal-toggle="deleteModal"]')
                     ->press('Delete');
         });
     }
