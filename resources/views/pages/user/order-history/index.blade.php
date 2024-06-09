@@ -1,6 +1,6 @@
 @extends('layouts.user.app')
 
-@section('title','FarmCare - Online Consultation')
+@section('title','FarmCare - Order History')
 
 @section('main-content')
 
@@ -35,12 +35,11 @@
                         <p class="font-medium {{$order->order_status == 'Complete' ? 'text-green-500' : ($order->order_status == 'Cancel' ? 'text-red-500' : 'text-yellow-500')}}">{{$order -> order_status}}</p>
                     </div>
 
-                    <a href="{{route('veterinarian.consultation.order.detail', ['id' => $order->id])}}" class="ml-auto mr-10">
+                    <a href="{{route('user.order.details', ['id' => $order->id])}}" class="ml-auto mr-10">
                         <button class="btn-lg bg-white border-black border font-medium text-lg rounded-lg py-5 px-7 hover:bg-shadeBrown hover:text-white hover:border-none">View Order Detail</button>
                     </a>
                 </div>
             </div>
         @endforeach
     </div>
-
 @endsection

@@ -16,22 +16,29 @@ Route::get('/', [AuthController::class, 'landingPage'])->name("landing-page");
 
 Route::get('/faq', [FaqController::class, 'getFAQPage'])->name("faq");
 
-
 Route::get('/login',[AuthController::class, 'login'] )->name('login.form');
 Route::post('/login',[AuthController::class, 'loginSubmit'] )->name('login.submit');
+
 Route::get('/logout',[AuthController::class, 'logout'] )->name('logout');
+
 Route::get('/register',[AuthController::class, 'userRegister'] )->name('user.register.form');
 Route::post('/register',[AuthController::class, 'userRegisterSubmit'] )->name('user.register.submit');
+
 Route::get('/register/veterinarian',[AuthController::class, 'veterinarianRegister'] )->name('veterinarian.register.form');
 Route::post('/register/veterinarian',[AuthController::class, 'veterinarianRegisterSubmit'] )->name('veterinarian.register.submit');
+
 Route::get('/admin_login', [AuthController::class, 'adminLogin'] )->name("admin.login");
 Route::post('/admin_login',[AuthController::class, 'adminLoginSubmit'] )->name('admin.login.submit');
+
 Route::middleware(['AuthSession'])->group(function(){
     Route::get('/home', [DashboardController::class, 'index'] )->name('user.home');
     Route::get('/home/veterinarians', [DashboardController::class, 'listVeterinarians'])->name('user.dashboard.list');
 
     Route::prefix('/order')->group(function(){
         Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
+        Route::get('/details/{id}', [OrderController::class, 'orderHistoryDetail'])->name('user.order.details');
+        Route::get('/medicine', [MedicDelivController::class, 'index'])->name('user.medicdeliv.index');
+
     });
 
     Route::prefix('/article')->group(function(){

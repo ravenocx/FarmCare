@@ -24,7 +24,7 @@ class MedicDelivController extends Controller
 
     public function index()
     {
-        $order = Order::with('medications')->findOrFail(28);
+        $order = Order::with('medications')->findOrFail(34);
         $breadcrumbs = $this->breadcrumbs;
 
         $totalPrice = $order->medications->sum(function ($medication) {

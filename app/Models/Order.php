@@ -31,6 +31,9 @@ class Order extends Model
     public function user(){
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
+    public function veterinarian(){
+        return $this->hasOne('App\Models\veterinarian', 'id', 'veterinarian_id');
+    }
     public function medications(){
         return $this->hasMany('App\Models\Medication', 'order_id', 'id');
     }
