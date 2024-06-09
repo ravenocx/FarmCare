@@ -17,7 +17,10 @@ class ReadAdminforApplicantTest extends DuskTestCase
             $browser->visit('/admin_login')
                     ->type('email', 'admin@gmail.com')
                     ->type('password', '123456')
-                    ->press('Sign in');
+                    ->press('Sign in')
+                    ->visit('/admin')
+                    ->clickLink('Applicant')
+                    ->visit('/admin/applicant');
         });
     }
 }

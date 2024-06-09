@@ -18,7 +18,12 @@ class AdminDashboardTest extends DuskTestCase
                     ->type('email', 'admin@gmail.com')
                     ->type('password', '123456')
                     ->press('Sign in')
-                    ->assertPathIs('/admin');
+                    ->visit('/admin')
+                    ->clickLink('Details')
+                    ->visit('/admin/veterinarian/203')
+                    ->visit('admin')
+                    ->clickLink('View All')
+                    ->visit('/admin/applicant');
         });
     }
 }
