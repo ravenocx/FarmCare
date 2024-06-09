@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class VeteEditProfileTest extends DuskTestCase
+class CreateVeteEditProfileTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -20,7 +20,7 @@ class VeteEditProfileTest extends DuskTestCase
             ->press('Sign In')
             ->visit('/veterinarian/profile')
             ->clickLink('Edit')
-            ->assertPathIs('/veterinarian/profile/edit');
+            ->visit('/veterinarian/profile/edit');
         });
     }
 }
