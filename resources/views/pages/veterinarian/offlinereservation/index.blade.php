@@ -11,7 +11,9 @@
                 Schedule</button>
         </a>
     </div>
+    <h2 class="font-semibold text-base mb-6">My Offline Reservation Schedule</h2>
     <div class="grid grid-cols-3">
+    
         @foreach ($services as $index => $service)
             <div class=" border-b-2 border-shadeCream py-4">
                 <div class="flex">
@@ -39,16 +41,16 @@
 
                         <div class="flex justify-center mt-5 space-x-3">
                             @if (Carbon\Carbon::parse($service->schedule_end)->isAfter(Carbon\Carbon::now()) && !($service->is_reserved))
-                                <a href="{{ url('veterinarian/offline-reservation/' . $service->id . '/edit') }}">
+                                <a href="{{ url('veterinarian/offline-reservation/' . $service->id . '/edit') }} "data-id="{{ $service->id }}">
                                     <button
-                                        class="btn-base bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Edit</button>
+                                        class="btn-base bg-shadeBrown font-bold text-xs text-white rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1" data-testid="edit-button">Edit</button>
                                 </a>
                                 <form action="{{ url('veterinarian/offline-reservation/' . $service->id . '/delete') }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                                         class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3 hover:text-[#DF0000] hover:bg-white hover:outline hover:outline-1"
-                                        type="submit">
+                                        type="submit"data-testid="delete-button">
                                         Cancel
                                     </button>
                                 </form>
@@ -64,7 +66,7 @@
                                     @method('delete')
                                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                                         class="btn-base bg-[#DF0000] font-bold text-xs text-white rounded py-2 px-3 hover:text-[#DF0000] hover:bg-white hover:outline hover:outline-1"
-                                        type="submit">
+                                        type="submit"data-testid="delete-button">
                                         Cancel
                                     </button>
                                 </form>
@@ -164,7 +166,7 @@
     <section>
         <div class="flex justify-between mr-6 mb-5">
             <h2 class="font-semibold text-base">Latest Order</h2>
-            <a href="" class="font-semibold text-shadeBrown text-base"> View All ></a>
+            
             <!--TODO : Link to order history-->
         </div>
 

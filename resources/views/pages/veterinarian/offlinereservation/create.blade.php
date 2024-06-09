@@ -3,7 +3,7 @@
 @section('title', 'Veterinarian - Add Offline Reservation')
 
 @section('main-content')
-    <a class="flex items-center space-x-2 ml-4" href="{{ url('/offline-reservation') }}">
+    <a class="flex items-center space-x-2 ml-4" href="{{ url('veterinarian/offline-reservation') }}">
         <img src="{{ asset('images/vector/back-vector.svg') }}">
         <p class="text-base text-primaryColor">Back</p>
     </a>

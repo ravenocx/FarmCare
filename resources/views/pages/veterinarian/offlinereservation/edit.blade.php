@@ -30,7 +30,7 @@
 
             <div class="flex justify-end font-medium text-base text-white space-x-7">
                 <button type="submit"
-                    class="btn-base bg-[#C8B6A6] rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Add
+                    class="btn-base bg-[#C8B6A6] rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Update
                     Schedule</button>
                 <button type="reset" class="btn-base bg-[#DF0000] rounded py-2 px-5">Discard</button>
             </div>
