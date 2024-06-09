@@ -145,4 +145,29 @@ class MedicDelivController extends Controller
 
         return view('pages.user.medicdeliv.status', compact('medication', 'statusTimeline'))->with('breadcrumbs', $this->breadcrumbs);
     }
+
+    public function confirmReceived($id)
+    {
+        try {
+            $medication = Medication::findOrFail($id);
+            
+            // Pastikan pengguna yang melakukan konfirmasi adalah pengguna yang memiliki pesanan
+            if (Auth::id() !== $medication->order->user_id) {
+                return redirect()->back()->with('error', 'You are not authorized to perform this action.');
+            }
+            
+            // Update status pesanan menjadi "Complete"
+            $medication->update([
+                'order_status' => 'Complete'
+            ]);
+
+            // Flash message untuk memberitahu pengguna bahwa pesanan sudah diterima
+            return redirect()->back()->with('success', 'Order received successfully. Thank you for your purchase!');
+        } catch (\Exception $e) {
+            // Jika terjadi kesalahan, tampilkan pesan error
+            dd($e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred while confirming order received: ' . $e->getMessage());
+        }
+    }
+
 }

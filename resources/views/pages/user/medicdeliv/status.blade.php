@@ -36,7 +36,7 @@
   </div>
   
   <div class="flex justify-center mt-10">
-    <a href="">
+    <a href="{{ route('user.order.history') }}">
       <button class="btn-base w-[650px] mt-auto bg-shadeBrown font-bold text-lg text-white mb-8 rounded py-2 px-5 hover:text-shadeBrown hover:bg-white hover:outline hover:outline-1">Received Order</button>
     </a>
   </div>

@@ -38,6 +38,8 @@ Route::middleware(['AuthSession'])->group(function(){
         Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
         Route::get('/details/{id}', [OrderController::class, 'orderHistoryDetail'])->name('user.order.details');
         Route::get('/medicine', [MedicDelivController::class, 'index'])->name('user.medicdeliv.index');
+        Route::get('/order-history', [MedicDelivController::class, 'orderHistory'])->name('user.order-history');
+
 
     });
 
@@ -63,6 +65,8 @@ Route::middleware(['AuthSession'])->group(function(){
         Route::patch('/upload/{id}', [MedicDelivController::class, 'uploadPaymentProof'])->name('user.medicdeliv.upload.submit');
         Route::get('/success/{id}', [MedicDelivController::class, 'success'])->name('user.medicdeliv.success');
         Route::get('/status/{id}', [MedicDelivController::class, 'status'])->name('user.medicdeliv.status');
+        Route::put('/medicine/{id}/confirm-received', [MedicDelivController::class, 'confirmReceived'])->name('user.medicdeliv.confirm-received');
+
     });
     
 });
