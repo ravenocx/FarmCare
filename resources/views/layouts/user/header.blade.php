@@ -23,7 +23,7 @@
                     </details>
                 </li>
                 <li><a href="{{route('user.order.history')}}">Order History</a></li>
-                <li class="mx-4"><a>Article</a></li>
+                <li class="mx-4"><a href="{{route('user.article')}}">Article</a></li>
                 <li><a href="#footer">Contact Us</a></li>
             </ul>
         </div>
