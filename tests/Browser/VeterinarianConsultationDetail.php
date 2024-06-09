@@ -21,6 +21,7 @@ class VeterinarianConsultationDetail extends DuskTestCase
                     ->type('email', 'paris28@example.org')
                     ->type('password', '123456')
                     ->press('Sign In')
+                    ->assertPathIs('/veterinarian')
                     ->clickLink('Online Consultation')
                     ->assertPathIs('/veterinarian/consultation')
                     ->press('Order Detail')

@@ -18,6 +18,13 @@ class UserConsultationSpecialistTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($specialists) {
             foreach ($specialists as $specialist) {
                 $browser->visit('/')
+                        ->assertSee('Login')
+                        ->press('Login')
+                        ->assertPathIs('/login')
+                        ->type('email', 'haris@gmail.com')
+                        ->type('password', '123123')
+                        ->press('Sign In')
+                        ->assertPathIs('/home')
                         ->click('@online-consultation-link')
                         ->assertPathIs('/consultation')
                         ->click('@'. $specialist . '-viewall')
