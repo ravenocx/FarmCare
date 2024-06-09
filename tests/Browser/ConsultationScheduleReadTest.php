@@ -19,7 +19,7 @@ class ConsultationScheduleReadTest extends DuskTestCase
                 ->assertSee('Login')
                 ->press('Login')
                 ->assertPathIs('/login')
-                ->type('email', 'paris28@example.org')
+                ->type('email', 'banawa17@example.net')
                 ->type('password', '123456')
                 ->pause(5000)
                 ->press('Sign In')
@@ -32,7 +32,6 @@ class ConsultationScheduleReadTest extends DuskTestCase
                 ->assertPathIs('/veterinarian/consultation/schedule')
                 ->assertSee('Online Consultation Schedule')
                 ->pause(5000)
-                ->scrollIntoView('#pagination')
                 ->pause(7000);
         });
     }

@@ -16,13 +16,13 @@ class ConsultationScheduleUpdateTest extends DuskTestCase
     public function testUpdateOnlineConsultationSchedule(): void
     {
         $this->browse(function (Browser $browser) {
-            $currentDateTime = Carbon::now()->addHour();
+            $currentDateTime = Carbon::now();
 
             $browser->visit('/')
                     ->assertSee('Login')
                     ->press('Login')
                     ->assertPathIs('/login')
-                    ->type('email', 'paris28@example.org')
+                    ->type('email', 'banawa17@example.net')
                     ->type('password', '123456')
                     ->pause(5000)
                     ->press('Sign In')
@@ -39,7 +39,7 @@ class ConsultationScheduleUpdateTest extends DuskTestCase
                     ->assertSee('Edit Schedule')
                     ->script([
                         "document.querySelector('#datetime-start').value = '" . $currentDateTime->format('Y-m-d\TH:i') . "'",
-                        "document.querySelector('#datetime-end').value = '" . $currentDateTime->addHour()->format('Y-m-d\TH:i') . "'"
+                        "document.querySelector('#datetime-end').value = '" . $currentDateTime->addHours(2)->format('Y-m-d\TH:i') . "'"
                     ]);
             $browser->pause(5000)
                     ->press('Edit Schedule')

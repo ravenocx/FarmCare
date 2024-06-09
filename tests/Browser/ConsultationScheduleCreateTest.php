@@ -21,7 +21,7 @@ class ConsultationScheduleCreateTest extends DuskTestCase
                     ->assertSee('Login')
                     ->press('Login')
                     ->assertPathIs('/login')
-                    ->type('email', 'paris28@example.org')
+                    ->type('email', 'banawa17@example.net')
                     ->type('password', '123456')
                     ->pause(5000)
                     ->press('Sign In')
@@ -43,7 +43,7 @@ class ConsultationScheduleCreateTest extends DuskTestCase
                     ->pause(5000);
             
             $browser->script([
-                "document.querySelector('#datetime-start').value = '" . $currentDateTime->addMinute()->format('Y-m-d\TH:i') . "'",
+                "document.querySelector('#datetime-start').value = '" . $currentDateTime->format('Y-m-d\TH:i') . "'",
                 "document.querySelector('#datetime-end').value = '" . $currentDateTime->addMinute()->addHour()->format('Y-m-d\TH:i') . "'"
             ]);
 
