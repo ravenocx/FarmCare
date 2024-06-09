@@ -9,10 +9,14 @@ class ArticleImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['article_id', 'image'];
+    protected $fillable = ['article_id','image'];
 
     public function article(){
-        return $this->belongsTo('App\Models\Article', 'id', 'article_id');
+        return $this->hasOne('App\Models\Article','article_id', 'id');
     }
 
+    public function articles(){
+        return $this->belongsTo('App\Models\Article','article_id', 'id');
+    }
 }
+

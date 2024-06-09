@@ -42,7 +42,7 @@ class UserArticleController extends Controller
     }
     public function detail(string $id){
         try{        
-            $article = Article::with('articleImages')->find($id);
+            $article = Article::with('articleImage')->find($id);
             $this->breadcrumbs = array_merge($this->breadcrumbs, array(['label' => $article->title, 'url' => route('user.consultation.specialist' , ['specialist' => $article->title])]));
             
             $carbonTanggal = Carbon::parse($article->created_at);
