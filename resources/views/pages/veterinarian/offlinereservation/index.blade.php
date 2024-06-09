@@ -146,7 +146,7 @@
                                         <option value="Cancel">Cancel</option>
                                     </select>
 
-                                    <button type="submit"
+                                    <button type="submit" id="updateButton"
                                         class="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke="currentColor" class="w-6 h-6 mr-2">
@@ -203,7 +203,7 @@
         <!-- Order Detail Button -->
         <a href="{{url('/veterinarian/offline-reservation/'. $order->id)}}" class="ml-auto mr-10">
             <button
-                class="btn-lg bg-white border-black border font-medium text-lg rounded-lg py-5 px-7 hover:bg-shadeBrown hover:text-white hover:border-none">
+                class="btn-lg bg-white border-black border font-medium text-lg rounded-lg py-5 px-7 hover:bg-shadeBrown hover:text-white hover:border-none"data-testid="detail-button">
                 Order Detail
             </button>
         </a>
