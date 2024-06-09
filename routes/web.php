@@ -44,9 +44,10 @@ Route::middleware(['AuthSession'])->group(function(){
     Route::get('/consultation/specialist/{specialist}', [ConsultationController::class, 'getDoctorBySpecialist'])->name('user.consultation.specialist');
     Route::get('/consultation/veterinarian/{id}', [ConsultationController::class, 'getVeterinarianDetails'])->name('user.consultation.veterinarian');
     Route::get('/consultation/veterinarian/{id}/order', [ConsultationController::class, 'getVeterinarianOrderDetails'])->name('user.consultation.veterinarian.order');
-
+    
     Route::prefix('/order')->group(function(){
         Route::get('/history', [OrderController::class, 'orderHistory'])->name('user.order.history');
+        Route::get('/details/{id}', [OrderController::class, 'orderHistoryDetail'])->name('user.order.details');
     });
     
 });
