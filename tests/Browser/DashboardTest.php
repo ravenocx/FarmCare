@@ -26,7 +26,8 @@ class DashboardTest extends DuskTestCase
                     ->pause(500)
                     ->press('Sign In')
                     ->pause(1000)
-                    ->assertPathIs('/home');
+                    ->assertPathIs('/home')
+                    ->pause(1000);
         });
         
     }
