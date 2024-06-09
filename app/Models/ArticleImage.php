@@ -12,7 +12,7 @@ class ArticleImage extends Model
     protected $fillable = ['article_id', 'image'];
 
     public function article(){
-        return $this->hasOne('App\Models\Article', 'id', 'article_id');
+        return $this->belongsTo('App\Models\Article', 'id', 'article_id');
     }
 
 }

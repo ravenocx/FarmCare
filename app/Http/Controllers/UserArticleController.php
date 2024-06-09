@@ -23,7 +23,8 @@ class UserArticleController extends Controller
     
     public function index(Request $request){
         try{
-            $articles = Article::all();
+            $articles = Article::with('articleImages')->get();
+            
             $filter = "";
             if($request->search){
                 $articles = Article::where('title', 'like', "%{$request->search}%")
@@ -39,18 +40,19 @@ class UserArticleController extends Controller
             abort(404);
         }
     }
-
     public function detail(string $id){
-    try{        
-        $article = Article::find($id);
-        $this->breadcrumbs = array_merge($this->breadcrumbs, array(['label' => $article->title, 'url' => route('user.consultation.specialist' , ['specialist' => $article->title])]));
-        
-        $carbonTanggal = Carbon::parse($article->created_at);
-        $carbonTanggal->locale('id');
-        $article->formattedDate = $carbonTanggal->isoFormat('D MMMM YYYY');
-        return view('pages.user.article.detail', compact('article'))->with('breadcrumbs', $this->breadcrumbs);;
-        }catch(ModelNotFoundException $e){
-            abort(404);
-        }
+        try{        
+            $article = Article::with('articleImages')->find($id);
+            $this->breadcrumbs = array_merge($this->breadcrumbs, array(['label' => $article->title, 'url' => route('user.consultation.specialist' , ['specialist' => $article->title])]));
+            
+            $carbonTanggal = Carbon::parse($article->created_at);
+            $carbonTanggal->locale('id');
+            $article->formattedDate = $carbonTanggal->isoFormat('D MMMM YYYY');
+            return view('pages.user.article.detail', compact('article'))->with('breadcrumbs', $this->breadcrumbs);;
+            }
+            catch(ModelNotFoundException $e){
+                abort(404);
+            }
     }
 }
+

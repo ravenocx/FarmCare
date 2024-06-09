@@ -123,29 +123,30 @@ class ArticleController extends Controller
                 'title' => 'required|string',
                 'category' => 'required|string',
                 'content' => 'required|string',
-                'photo' => 'mimes:png,jpeg,jpg',
+                'photo1' => 'mimes:png,jpeg,jpg',
+                'photo2' => 'mimes:png,jpeg,jpg',
+                'photo3' => 'mimes:png,jpeg,jpg',
+                'photo4' => 'mimes:png,jpeg,jpg',
             ]);
 
-            $latestArticle = Article::orderBy('id' , 'desc')->first();
-            if (!$latestArticle) {
-                $articleId = 1;
-            }else {
-                $articleId = $latestArticle->id + 1;
-            }
+            for ($i = 1; $i <= 4 ; $i++) { 
+                $currentDateTime = Carbon::now();
+                
+                $photoKey = 'photo' . $i;
+                
+                if ($request->hasFile($photoKey)){
+                    $photo1 = $request->file($photoKey)->getRealPath();
+                    $articleImage = $i;
+                    // Set the file name
+                    $photoFileName = 'Article-' . $id . '_Image-' . $articleImage . '_' . $currentDateTime;
+                    
+                    $imageUrl = cloudinary()->upload($photo1, [
+                        'public_id' => $photoFileName,
+                        'folder' => 'article_images', 
+                        ])->getSecurePath();
+                        $uploadedImages[] = $imageUrl;
+                }
 
-            $currentDateTime = Carbon::now();
-
-
-            if ($request->hasFile('photo')){
-                $photo = $request->file('photo')->getRealPath();
-                // Set the file name
-                $photoFileName = 'Article-' . $articleId . ' Image' . '_' . Auth::guard('veterinarian')->user()->name . $currentDateTime;
-        
-                $imageUrl = cloudinary()->upload($photo, [
-                    'public_id' => $photoFileName,
-                    'folder' => 'article_images', 
-                ])->getSecurePath();
-                $uploadedImages[] = $imageUrl;
             }
 
             $article = Article::findOrFail($id);
