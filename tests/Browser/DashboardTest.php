@@ -14,7 +14,7 @@ class DashboardTest extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('')
+            $browser->visit('/')
                     ->assertSee('Login')
                     ->press('Login')
                     ->assertPathIs('/login')
