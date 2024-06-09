@@ -216,8 +216,7 @@ class VeterConsultationController extends Controller
                     "quantity" => $request->input("quantity{$i}"),
                     "price" => $total,
                     "address" => $address,
-                    "order_status" => "On going"
-                    
+                    "order_status" => "Pending", "payment_proof" => ""
                 ]);
             }
             return redirect()->route('veterinarian.consultation.order.detail', ['id' => $request->orderId]);
@@ -270,7 +269,7 @@ class VeterConsultationController extends Controller
                     "quantity" => $request->input("newQuantity{$i}"),
                     "price" => $total,
                     "address" => $address,
-                    "order_status" => "On going"
+                    "order_status" => "Pending"
                     
                 ]);
             }

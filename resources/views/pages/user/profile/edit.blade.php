@@ -24,6 +24,11 @@
     <div class="px-28 py-16">
         <button type="button" class="w-10 btn border-2 border-[#8D7B68] px-6 py-2 text-white rounded-lg" style="background-color: #8D7B68" onclick="window.location.href='http://127.0.0.1:8000/home'">Back</button>
         <h1 class="text-center text-3xl font-bold">Edit Profile</h1>
+        @if(session('success'))
+            <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <form class="flex mt-14" action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
@@ -82,8 +87,7 @@
                 </div>
                 <div class="flex gap-x-10 items-center justify-center">
                     <div data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                        class="w-1/4 btn bg-transparent border-2 border-[#8D7B68] px-6 py-2 text-[#8D7B68] rounded-lg text-center">
-                        Delete</div>
+                        class="w-1/4 btn bg-transparent border-2 border-[#8D7B68] px-6 py-2 text-[#8D7B68] rounded-lg text-center">Delete</div>
                     <button type="submit" class="w-1/4 btn border-2 border-[#8D7B68] px-6 py-2 text-white rounded-lg"
                         style="background-color: #8D7B68">Submit</button>
                 </div>

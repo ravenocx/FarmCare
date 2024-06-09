@@ -6013,6 +6013,11 @@ details.collapse summary::-webkit-details-marker {
   color: rgb(194 120 3 / var(--tw-text-opacity));
 }
 
+.text-green-700 {
+  --tw-text-opacity: 1;
+  color: rgb(4 108 78 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -6425,6 +6430,11 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(1 71 55 / var(--tw-bg-opacity));
 }
 
+.dark\:bg-green-200:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(188 240 218 / var(--tw-bg-opacity));
+}
+
 .dark\:text-blue-500:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(63 131 248 / var(--tw-text-opacity));
@@ -6468,6 +6478,11 @@ details.collapse summary::-webkit-details-marker {
 .dark\:text-white:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.dark\:text-green-800:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(3 84 63 / var(--tw-text-opacity));
 }
 
 .dark\:placeholder-gray-400:is(.dark *)::-moz-placeholder {

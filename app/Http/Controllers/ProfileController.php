@@ -49,7 +49,7 @@ class ProfileController extends Controller
                 'email' => $request->email,
                 'address' => $request->address,
             ]);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Data Already Updated!');
         }catch(\Exception $e) {
             dd($e->getMessage());
             return redirect()->back();

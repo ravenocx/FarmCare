@@ -9,7 +9,7 @@ class Medication extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'medicine', 'quantity', 'price','address','order_status'];
+    protected $fillable = ['order_id', 'medicine', 'quantity', 'price','address', 'order_status', 'payment_proof'];
 
     public function order() {
         return $this->belongsTo(Order::class, 'order_id');
