@@ -87,7 +87,7 @@ class MedicDelivController extends Controller
     
             $medication->update([
                 'payment_proof' => $imageUrl,
-                'order_status' => 'Paid'
+                'order_status' => 'On process'
             ]);
             request()->session()->flash('success','Successfully upload the payment proof');
             return redirect()->route('user.medicdeliv.success', ['id' => $id]);
