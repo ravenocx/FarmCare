@@ -83,8 +83,9 @@ class UserReservationController extends Controller
 
             session()->flash('success', 'Offline Reservation Order created sucessfully!');
             return redirect()->route('confirm_offline_reservation', ['id' => $order->id]);
-        } catch (\Throwable $e) {
             
+        } catch (\Throwable $e) {
+            session()->flash('error', 'the form is not filled out correctly!');
             return back();
         }
     }
@@ -108,7 +109,7 @@ class UserReservationController extends Controller
                 $encoded_message = urlencode($message);
     
                 
-    
+                session()->flash('success', 'Offline Reservation Order created sucessfully!');
                 return view('pages.user.offlinereservation.confirm_order', [
                     'order' => $order,
                     
