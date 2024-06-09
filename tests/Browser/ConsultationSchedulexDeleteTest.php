@@ -8,7 +8,7 @@ use Tests\DuskTestCase;
 use Carbon\Carbon;
 
 
-class ConsultationScheduleDeleteTest extends DuskTestCase
+class ConsultationSchedulexDeleteTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -16,7 +16,15 @@ class ConsultationScheduleDeleteTest extends DuskTestCase
     public function testDeleteOnlineConsultationSchedule(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->clickLink('Online Consultation')
+            $browser->visit('/')
+                    ->assertSee('Login')
+                    ->press('Login')
+                    ->assertPathIs('/login')
+                    ->type('email', 'paris28@example.org')
+                    ->type('password', '123456')
+                    ->press('Sign In')
+                    ->assertPathIs('/veterinarian')
+                    ->clickLink('Online Consultation')
                     ->assertPathIs('/veterinarian/consultation')
                     ->click('@schedule-viewall')
                     ->assertPathIs('/veterinarian/consultation/schedule')
@@ -24,11 +32,5 @@ class ConsultationScheduleDeleteTest extends DuskTestCase
                     ->press('Yes, Delete it')
                     ->assertSee('Successfully cancel online consultation schedule');
         });
-        // $this->browse(function (Browser $browser) {
-        //     $browser->click('@profile-summary')
-        //             ->clickLink('Logout')
-        //             ->assertPathIs('/login')
-        //             ->assertSee('Sign in');
-        // });
     }
 }
