@@ -214,13 +214,14 @@ class VeterConsultationController extends Controller
                     'order_id' => $request->orderId,
                     "medicine" => $request->input("medicine{$i}"),
                     "quantity" => $request->input("quantity{$i}"),
-                    "price" => $total,
+                    "price" => $request->input("price{$i}"),
                     "address" => $address,
                     "order_status" => "Pending", "payment_proof" => ""
                 ]);
             }
             return redirect()->route('veterinarian.consultation.order.detail', ['id' => $request->orderId]);
         }catch(\Exception $e){
+            dd($e->getMessage());
             request()->session()->flash('error','An error occurred during storing the medicine :  ' . $e->getMessage());
             return redirect()->back();
         }
@@ -267,9 +268,9 @@ class VeterConsultationController extends Controller
                     'order_id' => $request->orderId,
                     "medicine" => $request->input("newMedicine{$i}"),
                     "quantity" => $request->input("newQuantity{$i}"),
-                    "price" => $total,
+                    "price" => $request->input("price{$i}"),
                     "address" => $address,
-                    "order_status" => "Pending"
+                    "order_status" => "Pending", "payment_proof" => ""
                     
                 ]);
             }
