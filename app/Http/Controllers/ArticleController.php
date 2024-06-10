@@ -56,7 +56,6 @@ class ArticleController extends Controller
                 $articleId = $latestArticle->id + 1;
             }
 
-            $uploadedImages = [];
             $currentDateTime = Carbon::now();
             
 
@@ -69,7 +68,6 @@ class ArticleController extends Controller
                     'public_id' => $photoFileName,
                     'folder' => 'article_images', 
                 ])->getSecurePath();
-                $uploadedImages[] = $imageUrl;
             }
 
             $article = Article::create([
@@ -79,12 +77,11 @@ class ArticleController extends Controller
                 'creator' => Auth::guard('veterinarian')->user()->id
             ]);
 
-            foreach ($uploadedImages as $uploadedImage) {
-                ArticleImage::create([
-                    'article_id' => $article->id,
-                    'image'=> $uploadedImage,
-                ]);
-            }
+
+            ArticleImage::create([
+                'article_id' => $article->id,
+                'image'=> $imageUrl,
+            ]);
 
 
             return redirect()->route('veterinarian.article.index')->with('message', 'Article has been created successfully');
@@ -123,31 +120,23 @@ class ArticleController extends Controller
                 'title' => 'required|string',
                 'category' => 'required|string',
                 'content' => 'required|string',
-                'photo1' => 'mimes:png,jpeg,jpg',
-                'photo2' => 'mimes:png,jpeg,jpg',
-                'photo3' => 'mimes:png,jpeg,jpg',
-                'photo4' => 'mimes:png,jpeg,jpg',
+                'photo' => 'mimes:png,jpeg,jpg',
             ]);
 
-            for ($i = 1; $i <= 4 ; $i++) { 
-                $currentDateTime = Carbon::now();
+            $currentDateTime = Carbon::now();
+            
+            $imageUrl = null;
+            if ($request->hasFile('photo')){
+                $photo = $request->file('photo')->getRealPath();
+                // Set the file name
+                $photoFileName = 'Article-' . $id . '_Image-'  . '_' . Auth::guard('veterinarian')->user()->name . $currentDateTime;
                 
-                $photoKey = 'photo' . $i;
-                
-                if ($request->hasFile($photoKey)){
-                    $photo1 = $request->file($photoKey)->getRealPath();
-                    $articleImage = $i;
-                    // Set the file name
-                    $photoFileName = 'Article-' . $id . '_Image-' . $articleImage . '_' . $currentDateTime;
-                    
-                    $imageUrl = cloudinary()->upload($photo1, [
-                        'public_id' => $photoFileName,
-                        'folder' => 'article_images', 
-                        ])->getSecurePath();
-                        $uploadedImages[] = $imageUrl;
-                }
-
+                $imageUrl = cloudinary()->upload($photo, [
+                    'public_id' => $photoFileName,
+                    'folder' => 'article_images', 
+                    ])->getSecurePath();
             }
+
 
             $article = Article::findOrFail($id);
 
@@ -157,13 +146,16 @@ class ArticleController extends Controller
                 'content' => $request->content
             ]);
 
-            $articleImages = ArticleImage::where('article_id', $id)->get();
-
-            foreach($articleImages as $index => $articleImage){
-                $articleImage->update([
-                    'image' => $uploadedImages[$index],
-                ]);  
+            if ($imageUrl) {
+                $articleImage = ArticleImage::where('article_id', $id)->first();
+    
+                if ($articleImage) {
+                    $articleImage->update([
+                        'image' => $imageUrl,
+                    ]);
+                }
             }
+    
             return redirect()->route('veterinarian.article.index')->with('message', 'Article has been updated successfully');
         } catch(\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
