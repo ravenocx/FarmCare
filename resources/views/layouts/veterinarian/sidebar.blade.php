@@ -7,12 +7,12 @@
             </a>
          </li>
          <li>
-            <a href="{{route('veterinarian.article.index')}}" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
+            <a href="{{route('veterinarian.article.index')}}" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group {{Route::currentRouteName() == 'veterinarian.article.index' ? 'bg-primaryColor text-white' : ''}}">
                <span class="ms-3">Article</span>
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg  hover:bg-primaryColor hover:text-white group">
+            <a href="{{ route('veterinarian.order.history') }}" class="flex items-center p-2 rounded-lg hover:bg-primaryColor hover:text-white group {{Route::currentRouteName() == 'veterinarian.order.history' ? 'bg-primaryColor text-white' : ''}}">
                <span class="ms-3">Order History</span>
             </a>
          </li>

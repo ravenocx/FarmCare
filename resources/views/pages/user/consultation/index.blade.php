@@ -115,5 +115,4 @@
     </div>
     @endforeach
 
-    
 @endsection

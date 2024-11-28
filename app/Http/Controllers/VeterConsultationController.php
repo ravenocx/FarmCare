@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\ServiceSchedule;
-use App\Models\Order;
 use Auth;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Medication;
+use Illuminate\Http\Request;
+use App\Models\ServiceSchedule;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
@@ -34,19 +36,15 @@ class VeterConsultationController extends Controller
 
         $onGoingOrders = Order::where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
         ->where('order_status', 'On going')
-        ->where('service_category' , 'consultation')
         ->orderBy('order_date', 'asc')
         ->get();
 
-        $latestOrders = Order::with('user')
-        ->where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
+        $latestOrders = Order::where('veterinarian_id' , Auth::guard('veterinarian')->user()->id)
         ->where('order_status', '!=', 'On going')
         ->where('service_category' , 'consultation')
         ->orderBy('order_date', 'desc')
         ->limit(3)
         ->get();
-
-        // dd($latestOrders);
 
         return view('pages.veterinarian.consultation.index', compact('serviceSchedules', 'onGoingOrders', 'latestOrders'));
     }
@@ -176,9 +174,127 @@ class VeterConsultationController extends Controller
     public function getConsultationOrderDetails($id){
         try {
             $order = Order::with('user')->findOrFail($id);
+            $medicine = Medication::where('order_id', $order->id)->get();
+            if ($medicine->contains('order_status', 'Complete')) {
+                $order->medicine = "Complete";
+            }
             return view('pages.veterinarian.consultation.order.detail',compact('order'));
         }catch (ModelNotFoundException $e) {
             abort(404);
+        }
+    }
+
+    public function createMedicine(string $id){
+        $orderId = $id;
+        return view('pages.veterinarian.consultation.medicine.create', compact('orderId'));
+    }
+
+    public function storeMedicine(Request $request){
+        try{
+            $order = Order::find($request->orderId);
+            $user = User::find($order->user_id);
+            
+            for ($i = 1; $i <= $request->myNumber; $i++){
+                $total = $request->input("quantity{$i}") * $request->input("price{$i}");
+                $address = "";
+                if($user->address){
+                    $address = $user->address;
+                }
+                Medication::create([
+                    'order_id' => $request->orderId,
+                    "medicine" => $request->input("medicine{$i}"),
+                    "quantity" => $request->input("quantity{$i}"),
+                    "price" => $total,
+                    "address" => $address,
+                    "order_status" => "On going"
+                    
+                ]);
+            }
+            return redirect()->route('veterinarian.consultation.order.detail', ['id' => $request->orderId]);
+        }catch(\Exception $e){
+            request()->session()->flash('error','An error occurred during storing the medicine :  ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function detailMedicine(string $id){
+        $medicine = Medication::where('order_id', $id)->get();
+        $isComplete = false;
+        if ($medicine->contains('order_status', 'Complete')) {
+            $isComplete = true;
+        }
+        $orderId = $id;
+        return view('pages.veterinarian.consultation.medicine.detail', compact('medicine', 'orderId', 'isComplete'));
+    }
+
+    public function editMedicine(string $id){
+        $medicine = Medication::where('order_id', $id)->get();
+        $orderId = $id;
+        
+        return view('pages.veterinarian.consultation.medicine.edit', compact('medicine', 'orderId'));
+    }
+    
+    public function updateMedicine(Request $request){
+        try{
+            $medicine = Medication::where('order_id', $request->orderId)->get();
+            foreach($medicine as $data){
+                $data->update([
+                    'medicine' =>  $request->input("medicine{$data->id}"),
+                    'quantity' =>  $request->input("quantity{$data->id}"),
+                    'price' =>  $request->input("price{$data->id}"),
+                ]);
+            }
+
+            $order = Order::find($request->orderId);
+            $user = User::find($order->user_id);
+            
+            for ($i = 1; $i <= $request->myNumber; $i++){
+                $total = $request->input("newQuantity{$i}") * $request->input("newPrice{$i}");
+                $address = "";
+                if($user->address){
+                    $address = $user->address;
+                }
+                Medication::create([
+                    'order_id' => $request->orderId,
+                    "medicine" => $request->input("newMedicine{$i}"),
+                    "quantity" => $request->input("newQuantity{$i}"),
+                    "price" => $total,
+                    "address" => $address,
+                    "order_status" => "On going"
+                    
+                ]);
+            }
+
+            return redirect()->route('veterinarian.consultation.medicine.detail', ['id' => $request->orderId])->with('success', "Berhasil update");
+        }catch(\Exception $e){
+            request()->session()->flash('error','An error occurred during storing the medicine :  ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function destroyMedicine(Request $request){
+        try{
+            Medication::where('order_id', $request->orderId)->delete();
+            return redirect()->route('veterinarian.consultation.order.detail', ['id' => $request->orderId]);
+        }catch(\Exception $e){
+            request()->session()->flash('error','An error occurred during storing the medicine :  ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function sendMedicine(Request $request){
+        try{
+
+            $medicine = Medication::where('order_id', $request->orderId)->get();
+            foreach($medicine as $data){
+                $data->update([
+                    "order_status" => "Complete"
+                ]);
+            }
+            return redirect()->back()->with('success', "Berhasil Send");
+        }catch(\Exception $e){
+            request()->session()->flash('error','An error occurred during storing the medicine :  ' . $e->getMessage());
+            return redirect()->back();
         }
     }
 }

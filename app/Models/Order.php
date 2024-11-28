@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Order extends Model
 {
@@ -21,14 +22,19 @@ class Order extends Model
         'order_status',
         'order_date',
         'price',
-        'schedule_id'
+    ];
+
+    protected $casts = [
+        'order_date' => 'datetime',
     ];
 
     public function user(){
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-
     public function veterinarian(){
         return $this->hasOne('App\Models\veterinarian', 'id', 'veterinarian_id');
+    }
+    public function medications(){
+        return $this->hasMany('App\Models\Medication', 'order_id', 'id');
     }
 }

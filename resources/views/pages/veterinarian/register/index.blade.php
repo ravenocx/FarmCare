@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn w-[677px] rounded-md mt-8 bg-primaryColor text-white font-bold text-2xl h-14 hover:text-primaryColor">Sign Up</button>                    
+                    <button type="submit" class="btn w-[677px] rounded-md mt-8 bg-primaryColor text-white font-bold text-2xl h-14 hover:text-primaryColor">Sign Up</button>
                 </form>
             </div>
         </div>
