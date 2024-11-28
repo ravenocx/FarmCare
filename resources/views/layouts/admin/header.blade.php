@@ -13,7 +13,7 @@
         <ul class="menu menu-horizontal px-1 font-medium text-xl ml-10">
             <li>
                 <details>
-                <summary>
+                <summary dusk="profile-summary">
                     <div class="flex items-center">
                         <img src="{{asset('images/icon/profile-icon.svg')}}" alt="profile-image">
                         <p class="ml-4 font-medium text-xl">{{Auth::guard('admin')->user()->name}}</p>

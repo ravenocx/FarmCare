@@ -7,7 +7,7 @@
         <h1 class="font-semibold text-4xl mb-6">The Most Comprehensive Animal Health Solution</h1>
         <p class="text-xl mb-7">Chat with doctors with online consultations, visit hospitals with offline reservations and update <br> information Regarding your livestock health, you can do it all at FarmCare+</p>
         <div class="flex">
-            <a href="{{route('user.consultation')}}">
+            <a href="{{route('user.consultation')}}"  dusk="online-consultation-link">
                 <div class="bg-white rounded-xl px-16 pt-2 pb-4 shadow-lg">
                     <img src="{{asset('images/icon/consultation-icon.svg')}}" class="mx-auto mb-3"/>
                     <p class="text-base font-medium text-center">Online Consultation</p>

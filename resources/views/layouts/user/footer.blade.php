@@ -3,11 +3,12 @@
         <div class="flex justify-center py-11 bg-shadeCream h-96">
             <div class="pt-10 pr-36">
                 <h6 class="font-semibold text-2xl mb-5">QUICK LINKS</h6>
-                <ul class="font-medium text-base">
-                    <li class="mb-2"><a href="">Home</a></li>
-                    <li class="mb-2"><a href="">Order History</a></li>
-                    <li class="mb-2"><a href="">Health Tips Article</a></li>
-                    <li><a href="">Contact Us</a></li>
+                <ul class="font-medium text-base space-y-2">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Order History</a></li>
+                    <li><a href="">Health Tips Article</a></li>
+                    <li><a href="#footer">Contact Us</a></li>
+                    <li><a href="{{route('faq')}}">FAQ</a></li>
                 </ul>
             </div>
 

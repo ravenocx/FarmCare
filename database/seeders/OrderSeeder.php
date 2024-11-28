@@ -16,11 +16,11 @@ class OrderSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create("id_ID");
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $orderDate = $faker->dateTimeBetween('2024-05-21 20:00:00', '2024-05-23 20:00:00'); // Change this when testing
             DB::table('orders')->insert([ 
                 'user_id' => 1,// Change this when testing
-                'veterinarian_id' => 202,  // Change this when testing
+                'veterinarian_id' => 225,  // Change this when testing
                 'cust_name' =>  $faker->randomElement(['Haris','kacee']), 
                 'cust_phone_number' => $faker->numerify('628##########'),             
                 'veter_phone_number' => $faker->numerify('628##########'),             
@@ -31,7 +31,7 @@ class OrderSeeder extends Seeder
                 'order_status' => 'On Going',
                 'order_date' => $orderDate, 
                 'price' => 107428,
-                'schedule_id' => 401, // Change this when testing
+                'schedule_id' => 430, // Change this when testing
             ]);
         }
     }

@@ -76,11 +76,6 @@ class VeterConsultationController extends Controller
                     'required',
                     'date',
                     'before:datetime-end',
-                    function ($attribute, $value, $fail) {
-                        if (Carbon::parse($value)->isBefore(Carbon::now())) {
-                            $fail('The ' . $attribute . ' must be a date and time after the current time.');
-                        }
-                    },
                 ],
                 'datetime-end' => 'required|date|after:datetime-start',
             ]);
@@ -117,11 +112,6 @@ class VeterConsultationController extends Controller
                     'required',
                     'date',
                     'before:datetime-end',
-                    function ($attribute, $value, $fail) {
-                        if (Carbon::parse($value)->isBefore(Carbon::now())) {
-                            $fail('The ' . $attribute . ' must be a date and time after the current time.');
-                        }
-                    },
                 ],
                 'datetime-end' => 'required|date|after:datetime-start',
             ]);

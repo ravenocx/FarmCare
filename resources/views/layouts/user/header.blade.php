@@ -13,7 +13,7 @@
             <ul class="menu menu-horizontal px-1 font-medium text-xl ml-10">
                 <li>
                     <details>
-                    <summary>
+                    <summary dusk="service-summary">
                         Service
                     </summary>
                     <ul class="p-2 bg-base-150 rounded-t-none drop-shadow-xl">
@@ -32,7 +32,7 @@
             <ul class="menu menu-horizontal px-1 font-medium text-xl ml-10">
                 <li>
                     <details>
-                    <summary>
+                    <summary dusk="profile-summary">
                         <div class="flex items-center">
                             @if(Auth::guard('user')->user()->photo)
                                 <img src="{{asset('storage/app' . Auth::user()->photo)}}" alt="profile-image">
