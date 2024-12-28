@@ -56,11 +56,8 @@ jobs:
         host: ${{ env.SERVER_HOST }}
         username: ${{ env.SERVER_USER }}
         key: ${{ env.SERVER_KEY }}
-        source: "./"
+        source: "./, !./node_modules"
         target: "/var/www/${{env.PROJECT_NAME}}"
-        exclude: |
-          ./node_modules
-          .git
 
     - name: Execute remote commands via SSH
       uses: appleboy/ssh-action@master
