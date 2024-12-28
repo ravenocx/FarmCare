@@ -1,0 +1,71 @@
+name: Farmcare Laravel App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  PROJECT_NAME: FarmCare
+  SERVER_HOST: ${{ secrets.SERVER_HOST }} # public ipv4 server
+  SERVER_USER: ${{ secrets.USERNAME }} # username for ssh
+  SERVER_KEY: ${{ secrets.PRIVATE_KEY }} # private key
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1 # Only fetch one latest commit
+
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.production', '.env');" # Change base env based on the requirement
+
+    - name: Setup Node.js # Only required if the project is using npm related framework/libraries
+      uses: actions/setup-node@v4
+      with: 
+        node-version: '18'
+
+    - name: Install NPM dependencies
+      run: |
+        npm install
+        npm run build
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: mbstring, bcmath, xml, curl, mysql
+
+    - name: Install additional PHP extensions and dependencies
+      run: |
+          sudo apt update
+          sudo apt install -y php-cli php-fpm php-curl php-zip php-gd unzip
+    
+    - name: Install Composer Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --no-dev --no-progress --prefer-dist
+    
+    - name: Copy files to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ env.SERVER_HOST }}
+        username: ${{ env.SERVER_USER }}
+        key: ${{ env.SERVER_KEY }}
+        source: "./"
+        target: "/var/www/${{env.PROJECT_NAME}}"
+
+    - name: Execute remote commands via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.SERVER_HOST }}
+        username: ${{ env.SERVER_USER }}
+        key: ${{ env.SERVER_KEY }}
+        script: |
+          cd /var/www/${{env.PROJECT_NAME}}
+          php artisan migrate --force
+          php artisan config:cache
