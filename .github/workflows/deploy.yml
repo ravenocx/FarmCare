@@ -58,6 +58,9 @@ jobs:
         key: ${{ env.SERVER_KEY }}
         source: "./"
         target: "/var/www/${{env.PROJECT_NAME}}"
+        exclude: |
+          node_modules
+          .git
 
     - name: Execute remote commands via SSH
       uses: appleboy/ssh-action@master
