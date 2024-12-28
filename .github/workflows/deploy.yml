@@ -3,7 +3,7 @@ name: Farmcare Laravel App
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 env:
