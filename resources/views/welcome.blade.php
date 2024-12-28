@@ -4,7 +4,7 @@
 
 @section('main-content')
     <section class="relative bg-gradient-to-br from-[#FFF8F0] to-[#EFE1D1] py-24 pl-24">
-        <h1 class="font-bold text-5xl leading-normal">Worry less, love more! <br> Make it easy for your animal to <br> get care from a busy life.</h1>
+        <h1 class="font-bold text-5xl leading-normal">Worry less, love more. <br> Make it easy for your animal to <br> get care from a busy life.</h1>
         <p class="text-2xl mt-5 mb-10">Choose the service you need</p>
         <div class="flex">
             <a href="{{route('user.consultation')}}">
