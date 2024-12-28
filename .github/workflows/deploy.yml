@@ -59,7 +59,7 @@ jobs:
         source: "./"
         target: "/var/www/${{env.PROJECT_NAME}}"
         exclude: |
-          node_modules
+          ./node_modules
           .git
 
     - name: Execute remote commands via SSH
